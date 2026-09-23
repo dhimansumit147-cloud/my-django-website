@@ -1,0 +1,817 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Solar Inverters | SunGreen Solar Admin
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/admin/solar_inverters.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="solar-admin">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <section class="solar-header">
+
+        <div class="solar-title">
+
+            <div class="title-icon">
+                ⚡
+            </div>
+
+            <div class="title-content">
+
+                <span class="title-label">
+                    SUNGREEN SOLAR ADMIN
+                </span>
+
+                <h1>
+                    Solar Inverters
+                </h1>
+
+                <p>
+                    Manage solar inverter products, images and
+                    technical brochures from your dashboard.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ADD INVERTER BUTTON
+        ================================================== -->
+
+        <a
+            href="/admin-inverter/add/"
+            class="add-inverter-btn"
+        >
+
+            <span class="add-icon">
+                +
+            </span>
+
+            <span>
+                Add Solar Inverter
+            </span>
+
+            <span class="add-arrow">
+                →
+            </span>
+
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTS SECTION
+    ====================================================== -->
+
+    <section class="solar-products-card">
+
+
+        <!-- =================================================
+             PRODUCTS HEADER
+        ================================================== -->
+
+        <div class="products-header">
+
+
+            <!-- =================================================
+                 PRODUCTS HEADING
+            ================================================== -->
+
+            <div class="products-heading">
+
+                <div class="card-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <span class="section-label">
+                        PRODUCT CATALOG
+                    </span>
+
+                    <h2>
+                        All Solar Inverters
+                    </h2>
+
+                    <p>
+                        View and manage all available solar inverter
+                        products.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CATEGORY FILTER
+            ================================================== -->
+
+            <div class="products-filter">
+
+                <label
+                    for="category-filter"
+                    class="filter-label"
+                >
+                    Category
+                </label>
+
+                <select
+                    id="category-filter"
+                    class="category-filter-select"
+                    onchange="filterByCategory(this.value)"
+                >
+
+                    <!-- ALL PRODUCTS -->
+
+                    <option
+                        value=""
+                        {% if not selected_category %}
+                            selected
+                        {% endif %}
+                    >
+                        All Solar Inverter
+                    </option>
+
+
+                    <!-- CATEGORY LIST -->
+
+                    {% for category in categories %}
+
+                    <option
+                        value="{{ category }}"
+                        {% if selected_category == category %}
+                            selected
+                        {% endif %}
+                    >
+                        {{ category }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT COUNT
+            ================================================== -->
+
+            <div class="products-count">
+
+                <strong>
+                    {{ products|length }}
+                </strong>
+
+                <span>
+                    Inverters
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             TABLE WRAPPER
+        ====================================================== -->
+
+        <div class="table-wrapper">
+
+            <table class="product-table">
+
+
+                <!-- =================================================
+                     TABLE HEAD
+                ================================================== -->
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Images
+                        </th>
+
+                        <th>
+                            Category
+                        </th>
+
+                        <th>
+                            Product
+                        </th>
+
+                        <th>
+                            Description
+                        </th>
+
+                        <th>
+                            Brochures
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <!-- =================================================
+                     TABLE BODY
+                ================================================== -->
+
+                <tbody>
+
+
+                    {% for product in products %}
+
+                    <tr>
+
+
+                        <!-- =========================================
+                             IMAGES
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="product-images-list">
+
+                                {% for image in product.images.all %}
+
+                                <div class="product-image-wrapper">
+
+                                    <img
+                                        src="{{ image.image.url }}"
+                                        alt="{{ product.name1 }}"
+                                        class="product-image"
+                                        loading="lazy"
+                                    >
+
+                                </div>
+
+                                {% empty %}
+
+                                <div class="no-image">
+
+                                    <span>
+                                        ⚡
+                                    </span>
+
+                                    <small>
+                                        No Image
+                                    </small>
+
+                                </div>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             CATEGORY
+                        ========================================== -->
+
+                        <td>
+
+                            <span class="category-badge">
+
+                                <span class="category-dot"></span>
+
+                                {{ product.category }}
+
+                            </span>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             PRODUCT NAME
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="product-name">
+
+                                {{ product.name1 }}
+
+                            </div>
+
+
+                            {% if product.name2 %}
+
+                            <div class="product-subtitle">
+
+                                {{ product.name2 }}
+
+                            </div>
+
+                            {% endif %}
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             DESCRIPTION
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="product-description">
+
+                                {{ product.description|truncatechars:110 }}
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             PDF BROCHURES
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="product-pdfs">
+
+                                {% for pdf in product.pdfs.all %}
+
+                                <a
+                                    href="{{ pdf.pdf.url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="pdf-badge"
+                                >
+
+                                    <span class="pdf-icon">
+                                        📄
+                                    </span>
+
+                                    <span class="pdf-title">
+
+                                        {% if pdf.title %}
+
+                                            {{ pdf.title }}
+
+                                        {% else %}
+
+                                            View PDF {{ forloop.counter }}
+
+                                        {% endif %}
+
+                                    </span>
+
+                                    <span class="pdf-arrow">
+                                        ↗
+                                    </span>
+
+                                </a>
+
+                                {% empty %}
+
+                                <span class="no-pdf">
+                                    No PDF
+                                </span>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             ACTIONS
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="action-group">
+
+
+                                <!-- =================================
+                                     EDIT
+                                ================================== -->
+
+                                <a
+                                    href="{% url 'edit_solar_inverter' product.id %}"
+                                    class="action-btn edit-btn"
+                                    title="Edit Inverter"
+                                    aria-label="Edit {{ product.name1 }}"
+                                >
+
+                                    <span>
+                                        ✏️
+                                    </span>
+
+                                </a>
+
+
+
+                                <!-- =================================
+                                     DELETE
+                                ================================== -->
+
+                                <form
+                                    method="POST"
+                                    action="{% url 'delete_solar_inverter' product.id %}"
+                                    class="delete-form"
+                                >
+
+                                    {% csrf_token %}
+
+                                    <button
+                                        type="submit"
+                                        class="action-btn delete-btn"
+                                        title="Delete Inverter"
+                                        aria-label="Delete {{ product.name1 }}"
+                                    >
+
+                                        <span>
+                                            🗑️
+                                        </span>
+
+                                    </button>
+
+                                </form>
+
+
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% empty %}
+
+
+                    <!-- =================================================
+                         EMPTY STATE
+                    ================================================== -->
+
+                    <tr>
+
+                        <td colspan="6">
+
+                            <div class="empty-state">
+
+                                <div class="empty-icon">
+                                    ⚡
+                                </div>
+
+                                {% if selected_category %}
+
+                                <h3>
+                                    No Inverters Found
+                                </h3>
+
+                                <p>
+                                    No solar inverter is available in
+                                    the "{{ selected_category }}" category.
+                                </p>
+
+
+                                <a
+                                    href="{% url 'solar_inverters' %}"
+                                    class="empty-add-btn"
+                                >
+
+                                    <span>
+                                        ↻
+                                    </span>
+
+                                    Show All Inverters
+
+                                </a>
+
+                                {% else %}
+
+                                <h3>
+                                    No Solar Inverters Yet
+                                </h3>
+
+                                <p>
+                                    Your solar inverter catalog is currently
+                                    empty. Add your first inverter to get started.
+                                </p>
+
+
+                                <a
+                                    href="/admin-inverter/add/"
+                                    class="empty-add-btn"
+                                >
+
+                                    <span>
+                                        +
+                                    </span>
+
+                                    Add Your First Inverter
+
+                                </a>
+
+                                {% endif %}
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     CATEGORY FILTER JAVASCRIPT
+========================================================= -->
+
+<script>
+
+function filterByCategory(category) {
+
+    /*
+     * Get current page URL
+     */
+
+    const url = new URL(window.location.href);
+
+
+    /*
+     * If category is selected,
+     * add/update category parameter.
+     */
+
+    if (category) {
+
+        url.searchParams.set(
+            "category",
+            category
+        );
+
+    }
+
+
+    /*
+     * If "All Solar Inverter" is selected,
+     * remove category parameter.
+     */
+
+    else {
+
+        url.searchParams.delete(
+            "category"
+        );
+
+    }
+
+
+    /*
+     * Reload page with selected filter.
+     */
+
+    window.location.href = url.toString();
+
+}
+
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =====================================================
+           IMAGE CLICK PREVIEW
+        ===================================================== */
+
+        const images =
+            document.querySelectorAll(
+                ".product-image"
+            );
+
+
+        images.forEach(
+            function (image) {
+
+
+                image.addEventListener(
+                    "click",
+                    function () {
+
+
+                        /*
+                         * Create lightbox overlay
+                         */
+
+                        const overlay =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        overlay.className =
+                            "image-lightbox";
+
+
+                        overlay.innerHTML = `
+
+                            <div class="lightbox-content">
+
+                                <button
+                                    type="button"
+                                    class="lightbox-close"
+                                    aria-label="Close image preview"
+                                >
+                                    ×
+                                </button>
+
+                                <img
+                                    src="${this.src}"
+                                    alt="${this.alt}"
+                                >
+
+                            </div>
+
+                        `;
+
+
+                        document.body.appendChild(
+                            overlay
+                        );
+
+
+
+                        /* =====================================
+                           CLOSE BUTTON
+                        ====================================== */
+
+                        const closeButton =
+                            overlay.querySelector(
+                                ".lightbox-close"
+                            );
+
+
+                        closeButton.addEventListener(
+                            "click",
+                            function () {
+
+                                overlay.remove();
+
+                            }
+                        );
+
+
+
+                        /* =====================================
+                           CLICK OUTSIDE IMAGE
+                        ====================================== */
+
+                        overlay.addEventListener(
+                            "click",
+                            function (event) {
+
+                                if (
+                                    event.target === overlay
+                                ) {
+
+                                    overlay.remove();
+
+                                }
+
+                            }
+                        );
+
+
+
+                        /* =====================================
+                           ESC KEY
+                        ====================================== */
+
+                        function escHandler(event) {
+
+                            if (
+                                event.key === "Escape"
+                            ) {
+
+                                overlay.remove();
+
+                                document.removeEventListener(
+                                    "keydown",
+                                    escHandler
+                                );
+
+                            }
+
+                        }
+
+
+                        document.addEventListener(
+                            "keydown",
+                            escHandler
+                        );
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =====================================================
+           DELETE CONFIRMATION
+        ===================================================== */
+
+        const deleteForms =
+            document.querySelectorAll(
+                ".delete-form"
+            );
+
+
+        deleteForms.forEach(
+            function (form) {
+
+
+                form.addEventListener(
+                    "submit",
+                    function (event) {
+
+
+                        const confirmed =
+                            confirm(
+                                "Are you sure you want to delete this solar inverter?"
+                            );
+
+
+                        if (!confirmed) {
+
+                            event.preventDefault();
+
+                        }
+
+                    }
+                );
+
+
+            }
+        );
+
+
+    }
+);
+
+</script>
+
+
+{% endblock %}

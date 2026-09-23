@@ -1,0 +1,2677 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+EV Chargers | Sungreen Solar
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/ev_chargers.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="ev-page">
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <section
+        class="ev-hero"
+        aria-labelledby="evHeroTitle"
+    >
+
+        <div class="ev-hero-grid"></div>
+
+        <div class="ev-hero-orb ev-orb-one"></div>
+
+        <div class="ev-hero-orb ev-orb-two"></div>
+
+
+        <div class="ev-module-container">
+
+            <div class="ev-hero-content">
+
+                <div class="ev-eyebrow">
+
+                    <span
+                        class="eyebrow-icon"
+                        aria-hidden="true"
+                    >
+                        ⚡
+                    </span>
+
+                    <span>
+                        Sungreen SOLAR
+                    </span>
+
+                </div>
+
+
+                <h1 id="evHeroTitle">
+
+                    Smart
+
+                    <span>
+                        EV Chargers
+                    </span>
+
+                </h1>
+
+
+                <p>
+                    Discover smart and reliable EV charging
+                    solutions designed for convenient,
+                    efficient and future-ready electric
+                    vehicle charging.
+                </p>
+
+
+                <div class="hero-line"></div>
+
+
+                <div class="hero-stats">
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            {{ ev_chargers|length }}
+                        </strong>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="hero-stat-divider"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            Smart
+                        </strong>
+
+                        <span>
+                            EV Charging
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="hero-stat-divider"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            Reliable
+                        </strong>
+
+                        <span>
+                            Charging Technology
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="ev-scroll-indicator"
+            id="evScrollIndicator"
+            aria-label="Explore EV charging products"
+        >
+
+            <span>
+                Explore EV Chargers
+            </span>
+
+            <span
+                class="scroll-arrow"
+                aria-hidden="true"
+            >
+                ↓
+            </span>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTS SECTION
+    ====================================================== -->
+
+    <section
+        class="ev-products-section"
+        id="ev-products"
+        aria-labelledby="evProductsTitle"
+    >
+
+        <div class="ev-module-container">
+
+            <!-- =================================================
+                 SECTION HEADING
+            ================================================== -->
+
+            <div class="ev-section-heading">
+
+                <div class="ev-section-heading-left">
+
+                    <span class="section-label">
+                        OUR EV CHARGER RANGE
+                    </span>
+
+
+                    <h2 id="evProductsTitle">
+
+                        EV Chargers
+
+                        <span>
+                            Built For The Future.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="section-heading-right">
+
+                    <p>
+                        Explore our EV charging range,
+                        selected for reliable performance,
+                        efficient charging, smart connectivity
+                        and modern electric mobility.
+                    </p>
+
+
+                    <div class="section-line"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTER BAR
+            ================================================== -->
+
+            <div class="ev-filter-bar">
+
+                <div class="ev-filter-info">
+
+                    <span
+                        class="filter-icon"
+                        aria-hidden="true"
+                    >
+                        ⚡
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Filter EV Chargers
+                        </strong>
+
+
+                        <small>
+                            Select a category to explore products
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ev-filter-select-wrap">
+
+                    <label for="evCategoryFilter">
+                        Category
+                    </label>
+
+
+                    <div class="ev-select-container">
+
+                        <select
+                            id="evCategoryFilter"
+                            class="ev-filter-select"
+                        >
+
+                            <option value="all">
+                                All EV Chargers
+                            </option>
+
+
+                            {% for category in categories %}
+
+                                {% if category %}
+
+                                    <option
+                                        value="{{ category|slugify }}"
+                                    >
+                                        {{ category }}
+                                    </option>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </select>
+
+
+                        <span
+                            class="filter-select-arrow"
+                            aria-hidden="true"
+                        >
+                            ↓
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RESULT BAR
+            ================================================== -->
+
+            <div
+                class="ev-filter-result"
+                aria-live="polite"
+            >
+
+                <div class="filter-result-left">
+
+                    <span aria-hidden="true">
+                        ⚡
+                    </span>
+
+
+                    <p id="evFilterResultText" style="font-size: 18px;">
+                        Showing all EV charger products
+                    </p>
+
+                </div>
+
+
+                <strong id="evFilterProductCount">
+                    {{ ev_chargers|length }}
+                </strong>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT GRID
+            ================================================== -->
+
+            <div
+                class="ev-products-grid"
+                id="evProductsGrid"
+            >
+
+                {% for charger in ev_chargers %}
+
+                    <!-- =================================================
+                         PRODUCT CARD
+                    ================================================= -->
+
+                    <article
+                        class="ev-product-card"
+                        tabindex="0"
+                        role="button"
+                        aria-label="View {{ charger.name1|default:'EV Charger' }}"
+                        data-product-id="{{ charger.id }}"
+                        data-category="{{ charger.category|default:'EV Charger'|slugify }}"
+                    >
+
+                        <!-- =================================================
+                             PRODUCT IMAGE
+                        ================================================= -->
+
+                        <div class="ev-product-image">
+
+                            {% if charger.images.all %}
+
+                                {% for product_image in charger.images.all %}
+
+                                    {% if product_image.image %}
+
+                                        {% if forloop.first %}
+
+                                            <img
+                                                src="{{ product_image.image.url }}"
+                                                alt="{{ charger.name1|default:'EV Charger' }}"
+                                                loading="lazy"
+                                            >
+
+                                        {% endif %}
+
+                                    {% endif %}
+
+                                {% empty %}
+
+                                    {% if charger.image %}
+
+                                        <img
+                                            src="{{ charger.image.url }}"
+                                            alt="{{ charger.name1|default:'EV Charger' }}"
+                                            loading="lazy"
+                                        >
+
+                                    {% else %}
+
+                                        <div class="no-product-image">
+
+                                            <span
+                                                class="no-image-icon"
+                                                aria-hidden="true"
+                                            >
+                                                ⚡
+                                            </span>
+
+
+                                            <span class="no-image-text">
+                                                EV Charger
+                                            </span>
+
+                                        </div>
+
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            {% elif charger.image %}
+
+                                <img
+                                    src="{{ charger.image.url }}"
+                                    alt="{{ charger.name1|default:'EV Charger' }}"
+                                    loading="lazy"
+                                >
+
+                            {% else %}
+
+                                <div class="no-product-image">
+
+                                    <span
+                                        class="no-image-icon"
+                                        aria-hidden="true"
+                                    >
+                                        ⚡
+                                    </span>
+
+
+                                    <span class="no-image-text">
+                                        EV Charger
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
+                            <div
+                                class="image-overlay"
+                                aria-hidden="true"
+                            ></div>
+
+
+                            <div
+                                class="product-number"
+                                aria-hidden="true"
+                            >
+
+                                {% if forloop.counter < 10 %}
+
+                                    0{{ forloop.counter }}
+
+                                {% else %}
+
+                                    {{ forloop.counter }}
+
+                                {% endif %}
+
+                            </div>
+
+
+                            {% if charger.created_at %}
+
+                                <div
+                                    class="new-badge"
+                                    data-created="{{ charger.created_at|date:'c' }}"
+                                >
+
+                                    <span
+                                        class="new-dot"
+                                        aria-hidden="true"
+                                    ></span>
+
+
+                                    <span>
+                                        NEW
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
+                            <div
+                                class="product-image-action"
+                                aria-hidden="true"
+                            >
+
+                                <span>
+                                    View More Details
+                                </span>
+
+
+                                <span class="view-arrow">
+                                    ↗
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             PRODUCT CONTENT
+                        ================================================== -->
+
+                        <div class="ev-product-content">
+
+                            <div
+                                class="product-category"
+                                style="font-size: 20px;"
+                            >
+
+                                {{ charger.category|default:"EV CHARGER" }}
+
+                            </div>
+
+
+                            <h3 class="product-title" style="font-size: 16px;">
+
+                                {{ charger.name1|default:"EV Charger" }}
+
+                            </h3>
+
+
+                            {% if charger.name2 %}
+
+                                
+
+                            {% endif %}
+
+
+                            {% if charger.description %}
+
+                                <p class="product-description">
+
+                                    {{ charger.description }}
+
+                                </p>
+
+                            {% else %}
+
+                                <p class="product-description">
+
+                                    Smart and reliable EV charging
+                                    solution designed for efficient
+                                    and convenient electric vehicle
+                                    charging.
+
+                                </p>
+
+                            {% endif %}
+
+
+                            <div class="product-content-divider"></div>
+
+
+                            <div class="ev-product-footer">
+
+                                <span style="font-size: 14px;">
+                                    View More Details
+                                </span>
+
+
+                                <span
+                                    class="product-arrow"
+                                    aria-hidden="true"
+                                >
+                                    ↗
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="card-shine"
+                            aria-hidden="true"
+                        ></div>
+
+
+
+                        <!-- =================================================
+                             ALL PRODUCT IMAGES
+                        ================================================== -->
+
+                        <div
+                            class="ev-product-images-data"
+                            hidden
+                        >
+
+                            {% for product_image in charger.images.all %}
+
+                                {% if product_image.image %}
+
+                                    <a
+                                        href="{{ product_image.image.url }}"
+                                        data-image-title="{{ charger.name1|default:'EV Charger' }}"
+                                    >
+                                        {{ charger.name1|default:"EV Charger" }}
+                                    </a>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+
+                            {% if charger.image %}
+
+                                <a
+                                    href="{{ charger.image.url }}"
+                                    data-image-title="{{ charger.name1|default:'EV Charger' }}"
+                                >
+                                    {{ charger.name1|default:"EV Charger" }}
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             PRODUCT PDFs
+                        ================================================== -->
+
+                        <div
+                            class="ev-product-pdfs"
+                            hidden
+                        >
+
+                            {% if charger.pdf %}
+
+                                <a
+                                    href="{{ charger.pdf.url }}"
+                                    data-pdf-title="Main Product PDF"
+                                >
+                                    Main Product PDF
+                                </a>
+
+                            {% endif %}
+
+
+                            {% for pdf_file in charger.pdfs.all %}
+
+                                {% if pdf_file.pdf %}
+
+                                    <a
+                                        href="{{ pdf_file.pdf.url }}"
+                                        data-pdf-title="{{ pdf_file.title|default:'EV Charger Brochure' }}"
+                                    >
+                                        {{ pdf_file.title|default:"EV Charger Brochure" }}
+                                    </a>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </article>
+
+                {% empty %}
+
+                    <!-- =================================================
+                         NO PRODUCTS
+                    ================================================== -->
+
+                    <div class="ev-empty-state">
+
+                        <div
+                            class="empty-ev-icon"
+                            aria-hidden="true"
+                        >
+                            ⚡
+                        </div>
+
+
+                        <h3>
+                            EV Chargers Coming Soon
+                        </h3>
+
+
+                        <p>
+                            Our latest EV charging solutions
+                            will be available here soon.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+
+
+                <!-- =================================================
+                     FILTER EMPTY
+                ================================================== -->
+
+                <div
+                    id="evFilterEmpty"
+                    class="ev-filter-empty"
+                    style="display: none;"
+                >
+
+                    <div
+                        class="ev-filter-empty-icon"
+                        aria-hidden="true"
+                    >
+                        ⚡
+                    </div>
+
+
+                    <h3>
+                        No EV Chargers Found
+                    </h3>
+
+
+                    <p>
+                        There are no EV charger products
+                        available in this category.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FEATURES SECTION
+    ====================================================== -->
+
+    <section
+        class="ev-features-section"
+        aria-labelledby="evFeaturesTitle"
+    >
+
+        <div class="ev-module-container">
+
+            <div class="ev-features-heading">
+
+                <span class="section-label">
+                    WHY EV CHARGING
+                </span>
+
+
+                <h2 id="evFeaturesTitle">
+
+                    Charge Smarter.
+
+                    <span>
+                        Drive Further.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <div class="ev-features-grid">
+
+                <div class="ev-feature-card">
+
+                    <span
+                        class="feature-number"
+                        style="font-size: 18px;"
+                    >
+                        01
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        ⚡
+                    </div>
+
+
+                    <h3>
+                        Fast & Efficient Charging
+                    </h3>
+
+
+                    <p>
+                        Charge your electric vehicle efficiently
+                        with reliable charging technology designed
+                        for everyday use.
+                    </p>
+
+                </div>
+
+
+                <div class="ev-feature-card">
+
+                    <span
+                        class="feature-number"
+                        style="font-size: 18px;"
+                    >
+                        02
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        ☀
+                    </div>
+
+
+                    <h3>
+                        Solar Compatible
+                    </h3>
+
+
+                    <p>
+                        Combine solar energy with EV charging
+                        to make better use of clean and renewable
+                        electricity.
+                    </p>
+
+                </div>
+
+
+                <div class="ev-feature-card">
+
+                    <span
+                        class="feature-number"
+                        style="font-size: 18px;"
+                    >
+                        03
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        📱
+                    </div>
+
+
+                    <h3>
+                        Smart Charging
+                    </h3>
+
+
+                    <p>
+                        Intelligent charging features help you
+                        monitor and manage your EV charging
+                        experience.
+                    </p>
+
+                </div>
+
+
+                <div class="ev-feature-card">
+
+                    <span
+                        class="feature-number"
+                        style="font-size: 18px;"
+                    >
+                        04
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        🚗
+                    </div>
+
+
+                    <h3>
+                        Ready For Electric Mobility
+                    </h3>
+
+
+                    <p>
+                        Build a convenient charging setup for
+                        your home, workplace or modern electric
+                        mobility requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA SECTION
+    ====================================================== -->
+
+    <section class="ev-module-cta">
+
+        <div
+            class="cta-glow"
+            aria-hidden="true"
+        ></div>
+
+
+        <div
+            class="cta-glow cta-glow-two"
+            aria-hidden="true"
+        ></div>
+
+
+        <div class="ev-module-container">
+
+            <div class="cta-content">
+
+                <span class="section-label">
+                    POWER YOUR JOURNEY
+                </span>
+
+
+                <h2>
+
+                    Charge today.
+
+                    <span>
+                        Drive tomorrow.
+                    </span>
+
+                </h2>
+
+
+                <p>
+                    Looking for the right EV charger for your
+                    electric vehicle or solar system? Our team
+                    can help you choose a reliable charging
+                    solution based on your requirements.
+                </p>
+
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="ev-cta-button"
+                >
+
+                    <span>
+                        Talk To Our Team
+                    </span>
+
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     PRODUCT DETAILS MODAL
+========================================================== -->
+
+<div
+    class="ev-product-modal"
+    id="evProductModal"
+    aria-hidden="true"
+>
+
+    <!-- BACKDROP -->
+
+    <div
+        class="ev-modal-backdrop"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- MODAL -->
+
+    <div
+        class="ev-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="evModalProductTitle"
+    >
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            class="ev-modal-close"
+            id="evModalClose"
+            aria-label="Close product details"
+        >
+            ×
+        </button>
+
+
+        <div class="ev-modal-grid">
+
+            <!-- =================================================
+                 MODAL IMAGE GALLERY
+            ================================================== -->
+
+            <div class="ev-modal-gallery">
+
+                <div class="ev-modal-image-wrap">
+
+                    <button
+                        type="button"
+                        class="ev-modal-image-prev"
+                        id="evModalImagePrev"
+                        aria-label="Previous product image"
+                    >
+                        ←
+                    </button>
+
+
+                    <img
+                        id="evModalProductImage"
+                        src=""
+                        alt=""
+                        class="ev-modal-image"
+                    >
+
+
+                    <div
+                        id="evModalImagePlaceholder"
+                        class="ev-modal-placeholder"
+                    >
+
+                        <span aria-hidden="true">
+                            ⚡
+                        </span>
+
+
+                        <small>
+                            EV Charger
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="ev-modal-image-next"
+                        id="evModalImageNext"
+                        aria-label="Next product image"
+                    >
+                        →
+                    </button>
+
+
+                    <div
+                        id="evModalImageCounter"
+                        class="ev-modal-image-counter"
+                    >
+                        1 / 1
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="evModalImageThumbs"
+                    class="ev-modal-image-thumbs"
+                    aria-label="Product images"
+                ></div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MODAL CONTENT
+            ================================================== -->
+
+            <div class="ev-modal-content">
+
+                <div class="modal-top-row">
+
+                    <span
+                        id="evModalProductCategory"
+                        class="modal-category"
+                        style="font-size: 16px;"
+                    >
+                        EV CHARGER
+                    </span>
+
+
+                    <span
+                        id="evModalNewBadge"
+                        class="modal-new-badge"
+                        style="font-size: 18px;"
+                    >
+                        NEW
+                    </span>
+
+                </div>
+
+
+                <h2 id="evModalProductTitle">
+                    EV Charger
+                </h2>
+
+
+                <h3 id="evModalProductSubtitle"></h3>
+
+
+                <div class="modal-divider"></div>
+
+
+                <p id="evModalProductDescription">
+                    Smart and reliable EV charging solution.
+                </p>
+
+
+
+                <!-- =================================================
+                     MODAL FEATURES
+                ================================================== -->
+
+                <div class="modal-meta">
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </span>
+
+
+                        <div>
+
+                            <strong style="font-size: 14px;">
+                                Reliable Charging
+                            </strong>
+
+
+                            <small style="font-size: 12px;">
+                                Dependable charging technology
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            ⚡
+                        </span>
+
+
+                        <div>
+
+                            <strong style="font-size: 14px;">
+                                Efficient Power
+                            </strong>
+
+
+                            <small style="font-size: 12px;">
+                                Efficient EV charging performance
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            📱
+                        </span>
+
+
+                        <div>
+
+                            <strong style="font-size: 14px;">
+                                Smart Control
+                            </strong>
+
+
+                            <small style="font-size: 12px;">
+                                Intelligent charging management
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            ☀
+                        </span>
+
+
+                        <div>
+
+                            <strong style="font-size: 14px;">
+                                Solar Compatible
+                            </strong>
+
+
+                            <small style="font-size: 12px;">
+                                Designed for solar-powered charging
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BROCHURES
+                ================================================== -->
+
+                <div class="modal-brochures-wrapper">
+
+                    <div class="modal-brochures-heading">
+
+                        <span aria-hidden="true">
+                            📄
+                        </span>
+
+
+                        <strong style="font-size: 14px;">
+                            Brochures & Documents
+                        </strong>
+
+                    </div>
+
+
+                    <div
+                        id="evModalPdfList"
+                        class="modal-pdf-list"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     MODAL ACTIONS
+                ================================================== -->
+
+                <div class="modal-actions">
+
+                    <a
+                        id="evModalPdfButton"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="modal-pdf-button"
+                    >
+
+                        <span aria-hidden="true">
+                            📄
+                        </span>
+
+
+                        <span>
+                            Open Selected PDF
+                        </span>
+
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="modal-close-secondary"
+                        id="evModalSecondaryClose"
+                    >
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /* =====================================================
+           MAIN ELEMENTS
+        ===================================================== */
+
+        const modal =
+            document.getElementById(
+                "evProductModal"
+            );
+
+        const modalClose =
+            document.getElementById(
+                "evModalClose"
+            );
+
+        const modalSecondaryClose =
+            document.getElementById(
+                "evModalSecondaryClose"
+            );
+
+        const modalBackdrop =
+            document.querySelector(
+                ".ev-modal-backdrop"
+            );
+
+        const productCards =
+            document.querySelectorAll(
+                ".ev-product-card"
+            );
+
+        const modalTitle =
+            document.getElementById(
+                "evModalProductTitle"
+            );
+
+        const modalSubtitle =
+            document.getElementById(
+                "evModalProductSubtitle"
+            );
+
+        const modalCategory =
+            document.getElementById(
+                "evModalProductCategory"
+            );
+
+        const modalDescription =
+            document.getElementById(
+                "evModalProductDescription"
+            );
+
+        const modalImage =
+            document.getElementById(
+                "evModalProductImage"
+            );
+
+        const modalPlaceholder =
+            document.getElementById(
+                "evModalImagePlaceholder"
+            );
+
+        const modalNewBadge =
+            document.getElementById(
+                "evModalNewBadge"
+            );
+
+        const modalPdfList =
+            document.getElementById(
+                "evModalPdfList"
+            );
+
+        const modalPdfButton =
+            document.getElementById(
+                "evModalPdfButton"
+            );
+
+
+        /* =====================================================
+           IMAGE GALLERY
+        ===================================================== */
+
+        const modalImagePrev =
+            document.getElementById(
+                "evModalImagePrev"
+            );
+
+        const modalImageNext =
+            document.getElementById(
+                "evModalImageNext"
+            );
+
+        const modalImageThumbs =
+            document.getElementById(
+                "evModalImageThumbs"
+            );
+
+        const modalImageCounter =
+            document.getElementById(
+                "evModalImageCounter"
+            );
+
+
+        let currentEVImages = [];
+
+        let currentEVImageIndex = 0;
+
+
+        /* =====================================================
+           SCROLL
+        ===================================================== */
+
+        const evScrollIndicator =
+            document.getElementById(
+                "evScrollIndicator"
+            );
+
+        const evProductsSection =
+            document.getElementById(
+                "ev-products"
+            );
+
+
+        /* =====================================================
+           FILTER
+        ===================================================== */
+
+        const categoryFilter =
+            document.getElementById(
+                "evCategoryFilter"
+            );
+
+        const filterCount =
+            document.getElementById(
+                "evFilterProductCount"
+            );
+
+        const filterText =
+            document.getElementById(
+                "evFilterResultText"
+            );
+
+        const filterEmpty =
+            document.getElementById(
+                "evFilterEmpty"
+            );
+
+
+        /* =====================================================
+           SAFETY CHECK
+        ===================================================== */
+
+        if (!modal) {
+
+            console.error(
+                "EV charger modal not found."
+            );
+
+            return;
+
+        }
+
+
+        /* =====================================================
+           HERO SCROLL
+        ===================================================== */
+
+        if (
+            evScrollIndicator &&
+            evProductsSection
+        ) {
+
+            evScrollIndicator.addEventListener(
+                "click",
+                function () {
+
+                    const sectionTop =
+                        evProductsSection
+                            .getBoundingClientRect()
+                            .top
+                        +
+                        window.pageYOffset;
+
+                    const navbarOffset = 90;
+
+                    window.scrollTo({
+
+                        top:
+                            Math.max(
+                                0,
+                                sectionTop -
+                                navbarOffset
+                            ),
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           UPDATE MODAL IMAGE
+        ===================================================== */
+
+        function updateEVModalImage() {
+
+            if (
+                !currentEVImages.length
+            ) {
+
+                modalImage.style.display =
+                    "none";
+
+                modalPlaceholder.style.display =
+                    "flex";
+
+                modalImagePrev.style.display =
+                    "none";
+
+                modalImageNext.style.display =
+                    "none";
+
+                modalImageCounter.style.display =
+                    "none";
+
+                modalImageThumbs.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            const image =
+                currentEVImages[
+                    currentEVImageIndex
+                ];
+
+
+            modalImage.src =
+                image.url;
+
+
+            modalImage.alt =
+                image.alt;
+
+
+            modalImage.style.display =
+                "block";
+
+
+            modalPlaceholder.style.display =
+                "none";
+
+
+            if (
+                currentEVImages.length > 1
+            ) {
+
+                modalImageCounter.textContent =
+                    `${currentEVImageIndex + 1} / ${currentEVImages.length}`;
+
+                modalImageCounter.style.display =
+                    "flex";
+
+                modalImagePrev.style.display =
+                    "flex";
+
+                modalImageNext.style.display =
+                    "flex";
+
+                modalImageThumbs.style.display =
+                    "flex";
+
+            } else {
+
+                modalImageCounter.style.display =
+                    "none";
+
+                modalImagePrev.style.display =
+                    "none";
+
+                modalImageNext.style.display =
+                    "none";
+
+                modalImageThumbs.style.display =
+                    "none";
+
+            }
+
+
+            modalImageThumbs
+                .querySelectorAll(
+                    ".ev-modal-thumb"
+                )
+                .forEach(
+                    function (
+                        thumb,
+                        index
+                    ) {
+
+                        thumb.classList.toggle(
+                            "active",
+                            index ===
+                            currentEVImageIndex
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           LOAD PRODUCT IMAGES
+        ===================================================== */
+
+        function loadEVModalImages(card) {
+
+            currentEVImages = [];
+
+            currentEVImageIndex = 0;
+
+            modalImageThumbs.innerHTML = "";
+
+
+            const imageLinks =
+                card.querySelectorAll(
+                    ".ev-product-images-data a"
+                );
+
+
+            imageLinks.forEach(
+                function (imageLink) {
+
+                    const imageUrl =
+                        imageLink.href;
+
+                    if (!imageUrl) {
+                        return;
+                    }
+
+
+                    const alreadyExists =
+                        currentEVImages.some(
+                            function (item) {
+
+                                return (
+                                    item.url ===
+                                    imageUrl
+                                );
+
+                            }
+                        );
+
+
+                    if (alreadyExists) {
+                        return;
+                    }
+
+
+                    currentEVImages.push({
+
+                        url:
+                            imageUrl,
+
+                        alt:
+                            imageLink.dataset.imageTitle
+                            ||
+                            "EV Charger"
+
+                    });
+
+                }
+            );
+
+
+            currentEVImages.forEach(
+                function (
+                    image,
+                    index
+                ) {
+
+                    const thumbnail =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    thumbnail.type =
+                        "button";
+
+
+                    thumbnail.className =
+                        "ev-modal-thumb";
+
+
+                    thumbnail.setAttribute(
+                        "aria-label",
+                        `View product image ${index + 1}`
+                    );
+
+
+                    const thumbnailImage =
+                        document.createElement(
+                            "img"
+                        );
+
+
+                    thumbnailImage.src =
+                        image.url;
+
+
+                    thumbnailImage.alt =
+                        "";
+
+
+                    thumbnailImage.loading =
+                        "lazy";
+
+
+                    thumbnail.appendChild(
+                        thumbnailImage
+                    );
+
+
+                    thumbnail.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.stopPropagation();
+
+
+                            currentEVImageIndex =
+                                index;
+
+
+                            updateEVModalImage();
+
+                        }
+                    );
+
+
+                    modalImageThumbs.appendChild(
+                        thumbnail
+                    );
+
+                }
+            );
+
+
+            updateEVModalImage();
+
+        }
+
+
+        /* =====================================================
+           OPEN MODAL
+        ===================================================== */
+
+        function openEVModal(card) {
+
+            if (!card) {
+                return;
+            }
+
+
+            const title =
+                card.querySelector(
+                    ".product-title"
+                )?.textContent.trim()
+                ||
+                "EV Charger";
+
+
+            const subtitle =
+                card.querySelector(
+                    ".product-subtitle"
+                )?.textContent.trim()
+                ||
+                "";
+
+
+            const category =
+                card.querySelector(
+                    ".product-category"
+                )?.textContent.trim()
+                ||
+                "EV CHARGER";
+
+
+            const description =
+                card.querySelector(
+                    ".product-description"
+                )?.textContent.trim()
+                ||
+                "Smart and reliable EV charging solution.";
+
+
+            modalTitle.textContent =
+                title;
+
+
+            modalSubtitle.textContent =
+                subtitle;
+
+
+            modalCategory.textContent =
+                category;
+
+
+            modalDescription.textContent =
+                description;
+
+
+            loadEVModalImages(
+                card
+            );
+
+
+            /* =================================================
+               NEW BADGE
+            ================================================== */
+
+            const cardNewBadge =
+                card.querySelector(
+                    ".new-badge"
+                );
+
+
+            if (cardNewBadge) {
+
+                modalNewBadge.style.display =
+                    "inline-flex";
+
+            } else {
+
+                modalNewBadge.style.display =
+                    "none";
+
+            }
+
+
+            /* =================================================
+               PDFs
+            ================================================= */
+
+            modalPdfList.innerHTML =
+                "";
+
+
+            const pdfLinks =
+                card.querySelectorAll(
+                    ".ev-product-pdfs a"
+                );
+
+
+            if (
+                pdfLinks.length > 0
+            ) {
+
+                pdfLinks.forEach(
+                    function (
+                        pdfLink,
+                        index
+                    ) {
+
+                        const pdfUrl =
+                            pdfLink.href;
+
+
+                        const pdfTitle =
+                            pdfLink.dataset.pdfTitle
+                            ||
+                            pdfLink.textContent.trim()
+                            ||
+                            `EV Charger Document ${index + 1}`;
+
+
+                        const pdfItem =
+                            document.createElement(
+                                "a"
+                            );
+
+
+                        pdfItem.href =
+                            pdfUrl;
+
+
+                        pdfItem.target =
+                            "_blank";
+
+
+                        pdfItem.rel =
+                            "noopener noreferrer";
+
+
+                        pdfItem.className =
+                            "modal-pdf-item";
+
+
+                        const info =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        info.className =
+                            "modal-pdf-item-info";
+
+
+                        const icon =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        icon.className =
+                            "modal-pdf-item-icon";
+
+
+                        icon.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
+
+
+                        icon.textContent =
+                            "📄";
+
+
+                        const name =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        name.className =
+                            "modal-pdf-item-name";
+
+
+                        name.textContent =
+                            pdfTitle;
+
+
+                        info.appendChild(
+                            icon
+                        );
+
+
+                        info.appendChild(
+                            name
+                        );
+
+
+                        const arrow =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        arrow.className =
+                            "modal-pdf-item-arrow";
+
+
+                        arrow.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
+
+
+                        arrow.textContent =
+                            "↗";
+
+
+                        pdfItem.appendChild(
+                            info
+                        );
+
+
+                        pdfItem.appendChild(
+                            arrow
+                        );
+
+
+                        modalPdfList.appendChild(
+                            pdfItem
+                        );
+
+                    }
+                );
+
+
+                modalPdfButton.href =
+                    pdfLinks[0].href;
+
+
+                modalPdfButton.style.display =
+                    "flex";
+
+            } else {
+
+                modalPdfList.innerHTML = `
+
+                    <div class="modal-no-pdf">
+
+                        <span aria-hidden="true">
+                            📄
+                        </span>
+
+                        <p>
+                            No brochures or documents
+                            available for this product.
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                modalPdfButton.href =
+                    "#";
+
+
+                modalPdfButton.style.display =
+                    "none";
+
+            }
+
+
+            /* =================================================
+               SHOW MODAL
+            ================================================== */
+
+            modal.classList.add(
+                "active"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "ev-modal-open"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            setTimeout(
+                function () {
+
+                    if (modalClose) {
+
+                        modalClose.focus();
+
+                    }
+
+                },
+                100
+            );
+
+        }
+
+
+        /* =====================================================
+           CLOSE MODAL
+        ===================================================== */
+
+        function closeEVModal() {
+
+            modal.classList.remove(
+                "active"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "ev-modal-open"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+
+            modalPdfButton.href =
+                "#";
+
+
+            currentEVImages = [];
+
+            currentEVImageIndex = 0;
+
+            modalImageThumbs.innerHTML =
+                "";
+
+        }
+
+
+        /* =====================================================
+           PREVIOUS IMAGE
+        ===================================================== */
+
+        if (modalImagePrev) {
+
+            modalImagePrev.addEventListener(
+                "click",
+                function (event) {
+
+                    event.stopPropagation();
+
+
+                    if (
+                        currentEVImages.length <= 1
+                    ) {
+                        return;
+                    }
+
+
+                    currentEVImageIndex--;
+
+
+                    if (
+                        currentEVImageIndex < 0
+                    ) {
+
+                        currentEVImageIndex =
+                            currentEVImages.length - 1;
+
+                    }
+
+
+                    updateEVModalImage();
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           NEXT IMAGE
+        ===================================================== */
+
+        if (modalImageNext) {
+
+            modalImageNext.addEventListener(
+                "click",
+                function (event) {
+
+                    event.stopPropagation();
+
+
+                    if (
+                        currentEVImages.length <= 1
+                    ) {
+                        return;
+                    }
+
+
+                    currentEVImageIndex++;
+
+
+                    if (
+                        currentEVImageIndex >=
+                        currentEVImages.length
+                    ) {
+
+                        currentEVImageIndex =
+                            0;
+
+                    }
+
+
+                    updateEVModalImage();
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           PRODUCT CARD CLICK
+        ===================================================== */
+
+        productCards.forEach(
+            function (card) {
+
+                card.addEventListener(
+                    "click",
+                    function (event) {
+
+                        if (
+                            event.target.closest(
+                                ".ev-product-pdfs a"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        openEVModal(
+                            card
+                        );
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (
+                            event.key === "Enter"
+                            ||
+                            event.key === " "
+                        ) {
+
+                            event.preventDefault();
+
+
+                            openEVModal(
+                                card
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CLOSE BUTTON
+        ===================================================== */
+
+        if (modalClose) {
+
+            modalClose.addEventListener(
+                "click",
+                closeEVModal
+            );
+
+        }
+
+
+        if (modalSecondaryClose) {
+
+            modalSecondaryClose.addEventListener(
+                "click",
+                closeEVModal
+            );
+
+        }
+
+
+        if (modalBackdrop) {
+
+            modalBackdrop.addEventListener(
+                "click",
+                closeEVModal
+            );
+
+        }
+
+
+        /* =====================================================
+           ESCAPE + KEYBOARD GALLERY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape"
+                    &&
+                    modal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeEVModal();
+
+                    return;
+
+                }
+
+
+                if (
+                    modal.classList.contains(
+                        "active"
+                    )
+                    &&
+                    currentEVImages.length > 1
+                ) {
+
+                    if (
+                        event.key === "ArrowLeft"
+                    ) {
+
+                        currentEVImageIndex--;
+
+
+                        if (
+                            currentEVImageIndex < 0
+                        ) {
+
+                            currentEVImageIndex =
+                                currentEVImages.length - 1;
+
+                        }
+
+
+                        updateEVModalImage();
+
+                    }
+
+
+                    if (
+                        event.key === "ArrowRight"
+                    ) {
+
+                        currentEVImageIndex++;
+
+
+                        if (
+                            currentEVImageIndex >=
+                            currentEVImages.length
+                        ) {
+
+                            currentEVImageIndex =
+                                0;
+
+                        }
+
+
+                        updateEVModalImage();
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           CATEGORY FILTER
+        ===================================================== */
+
+        if (categoryFilter) {
+
+            categoryFilter.addEventListener(
+                "change",
+                function () {
+
+                    const selectedCategory =
+                        this.value;
+
+
+                    let visibleCount =
+                        0;
+
+
+                    productCards.forEach(
+                        function (card) {
+
+                            const cardCategory =
+                                card.dataset.category
+                                ||
+                                "ev-charger";
+
+
+                            if (
+                                selectedCategory ===
+                                "all"
+                                ||
+                                cardCategory ===
+                                selectedCategory
+                            ) {
+
+                                card.style.display =
+                                    "";
+
+                                visibleCount++;
+
+                            } else {
+
+                                card.style.display =
+                                    "none";
+
+                            }
+
+                        }
+                    );
+
+
+                    if (filterCount) {
+
+                        filterCount.textContent =
+                            visibleCount;
+
+                    }
+
+
+                    if (filterText) {
+
+                        if (
+                            selectedCategory ===
+                            "all"
+                        ) {
+
+                            filterText.textContent =
+                                "Showing all EV charger products";
+
+                        } else {
+
+                            const selectedOption =
+                                categoryFilter.options[
+                                    categoryFilter.selectedIndex
+                                ];
+
+
+                            const categoryName =
+                                selectedOption
+                                    ?.textContent
+                                    .trim()
+                                ||
+                                "selected";
+
+
+                            filterText.textContent =
+                                `Showing ${categoryName} EV charger products`;
+
+                        }
+
+                    }
+
+
+                    if (filterEmpty) {
+
+                        if (
+                            visibleCount ===
+                            0
+                        ) {
+
+                            filterEmpty.style.display =
+                                "flex";
+
+                        } else {
+
+                            filterEmpty.style.display =
+                                "none";
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           SCROLL INDICATOR
+        ===================================================== */
+
+        if (evScrollIndicator) {
+
+            window.addEventListener(
+                "scroll",
+                function () {
+
+                    if (
+                        window.scrollY >
+                        200
+                    ) {
+
+                        evScrollIndicator.classList.add(
+                            "scroll-indicator-hidden"
+                        );
+
+                    } else {
+
+                        evScrollIndicator.classList.remove(
+                            "scroll-indicator-hidden"
+                        );
+
+                    }
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           PRODUCT IMAGE ERROR
+        ===================================================== */
+
+        document
+            .querySelectorAll(
+                ".ev-product-image img"
+            )
+            .forEach(
+                function (image) {
+
+                    image.addEventListener(
+                        "error",
+                        function () {
+
+                            image.style.display =
+                                "none";
+
+
+                            const parent =
+                                image.parentElement;
+
+
+                            if (
+                                parent &&
+                                !parent.querySelector(
+                                    ".image-error-placeholder"
+                                )
+                            ) {
+
+                                const fallback =
+                                    document.createElement(
+                                        "div"
+                                    );
+
+
+                                fallback.className =
+                                    "image-error-placeholder";
+
+
+                                fallback.innerHTML = `
+
+                                    <span>
+                                        ⚡
+                                    </span>
+
+                                    <small>
+                                        EV Charger
+                                    </small>
+
+                                `;
+
+
+                                parent.appendChild(
+                                    fallback
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           MODAL IMAGE ERROR
+        ===================================================== */
+
+        if (modalImage) {
+
+            modalImage.addEventListener(
+                "error",
+                function () {
+
+                    modalImage.style.display =
+                        "none";
+
+
+                    modalPlaceholder.style.display =
+                        "flex";
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        const prefersReducedMotion =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            );
+
+
+        if (
+            prefersReducedMotion.matches
+        ) {
+
+            document.documentElement.style.scrollBehavior =
+                "auto";
+
+        }
+
+    }
+);
+
+</script>
+
+
+{% endblock %}

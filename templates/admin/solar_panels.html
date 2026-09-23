@@ -1,0 +1,906 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Manage Solar Products | SunGreen Solar
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'CSS/admin/solar_panels.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<main class="solar-admin">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <section class="solar-header">
+
+        <div class="solar-title">
+
+            <div class="title-icon">
+                ☀
+            </div>
+
+            <div>
+
+                <span class="eyebrow">
+                    SUNGREEN SOLAR ADMIN
+                </span>
+
+                <h1>
+                    Manage Solar Products
+                </h1>
+
+                <p>
+                    Manage solar panels, product information,
+                    images and brochures from your dashboard.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADD PRODUCT -->
+
+        <a href="{% url 'add_solar_product' %}" class="add-product-btn">
+
+            <span class="add-icon">
+                +
+            </span>
+
+            <span class="add-text">
+                Add Solar Product
+            </span>
+
+            <span class="add-arrow">
+                →
+            </span>
+
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTS CARD
+    ====================================================== -->
+
+    <section class="solar-card">
+
+
+        <!-- =================================================
+             PRODUCTS HEADER
+        ================================================== -->
+
+        <div class="products-header">
+
+            <div class="card-heading">
+
+                <div class="card-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <span class="section-label">
+                        PRODUCT CATALOG
+                    </span>
+
+                    <h2>
+                        All Solar Products
+                    </h2>
+
+                    <p>
+                        View and manage your complete solar
+                        product catalog.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT COUNT -->
+
+            <div class="products-count">
+
+                <span class="count-number" id="visibleProductCount">
+                    {{ products|length }}
+                </span>
+
+                <span class="count-label">
+                    Products
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CATEGORY FILTER
+        ================================================== -->
+
+        <div class="solar-admin-filter">
+
+            <div class="filter-left">
+
+                <div class="filter-icon">
+                    ☰
+                </div>
+
+                <div class="filter-text">
+
+                    <strong>
+                        Filter Products
+                    </strong>
+
+                    <span>
+                        Browse products by category
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="filter-right">
+
+                <label for="adminCategoryFilter">
+                    Category
+                </label>
+
+                <select id="adminCategoryFilter" class="admin-category-select">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    {% for product in products %}
+
+                    {% if product.category %}
+
+                    <option value="{{ product.category.name|default:product.category|lower }}">
+                        {{ product.category.name|default:product.category }}
+                    </option>
+
+                    {% endif %}
+
+                    {% endfor %}
+
+                </select>
+
+
+                
+
+            </div>
+
+        </div>
+
+
+        <!-- FILTER RESULT -->
+
+        <div class="admin-filter-result" id="adminFilterResult">
+            Showing all products
+        </div>
+
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="table-wrapper">
+
+            <table class="product-table">
+
+
+                <!-- =================================================
+                     TABLE HEADER
+                ================================================== -->
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Images
+                        </th>
+
+                        <th>
+                            Category
+                        </th>
+
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Description
+                        </th>
+
+                        <th>
+                            Brochures / PDFs
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <!-- =================================================
+                     TABLE BODY
+                ================================================== -->
+
+                <tbody id="solarProductTableBody">
+
+                    {% for product in products %}
+
+                    <tr class="solar-product-row"
+                        data-category="{{ product.category.name|default:product.category|lower }}">
+
+
+                        <!-- =========================================
+                             FIRST PRODUCT IMAGE
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="product-images">
+
+                                {% with first_image=product.images.all|first %}
+
+                                {% if first_image %}
+
+                                {% if first_image.image %}
+
+                                <a href="{{ first_image.image.url }}" target="_blank" rel="noopener noreferrer"
+                                    class="image-container" title="View product image">
+
+                                    <img src="{{ first_image.image.url }}" alt="{{ product.name1 }}"
+                                        class="product-image" loading="lazy">
+
+                                </a>
+
+                                {% else %}
+
+                                <div class="empty-image" title="Image file is missing">
+
+                                    <span>
+                                        🖼️
+                                    </span>
+
+                                    <small>
+                                        Image unavailable
+                                    </small>
+
+                                </div>
+
+                                {% endif %}
+
+                                {% else %}
+
+                                <div class="empty-image" title="No image uploaded">
+
+                                    <span>
+                                        🖼️
+                                    </span>
+
+                                    <small>
+                                        No Image
+                                    </small>
+
+                                </div>
+
+                                {% endif %}
+
+                                {% endwith %}
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             CATEGORY
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="product-category">
+
+                                {% if product.category %}
+
+                                <span class="category-badge">
+
+                                    <b>
+                                        {{ product.category }}
+                                    </b>
+
+                                </span>
+
+                                {% else %}
+
+                                <span class="no-category">
+                                    No Category
+                                </span>
+
+                                {% endif %}
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             PRODUCT DESCRIPTION
+                        ========================================== -->
+
+                        <td>
+
+                            <!-- PRODUCT NAME -->
+
+                            <div class="description-product-name">
+
+                                {% if product.name1 %}
+
+                                {{ product.name1 }}
+
+                                {% endif %}
+
+                            </div>
+
+
+
+                            <!-- PRODUCT SUBTITLE -->
+
+                            {% if product.name2 %}
+
+                            <div class="description-product-subtitle">
+
+                                {{ product.name2 }}
+
+                            </div>
+
+                            {% endif %}
+                        </td>
+                        <td>
+
+                            <div class="product-description">
+                                <!-- DESCRIPTION -->
+
+                                {% if product.description %}
+
+                                <div class="description-text">
+
+                                    {{ product.description|truncatechars:180 }}
+
+                                </div>
+
+                                {% else %}
+
+                                <span class="no-description">
+
+                                    No description available
+
+                                </span>
+
+                                {% endif %}
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             ALL PDFs / BROCHURES
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="product-pdfs">
+
+                                {% for pdf in product.pdfs.all %}
+
+                                {% if pdf.pdf %}
+
+                                <a href="{{ pdf.pdf.url }}" target="_blank" rel="noopener noreferrer" class="pdf-badge"
+                                    title="Open {{ pdf.title|default:'Product Brochure' }}">
+
+                                    <span class="pdf-icon">
+                                        PDF
+                                    </span>
+
+                                    <span class="pdf-title">
+
+                                        {% if pdf.title %}
+
+                                        {{ pdf.title }}
+
+                                        {% else %}
+
+                                        Product Brochure
+
+                                        {% endif %}
+
+                                    </span>
+
+                                    <span class="pdf-arrow">
+                                        ↗
+                                    </span>
+
+                                </a>
+
+                                {% endif %}
+
+                                {% empty %}
+
+                                <div class="no-pdf">
+
+                                    <span class="no-pdf-icon">
+                                        📄
+                                    </span>
+
+                                    <span>
+                                        No PDF
+                                    </span>
+
+                                </div>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             ACTIONS
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="action-group">
+
+
+                                <!-- EDIT -->
+
+                                <a href="{% url 'edit_solar_product' product.id %}" class="action-btn edit-btn"
+                                    title="Edit Product" aria-label="Edit {{ product.name1 }}">
+
+                                    <span class="action-icon">
+                                        ✎
+                                    </span>
+
+                                    <span class="action-text">
+                                        EDIT
+                                    </span>
+
+                                </a>
+
+
+
+                                <!-- DELETE -->
+
+                                <form method="POST" action="{% url 'delete_solar_product' product.id %}"
+                                    class="delete-form"
+                                    onsubmit="return confirm('Are you sure you want to delete this solar product?');">
+
+                                    {% csrf_token %}
+
+                                    <button type="submit" class="action-btn delete-btn" title="Delete Product"
+                                        aria-label="Delete {{ product.name1 }}">
+
+                                        <span class="action-icon">
+                                            ×
+                                        </span>
+
+                                        <span class="action-text">
+                                            DELETE
+                                        </span>
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+
+                    <!-- =========================================
+                         EMPTY STATE
+                    ========================================== -->
+
+                    <tr>
+
+                        <td colspan="5">
+
+                            <div class="empty-state">
+
+                                <div class="empty-state-icon">
+                                    ☀
+                                </div>
+
+                                <h3>
+                                    No Solar Products Yet
+                                </h3>
+
+                                <p>
+                                    Your solar product catalog is
+                                    currently empty.
+                                </p>
+
+                                <a href="{% url 'add_solar_product' %}" class="empty-add-btn">
+
+                                    <span>
+                                        +
+                                    </span>
+
+                                    Add Your First Product
+
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+
+            <!-- ==============================================
+                 FILTER EMPTY STATE
+            =============================================== -->
+
+            <div class="admin-filter-empty" id="adminFilterEmpty" style="display: none;">
+
+                <div class="empty-filter-icon">
+                    🔍
+                </div>
+
+                <h3>
+                    No Products Found
+                </h3>
+
+                <p>
+                    No solar products are available in this category.
+                </p>
+
+                <button type="button" id="emptyResetFilter">
+                    View All Products
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     CATEGORY FILTER JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const categoryFilter =
+            document.getElementById(
+                "adminCategoryFilter"
+            );
+
+
+        const resetButton =
+            document.getElementById(
+                "resetAdminFilter"
+            );
+
+
+        const emptyResetButton =
+            document.getElementById(
+                "emptyResetFilter"
+            );
+
+
+        const filterResult =
+            document.getElementById(
+                "adminFilterResult"
+            );
+
+
+        const filterEmpty =
+            document.getElementById(
+                "adminFilterEmpty"
+            );
+
+
+        const countElement =
+            document.getElementById(
+                "visibleProductCount"
+            );
+
+
+        const rows =
+            document.querySelectorAll(
+                ".solar-product-row"
+            );
+
+
+
+        /* =====================================================
+           REMOVE DUPLICATE CATEGORY OPTIONS
+        ===================================================== */
+
+        if (categoryFilter) {
+
+            const seenCategories = new Set();
+
+
+            const options =
+                Array.from(
+                    categoryFilter.options
+                );
+
+
+            options.forEach(function (option) {
+
+                if (option.value === "all") {
+                    return;
+                }
+
+
+                const value =
+                    option.value
+                        .trim()
+                        .toLowerCase();
+
+
+                if (!value) {
+
+                    option.remove();
+
+                    return;
+
+                }
+
+
+                if (seenCategories.has(value)) {
+
+                    option.remove();
+
+                } else {
+
+                    seenCategories.add(value);
+
+                }
+
+            });
+
+        }
+
+
+
+        /* =====================================================
+           FILTER PRODUCTS
+        ===================================================== */
+
+        function filterProducts() {
+
+            if (!categoryFilter) {
+                return;
+            }
+
+
+            const selectedCategory =
+                categoryFilter.value
+                    .trim()
+                    .toLowerCase();
+
+
+            let visibleCount = 0;
+
+
+            rows.forEach(function (row) {
+
+
+                const rowCategory =
+                    (
+                        row.dataset.category || ""
+                    )
+                        .trim()
+                        .toLowerCase();
+
+
+                const shouldShow =
+                    selectedCategory === "all" ||
+                    rowCategory === selectedCategory;
+
+
+                if (shouldShow) {
+
+                    row.style.display = "";
+
+                    visibleCount++;
+
+                } else {
+
+                    row.style.display = "none";
+
+                }
+
+            });
+
+
+
+            /* =================================================
+               UPDATE COUNT
+            ================================================= */
+
+            if (countElement) {
+
+                countElement.textContent =
+                    visibleCount;
+
+            }
+
+
+
+            /* =================================================
+               UPDATE RESULT TEXT
+            ================================================= */
+
+            if (
+                selectedCategory === "all"
+            ) {
+
+                filterResult.textContent =
+                    "Showing all products";
+
+            } else {
+
+                const selectedOption =
+                    categoryFilter.options[
+                    categoryFilter.selectedIndex
+                    ];
+
+
+                const categoryName =
+                    selectedOption
+                        ? selectedOption.textContent.trim()
+                        : selectedCategory;
+
+
+                filterResult.textContent =
+                    `Showing ${visibleCount} product${visibleCount === 1 ? "" : "s"} in "${categoryName}"`;
+
+            }
+
+
+
+            /* =================================================
+               SHOW / HIDE EMPTY STATE
+            ================================================= */
+
+            if (visibleCount === 0) {
+
+                filterEmpty.style.display =
+                    "flex";
+
+            } else {
+
+                filterEmpty.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           CATEGORY CHANGE
+        ===================================================== */
+
+        if (categoryFilter) {
+
+            categoryFilter.addEventListener(
+                "change",
+                filterProducts
+            );
+
+        }
+
+
+
+        /* =====================================================
+           RESET FILTER
+        ===================================================== */
+
+        function resetFilter() {
+
+            if (!categoryFilter) {
+                return;
+            }
+
+
+            categoryFilter.value =
+                "all";
+
+
+            filterProducts();
+
+        }
+
+
+
+        if (resetButton) {
+
+            resetButton.addEventListener(
+                "click",
+                resetFilter
+            );
+
+        }
+
+
+        if (emptyResetButton) {
+
+            emptyResetButton.addEventListener(
+                "click",
+                resetFilter
+            );
+
+        }
+
+
+
+        /* =====================================================
+           INITIAL FILTER
+        ===================================================== */
+
+        filterProducts();
+
+    });
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,2402 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Solar Inverters | Sungreen Solar
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/solar_inverters.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="solar-page">
+
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <section class="solar-inverter-hero">
+
+        <div class="solar-hero-orb inverter-orb-one"></div>
+
+        <div class="solar-hero-orb inverter-orb-two"></div>
+
+        <div class="solar-hero-grid"></div>
+
+
+        <div class="solar-module-container">
+
+            <div class="solar-hero-content">
+
+                <div class="solar-eyebrow">
+
+                    <span class="eyebrow-icon">
+                        ⚡
+                    </span>
+
+                    <span>
+                        Sungreen SOLAR
+                    </span>
+
+                </div>
+
+
+                <h1>
+                    Advanced
+
+                    <span>
+                        Solar Inverters
+                    </span>
+                </h1>
+
+
+                <p>
+                    Discover high-performance solar inverters
+                    designed for efficient energy conversion,
+                    reliable operation and modern Australian
+                    solar energy systems.
+                </p>
+
+
+                <div class="hero-line"></div>
+
+
+                <div class="hero-stats">
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            {{ products|length }}
+                        </strong>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </div>
+
+
+                    <div class="hero-stat-divider"></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            Smart
+                        </strong>
+
+                        <span>
+                            Energy Conversion
+                        </span>
+
+                    </div>
+
+
+                    <div class="hero-stat-divider"></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            Reliable
+                        </strong>
+
+                        <span>
+                            Solar Technology
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="solar-scroll-indicator"
+            id="solarScrollIndicator"
+            role="button"
+            tabindex="0"
+            aria-label="Explore solar inverters"
+        >
+
+            <span>
+                Explore Inverters
+            </span>
+
+            <div class="scroll-arrow">
+                ↓
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTS SECTION
+    ====================================================== -->
+
+    <section
+        class="solar-products-section"
+        id="solar-products"
+    >
+
+        <div class="solar-module-container">
+
+
+            <!-- SECTION HEADING -->
+
+            <div class="solar-section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        OUR INVERTER RANGE
+                    </span>
+
+                    <h2>
+                        Solar Inverters
+
+                        <span>
+                            Built to Perform.
+                        </span>
+                    </h2>
+
+                </div>
+
+
+                <div class="section-heading-right">
+
+                    <p>
+                        Explore our range of solar inverters,
+                        selected for efficiency, reliability,
+                        intelligent energy management and
+                        long-term performance.
+                    </p>
+
+                    <div class="section-line"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CATEGORY FILTER
+            ================================================== -->
+
+            <div class="solar-filter-bar">
+
+                <div class="solar-filter-info">
+
+                    <span class="filter-icon">
+                        ⚡
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Filter Inverters
+                        </strong>
+
+                        <small>
+                            Select a category to explore products
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="solar-filter-select-wrap">
+
+                    <label for="inverterCategoryFilter">
+                        Category
+                    </label>
+
+                    <select
+                        id="inverterCategoryFilter"
+                        class="solar-filter-select"
+                    >
+
+                        <option value="all">
+                            All Solar Inverters
+                        </option>
+
+
+                        {% for category in categories %}
+
+                            <option
+                                value="{{ category|slugify }}"
+                            >
+                                {{ category|title }}
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <span class="filter-select-arrow">
+                        ↓
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTER RESULT
+            ================================================== -->
+
+            <div class="solar-filter-result">
+
+                <span id="filterResultText">
+                    Showing all inverter products
+                </span>
+
+                <span id="filterProductCount">
+                    {{ products|length }}
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT GRID
+            ================================================== -->
+
+            <div
+                class="solar-products-grid"
+                id="solarProductsGrid"
+            >
+
+                {% for product in products %}
+
+
+                <!-- =================================================
+                     PRODUCT CARD
+                ================================================== -->
+
+                <article
+                    class="solar-product-card"
+                    style="--delay: {{ forloop.counter0 }};"
+                    tabindex="0"
+                    role="button"
+                    aria-label="View {{ product.name1 }}"
+                    data-product-id="{{ product.id }}"
+                    data-category="{{ product.category|default:'Solar Inverter'|slugify }}"
+                >
+
+
+                    <!-- PRODUCT IMAGE -->
+
+                    <div class="solar-product-image">
+
+                        {% with first_image=product.images.all|first %}
+
+                            {% if first_image and first_image.image %}
+
+                                <img
+                                    src="{{ first_image.image.url }}"
+                                    alt="{{ product.name1|default:'Solar Inverter' }}"
+                                    loading="lazy"
+                                >
+
+                            {% else %}
+
+                                <div class="no-product-image">
+
+                                    <span>
+                                        ⚡
+                                    </span>
+
+                                    <small>
+                                        Solar Inverter
+                                    </small>
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endwith %}
+
+
+                        <div class="image-overlay"></div>
+
+
+                        <!-- PRODUCT NUMBER -->
+
+                        <div class="product-number">
+
+                            {% if forloop.counter < 10 %}
+
+                                0{{ forloop.counter }}
+
+                            {% else %}
+
+                                {{ forloop.counter }}
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- NEW BADGE -->
+
+                        {% if product.created_at %}
+
+                            <div
+                                class="new-badge"
+                                data-created="{{ product.created_at|date:'c' }}"
+                            >
+
+                                <span class="new-dot"></span>
+
+                                NEW
+
+                            </div>
+
+                        {% endif %}
+
+
+                        <!-- VIEW -->
+
+                        <div class="product-view">
+
+                            <span>
+                                View More Details
+                            </span>
+
+                            <span class="view-arrow">
+                                ↗
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PRODUCT CONTENT -->
+
+                    <div class="solar-product-content">
+
+
+                        <!-- CATEGORY -->
+
+                        <div
+                            class="product-category"
+                            style="font-size: 18px;"
+                        >
+
+                            {{ product.category|default:"SOLAR INVERTER"|title }}
+
+                        </div>
+
+
+                        <!-- NAME -->
+
+                        <h3>
+                            {{ product.name1|default:"Solar Inverter" }}
+                        </h3>
+
+
+                        <!-- SUBTITLE -->
+
+                        {% if product.name2 %}
+
+                            
+
+                        {% endif %}
+
+
+                        <!-- DESCRIPTION -->
+
+                        {% if product.description %}
+
+                            <p>
+                                {{ product.description }}
+                            </p>
+
+                        {% else %}
+
+                            <p>
+                                High-performance solar inverter
+                                designed for efficient and reliable
+                                energy conversion.
+                            </p>
+
+                        {% endif %}
+
+
+                        <!-- ACTION -->
+
+                        <div class="solar-product-actions">
+
+                            <span
+                                class="product-details-text"
+                                style="font-size: 16px;"
+                            >
+                                View More Details
+                            </span>
+
+                            <span class="product-arrow">
+                                ↗
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-shine"></div>
+
+                </article>
+
+
+                {% empty %}
+
+
+                <!-- DATABASE EMPTY -->
+
+                <div class="solar-empty-state">
+
+                    <div class="empty-solar-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Solar Inverters Coming Soon
+                    </h3>
+
+                    <p>
+                        Our latest solar inverter range
+                        will be available here soon.
+                    </p>
+
+                </div>
+
+
+                {% endfor %}
+
+
+                <!-- FILTER EMPTY -->
+
+                <div
+                    id="solarFilterEmpty"
+                    class="solar-filter-empty"
+                >
+
+                    <div class="solar-filter-empty-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        No Inverters Found
+                    </h3>
+
+                    <p>
+                        There are no products available
+                        in this category.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA SECTION
+    ====================================================== -->
+
+    <section class="solar-module-cta">
+
+        <div class="cta-glow"></div>
+
+        <div class="cta-glow cta-glow-two"></div>
+
+
+        <div class="solar-module-container">
+
+            <div class="cta-content">
+
+                <span class="section-label">
+                    POWER YOUR FUTURE
+                </span>
+
+
+                <h2>
+
+                    Smarter energy with
+
+                    <span>
+                        solar technology.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Looking for the right inverter for your
+                    solar system? Our team can help you choose
+                    a reliable solution based on your energy
+                    requirements.
+
+                </p>
+
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="solar-cta-button"
+                >
+
+                    <span>
+                        Talk To Our Team
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     PRODUCT MODAL
+========================================================= -->
+
+<div
+    class="solar-product-modal"
+    id="solarProductModal"
+    aria-hidden="true"
+>
+
+
+    <!-- BACKDROP -->
+
+    <div
+        class="solar-modal-backdrop"
+        id="solarModalBackdrop"
+    ></div>
+
+
+    <!-- DIALOG -->
+
+    <div
+        class="solar-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalProductTitle"
+    >
+
+
+        <!-- CLOSE BUTTON -->
+
+        <button
+            type="button"
+            class="solar-modal-close"
+            id="solarModalClose"
+            aria-label="Close product details"
+        >
+            ×
+        </button>
+
+
+
+        <div class="solar-modal-grid">
+
+
+            <!-- =================================================
+                 MODAL IMAGE
+            ================================================== -->
+
+            <div class="solar-modal-image-wrap">
+
+
+                <img
+                    id="modalProductImage"
+                    src=""
+                    alt=""
+                    class="solar-modal-image"
+                >
+
+
+                <div
+                    id="modalImagePlaceholder"
+                    class="modal-image-placeholder"
+                >
+
+                    <span>
+                        ⚡
+                    </span>
+
+                    <small>
+                        Solar Inverter
+                    </small>
+
+                </div>
+
+
+                <div class="modal-image-glow"></div>
+
+
+                <!-- IMAGE NAVIGATION -->
+
+                <div
+                    id="modalImageNavigation"
+                    class="modal-image-navigation"
+                >
+
+                    <button
+                        type="button"
+                        id="modalPreviousImage"
+                        class="modal-image-nav"
+                        aria-label="Previous image"
+                    >
+                        ←
+                    </button>
+
+
+                    <span id="modalImageCounter">
+                        1 / 1
+                    </span>
+
+
+                    <button
+                        type="button"
+                        id="modalNextImage"
+                        class="modal-image-nav"
+                        aria-label="Next image"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MODAL CONTENT
+            ================================================== -->
+
+            <div class="solar-modal-content">
+
+
+                <!-- TOP ROW -->
+
+                <div class="modal-top-row">
+
+                    <span
+                        id="modalProductCategory"
+                        class="modal-category"
+                        style="font-size: 18px;"
+                    >
+                        SOLAR INVERTER
+                    </span>
+
+
+                    <span
+                        id="modalNewBadge"
+                        class="modal-new-badge"
+                    >
+                        NEW
+                    </span>
+
+                </div>
+
+
+
+                <!-- TITLE -->
+
+                <h2 id="modalProductTitle">
+                    Solar Inverter
+                </h2>
+
+
+                <!-- SUBTITLE -->
+
+                <h3 id="modalProductSubtitle"></h3>
+
+
+                <!-- DIVIDER -->
+
+                <div class="modal-divider"></div>
+
+
+
+                <!-- =================================================
+                     DESCRIPTION
+                ================================================== -->
+
+                <div
+                    id="modalProductDescription"
+                    class="modal-description"
+                ></div>
+
+
+
+                <!-- =================================================
+                     BROCHURES
+                ================================================== -->
+
+                <div class="modal-brochures-wrapper">
+
+                    <div class="modal-brochures-heading">
+
+                        <span>
+                            📄
+                        </span>
+
+                        <strong style="font-size: 18px;">
+                            Brochures & Documents
+                        </strong>
+
+                    </div>
+
+
+                    <div
+                        id="modalPdfList"
+                        class="modal-pdf-list"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ACTIONS
+                ================================================== -->
+
+                <div class="modal-actions">
+
+
+                    <a
+                        id="modalPdfButton"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="modal-pdf-button"
+                    >
+
+                        <span>
+                            📄
+                        </span>
+
+                        <span>
+                            Open Selected PDF
+                        </span>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="modal-close-secondary"
+                        id="modalSecondaryClose"
+                    >
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        "use strict";
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const productCards =
+            document.querySelectorAll(
+                ".solar-product-card"
+            );
+
+
+        const modal =
+            document.getElementById(
+                "solarProductModal"
+            );
+
+
+        const modalClose =
+            document.getElementById(
+                "solarModalClose"
+            );
+
+
+        const secondaryClose =
+            document.getElementById(
+                "modalSecondaryClose"
+            );
+
+
+        const backdrop =
+            document.getElementById(
+                "solarModalBackdrop"
+            );
+
+
+        const modalImage =
+            document.getElementById(
+                "modalProductImage"
+            );
+
+
+        const modalPlaceholder =
+            document.getElementById(
+                "modalImagePlaceholder"
+            );
+
+
+        const modalTitle =
+            document.getElementById(
+                "modalProductTitle"
+            );
+
+
+        const modalSubtitle =
+            document.getElementById(
+                "modalProductSubtitle"
+            );
+
+
+        const modalDescription =
+            document.getElementById(
+                "modalProductDescription"
+            );
+
+
+        const modalPdf =
+            document.getElementById(
+                "modalPdfButton"
+            );
+
+
+        const modalNew =
+            document.getElementById(
+                "modalNewBadge"
+            );
+
+
+        const modalCategory =
+            document.getElementById(
+                "modalProductCategory"
+            );
+
+
+        const modalPdfList =
+            document.getElementById(
+                "modalPdfList"
+            );
+
+
+        const modalPreviousImage =
+            document.getElementById(
+                "modalPreviousImage"
+            );
+
+
+        const modalNextImage =
+            document.getElementById(
+                "modalNextImage"
+            );
+
+
+        const modalImageCounter =
+            document.getElementById(
+                "modalImageCounter"
+            );
+
+
+        const modalImageNavigation =
+            document.getElementById(
+                "modalImageNavigation"
+            );
+
+
+        const categoryFilter =
+            document.getElementById(
+                "inverterCategoryFilter"
+            );
+
+
+        const filterResultText =
+            document.getElementById(
+                "filterResultText"
+            );
+
+
+        const filterProductCount =
+            document.getElementById(
+                "filterProductCount"
+            );
+
+
+        const filterEmpty =
+            document.getElementById(
+                "solarFilterEmpty"
+            );
+
+
+        const scrollIndicator =
+            document.getElementById(
+                "solarScrollIndicator"
+            );
+
+
+
+        /* =====================================================
+           CONFIG
+        ===================================================== */
+
+        const FIFTEEN_DAYS =
+            15 * 24 * 60 * 60 * 1000;
+
+
+
+        /* =====================================================
+           PRODUCT DATA
+        ===================================================== */
+
+        const productsData = {};
+
+
+        {% for product in products %}
+
+        productsData[
+            "{{ product.id }}"
+        ] = {
+
+            id:
+                "{{ product.id|escapejs }}",
+
+            title:
+                "{{ product.name1|default:'Solar Inverter'|escapejs }}",
+
+            subtitle:
+                "{{ product.name2|default:''|escapejs }}",
+
+            category:
+                "{{ product.category|default:'SOLAR INVERTER'|escapejs }}",
+
+            description:
+                "{{ product.description|default:''|escapejs }}",
+
+            created:
+                "{% if product.created_at %}{{ product.created_at|date:'c'|escapejs }}{% endif %}",
+
+
+            /* =================================================
+               IMAGES
+            ================================================== */
+
+            images: [
+
+                {% for image in product.images.all %}
+
+                    {% if image.image %}
+
+                    {
+
+                        url:
+                            "{{ image.image.url|escapejs }}",
+
+                        alt:
+                            "{{ product.name1|default:'Solar Inverter'|escapejs }}"
+
+                    }{% if not forloop.last %},{% endif %}
+
+                    {% endif %}
+
+                {% endfor %}
+
+            ],
+
+
+            /* =================================================
+               PDFS
+            ================================================== */
+
+            pdfs: [
+
+                {% for pdf in product.pdfs.all %}
+
+                    {% if pdf.pdf %}
+
+                    {
+
+                        url:
+                            "{{ pdf.pdf.url|escapejs }}",
+
+                        title:
+                            "{{ pdf.title|default:'PDF Document'|escapejs }}"
+
+                    }{% if not forloop.last %},{% endif %}
+
+                    {% endif %}
+
+                {% endfor %}
+
+            ]
+
+        };
+
+        {% endfor %}
+
+
+
+        /* =====================================================
+           IMAGE STATE
+        ===================================================== */
+
+        let currentImages = [];
+
+        let currentImageIndex = 0;
+
+
+
+        /* =====================================================
+           ESCAPE HTML
+        ===================================================== */
+
+        function escapeHtml(text) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.textContent =
+                text || "";
+
+            return div.innerHTML;
+
+        }
+
+
+
+        /* =====================================================
+           DESCRIPTION → TICK FEATURES
+        ===================================================== */
+
+        function renderDescription(description) {
+
+            const fallback =
+                "High-performance solar inverter designed for efficient and reliable energy conversion.";
+
+
+            const text =
+                (
+                    description ||
+                    fallback
+                ).trim();
+
+
+            /*
+             * Support:
+             *
+             * New lines
+             * Bullet points
+             * •
+             * -
+             * ✓
+             * ✔
+             */
+
+            const lines =
+                text
+                    .split(/\r?\n/)
+                    .map(function (line) {
+
+                        return line
+                            .replace(
+                                /^[\s•\-✓✔▪◦*]+/,
+                                ""
+                            )
+                            .trim();
+
+                    })
+                    .filter(function (line) {
+
+                        return line.length > 0;
+
+                    });
+
+
+            /*
+             * Agar sirf ek paragraph hai
+             * to usko bhi single tick ke saath show karenge.
+             */
+
+            return (
+
+                "<div class='description-features'>" +
+
+                    lines.map(function (line) {
+
+                        return (
+
+                            "<div class='description-feature'>" +
+
+                                "<span class='description-check'>" +
+                                    "✓" +
+                                "</span>" +
+
+                                "<div class='description-feature-text'>" +
+
+                                    "<span>" +
+                                        escapeHtml(line) +
+                                    "</span>" +
+
+                                "</div>" +
+
+                            "</div>"
+
+                        );
+
+                    }).join("") +
+
+                "</div>"
+
+            );
+
+        }
+
+
+
+        /* =====================================================
+           UPDATE MODAL IMAGE
+        ===================================================== */
+
+        function updateModalImage() {
+
+            if (
+                !currentImages ||
+                currentImages.length === 0
+            ) {
+
+                modalImage.src =
+                    "";
+
+                modalImage.alt =
+                    "";
+
+                modalImage.style.display =
+                    "none";
+
+                modalPlaceholder.style.display =
+                    "flex";
+
+                modalImageNavigation.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            if (
+                currentImageIndex < 0
+            ) {
+
+                currentImageIndex =
+                    currentImages.length - 1;
+
+            }
+
+
+            if (
+                currentImageIndex >=
+                currentImages.length
+            ) {
+
+                currentImageIndex =
+                    0;
+
+            }
+
+
+            const image =
+                currentImages[
+                    currentImageIndex
+                ];
+
+
+            if (!image) {
+                return;
+            }
+
+
+            modalImage.src =
+                image.url;
+
+
+            modalImage.alt =
+                image.alt ||
+                "Solar Inverter";
+
+
+            modalImage.style.display =
+                "block";
+
+
+            modalPlaceholder.style.display =
+                "none";
+
+
+            if (
+                currentImages.length > 1
+            ) {
+
+                modalImageNavigation.style.display =
+                    "flex";
+
+
+                modalImageCounter.textContent =
+                    (
+                        currentImageIndex + 1
+                    ) +
+                    " / " +
+                    currentImages.length;
+
+            } else {
+
+                modalImageNavigation.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           PREVIOUS IMAGE
+        ===================================================== */
+
+        if (modalPreviousImage) {
+
+            modalPreviousImage.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+
+                    if (
+                        currentImages.length <= 1
+                    ) {
+                        return;
+                    }
+
+
+                    currentImageIndex--;
+
+
+                    if (
+                        currentImageIndex < 0
+                    ) {
+
+                        currentImageIndex =
+                            currentImages.length - 1;
+
+                    }
+
+
+                    updateModalImage();
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           NEXT IMAGE
+        ===================================================== */
+
+        if (modalNextImage) {
+
+            modalNextImage.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+
+                    if (
+                        currentImages.length <= 1
+                    ) {
+                        return;
+                    }
+
+
+                    currentImageIndex++;
+
+
+                    if (
+                        currentImageIndex >=
+                        currentImages.length
+                    ) {
+
+                        currentImageIndex =
+                            0;
+
+                    }
+
+
+                    updateModalImage();
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           OPEN PRODUCT MODAL
+        ===================================================== */
+
+        function openProductModal(card) {
+
+            if (!card) {
+                return;
+            }
+
+
+            const productId =
+                card.dataset.productId;
+
+
+            const product =
+                productsData[
+                    productId
+                ];
+
+
+            if (!product) {
+
+                console.error(
+                    "Product data not found:",
+                    productId
+                );
+
+                return;
+
+            }
+
+
+
+            /* =================================================
+               PRODUCT INFORMATION
+            ================================================== */
+
+            modalTitle.textContent =
+                product.title ||
+                "Solar Inverter";
+
+
+            modalSubtitle.textContent =
+                product.subtitle ||
+                "";
+
+
+            modalCategory.textContent =
+                product.category ||
+                "SOLAR INVERTER";
+
+
+            /*
+             * IMPORTANT:
+             * Description ki har line ke aage tick.
+             */
+
+            modalDescription.innerHTML =
+                renderDescription(
+                    product.description
+                );
+
+
+
+            /* =================================================
+               IMAGES
+            ================================================== */
+
+            currentImages =
+                Array.isArray(
+                    product.images
+                )
+                    ? product.images
+                    : [];
+
+
+            currentImageIndex =
+                0;
+
+
+            updateModalImage();
+
+
+
+            /* =================================================
+               PDF LIST
+            ================================================== */
+
+            modalPdfList.innerHTML =
+                "";
+
+
+            const pdfs =
+                Array.isArray(
+                    product.pdfs
+                )
+                    ? product.pdfs
+                    : [];
+
+
+            const validPdfs =
+                pdfs.filter(
+                    function (pdf) {
+
+                        return (
+                            pdf &&
+                            pdf.url &&
+                            pdf.url.trim() !== ""
+                        );
+
+                    }
+                );
+
+
+
+            /* =================================================
+               PDF AVAILABLE
+            ================================================== */
+
+            if (
+                validPdfs.length > 0
+            ) {
+
+                validPdfs.forEach(
+                    function (
+                        pdf,
+                        index
+                    ) {
+
+                        const pdfLink =
+                            document.createElement(
+                                "a"
+                            );
+
+
+                        pdfLink.href =
+                            pdf.url;
+
+
+                        pdfLink.target =
+                            "_blank";
+
+
+                        pdfLink.rel =
+                            "noopener noreferrer";
+
+
+                        pdfLink.className =
+                            "modal-pdf-item";
+
+
+                        const title =
+                            pdf.title &&
+                            pdf.title.trim()
+                                ? pdf.title.trim()
+                                : "PDF Document " +
+                                  (
+                                      index + 1
+                                  );
+
+
+                        pdfLink.innerHTML =
+
+                            "<span class='pdf-icon'>📄</span>" +
+
+                            "<span class='pdf-title'>" +
+
+                                escapeHtml(
+                                    title
+                                ) +
+
+                            "</span>" +
+
+                            "<strong class='pdf-arrow'>↗</strong>";
+
+
+                        pdfLink.addEventListener(
+                            "click",
+                            function () {
+
+                                modalPdf.href =
+                                    pdf.url;
+
+                            }
+                        );
+
+
+                        modalPdfList.appendChild(
+                            pdfLink
+                        );
+
+                    }
+                );
+
+
+                /*
+                 * First PDF selected by default.
+                 */
+
+                modalPdf.href =
+                    validPdfs[0].url;
+
+
+                modalPdf.style.display =
+                    "inline-flex";
+
+            } else {
+
+                modalPdf.href =
+                    "#";
+
+
+                modalPdf.style.display =
+                    "none";
+
+
+                modalPdfList.innerHTML =
+
+                    "<div class='modal-no-pdf'>" +
+
+                        "<span>📄</span>" +
+
+                        "<p>" +
+                            "No brochures available for this product." +
+                        "</p>" +
+
+                    "</div>";
+
+            }
+
+
+
+            /* =================================================
+               NEW BADGE
+            ================================================== */
+
+            if (
+                product.created
+            ) {
+
+                const createdTime =
+                    new Date(
+                        product.created
+                    ).getTime();
+
+
+                const difference =
+                    Date.now() -
+                    createdTime;
+
+
+                if (
+                    !isNaN(createdTime) &&
+                    difference >= 0 &&
+                    difference <= FIFTEEN_DAYS
+                ) {
+
+                    modalNew.style.display =
+                        "inline-flex";
+
+                } else {
+
+                    modalNew.style.display =
+                        "none";
+
+                }
+
+            } else {
+
+                modalNew.style.display =
+                    "none";
+
+            }
+
+
+
+            /* =================================================
+               OPEN MODAL
+            ================================================== */
+
+            modal.classList.add(
+                "is-open"
+            );
+
+
+            document.body.classList.add(
+                "solar-modal-open"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            setTimeout(
+                function () {
+
+                    if (modalClose) {
+
+                        modalClose.focus();
+
+                    }
+
+                },
+                150
+            );
+
+        }
+
+
+
+        /* =====================================================
+           CLOSE PRODUCT MODAL
+        ===================================================== */
+
+        function closeProductModal() {
+
+            if (!modal) {
+                return;
+            }
+
+
+            modal.classList.remove(
+                "is-open"
+            );
+
+
+            document.body.classList.remove(
+                "solar-modal-open"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            currentImages =
+                [];
+
+            currentImageIndex =
+                0;
+
+
+            modalImage.src =
+                "";
+
+            modalImage.alt =
+                "";
+
+
+            modalPdfList.innerHTML =
+                "";
+
+        }
+
+
+
+        /* =====================================================
+           PRODUCT CARD CLICK
+        ===================================================== */
+
+        productCards.forEach(
+            function (card) {
+
+                card.addEventListener(
+                    "click",
+                    function (event) {
+
+                        /*
+                         * Agar card ke andar koi link ho
+                         * to modal open nahi hoga.
+                         */
+
+                        if (
+                            event.target.closest(
+                                "a"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        openProductModal(
+                            card
+                        );
+
+                    }
+                );
+
+
+                /*
+                 * Keyboard support
+                 */
+
+                card.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (
+                            event.key === "Enter" ||
+                            event.key === " "
+                        ) {
+
+                            event.preventDefault();
+
+
+                            openProductModal(
+                                card
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CLOSE BUTTON
+        ===================================================== */
+
+        if (modalClose) {
+
+            modalClose.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    closeProductModal();
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           SECONDARY CLOSE
+        ===================================================== */
+
+        if (secondaryClose) {
+
+            secondaryClose.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    closeProductModal();
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           BACKDROP CLOSE
+        ===================================================== */
+
+        if (backdrop) {
+
+            backdrop.addEventListener(
+                "click",
+                closeProductModal
+            );
+
+        }
+
+
+
+        /* =====================================================
+           ESC KEY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape" &&
+                    modal &&
+                    modal.classList.contains(
+                        "is-open"
+                    )
+                ) {
+
+                    closeProductModal();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ARROW KEY IMAGE NAVIGATION
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    !modal ||
+                    !modal.classList.contains(
+                        "is-open"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    event.key === "ArrowLeft" &&
+                    currentImages.length > 1
+                ) {
+
+                    currentImageIndex--;
+
+
+                    if (
+                        currentImageIndex < 0
+                    ) {
+
+                        currentImageIndex =
+                            currentImages.length - 1;
+
+                    }
+
+
+                    updateModalImage();
+
+                }
+
+
+                if (
+                    event.key === "ArrowRight" &&
+                    currentImages.length > 1
+                ) {
+
+                    currentImageIndex++;
+
+
+                    if (
+                        currentImageIndex >=
+                        currentImages.length
+                    ) {
+
+                        currentImageIndex =
+                            0;
+
+                    }
+
+
+                    updateModalImage();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CATEGORY FILTER
+        ===================================================== */
+
+        if (categoryFilter) {
+
+            categoryFilter.addEventListener(
+                "change",
+                function () {
+
+                    const selectedCategory =
+                        this.value
+                            .trim()
+                            .toLowerCase();
+
+
+                    let visibleProducts =
+                        0;
+
+
+                    productCards.forEach(
+                        function (card) {
+
+                            const productCategory =
+                                (
+                                    card.dataset.category ||
+                                    ""
+                                )
+                                .trim()
+                                .toLowerCase();
+
+
+                            let shouldShow =
+                                false;
+
+
+                            /*
+                             * ALL
+                             */
+
+                            if (
+                                selectedCategory ===
+                                "all"
+                            ) {
+
+                                shouldShow =
+                                    true;
+
+                            }
+
+
+                            /*
+                             * CATEGORY MATCH
+                             */
+
+                            else if (
+                                productCategory ===
+                                selectedCategory
+                            ) {
+
+                                shouldShow =
+                                    true;
+
+                            }
+
+
+                            /*
+                             * SHOW
+                             */
+
+                            if (
+                                shouldShow
+                            ) {
+
+                                card.classList.remove(
+                                    "filter-hidden"
+                                );
+
+
+                                card.style.display =
+                                    "";
+
+
+                                visibleProducts++;
+
+                            }
+
+
+                            /*
+                             * HIDE
+                             */
+
+                            else {
+
+                                card.classList.add(
+                                    "filter-hidden"
+                                );
+
+
+                                card.style.display =
+                                    "none";
+
+                            }
+
+                        }
+                    );
+
+
+
+                    /* =================================================
+                       COUNT
+                    ================================================== */
+
+                    filterProductCount.textContent =
+                        visibleProducts;
+
+
+
+                    /* =================================================
+                       RESULT TEXT
+                    ================================================== */
+
+                    if (
+                        selectedCategory ===
+                        "all"
+                    ) {
+
+                        filterResultText.textContent =
+                            "Showing all inverter products";
+
+                    } else {
+
+                        const selectedOption =
+                            categoryFilter.options[
+                                categoryFilter.selectedIndex
+                            ];
+
+
+                        const selectedText =
+                            selectedOption
+                                ? selectedOption.textContent.trim()
+                                : "Selected category";
+
+
+                        filterResultText.textContent =
+                            "Showing " +
+                            visibleProducts +
+                            " " +
+                            selectedText +
+                            " product" +
+                            (
+                                visibleProducts === 1
+                                    ? ""
+                                    : "s"
+                            );
+
+                    }
+
+
+
+                    /* =================================================
+                       EMPTY FILTER STATE
+                    ================================================== */
+
+                    if (
+                        visibleProducts === 0
+                    ) {
+
+                        filterEmpty.classList.add(
+                            "show"
+                        );
+
+                    } else {
+
+                        filterEmpty.classList.remove(
+                            "show"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           NEW BADGES
+        ===================================================== */
+
+        const newBadges =
+            document.querySelectorAll(
+                ".new-badge"
+            );
+
+
+        newBadges.forEach(
+            function (badge) {
+
+                const created =
+                    badge.dataset.created;
+
+
+                if (!created) {
+
+                    badge.remove();
+
+                    return;
+
+                }
+
+
+                const createdTime =
+                    new Date(
+                        created
+                    ).getTime();
+
+
+                const difference =
+                    Date.now() -
+                    createdTime;
+
+
+                if (
+                    isNaN(createdTime) ||
+                    difference < 0 ||
+                    difference > FIFTEEN_DAYS
+                ) {
+
+                    badge.remove();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CARD REVEAL ANIMATION
+        ===================================================== */
+
+        if (
+            "IntersectionObserver" in window
+        ) {
+
+            const observer =
+                new IntersectionObserver(
+                    function (entries) {
+
+                        entries.forEach(
+                            function (entry) {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    entry.target.classList.add(
+                                        "is-visible"
+                                    );
+
+
+                                    observer.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: 0.12
+                    }
+                );
+
+
+            productCards.forEach(
+                function (card) {
+
+                    observer.observe(
+                        card
+                    );
+
+                }
+            );
+
+        } else {
+
+            productCards.forEach(
+                function (card) {
+
+                    card.classList.add(
+                        "is-visible"
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           SMOOTH SCROLL
+        ===================================================== */
+
+        function scrollToProducts() {
+
+            const productsSection =
+                document.getElementById(
+                    "solar-products"
+                );
+
+
+            if (productsSection) {
+
+                productsSection.scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "start"
+
+                });
+
+            }
+
+        }
+
+
+        if (scrollIndicator) {
+
+            scrollIndicator.addEventListener(
+                "click",
+                scrollToProducts
+            );
+
+
+            scrollIndicator.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        scrollToProducts();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           INITIAL FILTER STATE
+        ===================================================== */
+
+        if (filterEmpty) {
+
+            filterEmpty.classList.remove(
+                "show"
+            );
+
+        }
+
+
+
+        /* =====================================================
+           INITIAL MODAL STATE
+        ===================================================== */
+
+        if (modal) {
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+
+{% endblock %}

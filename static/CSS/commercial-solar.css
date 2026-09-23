@@ -1,0 +1,3768 @@
+/* =========================================================
+   SUNGREEN COMMERCIAL SOLAR
+   COMPLETE RESPONSIVE CSS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+.commercial-page {
+    --commercial-dark: #123f32;
+    --commercial-dark-2: #0c3027;
+
+    --commercial-green: #1f7059;
+    --commercial-green-2: #2f8b70;
+
+    --commercial-mint: #dff4ed;
+    --commercial-mint-2: #eefaf6;
+
+    --commercial-light: #f7fcfa;
+    --commercial-white: #ffffff;
+
+    --commercial-text: #19372f;
+    --commercial-muted: #667a74;
+
+    --commercial-border: rgba(18, 63, 50, 0.10);
+
+    --commercial-shadow:
+        0 25px 70px rgba(18, 63, 50, 0.10);
+
+    --commercial-shadow-hover:
+        0 35px 90px rgba(18, 63, 50, 0.18);
+
+    --commercial-radius: 26px;
+
+    width: 100%;
+    overflow: hidden;
+
+    font-family: "Inter", sans-serif;
+
+    color: var(--commercial-text);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f9fdfb 0%,
+            #eef9f5 45%,
+            #f8fcfa 100%
+        );
+}
+
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+.commercial-page *,
+.commercial-page *::before,
+.commercial-page *::after {
+    box-sizing: border-box;
+}
+
+.commercial-page img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.commercial-page a {
+    text-decoration: none;
+}
+
+.commercial-page button,
+.commercial-page input,
+.commercial-page textarea,
+.commercial-page select {
+    font-family: inherit;
+}
+
+.commercial-page section {
+    position: relative;
+}
+
+.commercial-page .container {
+    width: min(1180px, 92%);
+    margin-inline: auto;
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(100px);
+
+    transition:
+        opacity 1s cubic-bezier(.16,1,.3,1),
+        transform 1.1s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-100px);
+
+    transition:
+        opacity 1s cubic-bezier(.16,1,.3,1),
+        transform 1.1s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal-up {
+    opacity: 0;
+    transform: translateY(80px);
+
+    transition:
+        opacity 1s cubic-bezier(.16,1,.3,1),
+        transform 1.1s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal-right.active,
+.reveal-left.active,
+.reveal-up.active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.commercial-hero {
+    min-height: 760px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 0 100px;
+
+    background:
+        radial-gradient(
+            circle at 8% 20%,
+            rgba(130, 205, 180, .25),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(63, 148, 119, .14),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #effaf6,
+            #ffffff
+        );
+
+    isolation: isolate;
+}
+
+.commercial-hero-orb {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(2px);
+
+    animation:
+        commercialFloat 8s ease-in-out infinite;
+}
+
+.orb-one {
+    width: 260px;
+    height: 260px;
+
+    top: -100px;
+    left: -90px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(47,139,112,.20),
+            transparent 70%
+        );
+}
+
+.orb-two {
+    width: 340px;
+    height: 340px;
+
+    right: -130px;
+    bottom: -130px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(130,205,180,.20),
+            transparent 70%
+        );
+
+    animation-delay: -3s;
+}
+
+@keyframes commercialFloat {
+    0%, 100% {
+        transform: translate3d(0,0,0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(0,-25px,0) scale(1.04);
+    }
+}
+
+
+/* =========================================================
+   HERO GRID
+========================================================= */
+
+.commercial-hero-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.commercial-eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 9px 15px;
+
+    border-radius: 100px;
+
+    background: rgba(255,255,255,.72);
+
+    border:
+        1px solid
+        rgba(31,112,89,.13);
+
+    color:
+        var(--commercial-green);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 10px 30px rgba(18,63,50,.06);
+}
+
+.commercial-eyebrow span {
+    width: 8px;
+    height: 8px;
+
+    flex: 0 0 8px;
+
+    border-radius: 50%;
+
+    background:
+        var(--commercial-green);
+
+    box-shadow:
+        0 0 0 6px
+        rgba(47,139,112,.10);
+
+    animation:
+        pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(47,139,112,.35);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 9px
+            rgba(47,139,112,0);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(47,139,112,0);
+    }
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.commercial-hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+.commercial-hero-content h1 {
+    margin: 0;
+
+    max-width: 650px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size:
+        clamp(45px, 5.4vw, 78px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+
+    color:
+        var(--commercial-dark);
+}
+
+.commercial-hero-content h1 strong {
+    display: block;
+
+    color:
+        var(--commercial-green);
+
+    font-weight: 800;
+
+    position: relative;
+
+    width: fit-content;
+}
+
+.commercial-hero-content h1 strong::after {
+    content: "";
+
+    position: absolute;
+
+    left: 2px;
+    bottom: -7px;
+
+    width: 70%;
+    height: 5px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--commercial-green),
+            transparent
+        );
+
+    transform-origin: left;
+
+    animation:
+        headingLine 1.4s
+        cubic-bezier(.16,1,.3,1)
+        .6s both;
+}
+
+@keyframes headingLine {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.commercial-hero-content > p {
+    max-width: 590px;
+
+    margin: 35px 0 30px;
+
+    font-size: 17px;
+
+    line-height: 1.85;
+
+    color:
+        var(--commercial-muted);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.commercial-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.commercial-btn {
+    min-height: 55px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    padding: 0 22px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    transition:
+        transform .45s cubic-bezier(.16,1,.3,1),
+        box-shadow .45s ease,
+        background .45s ease,
+        color .45s ease,
+        border-color .45s ease;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.commercial-btn::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    transform: translateX(-110%);
+
+    background:
+        linear-gradient(
+            100deg,
+            transparent,
+            rgba(255,255,255,.30),
+            transparent
+        );
+
+    transition:
+        transform .65s ease;
+}
+
+.commercial-btn:hover::before {
+    transform: translateX(110%);
+}
+
+.commercial-btn:hover {
+    transform: translateY(-5px);
+}
+
+.commercial-btn-dark {
+    background:
+        var(--commercial-dark);
+
+    color: white;
+
+    box-shadow:
+        0 15px 35px
+        rgba(18,63,50,.18);
+}
+
+.commercial-btn-dark:hover {
+    background: #09261f;
+    color: white;
+
+    box-shadow:
+        0 22px 45px
+        rgba(18,63,50,.27);
+}
+
+.commercial-btn-dark i {
+    transition:
+        transform .4s ease;
+}
+
+.commercial-btn-dark:hover i {
+    transform:
+        translate(4px,-4px);
+}
+
+.commercial-btn-light {
+    background:
+        rgba(255,255,255,.85);
+
+    color:
+        var(--commercial-dark);
+
+    border:
+        1px solid
+        rgba(18,63,50,.12);
+}
+
+.commercial-btn-light:hover {
+    background:
+        var(--commercial-dark);
+
+    color: white;
+
+    border-color:
+        var(--commercial-dark);
+}
+
+
+/* =========================================================
+   TRUST
+========================================================= */
+
+.commercial-trust-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    max-width: 650px;
+
+    margin-top: 50px;
+
+    border-top:
+        1px solid
+        var(--commercial-border);
+
+    padding-top: 25px;
+
+    gap: 25px;
+}
+
+.trust-item {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    position: relative;
+}
+
+.trust-item:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    right: -13px;
+    top: 5px;
+
+    width: 1px;
+    height: 42px;
+
+    background:
+        var(--commercial-border);
+}
+
+.trust-item strong {
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 20px;
+
+    color:
+        var(--commercial-dark);
+}
+
+.trust-item span {
+    font-size: 11px;
+
+    color:
+        var(--commercial-muted);
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.commercial-hero-visual {
+    position: relative;
+
+    min-height: 560px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+}
+
+.commercial-main-image {
+    width: 100%;
+    height: 520px;
+
+    border-radius: 34px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+        0 35px 90px
+        rgba(18,63,50,.18);
+
+    transform: rotate(1deg);
+
+    transition:
+        transform .8s cubic-bezier(.16,1,.3,1),
+        box-shadow .8s ease;
+}
+
+.commercial-main-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(8,35,28,.45)
+        );
+
+    pointer-events: none;
+}
+
+.commercial-main-image:hover {
+    transform:
+        rotate(0deg)
+        scale(1.015);
+
+    box-shadow:
+        0 45px 110px
+        rgba(18,63,50,.25);
+}
+
+.commercial-main-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform 1.2s
+        cubic-bezier(.16,1,.3,1);
+}
+
+.commercial-main-image:hover img {
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================================
+   FLOATING CARD
+========================================================= */
+
+.commercial-floating-card {
+    position: absolute;
+
+    left: -35px;
+    bottom: 45px;
+
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 16px 19px;
+
+    max-width: 330px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    backdrop-filter:
+        blur(18px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.7);
+
+    box-shadow:
+        0 25px 55px
+        rgba(18,63,50,.16);
+
+    animation:
+        cardFloat 5s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating-card-icon {
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 14px;
+
+    background:
+        var(--commercial-mint);
+
+    color:
+        var(--commercial-green);
+
+    font-size: 20px;
+}
+
+.commercial-floating-card strong {
+    display: block;
+
+    font-size: 13px;
+
+    color:
+        var(--commercial-dark);
+}
+
+.commercial-floating-card span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color:
+        var(--commercial-muted);
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.commercial-number {
+    position: absolute;
+
+    right: -20px;
+    top: 30px;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 110px;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    color:
+        rgba(31,112,89,.07);
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SECTION TAG
+========================================================= */
+
+.commercial-section-tag {
+    display: inline-block;
+
+    color:
+        var(--commercial-green);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 17px;
+
+    position: relative;
+
+    padding-left: 25px;
+}
+
+.commercial-section-tag::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 15px;
+    height: 2px;
+
+    background:
+        var(--commercial-green);
+
+    transform:
+        translateY(-50%);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.commercial-intro {
+    padding: 130px 0;
+    background: #ffffff;
+}
+
+.commercial-intro-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0,.95fr)
+        minmax(0,1.05fr);
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   INTRO IMAGE
+========================================================= */
+
+.commercial-intro-image {
+    position: relative;
+    min-width: 0;
+}
+
+.intro-image-wrap {
+    height: 560px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    box-shadow:
+        var(--commercial-shadow);
+
+    transition:
+        transform .7s cubic-bezier(.16,1,.3,1),
+        box-shadow .7s ease;
+}
+
+.intro-image-wrap:hover {
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        var(--commercial-shadow-hover);
+}
+
+.intro-image-wrap img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform 1s cubic-bezier(.16,1,.3,1);
+}
+
+.intro-image-wrap:hover img {
+    transform:
+        scale(1.07);
+}
+
+
+/* =========================================================
+   INTRO IMAGE LABEL
+========================================================= */
+
+.intro-image-label {
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(18,63,50,.13);
+}
+
+.intro-label-icon {
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 14px;
+
+    background:
+        var(--commercial-mint);
+
+    color:
+        var(--commercial-green);
+
+    font-size: 20px;
+}
+
+.intro-image-label strong {
+    display: block;
+
+    font-size: 14px;
+
+    color:
+        var(--commercial-dark);
+}
+
+.intro-image-label span {
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        var(--commercial-muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   INTRO CONTENT
+========================================================= */
+
+.commercial-intro-content {
+    min-width: 0;
+}
+
+.commercial-intro-content h2,
+.commercial-heading h2,
+.sungreen-content h2 {
+    margin: 0;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    color:
+        var(--commercial-dark);
+
+    font-size:
+        clamp(35px,4vw,56px);
+
+    line-height: 1.08;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+}
+
+.commercial-intro-content h2 span,
+.commercial-heading h2 span,
+.sungreen-content h2 span {
+    color:
+        var(--commercial-green);
+}
+
+.commercial-intro-content p {
+    margin:
+        22px 0 0;
+
+    color:
+        var(--commercial-muted);
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   CHECK GRID
+========================================================= */
+
+.commercial-check-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.commercial-check-grid > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    border:
+        1px solid
+        var(--commercial-border);
+
+    border-radius: 12px;
+
+    background:
+        var(--commercial-light);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        transform .4s ease,
+        background .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+.commercial-check-grid > div:hover {
+    transform:
+        translateY(-4px);
+
+    background:
+        var(--commercial-mint);
+
+    border-color:
+        rgba(31,112,89,.25);
+
+    box-shadow:
+        0 12px 25px
+        rgba(18,63,50,.08);
+}
+
+.commercial-check-grid i {
+    width: 25px;
+    height: 25px;
+
+    flex: 0 0 25px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        var(--commercial-green);
+
+    color: white;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SOLUTIONS
+========================================================= */
+
+.commercial-solutions {
+    padding: 125px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf8f3,
+            #f8fcfa
+        );
+}
+
+.commercial-heading {
+    max-width: 760px;
+
+    margin-bottom: 55px;
+}
+
+.commercial-heading p {
+    max-width: 650px;
+
+    margin:
+        22px 0 0;
+
+    color:
+        var(--commercial-muted);
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+.commercial-solution-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 20px;
+}
+
+.commercial-solution-card {
+    min-height: 365px;
+
+    padding: 27px;
+
+    border-radius:
+        var(--commercial-radius);
+
+    background:
+        rgba(255,255,255,.82);
+
+    border:
+        1px solid
+        rgba(18,63,50,.08);
+
+    box-shadow:
+        0 15px 45px
+        rgba(18,63,50,.06);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .55s cubic-bezier(.16,1,.3,1),
+        box-shadow .55s ease,
+        border-color .55s ease,
+        background .55s ease;
+}
+
+.commercial-solution-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    right: -80px;
+    top: -80px;
+
+    background:
+        var(--commercial-mint);
+
+    transition:
+        transform .6s ease;
+}
+
+.commercial-solution-card:hover {
+    transform:
+        translateY(-12px);
+
+    background: #ffffff;
+
+    border-color:
+        rgba(31,112,89,.20);
+
+    box-shadow:
+        var(--commercial-shadow-hover);
+}
+
+.commercial-solution-card:hover::before {
+    transform:
+        scale(1.7);
+}
+
+.solution-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.solution-number {
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    color:
+        var(--commercial-green);
+}
+
+.solution-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 17px;
+
+    background:
+        var(--commercial-mint);
+
+    color:
+        var(--commercial-green);
+
+    font-size: 22px;
+
+    transition:
+        transform .5s cubic-bezier(.16,1,.3,1),
+        background .4s ease,
+        color .4s ease;
+}
+
+.commercial-solution-card:hover .solution-icon {
+    transform:
+        rotate(-8deg)
+        scale(1.08);
+
+    background:
+        var(--commercial-dark);
+
+    color: white;
+}
+
+.commercial-solution-card h3 {
+    position: relative;
+
+    margin:
+        55px 0 15px;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 21px;
+
+    color:
+        var(--commercial-dark);
+}
+
+.commercial-solution-card p {
+    position: relative;
+
+    margin: 0;
+
+    color:
+        var(--commercial-muted);
+
+    font-size: 13px;
+
+    line-height: 1.75;
+}
+
+.solution-line {
+    position: absolute;
+
+    left: 27px;
+    bottom: 27px;
+
+    width: 45px;
+    height: 3px;
+
+    border-radius: 10px;
+
+    background:
+        var(--commercial-green);
+
+    transition:
+        width .5s ease;
+}
+
+.commercial-solution-card:hover .solution-line {
+    width: 100px;
+}
+
+.card-arrow {
+    position: absolute;
+
+    right: 27px;
+    bottom: 20px;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        var(--commercial-dark);
+
+    color: white;
+
+    opacity: 0;
+
+    transform:
+        translateY(10px);
+
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
+}
+
+.commercial-solution-card:hover .card-arrow {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   WHY SUNGREEN
+   IMPORTANT: MATCHES HTML CASE/CLASS NAMES
+========================================================= */
+
+.commercial-Sungreen {
+    padding: 135px 0;
+    background: #ffffff;
+}
+
+.Sungreen-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(0,1fr);
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+.Sungreen-content {
+    min-width: 0;
+}
+
+.Sungreen-content p {
+    margin:
+        22px 0 0;
+
+    color:
+        var(--commercial-muted);
+
+    line-height: 1.85;
+
+    font-size: 15px;
+}
+
+.commercial-text-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    color:
+        var(--commercial-dark);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+.commercial-text-button i {
+    transition:
+        transform .4s ease;
+}
+
+.commercial-text-button:hover {
+    color:
+        var(--commercial-green);
+
+    transform:
+        translateX(3px);
+}
+
+.commercial-text-button:hover i {
+    transform:
+        translateX(7px);
+}
+
+
+/* =========================================================
+   SUNGREEN IMAGE
+========================================================= */
+
+.Sungreen-visual {
+    position: relative;
+
+    min-width: 0;
+}
+
+.Sungreen-image {
+    height: 580px;
+
+    border-radius: 32px;
+
+    overflow: hidden;
+
+    box-shadow:
+        var(--commercial-shadow);
+
+    position: relative;
+}
+
+.Sungreen-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(8,35,28,.25)
+        );
+
+    pointer-events: none;
+}
+
+.Sungreen-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform 1.2s
+        cubic-bezier(.16,1,.3,1);
+}
+
+.Sungreen-image:hover img {
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================================
+   COMMERCIAL CAPACITY CARD
+========================================================= */
+
+.Sungreen-capacity {
+    position: absolute;
+
+    right: -25px;
+    bottom: 35px;
+
+    width: 250px;
+
+    padding: 25px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(18,63,50,.95);
+
+    color: white;
+
+    box-shadow:
+        0 25px 60px
+        rgba(18,63,50,.25);
+
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+}
+
+.Sungreen-capacity:hover {
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 30px 70px
+        rgba(18,63,50,.32);
+}
+
+.Sungreen-capacity > span {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    opacity: .65;
+
+    font-weight: 800;
+}
+
+.Sungreen-capacity strong {
+    display: block;
+
+    margin-top: 10px;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+.Sungreen-capacity small {
+    font-size: 12px;
+}
+
+.Sungreen-capacity p {
+    margin:
+        12px 0 0;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    opacity: .7;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.commercial-benefits {
+    padding: 135px 0;
+
+    background:
+        var(--commercial-light);
+}
+
+.centered {
+    max-width: 780px;
+
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+.centered .commercial-section-tag {
+    padding-left: 0;
+}
+
+.centered .commercial-section-tag::before {
+    display: none;
+}
+
+.centered p {
+    margin-inline: auto;
+}
+
+.commercial-benefit-layout {
+    display: grid;
+
+    grid-template-columns:
+        .95fr
+        1.05fr;
+
+    gap: 25px;
+
+    align-items: stretch;
+
+    margin-top: 65px;
+}
+
+.benefit-large-image {
+    min-height: 650px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+        var(--commercial-shadow);
+}
+
+.benefit-large-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 1.2s
+        cubic-bezier(.16,1,.3,1);
+}
+
+.benefit-large-image:hover img {
+    transform:
+        scale(1.08);
+}
+
+.benefit-image-overlay {
+    position: absolute;
+
+    inset: auto 0 0;
+
+    padding: 45px 35px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(8,35,28,.92)
+        );
+}
+
+.benefit-image-overlay span {
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.benefit-image-overlay strong {
+    display: block;
+
+    margin-top: 8px;
+
+    max-width: 350px;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 35px;
+
+    line-height: 1.1;
+}
+
+
+/* =========================================================
+   BENEFIT CARDS
+========================================================= */
+
+.benefit-cards {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.commercial-benefit-card {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        45px
+        58px
+        1fr;
+
+    gap: 18px;
+
+    align-items: start;
+
+    padding: 30px;
+
+    border:
+        1px solid
+        var(--commercial-border);
+
+    border-radius: 22px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 35px
+        rgba(18,63,50,.05);
+
+    transition:
+        transform .5s cubic-bezier(.16,1,.3,1),
+        box-shadow .5s ease,
+        border-color .5s ease;
+}
+
+.commercial-benefit-card:hover {
+    transform:
+        translateX(8px);
+
+    box-shadow:
+        var(--commercial-shadow);
+
+    border-color:
+        rgba(31,112,89,.20);
+}
+
+.benefit-card-number {
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    color:
+        var(--commercial-green);
+}
+
+.benefit-card-icon {
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 16px;
+
+    background:
+        var(--commercial-mint);
+
+    color:
+        var(--commercial-green);
+
+    font-size: 21px;
+
+    transition:
+        transform .4s ease,
+        background .4s ease,
+        color .4s ease;
+}
+
+.commercial-benefit-card:hover .benefit-card-icon {
+    transform:
+        rotate(-8deg);
+
+    background:
+        var(--commercial-dark);
+
+    color: white;
+}
+
+.commercial-benefit-card h3 {
+    margin:
+        0 0 9px;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 19px;
+
+    color:
+        var(--commercial-dark);
+}
+
+.commercial-benefit-card p {
+    margin: 0;
+
+    color:
+        var(--commercial-muted);
+
+    font-size: 12px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   INVESTMENT
+========================================================= */
+
+.commercial-investment {
+    padding: 120px 0;
+
+    background:
+        var(--commercial-dark);
+
+    color: white;
+
+    overflow: hidden;
+}
+
+.investment-background {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .35;
+
+    background:
+        radial-gradient(
+            circle at 15% 40%,
+            rgba(91,185,151,.28),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(139,220,193,.15),
+            transparent 30%
+        );
+}
+
+.investment-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        .8fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.investment-label {
+    color:
+        #a9dec9;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+.investment-content h2 {
+    max-width: 750px;
+
+    margin: 0;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size:
+        clamp(38px,4.5vw,64px);
+
+    line-height: 1.06;
+
+    letter-spacing: -2px;
+}
+
+.investment-content p {
+    max-width: 680px;
+
+    margin:
+        25px 0 30px;
+
+    color:
+        rgba(255,255,255,.66);
+
+    line-height: 1.85;
+
+    font-size: 15px;
+}
+
+.investment-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 15px 21px;
+
+    border-radius: 14px;
+
+    background: white;
+
+    color:
+        var(--commercial-dark);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    transition:
+        transform .4s ease,
+        background .4s ease,
+        color .4s ease,
+        box-shadow .4s ease;
+}
+
+.investment-button:hover {
+    transform:
+        translateY(-5px);
+
+    background:
+        #c9ecdf;
+
+    color:
+        var(--commercial-dark);
+
+    box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.18);
+}
+
+.investment-stat {
+    min-height: 330px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 35px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    backdrop-filter:
+        blur(15px);
+}
+
+.investment-stat > span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .55;
+
+    font-weight: 800;
+}
+
+.investment-stat strong {
+    margin-top: 15px;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 50px;
+
+    line-height: 1;
+
+    text-align: center;
+}
+
+.investment-stat em {
+    display: block;
+
+    color:
+        #a7dfcb;
+
+    font-style: normal;
+}
+
+.stat-circle {
+    width: 78px;
+    height: 78px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin-top: 25px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    color:
+        #a7dfcb;
+
+    font-size: 27px;
+
+    animation:
+        sunRotate 12s linear infinite;
+}
+
+@keyframes sunRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   ADVANTAGES
+========================================================= */
+
+.commercial-advantages {
+    padding: 130px 0;
+    background: #ffffff;
+}
+
+.advantages-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+}
+
+.advantage-card {
+    min-height: 300px;
+
+    padding: 30px;
+
+    border-radius: 23px;
+
+    border:
+        1px solid
+        var(--commercial-border);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f4faf7
+        );
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .55s cubic-bezier(.16,1,.3,1),
+        box-shadow .55s ease,
+        background .55s ease,
+        border-color .55s ease;
+}
+
+.advantage-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    right: -100px;
+    bottom: -100px;
+
+    background:
+        var(--commercial-mint);
+
+    transition:
+        transform .6s ease;
+}
+
+.advantage-card:hover {
+    transform:
+        translateY(-10px);
+
+    background: white;
+
+    border-color:
+        rgba(31,112,89,.22);
+
+    box-shadow:
+        var(--commercial-shadow-hover);
+}
+
+.advantage-card:hover::before {
+    transform:
+        scale(1.5);
+}
+
+.advantage-card > span {
+    position: relative;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    color:
+        var(--commercial-green);
+}
+
+.advantage-card > i {
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 55px;
+    height: 55px;
+
+    margin-top: 25px;
+
+    border-radius: 16px;
+
+    background:
+        var(--commercial-mint);
+
+    color:
+        var(--commercial-green);
+
+    font-size: 22px;
+
+    transition:
+        transform .5s ease,
+        background .4s ease,
+        color .4s ease;
+}
+
+.advantage-card:hover > i {
+    transform:
+        rotate(-8deg)
+        scale(1.08);
+
+    background:
+        var(--commercial-dark);
+
+    color: white;
+}
+
+.advantage-card h3 {
+    position: relative;
+
+    margin:
+        20px 0 10px;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size: 18px;
+
+    color:
+        var(--commercial-dark);
+}
+
+.advantage-card p {
+    position: relative;
+
+    margin: 0;
+
+    color:
+        var(--commercial-muted);
+
+    font-size: 12px;
+
+    line-height: 1.75;
+}
+
+.advantage-arrow {
+    position: absolute;
+
+    right: 25px;
+    top: 25px;
+
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        var(--commercial-dark);
+
+    color: white;
+
+    opacity: 0;
+
+    transform:
+        translateY(-8px);
+
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
+}
+
+.advantage-card:hover .advantage-arrow {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   FINAL CONTACT
+========================================================= */
+
+.commercial-contact {
+    padding: 130px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e0f4ed,
+            #f4fbf8
+        );
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+.commercial-contact-content {
+    max-width: 850px;
+
+    margin-inline: auto;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.contact-icon {
+    width: 75px;
+    height: 75px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin:
+        0 auto 25px;
+
+    border-radius: 24px;
+
+    background:
+        var(--commercial-dark);
+
+    color: white;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 20px 40px
+        rgba(18,63,50,.16);
+
+    animation:
+        contactFloat 4s ease-in-out infinite;
+}
+
+@keyframes contactFloat {
+    0%,100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+}
+
+.commercial-contact .commercial-section-tag {
+    padding-left: 0;
+}
+
+.commercial-contact .commercial-section-tag::before {
+    display: none;
+}
+
+.commercial-contact h2 {
+    margin: 0;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size:
+        clamp(40px,5vw,68px);
+
+    line-height: 1.06;
+
+    letter-spacing: -2.5px;
+
+    color:
+        var(--commercial-dark);
+}
+
+.commercial-contact h2 span {
+    display: block;
+
+    color:
+        var(--commercial-green);
+}
+
+.commercial-contact-content > p {
+    max-width: 680px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        var(--commercial-muted);
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   CONTACT BUTTONS
+========================================================= */
+
+.contact-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 35px;
+}
+
+.commercial-btn-mint {
+    background:
+        var(--commercial-dark);
+
+    color: white;
+}
+
+.commercial-btn-mint:hover {
+    background:
+        #09261f;
+
+    color: white;
+
+    box-shadow:
+        0 20px 45px
+        rgba(18,63,50,.25);
+}
+
+.commercial-btn-outline {
+    border:
+        1px solid
+        rgba(18,63,50,.20);
+
+    color:
+        var(--commercial-dark);
+
+    background:
+        rgba(255,255,255,.60);
+}
+
+.commercial-btn-outline:hover {
+    background:
+        var(--commercial-dark);
+
+    color: white;
+
+    border-color:
+        var(--commercial-dark);
+}
+
+
+/* =========================================================
+   CONTACT DECORATION
+========================================================= */
+
+.contact-ring {
+    position: absolute;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(31,112,89,.10);
+
+    pointer-events: none;
+
+    animation:
+        ringPulse 7s ease-in-out infinite;
+}
+
+.ring-one {
+    width: 500px;
+    height: 500px;
+
+    left: -250px;
+    top: -150px;
+}
+
+.ring-two {
+    width: 600px;
+    height: 600px;
+
+    right: -300px;
+    bottom: -300px;
+
+    animation-delay: -3s;
+}
+
+@keyframes ringPulse {
+    0%,100% {
+        transform: scale(1);
+        opacity: .6;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+.contact-grid-pattern {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .35;
+
+    background-image:
+        linear-gradient(
+            rgba(31,112,89,.045)
+            1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(31,112,89,.045)
+            1px,
+            transparent 1px
+        );
+
+    background-size:
+        50px 50px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black,
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   GLOBAL HOVER PERFORMANCE
+========================================================= */
+
+.commercial-page
+.commercial-solution-card,
+.commercial-page
+.commercial-benefit-card,
+.commercial-page
+.advantage-card,
+.commercial-page
+.commercial-check-grid > div {
+    will-change: transform;
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+.commercial-page ::selection {
+    background:
+        var(--commercial-dark);
+
+    color: white;
+}
+
+
+/* =========================================================
+   TABLET 1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .commercial-hero-grid {
+        gap: 45px;
+    }
+
+    .commercial-solution-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .advantages-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .commercial-floating-card {
+        left: -10px;
+    }
+
+    .commercial-number {
+        right: 0;
+    }
+
+    .Sungreen-capacity {
+        right: -5px;
+    }
+}
+
+
+/* =========================================================
+   TABLET 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .commercial-hero {
+        padding:
+            100px 0
+            80px;
+    }
+
+    .commercial-hero-grid,
+    .commercial-intro-grid,
+    .Sungreen-grid,
+    .commercial-benefit-layout,
+    .investment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .commercial-hero-content {
+        order: 1;
+    }
+
+    .commercial-hero-visual {
+        order: 2;
+
+        min-height: 500px;
+
+        margin-top: 20px;
+    }
+
+    .commercial-main-image {
+        height: 500px;
+    }
+
+    .commercial-intro-grid,
+    .Sungreen-grid {
+        gap: 55px;
+    }
+
+    .benefit-large-image {
+        min-height: 500px;
+    }
+
+    .investment-stat {
+        min-height: 280px;
+    }
+
+    .Sungreen-capacity {
+        right: 20px;
+    }
+
+    .Sungreen-image {
+        height: 520px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE 650px
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .commercial-page .container {
+        width:
+            min(92%, 540px);
+    }
+
+    .commercial-hero {
+        min-height: auto;
+
+        padding:
+            85px 0
+            60px;
+    }
+
+    .commercial-eyebrow {
+        font-size: 10px;
+
+        padding:
+            8px 12px;
+
+        letter-spacing: 1.2px;
+    }
+
+    .commercial-hero-content h1 {
+        font-size:
+            clamp(39px,11vw,55px);
+
+        letter-spacing:
+            -2px;
+    }
+
+    .commercial-hero-content > p {
+        font-size: 14px;
+
+        line-height: 1.75;
+    }
+
+    .commercial-hero-buttons {
+        flex-direction: column;
+    }
+
+    .commercial-btn {
+        width: 100%;
+    }
+
+    .commercial-trust-row {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+        margin-top: 35px;
+    }
+
+    .trust-item:not(:last-child)::after {
+        display: none;
+    }
+
+    .commercial-hero-visual {
+        min-height: 390px;
+
+        padding: 0;
+
+        margin-top: 20px;
+    }
+
+    .commercial-main-image {
+        height: 390px;
+
+        border-radius:
+            24px;
+
+        transform: none;
+    }
+
+    .commercial-main-image:hover {
+        transform: scale(1.01);
+    }
+
+    .commercial-floating-card {
+        left: 12px;
+        right: 12px;
+        bottom: 20px;
+
+        max-width: none;
+
+        padding: 13px 14px;
+    }
+
+    .commercial-floating-card strong {
+        font-size: 12px;
+    }
+
+    .commercial-floating-card span {
+        font-size: 10px;
+    }
+
+    .commercial-number {
+        display: none;
+    }
+
+    .commercial-intro,
+    .commercial-solutions,
+    .commercial-Sungreen,
+    .commercial-benefits,
+    .commercial-advantages,
+    .commercial-contact {
+        padding:
+            80px 0;
+    }
+
+    .intro-image-wrap {
+        height: 420px;
+
+        border-radius:
+            24px;
+    }
+
+    .intro-image-label {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+
+        padding: 13px;
+    }
+
+    .intro-label-icon {
+        width: 43px;
+        height: 43px;
+
+        flex-basis: 43px;
+    }
+
+    .commercial-intro-content h2,
+    .commercial-heading h2,
+    .Sungreen-content h2 {
+        font-size: 36px;
+
+        letter-spacing:
+            -1.5px;
+    }
+
+    .commercial-check-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .commercial-solution-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .commercial-solution-card {
+        min-height:
+            330px;
+    }
+
+    /* SUNGREEN MOBILE FIX */
+
+    .Sungreen-grid {
+        gap: 45px;
+    }
+
+    .Sungreen-image {
+        height: 430px;
+
+        border-radius:
+            24px;
+    }
+
+    .Sungreen-capacity {
+        position: relative;
+
+        right: auto;
+        bottom: auto;
+
+        width: 100%;
+
+        margin-top:
+            -20px;
+
+        z-index: 3;
+
+        padding: 22px;
+    }
+
+    .Sungreen-capacity strong {
+        font-size: 30px;
+    }
+
+    .commercial-text-button {
+        margin-top: 25px;
+    }
+
+    .commercial-benefit-layout {
+        margin-top:
+            45px;
+    }
+
+    .benefit-large-image {
+        min-height:
+            420px;
+
+        border-radius:
+            24px;
+    }
+
+    .benefit-image-overlay {
+        padding:
+            30px 25px;
+    }
+
+    .benefit-image-overlay strong {
+        font-size:
+            29px;
+    }
+
+    .commercial-benefit-card {
+        grid-template-columns:
+            35px
+            52px
+            1fr;
+
+        gap:
+            12px;
+
+        padding:
+            23px;
+    }
+
+    .benefit-card-icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .advantages-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .advantage-card {
+        min-height:
+            280px;
+    }
+
+    .investment-content h2 {
+        font-size:
+            40px;
+    }
+
+    .investment-stat strong {
+        font-size:
+            42px;
+    }
+
+    .commercial-contact h2 {
+        font-size:
+            40px;
+
+        letter-spacing:
+            -1.5px;
+    }
+
+    .contact-buttons {
+        flex-direction:
+            column;
+    }
+
+    .contact-ring {
+        opacity:
+            .5;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE 480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .commercial-page .container {
+        width: 90%;
+    }
+
+    .commercial-hero {
+        padding-top: 70px;
+    }
+
+    .commercial-hero-content h1 {
+        font-size: 42px;
+    }
+
+    .commercial-hero-content > p {
+        font-size: 13px;
+    }
+
+    .commercial-main-image {
+        height: 340px;
+    }
+
+    .commercial-hero-visual {
+        min-height: 340px;
+    }
+
+    .commercial-floating-card {
+        gap: 10px;
+    }
+
+    .floating-card-icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+        font-size: 17px;
+    }
+
+    .intro-image-wrap {
+        height: 360px;
+    }
+
+    .commercial-intro-content h2,
+    .commercial-heading h2,
+    .Sungreen-content h2 {
+        font-size: 31px;
+    }
+
+    .Sungreen-image {
+        height: 370px;
+    }
+
+    .Sungreen-capacity strong {
+        font-size: 27px;
+    }
+
+    .commercial-benefit-card {
+        grid-template-columns:
+            1fr;
+
+        gap: 12px;
+    }
+
+    .benefit-card-number {
+        margin-bottom: 2px;
+    }
+
+    .benefit-card-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .investment-content h2 {
+        font-size: 34px;
+    }
+
+    .investment-content p {
+        font-size: 13px;
+    }
+
+    .commercial-contact h2 {
+        font-size: 34px;
+    }
+
+    .commercial-section-tag {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .commercial-page *,
+    .commercial-page *::before,
+    .commercial-page *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            .01ms !important;
+    }
+}
+
+/* =========================================================
+   COMMERCIAL PROCESS
+   ========================================================= */
+
+.commercial-process {
+    position: relative;
+    width: 100%;
+    padding: 110px 0;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(30, 168, 103, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(30, 168, 103, 0.06),
+            transparent 28%
+        ),
+        #f7faf8;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.commercial-process .commercial-heading {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto 65px;
+    text-align: center;
+    z-index: 2;
+}
+
+
+.commercial-process .commercial-section-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+    padding: 8px 16px;
+
+    border: 1px solid rgba(8, 125, 77, 0.18);
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    color: #07844f;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+
+    box-shadow:
+        0 8px 25px rgba(0, 70, 40, 0.05);
+}
+
+
+.commercial-process .commercial-heading h2 {
+    margin: 0 0 18px;
+
+    color: #17352b;
+
+    font-family: Arial, sans-serif;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 800;
+
+    line-height: 1.08;
+    letter-spacing: -1.8px;
+}
+
+
+.commercial-process .commercial-heading h2 span {
+    display: block;
+
+    color: #079456;
+
+    background: linear-gradient(
+        90deg,
+        #087d4d,
+        #20aa70
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.commercial-process .commercial-heading p {
+    max-width: 650px;
+    margin: 0 auto;
+
+    color: #66736d;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   PROCESS GRID
+   ========================================================= */
+
+.commercial-process-grid {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 22px;
+
+    max-width: 1180px;
+    margin: 0 auto;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   CONNECTING LINE
+   ========================================================= */
+
+.commercial-process-grid::before {
+    content: "";
+
+    position: absolute;
+
+    top: 47px;
+    left: 10%;
+    right: 10%;
+
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #b7dcca 15%,
+        #42b77e 50%,
+        #b7dcca 85%,
+        transparent
+    );
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   PROCESS CARD
+   ========================================================= */
+
+.process-item {
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 32px 26px 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f7fcf9 100%
+        );
+
+    border: 1px solid #dcebe4;
+    border-radius: 24px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    box-shadow:
+        0 12px 35px rgba(17, 70, 48, 0.06);
+
+    transition:
+        transform 0.45s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.45s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+
+/* =========================================================
+   TOP GLOW
+   ========================================================= */
+
+.process-item::before {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    top: -85px;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(42, 183, 126, 0.18),
+            transparent 68%
+        );
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+
+    z-index: -1;
+}
+
+
+.process-item:hover::before {
+    transform: scale(1.5);
+}
+
+
+/* =========================================================
+   BOTTOM GREEN LINE
+   ========================================================= */
+
+.process-item::after {
+    content: "";
+
+    position: absolute;
+
+    left: 26px;
+    right: 26px;
+    bottom: 0;
+
+    height: 4px;
+
+    border-radius: 10px 10px 0 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #087d4d,
+            #45c487
+        );
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition:
+        transform 0.45s ease;
+}
+
+
+.process-item:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.process-item:hover {
+
+    transform: translateY(-12px);
+
+    border-color: #9bd4bb;
+
+    box-shadow:
+        0 25px 55px rgba(8, 125, 77, 0.14);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f0faf5 100%
+        );
+}
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.process-item > span:first-child {
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 28px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087d4d,
+            #35b97c
+        );
+
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 10px 22px rgba(8, 125, 77, 0.22);
+
+    z-index: 2;
+
+    transition:
+        transform 0.4s ease,
+        border-radius 0.4s ease;
+}
+
+
+.process-item:hover > span:first-child {
+
+    transform:
+        rotate(-5deg)
+        scale(1.08);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.process-item > i {
+
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background: #e5f5ed;
+
+    color: #087d4d;
+
+    font-size: 25px;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(8, 125, 77, 0.06);
+
+    transition:
+        transform 0.4s cubic-bezier(.2,.8,.2,1),
+        background 0.4s ease,
+        color 0.4s ease;
+}
+
+
+.process-item:hover > i {
+
+    transform:
+        translateY(-3px)
+        rotate(5deg);
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087d4d,
+            #32b77b
+        );
+
+    box-shadow:
+        0 10px 24px rgba(8, 125, 77, 0.20);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.process-item h3 {
+
+    margin: 0 0 12px;
+
+    color: #18382d;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.3px;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.process-item:hover h3 {
+    color: #087d4d;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.process-item p {
+
+    margin: 0;
+
+    color: #6b7771;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SMALL ARROW
+   ========================================================= */
+
+.process-item .process-arrow {
+
+    margin-top: auto;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #edf7f2;
+
+    color: #087d4d;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.4s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.process-item:hover .process-arrow {
+
+    transform:
+        translateX(5px);
+
+    background: #087d4d;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.commercial-process .reveal-up {
+
+    opacity: 0;
+
+    transform:
+        translateY(45px);
+
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.commercial-process .reveal-up.active {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* STAGGER */
+
+.commercial-process-grid
+.process-item:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.commercial-process-grid
+.process-item:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.commercial-process-grid
+.process-item:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+.commercial-process-grid
+.process-item:nth-child(4) {
+    transition-delay: 0.35s;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .commercial-process {
+        padding: 90px 0;
+    }
+
+
+    .commercial-process-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 20px;
+    }
+
+
+    .commercial-process-grid::before {
+        display: none;
+    }
+
+
+    .process-item {
+        min-height: 300px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .commercial-process {
+
+        padding: 70px 0;
+
+    }
+
+
+    .commercial-process .commercial-heading {
+
+        margin-bottom: 42px;
+
+        padding: 0 15px;
+
+    }
+
+
+    .commercial-process .commercial-section-tag {
+
+        font-size: 9px;
+
+        letter-spacing: 1.4px;
+
+        padding: 7px 13px;
+
+    }
+
+
+    .commercial-process .commercial-heading h2 {
+
+        font-size: 32px;
+
+        letter-spacing: -1px;
+
+    }
+
+
+    .commercial-process .commercial-heading p {
+
+        font-size: 13px;
+
+        line-height: 1.65;
+
+    }
+
+
+    .commercial-process-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+        padding: 0 12px;
+
+    }
+
+
+    .process-item {
+
+        min-height: auto;
+
+        padding: 24px 22px 27px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .process-item > span:first-child {
+
+        width: 44px;
+        height: 44px;
+
+        margin-bottom: 20px;
+
+        border-radius: 13px;
+
+        font-size: 12px;
+
+    }
+
+
+    .process-item > i {
+
+        width: 52px;
+        height: 52px;
+
+        margin-bottom: 18px;
+
+        border-radius: 15px;
+
+        font-size: 22px;
+
+    }
+
+
+    .process-item h3 {
+
+        font-size: 19px;
+
+        margin-bottom: 9px;
+
+    }
+
+
+    .process-item p {
+
+        font-size: 13px;
+
+        line-height: 1.65;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .commercial-process *,
+    .commercial-process *::before,
+    .commercial-process *::after {
+
+        animation: none !important;
+
+        transition: none !important;
+
+    }
+
+
+    .commercial-process .reveal-up {
+
+        opacity: 1;
+
+        transform: none;
+
+    }
+
+}

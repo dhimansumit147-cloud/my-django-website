@@ -1,0 +1,2638 @@
+/* =========================================================
+   SUNGREEN — HYBRID SOLAR SYSTEM
+   PREMIUM LIGHT MINT EDITION
+   COMPLETE RESPONSIVE + ADVANCED ANIMATION
+   ========================================================= */
+
+/* =========================================================
+   GOOGLE FONT
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800&display=swap');
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+.hybrid-page {
+    --mint-50: #f7fffc;
+    --mint-100: #effcf7;
+    --mint-150: #e8f8f1;
+    --mint-200: #d9f2e8;
+    --mint-300: #c4eadd;
+    --mint-400: #a9decd;
+
+    --mint: #78cbb2;
+    --mint-dark: #2f8f78;
+    --mint-deep: #176957;
+    --mint-darkest: #0b4438;
+
+    --ink: #102b27;
+    --ink-soft: #49655f;
+    --white: #ffffff;
+
+    --border: rgba(23, 105, 87, 0.12);
+    --shadow-sm: 0 12px 35px rgba(23, 105, 87, 0.08);
+    --shadow-md: 0 25px 70px rgba(23, 105, 87, 0.12);
+    --shadow-lg: 0 35px 100px rgba(23, 105, 87, 0.16);
+
+    font-family: "Inter", sans-serif;
+    color: var(--ink);
+    background: var(--mint-50);
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   GLOBAL RESET — SCOPED
+   ========================================================= */
+
+.hybrid-page *,
+.hybrid-page *::before,
+.hybrid-page *::after {
+    box-sizing: border-box;
+}
+
+.hybrid-page img {
+    max-width: 100%;
+    display: block;
+}
+
+.hybrid-page a {
+    text-decoration: none;
+}
+
+.hybrid-page h1,
+.hybrid-page h2,
+.hybrid-page h3,
+.hybrid-page p {
+    margin-top: 0;
+}
+
+.hybrid-page .container {
+    width: min(1240px, calc(100% - 48px));
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hybrid-page .hybrid-hero {
+    position: relative;
+    min-height: 860px;
+    display: flex;
+    align-items: center;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 85% 15%, rgba(120, 203, 178, .24), transparent 30%),
+        radial-gradient(circle at 10% 85%, rgba(169, 222, 205, .30), transparent 32%),
+        linear-gradient(135deg, #f9fffd 0%, #eefaf5 52%, #e3f6ee 100%);
+}
+
+
+/* background grid */
+
+.hybrid-page .hybrid-grid-bg {
+    position: absolute;
+    inset: 0;
+    opacity: .35;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(23, 105, 87, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 105, 87, .055) 1px, transparent 1px);
+
+    background-size: 60px 60px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 92%
+    );
+}
+
+
+/* floating orbs */
+
+.hybrid-page .hybrid-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+.hybrid-page .hybrid-orb-one {
+    width: 430px;
+    height: 430px;
+    right: -160px;
+    top: -120px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(120, 203, 178, .22),
+            rgba(120, 203, 178, 0)
+        );
+
+    animation: hybridFloatOrb 9s ease-in-out infinite;
+}
+
+.hybrid-page .hybrid-orb-two {
+    width: 300px;
+    height: 300px;
+    left: -150px;
+    bottom: 40px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(169, 222, 205, .25),
+            transparent 70%
+        );
+
+    animation: hybridFloatOrb 11s ease-in-out infinite reverse;
+}
+
+
+/* hero layout */
+
+.hybrid-page .hybrid-hero-grid {
+    position: relative;
+    z-index: 3;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(480px, .95fr);
+    gap: 70px;
+    align-items: center;
+}
+
+
+/* hero text */
+
+.hybrid-page .hybrid-hero-content {
+    max-width: 650px;
+}
+
+.hybrid-page .hybrid-eyebrow,
+.hybrid-page .hybrid-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--mint-dark);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.hybrid-page .eyebrow-line {
+    width: 42px;
+    height: 2px;
+    background: var(--mint-dark);
+    border-radius: 99px;
+}
+
+.hybrid-page .hybrid-hero h1 {
+    margin: 25px 0 25px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(48px, 6vw, 82px);
+    line-height: .98;
+    letter-spacing: -0.055em;
+    font-weight: 800;
+    color: var(--ink);
+}
+
+.hybrid-page .hybrid-hero h1 span {
+    display: block;
+    color: var(--mint-dark);
+}
+
+.hybrid-page .hybrid-hero p {
+    max-width: 620px;
+
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.85;
+}
+
+
+/* hero buttons */
+
+.hybrid-page .hybrid-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.hybrid-page .hybrid-primary-btn,
+.hybrid-page .hybrid-secondary-btn,
+.hybrid-page .hybrid-cta-primary,
+.hybrid-page .hybrid-cta-outline {
+    min-height: 58px;
+    padding: 0 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    transition:
+        transform .45s cubic-bezier(.16, 1, .3, 1),
+        box-shadow .45s ease,
+        background .45s ease,
+        color .45s ease;
+}
+
+.hybrid-page .hybrid-primary-btn,
+.hybrid-page .hybrid-cta-primary {
+    color: white;
+    background: var(--mint-dark);
+    box-shadow: 0 16px 35px rgba(47, 143, 120, .22);
+}
+
+.hybrid-page .hybrid-primary-btn:hover,
+.hybrid-page .hybrid-cta-primary:hover {
+    transform: translateY(-5px);
+    background: var(--mint-deep);
+    box-shadow: 0 22px 45px rgba(23, 105, 87, .25);
+}
+
+.hybrid-page .hybrid-secondary-btn {
+    color: var(--mint-deep);
+    background: rgba(255, 255, 255, .78);
+    border: 1px solid var(--border);
+}
+
+.hybrid-page .hybrid-secondary-btn:hover {
+    transform: translateY(-5px);
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* hero stats */
+
+.hybrid-page .hybrid-hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-top: 48px;
+}
+
+.hybrid-page .hybrid-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hybrid-page .hybrid-stat strong {
+    font-family: "Poppins", sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--mint-deep);
+}
+
+.hybrid-page .hybrid-stat span {
+    color: var(--ink-soft);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HERO ENERGY SYSTEM
+   ========================================================= */
+
+.hybrid-page .hybrid-system-visual {
+    position: relative;
+    width: min(560px, 100%);
+    aspect-ratio: 1 / 1;
+    margin-inline: auto;
+}
+
+.hybrid-page .system-glow {
+    position: absolute;
+    inset: 15%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(120, 203, 178, .28),
+            rgba(120, 203, 178, .06) 45%,
+            transparent 72%
+        );
+
+    animation: hybridPulse 4s ease-in-out infinite;
+}
+
+
+/* center */
+
+.hybrid-page .system-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+
+    width: 190px;
+    height: 190px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(225,247,239,.95)
+        );
+
+    border: 1px solid rgba(47, 143, 120, .16);
+
+    box-shadow:
+        0 30px 70px rgba(23, 105, 87, .15),
+        inset 0 0 0 10px rgba(255,255,255,.5);
+}
+
+.hybrid-page .center-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 12px;
+
+    border-radius: 18px;
+
+    color: white;
+    background: var(--mint-dark);
+
+    box-shadow: 0 12px 30px rgba(47, 143, 120, .28);
+
+    animation: hybridIconPulse 2.5s ease-in-out infinite;
+}
+
+.hybrid-page .center-icon i {
+    font-size: 25px;
+}
+
+.hybrid-page .system-center strong {
+    font-size: 14px;
+    letter-spacing: .16em;
+    color: var(--mint-deep);
+}
+
+.hybrid-page .system-center span {
+    margin-top: 4px;
+    color: #72908a;
+    font-size: 9px;
+    letter-spacing: .13em;
+    font-weight: 800;
+}
+
+
+/* rings */
+
+.hybrid-page .center-ring {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    border: 1px solid rgba(47, 143, 120, .16);
+}
+
+.hybrid-page .ring-b {
+    inset: -42px;
+    border-style: dashed;
+    animation: hybridRotate 18s linear infinite;
+}
+
+
+/* energy nodes */
+
+.hybrid-page .energy-node {
+    position: absolute;
+    z-index: 6;
+
+    width: 130px;
+    min-height: 130px;
+
+    padding: 18px 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(47, 143, 120, .12);
+
+    box-shadow: var(--shadow-md);
+
+    transition:
+        transform .5s cubic-bezier(.16, 1, .3, 1),
+        box-shadow .5s ease;
+}
+
+.hybrid-page .energy-node:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: var(--shadow-lg);
+}
+
+.hybrid-page .node-icon {
+    width: 45px;
+    height: 45px;
+
+    margin-bottom: 9px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    color: var(--mint-deep);
+    background: var(--mint-100);
+}
+
+.hybrid-page .node-icon i {
+    font-size: 21px;
+}
+
+.hybrid-page .energy-node strong {
+    font-size: 13px;
+}
+
+.hybrid-page .energy-node span {
+    margin-top: 3px;
+    color: #78908b;
+    font-size: 10px;
+}
+
+.hybrid-page .solar-node {
+    left: 0;
+    top: 15%;
+}
+
+.hybrid-page .battery-node {
+    right: 0;
+    top: 15%;
+}
+
+.hybrid-page .grid-node {
+    left: 4%;
+    bottom: 14%;
+}
+
+.hybrid-page .home-node {
+    right: 4%;
+    bottom: 14%;
+}
+
+
+/* paths */
+
+.hybrid-page .energy-path {
+    position: absolute;
+    z-index: 2;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(47, 143, 120, .45),
+        transparent
+    );
+
+    overflow: hidden;
+}
+
+.hybrid-page .energy-path::after {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 4px;
+    top: 50%;
+    left: -50px;
+
+    border-radius: 99px;
+    background: var(--mint-dark);
+
+    box-shadow: 0 0 14px rgba(47, 143, 120, .7);
+
+    animation: hybridEnergyFlow 2.5s linear infinite;
+}
+
+.hybrid-page .path-one,
+.hybrid-page .path-two {
+    width: 150px;
+    height: 2px;
+    top: 38%;
+}
+
+.hybrid-page .path-one {
+    left: 22%;
+    transform: rotate(18deg);
+}
+
+.hybrid-page .path-two {
+    right: 22%;
+    transform: rotate(-18deg);
+}
+
+.hybrid-page .path-three,
+.hybrid-page .path-four {
+    width: 150px;
+    height: 2px;
+    bottom: 38%;
+}
+
+.hybrid-page .path-three {
+    left: 22%;
+    transform: rotate(-18deg);
+}
+
+.hybrid-page .path-four {
+    right: 22%;
+    transform: rotate(18deg);
+}
+
+
+/* =========================================================
+   INTRODUCTION
+   ========================================================= */
+
+.hybrid-page .hybrid-introduction {
+    position: relative;
+    padding: 135px 0;
+
+    background: white;
+}
+
+.hybrid-page .hybrid-intro-grid {
+    display: grid;
+    grid-template-columns: .92fr 1fr;
+    gap: 90px;
+    align-items: center;
+}
+
+
+/* intro image */
+
+.hybrid-page .intro-image-card {
+    position: relative;
+    overflow: visible;
+}
+
+.hybrid-page .intro-image-card img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+
+    border-radius: 30px;
+
+    box-shadow: var(--shadow-lg);
+}
+
+.hybrid-page .intro-image-overlay {
+    position: absolute;
+    inset: 0;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(11, 68, 56, .35)
+        );
+}
+
+.hybrid-page .intro-image-card::before {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    left: -35px;
+    bottom: -35px;
+
+    border-radius: 28px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(47,143,120,.16) 0 2px,
+            transparent 2px 9px
+        );
+
+    z-index: -1;
+}
+
+.hybrid-page .intro-floating-card {
+    position: absolute;
+    right: -35px;
+    bottom: 35px;
+
+    width: 260px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(47,143,120,.12);
+
+    box-shadow: var(--shadow-md);
+
+    animation: hybridFloatCard 5s ease-in-out infinite;
+}
+
+.hybrid-page .floating-icon {
+    flex: 0 0 48px;
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    color: var(--mint-deep);
+    background: var(--mint-100);
+}
+
+.hybrid-page .intro-floating-card strong {
+    display: block;
+    font-size: 13px;
+}
+
+.hybrid-page .intro-floating-card span {
+    display: block;
+    margin-top: 4px;
+    color: #78908b;
+    font-size: 11px;
+}
+
+.hybrid-page .intro-number {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: white;
+    background: var(--mint-dark);
+
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+
+    box-shadow: 0 15px 35px rgba(47,143,120,.25);
+}
+
+
+/* intro content */
+
+.hybrid-page .hybrid-intro-content h2,
+.hybrid-page .hybrid-benefit-content h2,
+.hybrid-page .smart-content h2 {
+    margin: 18px 0 24px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(38px, 4.2vw, 62px);
+    line-height: 1.04;
+    letter-spacing: -.045em;
+}
+
+.hybrid-page h2 span {
+    color: var(--mint-dark);
+}
+
+.hybrid-page .hybrid-intro-content p,
+.hybrid-page .hybrid-benefit-content p,
+.hybrid-page .smart-content p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+.hybrid-page .hybrid-info-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-top: 30px;
+    padding: 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--mint-100);
+}
+
+.hybrid-page .info-strip-icon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    color: white;
+    background: var(--mint-dark);
+}
+
+.hybrid-page .hybrid-info-strip strong {
+    display: block;
+    font-size: 14px;
+}
+
+.hybrid-page .hybrid-info-strip span {
+    display: block;
+    margin-top: 4px;
+    color: #718a84;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+   ========================================================= */
+
+.hybrid-page .hybrid-how {
+    padding: 135px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7fffc,
+            #eaf8f2
+        );
+}
+
+.hybrid-page .hybrid-heading {
+    max-width: 760px;
+    margin-bottom: 60px;
+}
+
+.hybrid-page .hybrid-heading.centered {
+    margin-inline: auto;
+    text-align: center;
+}
+
+.hybrid-page .hybrid-heading h2 {
+    margin: 18px 0 18px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(38px, 4.5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -.045em;
+}
+
+.hybrid-page .hybrid-heading p {
+    color: var(--ink-soft);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+
+/* flow */
+
+.hybrid-page .energy-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.hybrid-page .flow-card {
+    position: relative;
+    min-height: 280px;
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: white;
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform .5s cubic-bezier(.16,1,.3,1),
+        box-shadow .5s ease,
+        border-color .5s ease;
+}
+
+.hybrid-page .flow-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(47,143,120,.28);
+}
+
+.hybrid-page .featured-flow {
+    background:
+        linear-gradient(
+            145deg,
+            #e4f7ef,
+            #f8fffc
+        );
+    border-color: rgba(47,143,120,.25);
+}
+
+.hybrid-page .flow-number {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+
+    color: #a1bdb6;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.hybrid-page .flow-icon {
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: 25px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    color: var(--mint-deep);
+    background: var(--mint-100);
+
+    transition: .45s ease;
+}
+
+.hybrid-page .flow-card:hover .flow-icon {
+    transform: rotate(-7deg) scale(1.08);
+    background: var(--mint-dark);
+    color: white;
+}
+
+.hybrid-page .flow-card h3 {
+    margin-bottom: 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 19px;
+}
+
+.hybrid-page .flow-card p {
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.75;
+}
+
+.hybrid-page .flow-arrow {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--mint-dark);
+
+    animation: hybridArrowPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   BENEFITS
+   ========================================================= */
+
+.hybrid-page .hybrid-benefits {
+    position: relative;
+    padding: 145px 0;
+    overflow: hidden;
+
+    background: white;
+}
+
+.hybrid-page .benefit-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hybrid-page .circle-one {
+    width: 450px;
+    height: 450px;
+    right: -220px;
+    top: -150px;
+    background: rgba(120,203,178,.11);
+}
+
+.hybrid-page .circle-two {
+    width: 300px;
+    height: 300px;
+    left: -150px;
+    bottom: -100px;
+    background: rgba(169,222,205,.12);
+}
+
+.hybrid-page .hybrid-benefit-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: 1fr .72fr;
+    gap: 90px;
+    align-items: center;
+}
+
+.hybrid-page .benefit-highlight {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    margin-top: 30px;
+    padding: 20px;
+
+    border-left: 4px solid var(--mint-dark);
+    border-radius: 0 16px 16px 0;
+
+    background: var(--mint-100);
+}
+
+.hybrid-page .benefit-highlight > i {
+    font-size: 27px;
+    color: var(--mint-dark);
+}
+
+.hybrid-page .benefit-highlight strong {
+    display: block;
+    font-size: 14px;
+}
+
+.hybrid-page .benefit-highlight span {
+    display: block;
+    margin-top: 5px;
+    color: #718a84;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* battery */
+
+.hybrid-page .battery-display {
+    padding: 14px;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d4c40,
+            #176957
+        );
+
+    box-shadow:
+        0 40px 90px rgba(23,105,87,.28);
+
+    transform: perspective(1000px) rotateY(-6deg);
+
+    transition: transform .6s cubic-bezier(.16,1,.3,1);
+}
+
+.hybrid-page .battery-display:hover {
+    transform: perspective(1000px) rotateY(0) translateY(-8px);
+}
+
+.hybrid-page .battery-top {
+    padding: 18px;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 10px;
+    letter-spacing: .18em;
+    font-weight: 800;
+    text-align: center;
+}
+
+.hybrid-page .battery-body {
+    position: relative;
+
+    min-height: 330px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.02)
+        );
+}
+
+.hybrid-page .battery-level {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+
+    height: 80%;
+
+    display: flex;
+    align-items: flex-end;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: rgba(255,255,255,.04);
+}
+
+.hybrid-page .battery-level span {
+    width: 100%;
+    height: 87%;
+
+    display: block;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #b8ebd9,
+            #5ebc9e
+        );
+
+    animation: hybridBatteryCharge 2s cubic-bezier(.16,1,.3,1);
+}
+
+.hybrid-page .battery-body strong,
+.hybrid-page .battery-body small {
+    position: relative;
+    z-index: 3;
+}
+
+.hybrid-page .battery-body strong {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 70px;
+    letter-spacing: -.06em;
+}
+
+.hybrid-page .battery-body small {
+    color: rgba(255,255,255,.72);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .15em;
+}
+
+.hybrid-page .battery-footer {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 20px 10px 15px;
+
+    color: rgba(255,255,255,.78);
+
+    font-size: 10px;
+}
+
+.hybrid-page .battery-footer span {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+
+/* =========================================================
+   ADVANTAGES
+   ========================================================= */
+
+.hybrid-page .hybrid-advantages {
+    padding: 140px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eefaf5,
+            #f9fffd
+        );
+}
+
+.hybrid-page .hybrid-advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.hybrid-page .hybrid-advantage-card {
+    position: relative;
+
+    min-height: 310px;
+    padding: 32px;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.92);
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform .55s cubic-bezier(.16,1,.3,1),
+        box-shadow .55s ease,
+        border-color .55s ease;
+}
+
+.hybrid-page .hybrid-advantage-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: -75px;
+    bottom: -75px;
+
+    border-radius: 50%;
+
+    background: rgba(120,203,178,.12);
+
+    transition: .55s ease;
+}
+
+.hybrid-page .hybrid-advantage-card:hover {
+    transform: translateY(-13px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(47,143,120,.28);
+}
+
+.hybrid-page .hybrid-advantage-card:hover::after {
+    transform: scale(1.7);
+}
+
+.hybrid-page .advantage-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hybrid-page .advantage-top > span {
+    color: #9bb9b1;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.hybrid-page .advantage-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 16px;
+
+    color: var(--mint-dark);
+    background: var(--mint-100);
+
+    transition: .45s ease;
+}
+
+.hybrid-page .hybrid-advantage-card:hover .advantage-icon {
+    color: white;
+    background: var(--mint-dark);
+    transform: rotate(-7deg) scale(1.08);
+}
+
+.hybrid-page .advantage-icon i {
+    font-size: 23px;
+}
+
+.hybrid-page .hybrid-advantage-card h3 {
+    margin: 30px 0 13px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+}
+
+.hybrid-page .hybrid-advantage-card p {
+    position: relative;
+    z-index: 2;
+
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.hybrid-page .advantage-line {
+    width: 45px;
+    height: 3px;
+
+    margin-top: 25px;
+
+    border-radius: 99px;
+
+    background: var(--mint-dark);
+
+    transition: width .5s ease;
+}
+
+.hybrid-page .hybrid-advantage-card:hover .advantage-line {
+    width: 90px;
+}
+
+
+/* =========================================================
+   SMART ENERGY
+   ========================================================= */
+
+.hybrid-page .hybrid-smart {
+    padding: 135px 0;
+    background: white;
+}
+
+.hybrid-page .smart-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+
+    overflow: hidden;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e7f8f1,
+            #f8fffc
+        );
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-md);
+}
+
+.hybrid-page .smart-image {
+    position: relative;
+    min-height: 600px;
+}
+
+.hybrid-page .smart-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hybrid-page .smart-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 50%,
+            rgba(232,248,241,.35)
+        );
+}
+
+.hybrid-page .smart-image-badge {
+    position: absolute;
+    z-index: 3;
+
+    left: 28px;
+    bottom: 28px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px 17px;
+
+    border-radius: 13px;
+
+    color: var(--mint-deep);
+    background: rgba(255,255,255,.9);
+    backdrop-filter: blur(15px);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .1em;
+}
+
+.hybrid-page .smart-content {
+    padding: 75px 65px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hybrid-page .smart-list {
+    display: grid;
+    gap: 14px;
+
+    margin-top: 28px;
+}
+
+.hybrid-page .smart-list > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px 17px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(47,143,120,.09);
+
+    color: var(--ink-soft);
+
+    font-size: 13px;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.hybrid-page .smart-list > div:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-sm);
+}
+
+.hybrid-page .smart-list i {
+    color: var(--mint-dark);
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.hybrid-page .hybrid-final-cta {
+    position: relative;
+
+    padding: 150px 0;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(120,203,178,.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #0a4438,
+            #123f37
+        );
+
+    color: white;
+}
+
+.hybrid-page .cta-orb {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(184,235,217,.15);
+}
+
+.hybrid-page .orb-left {
+    width: 500px;
+    height: 500px;
+    left: -250px;
+    top: -150px;
+}
+
+.hybrid-page .orb-right {
+    width: 400px;
+    height: 400px;
+    right: -200px;
+    bottom: -200px;
+}
+
+.hybrid-page .hybrid-cta-content {
+    position: relative;
+    z-index: 3;
+
+    max-width: 850px;
+    margin-inline: auto;
+}
+
+.hybrid-page .cta-icon {
+    width: 76px;
+    height: 76px;
+
+    margin: 0 auto 25px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 24px;
+
+    color: var(--mint-200);
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+
+    animation: hybridFloatCard 4s ease-in-out infinite;
+}
+
+.hybrid-page .cta-icon i {
+    font-size: 30px;
+}
+
+.hybrid-page .hybrid-final-cta .hybrid-section-label {
+    color: var(--mint-200);
+}
+
+.hybrid-page .hybrid-final-cta h2 {
+    margin: 20px 0;
+
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(42px, 5.5vw, 75px);
+    line-height: 1;
+    letter-spacing: -.055em;
+}
+
+.hybrid-page .hybrid-final-cta h2 span {
+    color: var(--mint-300);
+}
+
+.hybrid-page .hybrid-final-cta p {
+    max-width: 680px;
+    margin: 0 auto;
+
+    color: rgba(255,255,255,.68);
+
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.hybrid-page .hybrid-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+
+    margin-top: 35px;
+}
+
+.hybrid-page .hybrid-cta-primary {
+    background: var(--mint);
+    color: var(--mint-darkest);
+}
+
+.hybrid-page .hybrid-cta-primary:hover {
+    background: white;
+    color: var(--mint-deep);
+}
+
+.hybrid-page .hybrid-cta-outline {
+    color: white;
+    border: 1px solid rgba(255,255,255,.22);
+    background: rgba(255,255,255,.05);
+}
+
+.hybrid-page .hybrid-cta-outline:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,.1);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.hybrid-page .hybrid-reveal-right,
+.hybrid-page .hybrid-reveal-left,
+.hybrid-page .hybrid-reveal-up {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.hybrid-page .hybrid-reveal-right {
+    transform: translate3d(110px, 0, 0);
+}
+
+.hybrid-page .hybrid-reveal-left {
+    transform: translate3d(-110px, 0, 0);
+}
+
+.hybrid-page .hybrid-reveal-up {
+    transform: translate3d(0, 80px, 0);
+}
+
+.hybrid-page .hybrid-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+
+    transition:
+        opacity 1s ease,
+        transform 1.15s cubic-bezier(.16, 1, .3, 1);
+}
+
+
+/* stagger */
+
+.hybrid-page .hybrid-advantage-card:nth-child(2),
+.hybrid-page .flow-card:nth-child(2) {
+    transition-delay: .08s;
+}
+
+.hybrid-page .hybrid-advantage-card:nth-child(3),
+.hybrid-page .flow-card:nth-child(3) {
+    transition-delay: .16s;
+}
+
+.hybrid-page .hybrid-advantage-card:nth-child(4) {
+    transition-delay: .24s;
+}
+
+.hybrid-page .hybrid-advantage-card:nth-child(5) {
+    transition-delay: .32s;
+}
+
+.hybrid-page .hybrid-advantage-card:nth-child(6) {
+    transition-delay: .40s;
+}
+
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes hybridFloatOrb {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(0, 25px, 0) scale(1.05);
+    }
+}
+
+@keyframes hybridPulse {
+    0%,
+    100% {
+        transform: scale(.95);
+        opacity: .65;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+@keyframes hybridIconPulse {
+    0%,
+    100% {
+        box-shadow: 0 12px 30px rgba(47,143,120,.25);
+    }
+
+    50% {
+        box-shadow:
+            0 12px 35px rgba(47,143,120,.45),
+            0 0 0 10px rgba(120,203,178,.10);
+    }
+}
+
+@keyframes hybridRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes hybridEnergyFlow {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(210px);
+    }
+}
+
+@keyframes hybridFloatCard {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+@keyframes hybridArrowPulse {
+    0%,
+    100% {
+        transform: translateX(0);
+        opacity: .65;
+    }
+
+    50% {
+        transform: translateX(7px);
+        opacity: 1;
+    }
+}
+
+@keyframes hybridBatteryCharge {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 87%;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .hybrid-page .hybrid-hero {
+        min-height: auto;
+        padding: 120px 0;
+    }
+
+    .hybrid-page .hybrid-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 80px;
+    }
+
+    .hybrid-page .hybrid-hero-content {
+        max-width: 800px;
+    }
+
+    .hybrid-page .hybrid-system-visual {
+        max-width: 540px;
+    }
+
+    .hybrid-page .hybrid-intro-grid,
+    .hybrid-page .hybrid-benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 70px;
+    }
+
+    .hybrid-page .intro-image-card {
+        max-width: 700px;
+        margin-inline: auto;
+    }
+
+    .hybrid-page .hybrid-benefit-visual {
+        max-width: 500px;
+        margin-inline: auto;
+    }
+
+    .hybrid-page .energy-flow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hybrid-page .flow-arrow {
+        display: none;
+    }
+
+    .hybrid-page .hybrid-advantage-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hybrid-page .smart-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .hybrid-page .smart-image {
+        min-height: 500px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .hybrid-page .container {
+        width: min(100% - 30px, 1240px);
+    }
+
+    .hybrid-page .hybrid-hero {
+        padding: 95px 0 80px;
+    }
+
+    .hybrid-page .hybrid-hero-grid {
+        gap: 55px;
+    }
+
+    .hybrid-page .hybrid-hero h1 {
+        font-size: clamp(43px, 13vw, 62px);
+    }
+
+    .hybrid-page .hybrid-hero p {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .hybrid-page .hybrid-hero-actions {
+        flex-direction: column;
+    }
+
+    .hybrid-page .hybrid-primary-btn,
+    .hybrid-page .hybrid-secondary-btn {
+        width: 100%;
+    }
+
+    .hybrid-page .hybrid-hero-stats {
+        gap: 22px;
+        justify-content: space-between;
+    }
+
+    .hybrid-page .hybrid-stat strong {
+        font-size: 19px;
+    }
+
+    .hybrid-page .hybrid-stat span {
+        font-size: 9px;
+    }
+
+    .hybrid-page .hybrid-system-visual {
+        width: 100%;
+        max-width: 430px;
+    }
+
+    .hybrid-page .system-center {
+        width: 145px;
+        height: 145px;
+    }
+
+    .hybrid-page .center-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .hybrid-page .energy-node {
+        width: 105px;
+        min-height: 105px;
+        padding: 12px;
+        border-radius: 18px;
+    }
+
+    .hybrid-page .node-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hybrid-page .energy-node strong {
+        font-size: 11px;
+    }
+
+    .hybrid-page .energy-node span {
+        font-size: 8px;
+    }
+
+    .hybrid-page .solar-node {
+        left: 0;
+        top: 10%;
+    }
+
+    .hybrid-page .battery-node {
+        right: 0;
+        top: 10%;
+    }
+
+    .hybrid-page .grid-node {
+        left: 0;
+        bottom: 10%;
+    }
+
+    .hybrid-page .home-node {
+        right: 0;
+        bottom: 10%;
+    }
+
+    .hybrid-page .path-one,
+    .hybrid-page .path-two,
+    .hybrid-page .path-three,
+    .hybrid-page .path-four {
+        width: 90px;
+    }
+
+
+    /* sections */
+
+    .hybrid-page .hybrid-introduction,
+    .hybrid-page .hybrid-how,
+    .hybrid-page .hybrid-benefits,
+    .hybrid-page .hybrid-advantages,
+    .hybrid-page .hybrid-smart,
+    .hybrid-page .hybrid-final-cta {
+        padding: 90px 0;
+    }
+
+
+    .hybrid-page .hybrid-intro-grid,
+    .hybrid-page .hybrid-benefit-grid {
+        gap: 55px;
+    }
+
+    .hybrid-page .intro-image-card img {
+        height: 390px;
+        border-radius: 22px;
+    }
+
+    .hybrid-page .intro-floating-card {
+        right: 12px;
+        bottom: 20px;
+        width: 220px;
+        padding: 14px;
+    }
+
+    .hybrid-page .intro-number {
+        left: 15px;
+        top: 15px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .hybrid-page .hybrid-intro-content h2,
+    .hybrid-page .hybrid-benefit-content h2,
+    .hybrid-page .smart-content h2,
+    .hybrid-page .hybrid-heading h2 {
+        font-size: 38px;
+    }
+
+
+    /* flow */
+
+    .hybrid-page .energy-flow {
+        grid-template-columns: 1fr;
+    }
+
+    .hybrid-page .flow-card {
+        min-height: auto;
+        padding: 25px;
+    }
+
+
+    /* advantages */
+
+    .hybrid-page .hybrid-advantage-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hybrid-page .hybrid-advantage-card {
+        min-height: auto;
+    }
+
+
+    /* smart */
+
+    .hybrid-page .smart-image {
+        min-height: 350px;
+    }
+
+    .hybrid-page .smart-content {
+        padding: 45px 25px;
+    }
+
+
+    /* battery */
+
+    .hybrid-page .battery-body {
+        min-height: 280px;
+    }
+
+    .hybrid-page .battery-body strong {
+        font-size: 55px;
+    }
+
+
+    /* CTA */
+
+    .hybrid-page .hybrid-final-cta h2 {
+        font-size: 43px;
+    }
+
+    .hybrid-page .hybrid-cta-buttons {
+        flex-direction: column;
+    }
+
+    .hybrid-page .hybrid-cta-primary,
+    .hybrid-page .hybrid-cta-outline {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .hybrid-page .hybrid-hero h1 {
+        font-size: 42px;
+    }
+
+    .hybrid-page .hybrid-hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .hybrid-page .hybrid-stat strong {
+        font-size: 17px;
+    }
+
+    .hybrid-page .hybrid-stat span {
+        font-size: 8px;
+    }
+
+    .hybrid-page .hybrid-system-visual {
+        transform: scale(.88);
+        transform-origin: center;
+        margin-block: -25px;
+    }
+
+    .hybrid-page .hybrid-intro-content h2,
+    .hybrid-page .hybrid-benefit-content h2,
+    .hybrid-page .smart-content h2,
+    .hybrid-page .hybrid-heading h2 {
+        font-size: 34px;
+    }
+
+    .hybrid-page .intro-floating-card {
+        width: 200px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hybrid-page *,
+    .hybrid-page *::before,
+    .hybrid-page *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+
+    .hybrid-page .hybrid-reveal-right,
+    .hybrid-page .hybrid-reveal-left,
+    .hybrid-page .hybrid-reveal-up {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* =========================================================
+   HYBRID PLANNING / SYSTEM ASSESSMENT
+========================================================= */
+
+.hybrid-planning {
+    position: relative;
+    padding: 120px 0;
+    background: #f5f8f4;
+    overflow: hidden;
+}
+
+
+/* Soft background decoration */
+
+.hybrid-planning::before {
+    content: "";
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(74, 170, 113, 0.13) 0%,
+            rgba(74, 170, 113, 0.04) 45%,
+            transparent 72%
+        );
+
+    top: -220px;
+    right: -180px;
+
+    pointer-events: none;
+}
+
+
+.hybrid-planning::after {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(245, 190, 62, 0.10) 0%,
+            transparent 70%
+        );
+
+    bottom: -220px;
+    left: -160px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.hybrid-planning .hybrid-heading {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin: 0 auto 70px;
+
+    text-align: center;
+}
+
+
+.hybrid-planning .hybrid-section-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+
+    color: #23834d;
+}
+
+
+.hybrid-planning .hybrid-heading h2 {
+    margin: 0;
+
+    color: #17251d;
+
+    font-size: clamp(36px, 4vw, 58px);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+}
+
+
+.hybrid-planning .hybrid-heading h2 span {
+    display: inline;
+
+    color: #258653;
+}
+
+
+.hybrid-planning .hybrid-heading p {
+    max-width: 680px;
+
+    margin: 24px auto 0;
+
+    color: #68736d;
+
+    font-size: 17px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   PROCESS GRID
+========================================================= */
+
+.hybrid-process-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   PROCESS CARD
+========================================================= */
+
+.hybrid-process-card {
+
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 38px 30px 34px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(35, 131, 77, 0.10);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(24, 52, 36, 0.06);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/* Top green line */
+
+.hybrid-process-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #23834d,
+            #69b77e
+        );
+
+    transform: scaleX(0);
+
+    transform-origin: left;
+
+    transition: transform 0.45s ease;
+}
+
+
+/* Background number */
+
+.hybrid-process-card::after {
+
+    content: attr(data-number);
+
+    position: absolute;
+
+    right: -12px;
+    bottom: -28px;
+
+    font-size: 130px;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    color: rgba(35, 131, 77, 0.035);
+
+    pointer-events: none;
+}
+
+
+.hybrid-process-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(35, 131, 77, 0.25);
+
+    box-shadow:
+        0 25px 55px rgba(24, 52, 36, 0.12);
+}
+
+
+.hybrid-process-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.hybrid-process-card > span {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    margin-bottom: 28px;
+
+    border-radius: 50%;
+
+    background: #edf7ef;
+
+    color: #23834d;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.hybrid-process-card:hover > span {
+
+    background: #23834d;
+
+    color: #ffffff;
+
+    transform:
+        rotate(8deg)
+        scale(1.05);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.hybrid-process-card > i {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: 24px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eef9f0,
+            #dff1e4
+        );
+
+    color: #23834d;
+
+    font-size: 27px;
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(35, 131, 77, 0.08);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease,
+        color 0.4s ease;
+}
+
+
+.hybrid-process-card:hover > i {
+
+    transform:
+        translateY(-3px)
+        rotate(-4deg);
+
+    background:
+        linear-gradient(
+            145deg,
+            #23834d,
+            #319b5e
+        );
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.hybrid-process-card h3 {
+
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 13px;
+
+    color: #17251d;
+
+    font-size: 21px;
+
+    line-height: 1.25;
+
+    font-weight: 750;
+
+    letter-spacing: -0.3px;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.hybrid-process-card:hover h3 {
+    color: #23834d;
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.hybrid-process-card p {
+
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    max-width: 270px;
+
+    color: #707a74;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SMALL CARD FOOTER LINE
+========================================================= */
+
+.hybrid-process-card .process-line {
+
+    position: absolute;
+
+    left: 30px;
+    right: 30px;
+    bottom: 25px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(35, 131, 77, 0.22),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.hybrid-process-card.hybrid-reveal-up {
+
+    opacity: 0;
+
+    transform:
+        translateY(45px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(.2,.65,.25,1),
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+.hybrid-process-card.hybrid-reveal-up.hybrid-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* Stagger */
+
+.hybrid-process-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.hybrid-process-card:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.hybrid-process-card:nth-child(3) {
+    transition-delay: 0.19s;
+}
+
+.hybrid-process-card:nth-child(4) {
+    transition-delay: 0.26s;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .hybrid-planning {
+        padding: 100px 0;
+    }
+
+
+    .hybrid-process-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 22px;
+    }
+
+
+    .hybrid-process-card {
+        min-height: 300px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .hybrid-planning {
+        padding: 75px 0;
+    }
+
+
+    .hybrid-planning .hybrid-heading {
+
+        margin-bottom: 45px;
+
+        padding: 0 10px;
+    }
+
+
+    .hybrid-planning .hybrid-heading h2 {
+
+        font-size: 34px;
+
+        line-height: 1.12;
+    }
+
+
+    .hybrid-planning .hybrid-heading p {
+
+        font-size: 15px;
+
+        line-height: 1.65;
+    }
+
+
+    .hybrid-process-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+
+    .hybrid-process-card {
+
+        min-height: auto;
+
+        padding: 30px 25px 32px;
+
+        border-radius: 20px;
+    }
+
+
+    .hybrid-process-card > span {
+
+        margin-bottom: 22px;
+    }
+
+
+    .hybrid-process-card > i {
+
+        width: 56px;
+        height: 56px;
+
+        margin-bottom: 20px;
+
+        font-size: 24px;
+    }
+
+
+    .hybrid-process-card h3 {
+
+        font-size: 20px;
+    }
+
+
+    .hybrid-process-card p {
+
+        max-width: 100%;
+
+        font-size: 14px;
+    }
+
+}

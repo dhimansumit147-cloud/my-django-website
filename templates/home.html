@@ -1,0 +1,2103 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Home | ESUNGREEN Solar
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/home.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- =========================================================
+     HERO SLIDER
+     
+     SLIDER IS KEPT AS-IS
+========================================================= -->
+
+<section class="home-hero">
+
+    <div
+        id="solarCarousel"
+        class="carousel slide"
+        data-bs-ride="carousel"
+        data-bs-interval="10000"
+        data-bs-pause="false"
+    >
+
+        {% if sliders %}
+
+            <div class="carousel-indicators">
+
+                {% for slider in sliders %}
+
+                    <button
+                        type="button"
+                        data-bs-target="#solarCarousel"
+                        data-bs-slide-to="{{ forloop.counter0 }}"
+                        {% if forloop.first %}
+                            class="active"
+                            aria-current="true"
+                        {% endif %}
+                        aria-label="Slide {{ forloop.counter }}"
+                    ></button>
+
+                {% endfor %}
+
+            </div>
+
+
+            <div class="carousel-inner">
+
+                {% for slider in sliders %}
+
+                    <div
+                        class="carousel-item {% if forloop.first %}active{% endif %}"
+                    >
+
+                        {% if slider.image %}
+
+                            <img
+                                src="{{ slider.image.url }}"
+                                class="slider-image"
+                                alt="{{ slider.title|default:'ESUNGREEN Solar' }}"
+                                {% if forloop.first %}
+                                    fetchpriority="high"
+                                {% else %}
+                                    loading="lazy"
+                                {% endif %}
+                            >
+
+                        {% else %}
+
+                            <img
+                                src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=2200&q=90"
+                                class="slider-image"
+                                alt="Solar Panels"
+                                loading="lazy"
+                            >
+
+                        {% endif %}
+
+
+                        <div class="slider-overlay"></div>
+
+
+                        <div class="carousel-caption">
+
+                            <div class="hero-content">
+
+                                <span class="hero-eyebrow">
+
+                                    <span class="hero-eyebrow-line"></span>
+
+                                    {{ slider.small_title|default:"SMART • CLEAN • SIMPLE" }}
+
+                                </span>
+
+
+                                <h1>
+
+                                    {% if slider.title %}
+
+                                        {{ slider.title }}
+
+                                    {% else %}
+
+                                        Power Your Home
+
+                                        <span>
+                                            With Solar Energy
+                                        </span>
+
+                                    {% endif %}
+
+                                </h1>
+
+
+                                <p>
+
+                                    {% if slider.subtitle %}
+
+                                        <b>
+                                            {{ slider.subtitle }}
+                                        </b>
+
+                                    {% else %}
+
+                                        Smart, reliable and efficient
+                                        solar energy solutions for homes
+                                        and businesses.
+
+                                    {% endif %}
+
+                                </p>
+
+
+                                <div class="hero-actions">
+
+                                    {% if slider.button_text %}
+
+                                        <a
+                                            href="{{ slider.button_link|default:'#' }}"
+                                            class="hero-btn"
+                                        >
+
+                                            <span>
+                                                {{ slider.button_text }}
+                                            </span>
+
+                                            <i class="bi bi-arrow-right"></i>
+
+                                        </a>
+
+                                    {% else %}
+
+                                        <a
+                                            href="{% url 'contact' %}"
+                                            class="hero-btn"
+                                        >
+
+                                            <span>
+                                                Get A Free Quote
+                                            </span>
+
+                                            <i class="bi bi-arrow-right"></i>
+
+                                        </a>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#solarCarousel"
+                data-bs-slide="prev"
+                aria-label="Previous Slide"
+            >
+
+                <span class="slider-control-icon">
+                    <i class="bi bi-arrow-left"></i>
+                </span>
+
+            </button>
+
+
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#solarCarousel"
+                data-bs-slide="next"
+                aria-label="Next Slide"
+            >
+
+                <span class="slider-control-icon">
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+
+            </button>
+
+
+        {% else %}
+
+
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=2200&q=90"
+                        class="slider-image"
+                        alt="Solar Panels"
+                        fetchpriority="high"
+                    >
+
+                    <div class="slider-overlay"></div>
+
+
+                    <div class="carousel-caption">
+
+                        <div class="hero-content">
+
+                            <span class="hero-eyebrow">
+
+                                <span class="hero-eyebrow-line"></span>
+
+                                SMART • CLEAN • SIMPLE
+
+                            </span>
+
+
+                            <h1>
+
+                                Power Your Home
+
+                                <span>
+                                    With Solar Energy
+                                </span>
+
+                            </h1>
+
+
+                            <p>
+
+                                Smart, reliable and efficient
+                                solar energy solutions for homes
+                                and businesses.
+
+                            </p>
+
+
+                            <div class="hero-actions">
+
+                                <a
+                                    href="{% url 'contact' %}"
+                                    class="hero-btn"
+                                >
+
+                                    <span>
+                                        Get A Free Quote
+                                    </span>
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ESUNGREEN STATS
+========================================================= -->
+
+<section class="esg-stats-section">
+  <div class="esg-stats-wrap">
+
+    <div class="esg-stat-card">
+      <div class="esg-stat-icon esg-icon-building">▦</div>
+
+      <div class="esg-stat-info">
+        <div class="esg-stat-number">
+          <span>150</span><b>+</b>
+        </div>
+        <div class="esg-stat-label">
+          Commercial Solar<br>Projects
+        </div>
+      </div>
+    </div>
+
+
+    <div class="esg-stat-card">
+      <div class="esg-stat-icon">⌂</div>
+
+      <div class="esg-stat-info">
+        <div class="esg-stat-number">
+          <span>6,000</span><b>+</b>
+        </div>
+        <div class="esg-stat-label">
+          Residential Solar Systems
+        </div>
+      </div>
+    </div>
+
+
+    <div class="esg-stat-card">
+      <div class="esg-stat-icon">⚡</div>
+
+      <div class="esg-stat-info">
+        <div class="esg-stat-number">
+          <span>1,600</span><b>+</b>
+        </div>
+        <div class="esg-stat-label">
+          Battery Systems
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT ESUNGREEN
+========================================================= -->
+
+<section class="home-about-section">
+
+    <div class="container">
+
+        <div class="home-about-grid">
+
+
+            <div class="home-about-content">
+
+                <span class="section-tag">
+                    About ESUNGREEN
+                </span>
+
+
+                <h2>
+
+                    Smarter Energy For A
+
+                    <span>
+                        Cleaner Tomorrow
+                    </span>
+
+                </h2>
+
+
+                <p>
+                    ESUNGREEN provides modern solar energy
+                    solutions designed to help homes and
+                    businesses generate, store and use
+                    cleaner energy.
+                </p>
+
+
+                <p>
+                    From solar panels and inverters to battery
+                    storage and EV charging solutions, we help
+                    customers choose energy systems that fit
+                    their needs and goals.
+                </p>
+
+
+                <p>
+                    Our focus is simple: quality products,
+                    professional installation and dependable
+                    customer support.
+                </p>
+
+
+                <p>
+                    We work with customers to understand their
+                    energy requirements and create practical
+                    solar solutions for long-term performance.
+                </p>
+
+
+                <a
+                    href="{% url 'about' %}"
+                    class="section-btn"
+                >
+
+                    <span>
+                        Discover ESUNGREEN
+                    </span>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <div class="home-about-highlight">
+
+
+                <div class="about-highlight-card">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    <h3>
+                        Quality Solutions
+                    </h3>
+
+                    <p>
+                        Carefully selected solar products
+                        designed for reliable everyday
+                        performance.
+                    </p>
+
+                </div>
+
+
+
+                <div class="about-highlight-card">
+
+                    <i class="bi bi-sun-fill"></i>
+
+                    <h3>
+                        Clean Energy
+                    </h3>
+
+                    <p>
+                        Use the power of the sun to generate
+                        cleaner and more sustainable energy.
+                    </p>
+
+                </div>
+
+
+
+                <div class="about-highlight-card">
+
+                    <i class="bi bi-headset"></i>
+
+                    <h3>
+                        Customer Support
+                    </h3>
+
+                    <p>
+                        Our team is here to help with your
+                        solar journey before and after
+                        installation.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SOLAR PRODUCTS
+========================================================= -->
+
+<section class="solar-products-section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                ESUNGREEN Solutions
+            </span>
+
+            <h2>
+                Complete Solar Energy Solutions
+            </h2>
+
+            <p>
+                Explore our range of solar and energy products
+                designed for homes and businesses.
+            </p>
+
+        </div>
+
+
+        <div class="solar-products-grid">
+
+
+            <!-- SOLAR PANELS -->
+
+            <article class="solar-product-card">
+
+                <div class="product-number">
+                    01
+                </div>
+
+
+                <div class="product-image">
+
+                    <img
+                        src="{% static 'IMAGE/img16.jpg' %}"
+                        alt="ESUNGREEN Solar Panels"
+                        loading="lazy"
+                    >
+
+                    <div class="product-image-overlay"></div>
+
+                </div>
+
+
+                <div class="product-body">
+
+                    <div class="product-icon">
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                    </div>
+
+
+                    <h3>
+                        Solar Panels
+                    </h3>
+
+
+                    <p>
+                        Generate clean electricity from sunlight
+                        with quality solar panels selected for
+                        residential and commercial applications.
+                    </p>
+
+
+                    <a
+                        href="/solar-modules/"
+                        class="product-link"
+                    >
+
+                        <span>
+                            Explore Solar Panels
+                        </span>
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- INVERTERS -->
+
+            <article class="solar-product-card">
+
+                <div class="product-number">
+                    02
+                </div>
+
+
+                <div class="product-image">
+
+                    <img
+                        src="{% static 'IMAGE/img3.jpg' %}"
+                        alt="ESUNGREEN Solar Inverter"
+                        loading="lazy"
+                    >
+
+                    <div class="product-image-overlay"></div>
+
+                </div>
+
+
+                <div class="product-body">
+
+                    <div class="product-icon">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+
+
+                    <h3>
+                        Solar Inverters
+                    </h3>
+
+
+                    <p>
+                        Efficiently convert solar energy into
+                        usable electricity for your home or
+                        business.
+                    </p>
+
+
+                    <a
+                        href="/solar-inverters/"
+                        class="product-link"
+                    >
+
+                        <span>
+                            Explore Inverters
+                        </span>
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- BATTERIES -->
+
+            <article class="solar-product-card">
+
+                <div class="product-number">
+                    03
+                </div>
+
+
+                <div class="product-image">
+
+                    <img
+                        src="{% static 'IMAGE/img4.png' %}"
+                        alt="ESUNGREEN Solar Battery Storage"
+                        loading="lazy"
+                    >
+
+                    <div class="product-image-overlay"></div>
+
+                </div>
+
+
+                <div class="product-body">
+
+                    <div class="product-icon">
+                        <i class="bi bi-battery-full"></i>
+                    </div>
+
+
+                    <h3>
+                        Battery Storage
+                    </h3>
+
+
+                    <p>
+                        Store excess solar energy and use it
+                        when you need it, including during
+                        evenings and periods of low solar
+                        generation.
+                    </p>
+
+
+                    <a
+                        href="/battery-storage/"
+                        class="product-link"
+                    >
+
+                        <span>
+                            Explore Batteries
+                        </span>
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- EV CHARGERS -->
+
+            <article class="solar-product-card">
+
+                <div class="product-number">
+                    04
+                </div>
+
+
+                <div class="product-image">
+
+                    <img
+                        src="{% static 'IMAGE/ev-charger.jpg' %}"
+                        alt="ESUNGREEN EV Charger"
+                        loading="lazy"
+                    >
+
+                    <div class="product-image-overlay"></div>
+
+                </div>
+
+
+                <div class="product-body">
+
+                    <div class="product-icon">
+                        <i class="bi bi-ev-front-fill"></i>
+                    </div>
+
+
+                    <h3>
+                        EV Chargers
+                    </h3>
+
+
+                    <p>
+                        Convenient electric vehicle charging
+                        solutions that can work alongside
+                        your solar energy system.
+                    </p>
+
+
+                    <a
+                        href="/ev-chargers/"
+                        class="product-link"
+                    >
+
+                        <span>
+                            Explore EV Chargers
+                        </span>
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section class="installation-section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                Our Services
+            </span>
+
+            <h2>
+                Solar Solutions For Every Need
+            </h2>
+
+            <p>
+                From your first consultation to installation
+                and ongoing support, ESUNGREEN helps make
+                your transition to solar simple.
+            </p>
+
+        </div>
+
+
+        <div class="installation-grid">
+
+
+            <div class="installation-card">
+
+                <span class="step-number">
+                    01
+                </span>
+
+                <div class="step-icon">
+                    <i class="bi bi-house-fill"></i>
+                </div>
+
+                <h3>
+                    Residential Solar
+                </h3>
+
+                <p>
+                    Solar energy solutions designed to help
+                    households reduce grid electricity use
+                    and improve energy independence.
+                </p>
+
+            </div>
+
+
+
+            <div class="installation-card">
+
+                <span class="step-number">
+                    02
+                </span>
+
+                <div class="step-icon">
+                    <i class="bi bi-building-fill"></i>
+                </div>
+
+                <h3>
+                    Commercial Solar
+                </h3>
+
+                <p>
+                    Solar systems for businesses looking to
+                    reduce energy costs and make better use
+                    of available energy resources.
+                </p>
+
+            </div>
+
+
+
+            <div class="installation-card">
+
+                <span class="step-number">
+                    03
+                </span>
+
+                <div class="step-icon">
+                    <i class="bi bi-battery-charging"></i>
+                </div>
+
+                <h3>
+                    Solar Battery Storage
+                </h3>
+
+                <p>
+                    Store excess solar generation and make
+                    more of your solar energy available
+                    when you need it.
+                </p>
+
+            </div>
+
+
+
+            <div class="installation-card">
+
+                <span class="step-number">
+                    04
+                </span>
+
+                <div class="step-icon">
+                    <i class="bi bi-ev-front-fill"></i>
+                </div>
+
+                <h3>
+                    EV Charging
+                </h3>
+
+                <p>
+                    Modern EV charging solutions designed
+                    to complement your home or business
+                    energy system.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="solar-cta-section">
+
+    <div class="container">
+
+        <div class="solar-cta-content">
+
+
+            <div>
+
+                <span class="section-tag">
+                    Go Solar With ESUNGREEN
+                </span>
+
+
+                <h2>
+                    Ready To Take Control
+                    Of Your Energy?
+                </h2>
+
+
+                <p>
+                    Talk to our team about a solar solution
+                    designed around your energy needs.
+                </p>
+
+            </div>
+
+
+            <div class="cta-button-wrapper">
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="cta-btn"
+                >
+
+                    <span>
+                        Get A Free Quote
+                    </span>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     WHY CHOOSE ESUNGREEN
+========================================================= -->
+
+<section class="sg-home-why-section">
+
+    <div class="container">
+
+        <div class="sg-home-why-heading">
+
+            <h2>
+                Why Choose
+                <span>ESUNGREEN</span>
+            </h2>
+
+            <p>
+                Quality solutions, practical advice and
+                customer-focused solar services.
+            </p>
+
+        </div>
+
+
+        <div class="sg-home-why-grid">
+
+
+            <!-- CARD 01 -->
+
+            <div class="sg-home-why-card">
+
+                <div class="sg-home-why-icon sg-home-why-icon-trusted">
+                    <i class="bi bi-shield-fill-check"></i>
+                </div>
+
+                <h3>
+                    Quality Products
+                </h3>
+
+                <p>
+                    We focus on reliable solar and energy
+                    products selected for performance,
+                    efficiency and long-term use.
+                </p>
+
+            </div>
+
+
+
+            <!-- CARD 02 -->
+
+            <div class="sg-home-why-card">
+
+                <div class="sg-home-why-icon sg-home-why-icon-pricing">
+                    <i class="bi bi-cash-coin"></i>
+                </div>
+
+                <h3>
+                    Practical Solutions
+                </h3>
+
+                <p>
+                    We help you understand your options so
+                    your solar system can be designed around
+                    your actual energy requirements.
+                </p>
+
+            </div>
+
+
+
+            <!-- CARD 03 -->
+
+            <div class="sg-home-why-card">
+
+                <div class="sg-home-why-icon sg-home-why-icon-installation">
+                    <i class="bi bi-tools"></i>
+                </div>
+
+                <h3>
+                    Professional Installation
+                </h3>
+
+                <p>
+                    Our installation approach focuses on
+                    safety, quality workmanship and proper
+                    system setup.
+                </p>
+
+            </div>
+
+
+
+            <!-- CARD 04 -->
+
+            <div class="sg-home-why-card">
+
+                <div class="sg-home-why-icon sg-home-why-icon-support">
+                    <i class="bi bi-headset"></i>
+                </div>
+
+                <h3>
+                    Customer Support
+                </h3>
+
+                <p>
+                    From choosing your system to getting
+                    help after installation, our team is
+                    available to support your solar journey.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ENERGY INDEPENDENCE
+========================================================= -->
+
+<section class="home-about-section">
+
+    <div class="container">
+
+        <div class="home-about-grid">
+
+
+            <div class="home-about-highlight">
+
+
+                <div class="about-highlight-card">
+
+                    <i class="bi bi-sun"></i>
+
+                    <h3>
+                        Generate
+                    </h3>
+
+                    <p>
+                        Generate clean electricity from
+                        sunlight with a solar system designed
+                        for your property.
+                    </p>
+
+                </div>
+
+
+
+                <div class="about-highlight-card">
+
+                    <i class="bi bi-battery-half"></i>
+
+                    <h3>
+                        Store
+                    </h3>
+
+                    <p>
+                        Add battery storage to keep more of
+                        your solar energy available when
+                        required.
+                    </p>
+
+                </div>
+
+
+
+                <div class="about-highlight-card">
+
+                    <i class="bi bi-lightning-charge"></i>
+
+                    <h3>
+                        Use
+                    </h3>
+
+                    <p>
+                        Use your generated energy for your
+                        home, business or electric vehicle.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="home-about-content">
+
+                <span class="section-tag">
+                    Energy Independence
+                </span>
+
+
+                <h2>
+
+                    One Smarter System.
+
+                    <span>
+                        More Energy Control.
+                    </span>
+
+                </h2>
+
+
+                <p>
+                    Solar energy can do more than generate
+                    electricity. With the right combination
+                    of solar panels, battery storage and EV
+                    charging, your energy system can become
+                    smarter and more flexible.
+                </p>
+
+
+                <p>
+                    ESUNGREEN helps you explore the right
+                    combination of technologies for your
+                    property and energy requirements.
+                </p>
+
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="section-btn"
+                >
+
+                    <span>
+                        Talk To Our Team
+                    </span>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT CTA
+========================================================= -->
+
+<section class="contact-cta-section">
+
+    <div class="container">
+
+        <div class="contact-cta-inner">
+
+
+            <div class="contact-cta-icon">
+                <i class="bi bi-chat-dots-fill"></i>
+            </div>
+
+
+            <div class="contact-cta-text">
+
+                <span>
+                    Need Solar Advice?
+                </span>
+
+                <h2>
+                    Let's find the right energy solution for you.
+                </h2>
+
+            </div>
+
+
+            <a
+                href="{% url 'contact' %}"
+                class="contact-cta-btn"
+            >
+
+                <span>
+                    Contact ESUNGREEN
+                </span>
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CUSTOMER REVIEWS
+========================================================= -->
+
+<section class="customer-reviews-section">
+
+    <div class="container">
+
+
+        <div class="customer-reviews-heading">
+
+            <span class="customer-reviews-tag">
+
+                <span class="customer-reviews-tag-line"></span>
+
+                Customer Reviews
+
+            </span>
+
+
+            <h2>
+
+                What Our Customers
+
+                <span>
+                    Say
+                </span>
+
+            </h2>
+
+
+            <p>
+                Hear from customers who have shared their
+                experience with ESUNGREEN.
+            </p>
+
+        </div>
+
+
+
+        {% if reviews %}
+
+            <div class="customer-reviews-grid">
+
+                {% for review in reviews %}
+
+                    <article class="customer-review-card">
+
+                        <div class="customer-review-card-glow"></div>
+
+
+                        <div class="customer-review-quote">
+
+                            <i class="bi bi-quote"></i>
+
+                        </div>
+
+
+                        <div class="customer-review-stars">
+
+                            {% for star in "12345" %}
+
+                                {% if forloop.counter <= review.rating %}
+
+                                    <i class="bi bi-star-fill"></i>
+
+                                {% else %}
+
+                                    <i class="bi bi-star"></i>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        <p class="customer-review-text">
+
+                            "{{ review.review }}"
+
+                        </p>
+
+
+                        <div class="customer-review-author">
+
+
+                            <div class="customer-review-author-icon">
+
+                                <i class="bi bi-person-fill"></i>
+
+                            </div>
+
+
+                            <div class="customer-review-author-info">
+
+                                <strong>
+                                    {{ review.name }}
+                                </strong>
+
+
+                                <span>
+
+                                    <i class="bi bi-patch-check-fill"></i>
+
+                                    Verified Customer
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+
+        {% else %}
+
+
+            <div class="customer-reviews-empty">
+
+                <div class="customer-reviews-empty-icon">
+
+                    <i class="bi bi-chat-heart-fill"></i>
+
+                </div>
+
+
+                <span class="customer-reviews-empty-badge">
+                    Your Experience Matters
+                </span>
+
+
+                <h3>
+                    Be Our First Reviewer
+                </h3>
+
+
+                <p>
+                    Share your ESUNGREEN experience and
+                    help other customers make informed
+                    solar decisions.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+
+        <!-- =================================================
+             WRITE REVIEW
+        ================================================== -->
+
+        <div class="customer-review-form-wrapper">
+
+
+            <div class="customer-review-form-header">
+
+
+                <div class="customer-review-form-icon">
+
+                    <i class="bi bi-chat-square-heart-fill"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span class="customer-review-form-tag">
+                        Share Your Experience
+                    </span>
+
+
+                    <h3>
+                        Write a Review
+                    </h3>
+
+
+                    <p>
+                        Tell us about your experience with
+                        ESUNGREEN.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <form
+                method="POST"
+                action="{% url 'submit_review' %}"
+                class="customer-review-form"
+            >
+
+                {% csrf_token %}
+
+
+                <div class="customer-review-form-group">
+
+                    <label for="review-name">
+                        Your Name
+                    </label>
+
+
+                    <div class="customer-review-input-wrapper">
+
+                        <i class="bi bi-person"></i>
+
+
+                        <input
+                            type="text"
+                            id="review-name"
+                            name="name"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="customer-review-form-group">
+
+                    <label for="review-email">
+                        Email Address
+                    </label>
+
+
+                    <div class="customer-review-input-wrapper">
+
+                        <i class="bi bi-envelope"></i>
+
+
+                        <input
+                            type="email"
+                            id="review-email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            maxlength="254"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="customer-review-form-group">
+
+                    <label for="review-rating">
+                        Rating
+                    </label>
+
+
+                    <div class="customer-review-input-wrapper">
+
+                        <i class="bi bi-star"></i>
+
+
+                        <select
+                            id="review-rating"
+                            name="rating"
+                            required
+                        >
+
+                            <option value="">
+                                Select Rating
+                            </option>
+
+
+                            <option value="5">
+                                ⭐⭐⭐⭐⭐ Excellent
+                            </option>
+
+
+                            <option value="4">
+                                ⭐⭐⭐⭐ Very Good
+                            </option>
+
+
+                            <option value="3">
+                                ⭐⭐⭐ Good
+                            </option>
+
+
+                            <option value="2">
+                                ⭐⭐ Average
+                            </option>
+
+
+                            <option value="1">
+                                ⭐ Poor
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <div
+                    class="customer-review-form-group customer-review-message-group"
+                >
+
+                    <label for="review-message">
+                        Your Review
+                    </label>
+
+
+                    <div class="customer-review-textarea-wrapper">
+
+                        <i class="bi bi-chat-text"></i>
+
+
+                        <textarea
+                            id="review-message"
+                            name="review"
+                            rows="6"
+                            placeholder="Write your experience with ESUNGREEN..."
+                            maxlength="2000"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="customer-review-submit-wrapper">
+
+                    <button
+                        type="submit"
+                        class="customer-review-submit-btn"
+                    >
+
+                        <span>
+                            Submit Review
+                        </span>
+
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     REVIEW MESSAGE POPUP
+========================================================= -->
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        {% if "review" in message.tags %}
+
+            <div
+                class="review-message-popup
+                {% if 'success' in message.tags %}
+                    success
+                {% elif 'error' in message.tags %}
+                    error
+                {% elif 'warning' in message.tags %}
+                    warning
+                {% else %}
+                    info
+                {% endif %}"
+                data-message-popup
+            >
+
+                <div class="review-message-popup-box">
+
+
+                    <button
+                        type="button"
+                        class="review-message-close"
+                        onclick="closeReviewMessage(this.closest('[data-message-popup]'))"
+                        aria-label="Close message"
+                    >
+                        &times;
+                    </button>
+
+
+
+                    <div class="review-message-icon">
+
+                        {% if "success" in message.tags %}
+
+                            <i class="bi bi-check-lg"></i>
+
+                        {% elif "error" in message.tags %}
+
+                            <i class="bi bi-x-lg"></i>
+
+                        {% elif "warning" in message.tags %}
+
+                            <i class="bi bi-exclamation-lg"></i>
+
+                        {% else %}
+
+                            <i class="bi bi-info-lg"></i>
+
+                        {% endif %}
+
+                    </div>
+
+
+
+                    <div class="review-message-content">
+
+
+                        <span class="review-message-label">
+
+                            {% if "success" in message.tags %}
+
+                                Success
+
+                            {% elif "error" in message.tags %}
+
+                                Error
+
+                            {% elif "warning" in message.tags %}
+
+                                Warning
+
+                            {% else %}
+
+                                Information
+
+                            {% endif %}
+
+                        </span>
+
+
+                        <h3>
+
+                            {% if "success" in message.tags %}
+
+                                Review Submitted Successfully!
+
+                            {% elif "error" in message.tags %}
+
+                                Please Check Your Details
+
+                            {% elif "warning" in message.tags %}
+
+                                Please Check
+
+                            {% else %}
+
+                                Information
+
+                            {% endif %}
+
+                        </h3>
+
+
+                        <p>
+                            {{ message }}
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="review-message-progress">
+
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endif %}
+
+
+{% endblock %}
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+{% block js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =========================================================
+       COUNTER ANIMATION
+    ========================================================= */
+
+    const counters =
+        document.querySelectorAll(".counter");
+
+
+    function animateCounter(counter) {
+
+        const target =
+            parseInt(
+                counter.getAttribute("data-target"),
+                10
+            );
+
+
+        if (isNaN(target)) {
+            return;
+        }
+
+
+        const duration = 1800;
+
+        const startTime =
+            performance.now();
+
+
+        function updateCounter(currentTime) {
+
+            const elapsed =
+                currentTime - startTime;
+
+
+            const progress =
+                Math.min(
+                    elapsed / duration,
+                    1
+                );
+
+
+            const easedProgress =
+                1 - Math.pow(
+                    1 - progress,
+                    3
+                );
+
+
+            const current =
+                Math.floor(
+                    easedProgress * target
+                );
+
+
+            counter.textContent =
+                current.toLocaleString();
+
+
+            if (progress < 1) {
+
+                requestAnimationFrame(
+                    updateCounter
+                );
+
+            } else {
+
+                counter.textContent =
+                    target.toLocaleString();
+
+            }
+
+        }
+
+
+        requestAnimationFrame(
+            updateCounter
+        );
+
+    }
+
+
+
+    /* =========================================================
+       COUNTER INTERSECTION OBSERVER
+    ========================================================= */
+
+    const statsSection =
+        document.querySelector(
+            ".solar-stats-section"
+        );
+
+
+    if (
+        "IntersectionObserver" in window &&
+        statsSection &&
+        counters.length
+    ) {
+
+        let started = false;
+
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting &&
+                                !started
+                            ) {
+
+                                started = true;
+
+
+                                counters.forEach(
+                                    animateCounter
+                                );
+
+
+                                observer.disconnect();
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.25
+                }
+            );
+
+
+        observer.observe(
+            statsSection
+        );
+
+
+    } else {
+
+        counters.forEach(
+            animateCounter
+        );
+
+    }
+
+
+
+    /* =========================================================
+       BOOTSTRAP CAROUSEL
+    ========================================================= */
+
+    const carousel =
+        document.getElementById(
+            "solarCarousel"
+        );
+
+
+    if (
+        carousel &&
+        typeof bootstrap !== "undefined"
+    ) {
+
+        const carouselInstance =
+            bootstrap.Carousel.getOrCreateInstance(
+                carousel,
+                {
+                    interval: 10000,
+                    pause: false,
+                    ride: "carousel",
+                    touch: true,
+                    wrap: true
+                }
+            );
+
+
+        carouselInstance.cycle();
+
+    }
+
+
+
+    /* =========================================================
+       REVIEW MESSAGE POPUP
+    ========================================================= */
+
+    const messagePopups =
+        document.querySelectorAll(
+            "[data-message-popup]"
+        );
+
+
+    messagePopups.forEach(
+        function (popup) {
+
+            setTimeout(
+                function () {
+
+                    popup.classList.add(
+                        "show"
+                    );
+
+                },
+                100
+            );
+
+
+            setTimeout(
+                function () {
+
+                    closeReviewMessage(
+                        popup
+                    );
+
+                },
+                5000
+            );
+
+        }
+    );
+
+
+
+    /* =========================================================
+       SMOOTH SCROLL
+    ========================================================= */
+
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function (event) {
+
+                        const targetId =
+                            this.getAttribute(
+                                "href"
+                            );
+
+
+                        if (
+                            targetId &&
+                            targetId !== "#"
+                        ) {
+
+                            const target =
+                                document.querySelector(
+                                    targetId
+                                );
+
+
+                            if (target) {
+
+                                event.preventDefault();
+
+
+                                target.scrollIntoView(
+                                    {
+                                        behavior: "smooth",
+                                        block: "start"
+                                    }
+                                );
+
+                            }
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+});
+
+
+/* =========================================================
+   CLOSE REVIEW MESSAGE POPUP
+========================================================= */
+
+function closeReviewMessage(popup) {
+
+    if (!popup) {
+        return;
+    }
+
+
+    popup.classList.remove(
+        "show"
+    );
+
+
+    setTimeout(
+        function () {
+
+            if (popup) {
+                popup.remove();
+            }
+
+        },
+        300
+    );
+
+}
+
+</script>
+
+{% endblock %}

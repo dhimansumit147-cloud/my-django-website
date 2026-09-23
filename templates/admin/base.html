@@ -1,0 +1,870 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Admin Panel
+        {% endblock %}
+    </title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- =====================================================
+         MAIN ADMIN CSS
+    ====================================================== -->
+
+    <link rel="stylesheet" href="{% static 'CSS/admin/admin.css' %}">
+
+
+    <!-- =====================================================
+         PAGE SPECIFIC CSS
+    ====================================================== -->
+
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- =================================================
+             LOGO
+        ================================================== -->
+
+        <div class="logo">
+
+            <img src="{% static 'IMAGE/logo.png' %}" alt="SunGreen Logo">
+
+            <h3>
+                SunGreen Admin
+            </h3>
+
+        </div>
+
+
+        <!-- =================================================
+             SIDEBAR MENU
+        ================================================== -->
+
+        <ul>
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <li>
+
+                <a href="{% url 'dashboard' %}">
+
+                    <i class="bi bi-grid"></i>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- =================================================
+                 HOME DROPDOWN
+            ================================================== -->
+
+            <li class="menu-item">
+
+                <a href="javascript:void(0)" class="menu-link">
+
+                    <i class="bi bi-house"></i>
+
+                    <span>
+                        Home
+                    </span>
+
+                    <i class="bi bi-chevron-down arrow"></i>
+
+                </a>
+
+
+                <ul class="submenu">
+
+
+                    <!-- SLIDER -->
+
+                    <li>
+
+                        <a href="{% url 'admin-slider' %}">
+
+                            <i class="bi bi-images"></i>
+
+                            <span>
+                                Slider
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </li>
+
+
+            <!-- =================================================
+                 PAGES
+            ================================================== -->
+
+            <!-- Future Pages can be added here -->
+
+
+            <!-- =================================================
+                 SERVICES
+            ================================================== -->
+
+            <!-- Future Services can be added here -->
+
+
+            <!-- =================================================
+                 SOLAR MODULES DROPDOWN
+            ================================================== -->
+
+            <li class="menu-item">
+
+                <a href="javascript:void(0)" class="menu-link">
+
+                    <i class="bi bi-sun"></i>
+
+                    <span>
+                        Solar Modules
+                    </span>
+
+                    <i class="bi bi-chevron-down arrow"></i>
+
+                </a>
+
+
+                <ul class="submenu">
+
+
+                    <!-- ADD SOLAR PRODUCT -->
+
+                    <li>
+
+                        <a href="{% url 'add_solar_product' %}">
+
+                            <i class="bi bi-plus-circle"></i>
+
+                            <span>
+                                Add Product
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- MANAGE SOLAR PRODUCT -->
+
+                    <li>
+
+                        <a href="{% url 'solar_panels' %}">
+
+                            <i class="bi bi-box-seam"></i>
+
+                            <span>
+                                Manage Product
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </li>
+
+
+            <!-- =================================================
+                 SOLAR INVERTER DROPDOWN
+            ================================================== -->
+
+            <li class="menu-item">
+
+                <a href="javascript:void(0)" class="menu-link">
+
+                    <i class="bi bi-lightning-charge"></i>
+
+                    <span>
+                        Solar Inverter
+                    </span>
+
+                    <i class="bi bi-chevron-down arrow"></i>
+
+                </a>
+
+
+                <ul class="submenu">
+
+
+                    <!-- ADD INVERTER PRODUCT -->
+
+                    <li>
+
+                        <a href="{% url 'add_solar_inverter' %}">
+
+                            <i class="bi bi-plus-circle"></i>
+
+                            <span>
+                                Add Product
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- MANAGE INVERTER PRODUCT -->
+
+                    <li>
+
+                        <a href="{% url 'solar_inverters' %}">
+
+                            <i class="bi bi-box-seam"></i>
+
+                            <span>
+                                Manage Product
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </li>
+
+
+            <!-- =================================================
+                 BATTERY STORAGE DROPDOWN
+            ================================================== -->
+
+            <li class="menu-item">
+
+                <a href="javascript:void(0)" class="menu-link">
+
+                    <i class="bi bi-battery-charging"></i>
+
+                    <span>
+                        Battery Storage
+                    </span>
+
+                    <i class="bi bi-chevron-down arrow"></i>
+
+                </a>
+
+
+                <ul class="submenu">
+
+
+                    <!-- ADD BATTERY PRODUCT -->
+
+                    <li>
+
+                        <a href="/admin-battery-storage/add/">
+
+                            <i class="bi bi-plus-circle"></i>
+
+                            <span>
+                                Add Product
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- MANAGE BATTERY PRODUCT -->
+
+                    <li>
+
+                        <a href="{% url 'battery_storage' %}">
+
+                            <i class="bi bi-box-seam"></i>
+
+                            <span>
+                                Manage Product
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </li>
+
+            <!-- =================================================
+     MOUNTING KITS DROPDOWN
+================================================== -->
+
+<!-- =================================================
+     MOUNTING KITS DROPDOWN
+================================================== -->
+
+<li class="menu-item">
+
+    <a href="javascript:void(0)" class="menu-link">
+
+        <i class="bi bi-tools"></i>
+
+        <span>
+            Mounting Kits
+        </span>
+
+        <i class="bi bi-chevron-down arrow"></i>
+
+    </a>
+
+    <ul class="submenu">
+
+        <!-- ADD MOUNTING KIT PRODUCT -->
+
+        <li>
+
+            <a href="{% url 'add_mounting_kit' %}">
+
+                <i class="bi bi-plus-circle"></i>
+
+                <span>
+                    Add Product
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- MANAGE MOUNTING KIT PRODUCT -->
+
+        <li>
+
+            <a href="{% url 'mounting_kits' %}">
+
+                <i class="bi bi-box-seam"></i>
+
+                <span>
+                    Manage Product
+                </span>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</li>
+
+
+<!-- =================================================
+     EV CHARGERS DROPDOWN
+================================================== -->
+
+<li class="menu-item">
+
+    <a href="javascript:void(0)" class="menu-link">
+
+        <i class="bi bi-ev-front"></i>
+
+        <span>
+            EV Chargers
+        </span>
+
+        <i class="bi bi-chevron-down arrow"></i>
+
+    </a>
+
+    <ul class="submenu">
+
+        <!-- ADD EV CHARGER PRODUCT -->
+
+        <li>
+
+            <a href="{% url 'add_ev_charger' %}">
+
+                <i class="bi bi-plus-circle"></i>
+
+                <span>
+                    Add Product
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- MANAGE EV CHARGER PRODUCT -->
+
+        <li>
+
+            <a href="{% url 'ev_chargers' %}">
+
+                <i class="bi bi-box-seam"></i>
+
+                <span>
+                    Manage Product
+                </span>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</li>
+    
+            <!-- =================================================
+                 CONTACT LEADS
+            ================================================== -->
+
+            <li>
+
+                <a href="{% url 'admin-contact' %}">
+
+                    <i class="bi bi-envelope"></i>
+
+                    <span>
+                        Contact Leads
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- =================================================
+                 USER MANAGEMENT DROPDOWN
+            ================================================== -->
+
+            <li class="menu-item">
+
+                <a href="javascript:void(0)" class="menu-link">
+
+                    <i class="bi bi-people"></i>
+
+                    <span>
+                        User Management
+                    </span>
+
+                    <i class="bi bi-chevron-down arrow"></i>
+
+                </a>
+
+
+                <ul class="submenu">
+
+
+                    <!-- =================================================
+                         ALL USERS
+                    ================================================== -->
+
+                    <li>
+
+                        <a href="{% url 'all-users' %}">
+
+                            <i class="bi bi-people"></i>
+
+                            <span>
+                                All Users
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- =================================================
+                         ADD USER
+                    ================================================== -->
+
+                    <li>
+
+                        <a href="{% url 'add-user' %}">
+
+                            <i class="bi bi-person-plus"></i>
+
+                            <span>
+                                Add User
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </li>
+
+        <!-- =================================================
+            CUSTOMER REVIEWS
+        ================================================= -->
+
+            <li>
+                <a href="{% url 'admin-reviews' %}">
+                    <i class="bi bi-star-fill"></i>
+
+                    <span>
+                        Customer Reviews
+                    </span>
+                </a>
+            </li>
+            <!-- =================================================
+                 LOGOUT
+            ================================================== -->
+
+            <li>
+
+                <a href="{% url 'logout' %}">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    <span>
+                        Logout
+                    </span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT AREA
+    ====================================================== -->
+
+    <div class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <!-- PAGE TITLE -->
+
+            <h4>
+                Admin Dashboard
+            </h4>
+
+
+            <!-- PROFILE -->
+
+            <div class="profile">
+
+
+                <!-- ADMIN USER -->
+
+                <div class="admin-user">
+
+                    <i class="bi bi-person-circle"></i>
+
+                    <span>
+
+                        {% if request.user.is_authenticated %}
+
+                        {{ request.user.username }}
+
+                        {% else %}
+
+                        Admin
+
+                        {% endif %}
+
+                    </span>
+
+                </div>
+
+
+                <!-- LOGOUT -->
+
+                <a href="{% url 'logout' %}" class="logout-btn">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+
+                </a>
+
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <div class="content">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         SIDEBAR DROPDOWN SCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           SIDEBAR DROPDOWN
+        ===================================================== */
+
+        document
+            .querySelectorAll(".menu-link")
+            .forEach(function (item) {
+
+                item.addEventListener(
+                    "click",
+                    function () {
+
+                        let submenu =
+                            item.nextElementSibling;
+
+
+                        /* No submenu */
+
+                        if (!submenu) {
+                            return;
+                        }
+
+
+                        /* Check current state */
+
+                        let isOpen =
+                            submenu.style.display === "block";
+
+
+                        /* Close all other dropdowns */
+
+                        document
+                            .querySelectorAll(".submenu")
+                            .forEach(function (menu) {
+
+                                if (menu !== submenu) {
+
+                                    menu.style.display =
+                                        "none";
+
+                                }
+
+                            });
+
+
+                        /* Remove active class
+                           from other menu links */
+
+                        document
+                            .querySelectorAll(".menu-link")
+                            .forEach(function (menuLink) {
+
+                                if (menuLink !== item) {
+
+                                    menuLink.classList.remove(
+                                        "active"
+                                    );
+
+                                }
+
+                            });
+
+
+                        /* Toggle current dropdown */
+
+                        if (isOpen) {
+
+                            submenu.style.display =
+                                "none";
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                        else {
+
+                            submenu.style.display =
+                                "block";
+
+                            item.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+        /* =====================================================
+           ACTIVE CURRENT PAGE
+        ===================================================== */
+
+        let currentPage =
+            window.location.pathname;
+
+
+        document
+            .querySelectorAll(".sidebar a")
+            .forEach(function (link) {
+
+
+                let linkPage =
+                    link.getAttribute("href");
+
+
+                /* Ignore empty links */
+
+                if (!linkPage) {
+                    return;
+                }
+
+
+                /* Ignore javascript links */
+
+                if (
+                    linkPage.startsWith(
+                        "javascript:"
+                    )
+                ) {
+                    return;
+                }
+
+
+                /* Ignore hash links */
+
+                if (
+                    linkPage === "#"
+                ) {
+                    return;
+                }
+
+
+                /* Remove query string */
+
+                linkPage =
+                    linkPage.split("?")[0];
+
+
+                /* Remove hash */
+
+                linkPage =
+                    linkPage.split("#")[0];
+
+
+                /* ACTIVE LINK */
+
+                if (linkPage === currentPage) {
+
+
+                    /* Add active class */
+
+                    link.classList.add(
+                        "active"
+                    );
+
+
+                    /* Check if link is inside submenu */
+
+                    let submenu =
+                        link.closest(
+                            ".submenu"
+                        );
+
+
+                    if (submenu) {
+
+
+                        /* Automatically open submenu */
+
+                        submenu.style.display =
+                            "block";
+
+
+                        /* Get parent menu link */
+
+                        let parentMenu =
+                            submenu.previousElementSibling;
+
+
+                        if (parentMenu) {
+
+                            parentMenu.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+
+    </script>
+
+
+    <!-- =====================================================
+         PAGE SPECIFIC JAVASCRIPT
+    ====================================================== -->
+
+    {% block js %}
+    {% endblock %}
+
+
+</body>
+
+</html>

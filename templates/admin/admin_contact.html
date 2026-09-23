@@ -1,0 +1,476 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}
+Contact Messages | Sungreen Admin
+{% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'CSS/admin/admin_contact.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="admin-contact-page">
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<section class="admin-contact-header">
+
+    <div class="admin-header-glow"></div>
+
+    <div class="container">
+
+        <div class="admin-header-content">
+
+            <div>
+
+                <div class="admin-eyebrow">
+                    <span></span>
+                    SUNGREEN ADMIN PANEL
+                </div>
+
+                <h1>
+                    Contact
+                    <strong>Enquiries</strong>
+                </h1>
+
+                <p>
+                    Manage customer enquiries, service requests
+                    and messages received through your website.
+                </p>
+
+            </div>
+
+            <div class="admin-header-icon">
+
+                <i class="bi bi-chat-square-text-fill"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATS
+====================================================== -->
+
+<div class="container">
+
+    <div class="admin-stats-grid">
+
+
+        <!-- =================================================
+             TOTAL MESSAGES
+        ================================================== -->
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon">
+
+                <i class="bi bi-envelope-fill"></i>
+
+            </div>
+
+            <div>
+
+                <span style="font-size: 12px;">
+                    Total Messages
+                </span>
+
+                <strong style="font-size: 16px;">
+                    {{ total_count }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             READ MESSAGES
+        ================================================== -->
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon success">
+
+                <i class="bi bi-envelope-exclamation-fill"></i>
+
+            </div>
+
+            <div>
+
+                <span style="font-size: 12px;">
+                    Read Messages
+                </span>
+
+                <strong style="font-size: 16px;">
+                    {{ read_count }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             UNREAD MESSAGES
+        ================================================== -->
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon unread">
+
+                <i class="bi bi-envelope-exclamation-fill"></i>
+
+            </div>
+
+            <div>
+
+                <span style="font-size: 12px;">
+                    Unread Messages
+                </span>
+
+                <strong style="font-size: 16px;">
+                    {{ unread_count }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SYSTEM STATUS
+        ================================================== -->
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon success">
+
+                <i class="bi bi-shield-check"></i>
+
+            </div>
+
+            <div>
+
+                <span style="font-size: 12px;">
+                    System Status
+                </span>
+
+                <strong style="font-size: 16px;">
+                    Active
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT TABLE
+====================================================== -->
+
+<section class="admin-contact-content">
+
+    <div class="container">
+
+        <div class="admin-contact-panel">
+
+            <div class="admin-panel-header">
+
+                <div>
+
+                    <span class="admin-panel-label"  style="font-size: 16px;">
+                        CUSTOMER ENQUIRIES
+                    </span>
+
+                    <h2>
+                        Recent Messages
+                    </h2>
+
+                </div>
+
+                <div class="admin-message-count">
+
+                    <i class="bi bi-inbox-fill"></i>
+
+                    {{ contacts|length }}
+
+                </div>
+
+            </div>
+
+
+            {% if contacts %}
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-contact-table" style="font-size: 14px;">
+
+                    <thead>
+
+                        <tr>
+
+                            <th style="font-size: 14px;">
+                                Customer
+                            </th>
+
+                            <th style="font-size: 14px;">
+                                Contact
+                            </th>
+
+                            <th style="font-size: 14px;">
+                                Service
+                            </th>
+
+                            <th style="font-size: 14px;">
+                                Subject
+                            </th>
+
+                            <th style="font-size: 14px;">
+                                Status
+                            </th>
+
+                            <th style="font-size: 14px;">
+                                Date
+                            </th>
+
+                            <th style="font-size: 14px;">
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for contact in contacts %}
+
+                        <tr class="{% if not contact.is_read %}message-unread{% endif %}">
+
+                            <td>
+
+                                <div class="customer-cell">
+
+                                    <div class="customer-avatar"  style="font-size: 14px;">
+
+                                        {{ contact.name|first|upper }}
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong style="font-size: 14px;">
+                                            {{ contact.name }}
+                                        </strong>
+
+                                        <span  style="font-size: 14px;">
+                                            {{ contact.email }}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <a
+                                    href="tel:{{ contact.phone }}"
+                                    class="contact-phone">
+
+                                    <i class="bi bi-telephone"></i>
+
+                                    {{ contact.phone }}
+
+                                </a>
+
+                            </td>
+
+
+                            <td>
+
+                                {% if contact.service %}
+
+                                <span class="service-badge" style="font-size: 12px;">
+
+                                    {{ contact.get_service_display }}
+
+                                </span>
+
+                                {% else %}
+
+                                <span class="service-empty">
+                                    Not selected
+                                </span>
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="subject-cell"  style="font-size: 14px;">
+
+                                    {% if contact.subject %}
+
+                                        {{ contact.subject }}
+
+                                    {% else %}
+
+                                        <span>
+                                            No subject
+                                        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                {% if contact.is_read %}
+
+                                <span class="status-badge read"  style="font-size: 14px;">
+
+                                    <i class="bi bi-check-circle-fill"></i>
+
+                                    Read
+
+                                </span>
+
+                                {% else %}
+
+                                <span class="status-badge unread" style="font-size: 14px;">
+
+                                    <i class="bi bi-circle-fill"></i>
+
+                                    New
+
+                                </span>
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="date-cell">
+
+                                    <strong style="font-size: 14px;">
+                                        {{ contact.created_at|date:"d M Y" }}
+                                    </strong>
+
+                                    <span style="font-size: 14px;">
+                                        {{ contact.created_at|date:"h:i A" }}
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="admin-actions">
+
+                                    <a
+                                        href="{% url 'admin-contact-detail' contact.id %}"
+                                        class="admin-action view"
+                                        title="View">
+
+                                        <i class="bi bi-eye-fill"></i>
+
+                                    </a>
+
+
+                                    <form
+                                        method="POST"
+                                        action="{% url 'admin-contact-delete' contact.id %}"
+                                        onsubmit="return confirm('Delete this enquiry?');">
+
+                                        {% csrf_token %}
+
+                                        <button
+                                            type="submit"
+                                            class="admin-action delete"
+                                            title="Delete">
+
+                                            <i class="bi bi-trash3-fill"></i>
+
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {% else %}
+
+            <div class="admin-empty-state">
+
+                <div class="empty-icon">
+
+                    <i class="bi bi-inbox"></i>
+
+                </div>
+
+                <h3>
+                    No enquiries yet
+                </h3>
+
+                <p>
+                    Customer contact messages will appear here
+                    when someone submits the contact form.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+{% endblock %}

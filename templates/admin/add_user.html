@@ -1,0 +1,456 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Add User | SunGreen Solar Admin
+{% endblock %}
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/admin/add_user.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="admin-page add-user-page">
+
+    <!-- =================================================
+         PAGE HEADER
+    ================================================== -->
+
+    <div class="page-header">
+
+        <div class="header-content">
+
+            <div class="header-icon">
+                <i class="bi bi-person-plus-fill"></i>
+            </div>
+
+            <div>
+
+                <h2>
+                    Add User
+                </h2>
+
+                <p>
+                    Create a new website user and manage account permissions.
+                </p>
+
+            </div>
+
+        </div>
+
+        <a
+            href="{% url 'all-users' %}"
+            class="back-btn"
+        >
+            <i class="bi bi-arrow-left"></i>
+            All Users
+        </a>
+
+    </div>
+
+
+    <!-- =================================================
+         MESSAGES
+    ================================================== -->
+
+    {% if messages %}
+
+        <div class="messages-container">
+
+            {% for message in messages %}
+
+                <div class="alert alert-{{ message.tags }}">
+
+                    <i class="bi bi-info-circle-fill"></i>
+
+                    <span>
+                        {{ message }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- =================================================
+         FORM CARD
+    ================================================== -->
+
+    <div class="form-container">
+
+        <div class="form-card-header">
+
+            <div class="form-card-icon">
+                <i class="bi bi-person-vcard-fill"></i>
+            </div>
+
+            <div>
+
+                <h3>
+                    User Information
+                </h3>
+
+                <p>
+                    Enter the details for the new account.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <!-- =================================================
+                 ACCOUNT INFORMATION
+            ================================================== -->
+
+            <div class="form-section">
+
+                <div class="section-title">
+
+                    <i class="bi bi-person-circle"></i>
+
+                    <span>
+                        Account Information
+                    </span>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- USERNAME -->
+
+                    <div class="form-group">
+
+                        <label for="username">
+                            Username
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-person"></i>
+
+                            <input
+                                id="username"
+                                type="text"
+                                name="username"
+                                placeholder="Enter username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-envelope"></i>
+
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="Enter email address"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FIRST NAME -->
+
+                    <div class="form-group">
+
+                        <label for="first_name">
+                            First Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-person-badge"></i>
+
+                            <input
+                                id="first_name"
+                                type="text"
+                                name="first_name"
+                                placeholder="Enter first name"
+                                autocomplete="given-name"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LAST NAME -->
+
+                    <div class="form-group">
+
+                        <label for="last_name">
+                            Last Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-person-badge"></i>
+
+                            <input
+                                id="last_name"
+                                type="text"
+                                name="last_name"
+                                placeholder="Enter last name"
+                                autocomplete="family-name"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SECURITY
+            ================================================== -->
+
+            <div class="form-section">
+
+                <div class="section-title">
+
+                    <i class="bi bi-shield-lock-fill"></i>
+
+                    <span>
+                        Account Security
+                    </span>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper password-wrapper">
+
+                            <i class="bi bi-lock"></i>
+
+                            <input
+                                id="password"
+                                type="password"
+                                name="password"
+                                placeholder="Enter password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                onclick="togglePassword('password', this)"
+                            >
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirm_password">
+                            Confirm Password
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper password-wrapper">
+
+                            <i class="bi bi-lock-fill"></i>
+
+                            <input
+                                id="confirm_password"
+                                type="password"
+                                name="confirm_password"
+                                placeholder="Confirm password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                onclick="togglePassword('confirm_password', this)"
+                            >
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PERMISSIONS
+            ================================================== -->
+
+            <div class="form-section">
+
+                <div class="section-title">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    <span>
+                        User Permissions
+                    </span>
+
+                </div>
+
+
+                <label class="permission-card">
+
+                    <input
+                        type="checkbox"
+                        name="is_staff"
+                    >
+
+                    <span class="custom-checkbox">
+                        <i class="bi bi-check"></i>
+                    </span>
+
+                    <span class="permission-content">
+
+                        <strong>
+                            Staff User
+                        </strong>
+
+                        <small>
+                            Allow this user to access staff-level features.
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORM ACTIONS
+            ================================================== -->
+
+            <div class="form-actions">
+
+                <a
+                    href="{% url 'all-users' %}"
+                    class="btn btn-cancel"
+                >
+
+                    <i class="bi bi-x-circle"></i>
+
+                    Cancel
+
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary create-user-btn"
+                >
+
+                    <i class="bi bi-person-plus-fill"></i>
+
+                    Create User
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block js %}
+
+<script>
+
+function togglePassword(fieldId, button) {
+
+    const field = document.getElementById(fieldId);
+
+    const icon = button.querySelector("i");
+
+    if (field.type === "password") {
+
+        field.type = "text";
+
+        icon.classList.remove("bi-eye");
+
+        icon.classList.add("bi-eye-slash");
+
+    } else {
+
+        field.type = "password";
+
+        icon.classList.remove("bi-eye-slash");
+
+        icon.classList.add("bi-eye");
+
+    }
+
+}
+
+</script>
+
+{% endblock %}

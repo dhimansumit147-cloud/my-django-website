@@ -1,0 +1,1815 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Dashboard | SunGreen Solar
+{% endblock %}
+
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'CSS/admin/dashboard.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =========================================================
+     DASHBOARD PAGE
+========================================================= -->
+
+<div class="dashboard-page">
+
+
+    <!-- =====================================================
+         DASHBOARD HEADER
+    ====================================================== -->
+
+    <section class="dashboard-header">
+
+        <div class="dashboard-welcome">
+
+            <div class="welcome-badge">
+
+                <i class="bi bi-stars"></i>
+
+                <span>
+                    Admin Dashboard
+                </span>
+
+                <i class="bi bi-shield-check"></i>
+
+            </div>
+
+
+            <h1>
+
+                Welcome Admin
+
+                <span class="wave">
+                    👋
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Manage your SunGreen Solar website,
+                products, enquiries and users from one
+                powerful dashboard.
+
+            </p>
+
+
+            <div class="header-actions">
+
+                <a href="/" class="dashboard-action primary-action">
+
+                    <i class="bi bi-globe2"></i>
+
+                    <span>
+                        View Website
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DATE
+        ================================================== -->
+
+        <div class="dashboard-date">
+
+            <div class="date-icon">
+
+                <i class="bi bi-calendar3"></i>
+
+            </div>
+
+
+            <div class="date-content">
+
+                <small>
+                    Today
+                </small>
+
+                <strong id="todayDate">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+            <div class="date-live">
+
+                <span></span>
+
+                Live
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <section class="dashboard-stats">
+
+
+        <!-- =================================================
+             SOLAR MODULES
+        ================================================== -->
+
+        <article class="stat-card solar-card">
+
+            <div class="card-glow"></div>
+
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="bi bi-sun-fill"></i>
+
+                </div>
+
+
+                <span class="stat-badge">
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                    Product
+
+                </span>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span class="stat-label">
+                    Solar Modules
+                </span>
+
+
+                <h2>
+                    {{ total_solar_modules|default:0 }}
+                </h2>
+
+
+                <p>
+                    Total solar module products
+                </p>
+
+            </div>
+
+
+            <div class="stat-decoration">
+
+                <i class="bi bi-sun"></i>
+
+            </div>
+
+
+            <div class="stat-bottom-line"></div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             SOLAR INVERTERS
+        ================================================== -->
+
+        <article class="stat-card inverter-card">
+
+            <div class="card-glow"></div>
+
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="bi bi-lightning-charge-fill"></i>
+
+                </div>
+
+
+                <span class="stat-badge">
+
+                    <i class="bi bi-lightning-fill"></i>
+
+                    Energy
+
+                </span>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span class="stat-label">
+                    Solar Inverters
+                </span>
+
+
+                <h2>
+                    {{ total_solar_inverters|default:0 }}
+                </h2>
+
+
+                <p>
+                    Total inverter products
+                </p>
+
+            </div>
+
+
+            <div class="stat-decoration">
+
+                <i class="bi bi-lightning-charge"></i>
+
+            </div>
+
+
+            <div class="stat-bottom-line"></div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             BATTERY STORAGE
+        ================================================== -->
+
+        <article class="stat-card battery-card">
+
+            <div class="card-glow"></div>
+
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="bi bi-battery-charging"></i>
+
+                </div>
+
+
+                <span class="stat-badge">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    Storage
+
+                </span>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span class="stat-label">
+                    Battery Storage
+                </span>
+
+
+                <h2>
+                    {{ total_battery_storage|default:0 }}
+                </h2>
+
+
+                <p>
+                    Total battery storage products
+                </p>
+
+            </div>
+
+
+            <div class="stat-decoration">
+
+                <i class="bi bi-battery-full"></i>
+
+            </div>
+
+
+            <div class="stat-bottom-line"></div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             MOUNTING KITS
+        ================================================== -->
+
+        <article class="stat-card mounting-card">
+
+            <div class="card-glow"></div>
+
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="bi bi-tools"></i>
+
+                </div>
+
+
+                <span class="stat-badge">
+
+                    <i class="bi bi-box-seam-fill"></i>
+
+                    Mounting
+
+                </span>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span class="stat-label">
+                    Mounting Kits
+                </span>
+
+
+                <h2>
+                    {{ total_mounting_kits|default:0 }}
+                </h2>
+
+
+                <p>
+                    Total mounting kit products
+                </p>
+
+            </div>
+
+
+            <div class="stat-decoration">
+
+                <i class="bi bi-tools"></i>
+
+            </div>
+
+
+            <div class="stat-bottom-line"></div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             EV CHARGERS
+        ================================================== -->
+
+        <article class="stat-card ev-card">
+
+            <div class="card-glow"></div>
+
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="bi bi-ev-front-fill"></i>
+
+                </div>
+
+
+                <span class="stat-badge">
+
+                    <i class="bi bi-lightning-charge-fill"></i>
+
+                    EV
+
+                </span>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span class="stat-label">
+                    EV Chargers
+                </span>
+
+
+                <h2>
+                    {{ total_ev_chargers|default:0 }}
+                </h2>
+
+
+                <p>
+                    Total EV charger products
+                </p>
+
+            </div>
+
+
+            <div class="stat-decoration">
+
+                <i class="bi bi-ev-front"></i>
+
+            </div>
+
+
+            <div class="stat-bottom-line"></div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             CONTACT LEADS
+        ================================================== -->
+
+        <article class="stat-card contact-card">
+
+            <div class="card-glow"></div>
+
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="bi bi-envelope-fill"></i>
+
+                </div>
+
+
+                <span class="stat-badge">
+
+                    <i class="bi bi-chat-dots-fill"></i>
+
+                    Leads
+
+                </span>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span class="stat-label">
+                    Contact Leads
+                </span>
+
+
+                <h2>
+                    {{ total_contacts|default:0 }}
+                </h2>
+
+
+                <p>
+                    Website contact enquiries
+                </p>
+
+            </div>
+
+
+            <div class="stat-decoration">
+
+                <i class="bi bi-envelope-paper"></i>
+
+            </div>
+
+
+            <div class="stat-bottom-line"></div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             USERS
+        ================================================== -->
+
+        <article class="stat-card users-card">
+
+            <div class="card-glow"></div>
+
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="bi bi-people-fill"></i>
+
+                </div>
+
+
+                <span class="stat-badge">
+
+                    <i class="bi bi-person-check-fill"></i>
+
+                    Users
+
+                </span>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span class="stat-label">
+                    Total Users
+                </span>
+
+
+                <h2>
+                    {{ total_users|default:0 }}
+                </h2>
+
+
+                <p>
+                    Registered admin users
+                </p>
+
+            </div>
+
+
+            <div class="stat-decoration">
+
+                <i class="bi bi-people"></i>
+
+            </div>
+
+
+            <div class="stat-bottom-line"></div>
+
+        </article>
+
+       <!-- =================================================
+     REVIEWS
+================================================== -->
+
+<article class="stat-card review-card">
+
+    <div class="card-glow"></div>
+
+    <div class="stat-top">
+
+        <div class="stat-icon">
+            <i class="bi bi-star-fill"></i>
+        </div>
+
+        <span class="stat-badge">
+            <i class="bi bi-chat-square-heart-fill"></i>
+            Reviews
+        </span>
+
+    </div>
+
+    <div class="stat-content">
+
+        <span class="stat-label">
+            Customer Reviews
+        </span>
+
+        <h2>
+            {{ total_reviews|default:0 }}
+        </h2>
+
+        <p>
+            Total customer reviews
+        </p>
+
+    </div>
+
+    <div class="stat-decoration">
+        <i class="bi bi-stars"></i>
+    </div>
+
+    <div class="stat-bottom-line"></div>
+
+</article>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ANALYTICS
+    ====================================================== -->
+
+    <section class="analytics-grid">
+
+
+        <!-- =================================================
+             BAR CHART
+        ================================================== -->
+
+        <div class="analytics-card large-chart">
+
+
+            <div class="analytics-header">
+
+                <div class="analytics-title">
+
+
+                    <div class="analytics-icon green">
+
+                        <i class="bi bi-bar-chart-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Website Overview
+                        </h3>
+
+                        <p>
+                            Complete website data overview
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-status">
+
+                    <span></span>
+
+                    Live Data
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="overviewChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DATA DISTRIBUTION
+        ================================================== -->
+
+        <div class="analytics-card pie-card">
+
+
+            <div class="analytics-header">
+
+                <div class="analytics-title">
+
+
+                    <div class="analytics-icon orange">
+
+                        <i class="bi bi-pie-chart-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Data Distribution
+                        </h3>
+
+                        <p>
+                            Product & user distribution
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="pie-container">
+
+                <canvas id="pieChart"></canvas>
+
+
+                <div class="chart-center-text">
+
+                    <strong id="totalProducts">
+                        0
+                    </strong>
+
+                    <span>
+                        Products
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         QUICK OVERVIEW
+    ====================================================== -->
+
+    <section class="quick-section">
+
+
+        <div class="quick-header">
+
+
+            <div>
+
+                <span class="section-label">
+                    QUICK OVERVIEW
+                </span>
+
+
+                <h2>
+                    Solar Management Center
+                </h2>
+
+
+                <p>
+                    Quickly access important areas of your
+                    SunGreen Solar website.
+                </p>
+
+            </div>
+
+
+            <div class="pulse-status">
+
+                <span></span>
+
+                System Active
+
+            </div>
+
+        </div>
+
+
+
+        <div class="quick-grid">
+
+
+            <!-- =================================================
+                 SOLAR PRODUCTS
+            ================================================== -->
+
+            <a href="/solar-panels/" class="quick-item quick-green">
+
+                <div class="quick-icon green">
+
+                    <i class="bi bi-grid-1x2-fill"></i>
+
+                </div>
+
+
+                <div class="quick-content">
+
+                    <strong>
+                        Solar Products
+                    </strong>
+
+                    <span>
+                        Manage your solar inventory
+                    </span>
+
+                </div>
+
+
+                <div class="quick-arrow">
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- =================================================
+                 ENERGY SOLUTIONS
+            ================================================== -->
+
+            <a href="/admin-battery-storage/" class="quick-item quick-orange">
+
+                <div class="quick-icon orange">
+
+                    <i class="bi bi-lightning-fill"></i>
+
+                </div>
+
+
+                <div class="quick-content">
+
+                    <strong>
+                        Energy Solutions
+                    </strong>
+
+                    <span>
+                        Monitor inverter & battery data
+                    </span>
+
+                </div>
+
+
+                <div class="quick-arrow">
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- =================================================
+                 CUSTOMER ENQUIRIES
+            ================================================== -->
+
+            <a href="/admin/contact/" class="quick-item quick-blue">
+
+                <div class="quick-icon blue">
+
+                    <i class="bi bi-envelope-paper-fill"></i>
+
+                </div>
+
+
+                <div class="quick-content">
+
+                    <strong>
+                        Customer Enquiries
+                    </strong>
+
+                    <span>
+                        Review incoming website leads
+                    </span>
+
+                </div>
+
+
+                <div class="quick-arrow">
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SYSTEM STATUS
+    ====================================================== -->
+
+    <section class="system-section">
+
+
+        <div class="system-card">
+
+
+            <div class="system-left">
+
+
+                <div class="system-icon">
+
+                    <i class="bi bi-shield-check"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        SYSTEM STATUS
+                    </span>
+
+
+                    <h3>
+                        SunGreen Solar Admin System
+                    </h3>
+
+
+                    <p>
+                        All dashboard services are running normally.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="system-right">
+
+
+                <div class="system-status">
+
+                    <span></span>
+
+                    <strong>
+                        Operational
+                    </strong>
+
+                </div>
+
+
+                <i class="bi bi-check-circle-fill"></i>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     CHART.JS
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        /* =====================================================
+           DATE
+        ====================================================== */
+
+        const dateElement =
+            document.getElementById("todayDate");
+
+
+        if (dateElement) {
+
+            const today = new Date();
+
+
+            dateElement.textContent =
+                today.toLocaleDateString(
+                    "en-IN",
+                    {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+
+        }
+
+
+
+        /* =====================================================
+           DASHBOARD DATA
+    
+           0 = Solar Modules
+           1 = Solar Inverters
+           2 = Battery Storage
+           3 = Mounting Kits
+           4 = EV Chargers
+           5 = Contact Leads
+           6 = Users
+        ====================================================== */
+
+        const dashboardData = [
+
+            Number(
+                "{{ total_solar_modules|default:0 }}"
+            ),
+
+            Number(
+                "{{ total_solar_inverters|default:0 }}"
+            ),
+
+            Number(
+                "{{ total_battery_storage|default:0 }}"
+            ),
+
+            Number(
+                "{{ total_mounting_kits|default:0 }}"
+            ),
+
+            Number(
+                "{{ total_ev_chargers|default:0 }}"
+            ),
+
+            Number(
+                "{{ total_contacts|default:0 }}"
+            ),
+
+            Number(
+                "{{ total_users|default:0 }}"
+            )
+
+        ];
+
+
+
+        /* =====================================================
+           PRODUCT TOTAL
+    
+           Solar Modules
+           Solar Inverters
+           Battery Storage
+           Mounting Kits
+           EV Chargers
+        ====================================================== */
+
+        const productTotal =
+
+            dashboardData[0] +
+
+            dashboardData[1] +
+
+            dashboardData[2] +
+
+            dashboardData[3] +
+
+            dashboardData[4];
+
+
+        const productElement =
+            document.getElementById("totalProducts");
+
+
+        if (productElement) {
+
+            productElement.textContent =
+                productTotal;
+
+        }
+
+
+
+        /* =====================================================
+           CHART DEFAULT FONT
+        ====================================================== */
+
+        Chart.defaults.font.family =
+            "'Poppins', sans-serif";
+
+        Chart.defaults.animation.duration =
+            1200;
+
+
+
+        /* =====================================================
+           COMMON COLORS
+        ====================================================== */
+
+        const chartColors = [
+
+            "#22c55e",   // Solar Modules
+
+            "#f59e0b",   // Solar Inverters
+
+            "#0ea5e9",   // Battery Storage
+
+            "#8b5cf6",   // Mounting Kits
+
+            "#ef4444",   // EV Chargers
+
+            "#a855f7",   // Contact Leads
+
+            "#14b8a6"    // Users
+
+        ];
+
+
+
+        const hoverColors = [
+
+            "#16a34a",
+
+            "#d97706",
+
+            "#0284c7",
+
+            "#7c3aed",
+
+            "#dc2626",
+
+            "#9333ea",
+
+            "#0f766e"
+
+        ];
+
+
+
+        /* =====================================================
+           BAR CHART
+        ====================================================== */
+
+        const overviewCanvas =
+            document.getElementById("overviewChart");
+
+
+        if (overviewCanvas) {
+
+
+            new Chart(
+
+                overviewCanvas,
+
+                {
+
+                    type: "bar",
+
+
+                    data: {
+
+                        labels: [
+
+                            "Solar Modules",
+
+                            "Solar Inverters",
+
+                            "Battery Storage",
+
+                            "Mounting Kits",
+
+                            "EV Chargers",
+
+                            "Contact Leads",
+
+                            "Users"
+
+                        ],
+
+
+                        datasets: [{
+
+                            label: "Website Data",
+
+                            data: dashboardData,
+
+                            backgroundColor: chartColors,
+
+                            hoverBackgroundColor: hoverColors,
+
+                            borderRadius: 14,
+
+                            borderSkipped: false,
+
+                            barThickness: 42,
+
+                            maxBarThickness: 48
+
+                        }]
+
+                    },
+
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+
+
+                        animation: {
+
+                            duration: 1600,
+
+                            easing: "easeOutQuart"
+
+                        },
+
+
+                        interaction: {
+
+                            intersect: false,
+
+                            mode: "index"
+
+                        },
+
+
+                        plugins: {
+
+
+                            /* =================================================
+                               HIDE LEGEND
+                            ================================================== */
+
+                            legend: {
+
+                                display: false
+
+                            },
+
+
+                            /* =================================================
+                               PREMIUM TOOLTIP
+                            ================================================== */
+
+                            tooltip: {
+
+                                enabled: true,
+
+                                backgroundColor: "#0f172a",
+
+                                titleColor: "#ffffff",
+
+                                bodyColor: "#e2e8f0",
+
+                                borderColor:
+                                    "rgba(255,255,255,.08)",
+
+                                borderWidth: 1,
+
+                                padding: 15,
+
+                                cornerRadius: 14,
+
+                                displayColors: true,
+
+
+                                titleFont: {
+
+                                    size: 13,
+
+                                    weight: "700"
+
+                                },
+
+
+                                bodyFont: {
+
+                                    size: 13,
+
+                                    weight: "600"
+
+                                },
+
+
+                                boxPadding: 6,
+
+
+                                callbacks: {
+
+                                    /* =========================================
+                                       EXACT FORMAT
+    
+                                       Solar Modules : 11
+                                    ========================================== */
+
+                                    label: function (context) {
+
+                                        const label =
+                                            context.label || "";
+
+
+                                        const value =
+                                            context.parsed.y ?? 0;
+
+
+                                        return `${label} : ${value}`;
+
+                                    }
+
+                                }
+
+                            }
+
+                        },
+
+
+                        scales: {
+
+
+                            y: {
+
+                                beginAtZero: true,
+
+
+                                suggestedMax:
+
+                                    Math.max(
+                                        ...dashboardData
+                                    ) + 2,
+
+
+                                ticks: {
+
+                                    precision: 0,
+
+                                    color: "#64748b",
+
+
+                                    font: {
+
+                                        size: 12,
+
+                                        weight: "500"
+
+                                    }
+
+                                },
+
+
+                                grid: {
+
+                                    color:
+                                        "rgba(148,163,184,.13)",
+
+                                    drawBorder: false
+
+                                }
+
+                            },
+
+
+                            x: {
+
+                                ticks: {
+
+                                    color: "#64748b",
+
+
+                                    font: {
+
+                                        size: 12,
+
+                                        weight: "600"
+
+                                    }
+
+                                },
+
+
+                                grid: {
+
+                                    display: false
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            );
+
+        }
+
+
+
+        /* =====================================================
+           PRODUCT + USER DISTRIBUTION
+    
+           CONTACT LEADS ARE NOT INCLUDED
+    
+           Products:
+           - Solar Modules
+           - Solar Inverters
+           - Battery Storage
+           - Mounting Kits
+           - EV Chargers
+    
+           User:
+           - Users
+        ====================================================== */
+
+        const distributionLabels = [
+
+            "Solar Modules",
+
+            "Solar Inverters",
+
+            "Battery Storage",
+
+            "Mounting Kits",
+
+            "EV Chargers",
+
+            "Users"
+
+        ];
+
+
+        const distributionData = [
+
+            dashboardData[0],
+
+            dashboardData[1],
+
+            dashboardData[2],
+
+            dashboardData[3],
+
+            dashboardData[4],
+
+            dashboardData[6]
+
+        ];
+
+
+        const distributionColors = [
+
+            "#22c55e",
+
+            "#f59e0b",
+
+            "#0ea5e9",
+
+            "#8b5cf6",
+
+            "#ef4444",
+
+            "#14b8a6"
+
+        ];
+
+
+        const distributionHoverColors = [
+
+            "#16a34a",
+
+            "#d97706",
+
+            "#0284c7",
+
+            "#7c3aed",
+
+            "#dc2626",
+
+            "#0f766e"
+
+        ];
+
+
+
+        /* =====================================================
+           DOUGHNUT CHART
+        ====================================================== */
+
+        const pieCanvas =
+            document.getElementById("pieChart");
+
+
+        if (pieCanvas) {
+
+
+            new Chart(
+
+                pieCanvas,
+
+                {
+
+                    type: "doughnut",
+
+
+                    data: {
+
+                        labels: distributionLabels,
+
+
+                        datasets: [{
+
+                            label:
+                                "Product & User Distribution",
+
+                            data:
+                                distributionData,
+
+                            backgroundColor:
+                                distributionColors,
+
+                            hoverBackgroundColor:
+                                distributionHoverColors,
+
+                            borderWidth: 5,
+
+                            borderColor: "#ffffff",
+
+                            hoverOffset: 12,
+
+                            spacing: 3
+
+                        }]
+
+                    },
+
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+
+                        cutout: "72%",
+
+
+                        animation: {
+
+                            animateRotate: true,
+
+                            animateScale: true,
+
+                            duration: 1700,
+
+                            easing: "easeOutQuart"
+
+                        },
+
+
+                        interaction: {
+
+                            intersect: true,
+
+                            mode: "nearest"
+
+                        },
+
+
+                        plugins: {
+
+
+                            /* =================================================
+                               LEGEND
+                            ================================================== */
+
+                            legend: {
+
+                                position: "bottom",
+
+
+                                labels: {
+
+                                    usePointStyle: true,
+
+                                    pointStyle: "circle",
+
+                                    padding: 17,
+
+                                    color: "#475569",
+
+
+                                    font: {
+
+                                        size: 11,
+
+                                        weight: "600"
+
+                                    }
+
+                                }
+
+                            },
+
+
+                            /* =================================================
+                               PREMIUM DOUGHNUT TOOLTIP
+                            ================================================== */
+
+                            tooltip: {
+
+                                enabled: true,
+
+                                backgroundColor: "#0f172a",
+
+                                titleColor: "#ffffff",
+
+                                bodyColor: "#e2e8f0",
+
+                                borderColor:
+                                    "rgba(255,255,255,.08)",
+
+                                borderWidth: 1,
+
+                                padding: 15,
+
+                                cornerRadius: 14,
+
+                                displayColors: true,
+
+
+                                titleFont: {
+
+                                    size: 13,
+
+                                    weight: "700"
+
+                                },
+
+
+                                bodyFont: {
+
+                                    size: 13,
+
+                                    weight: "600"
+
+                                },
+
+
+                                boxPadding: 6,
+
+
+                                callbacks: {
+
+                                    /* =========================================
+                                       EXACT FORMAT
+    
+                                       Solar Modules : 11
+                                       Solar Inverters : 5
+                                       Battery Storage : 8
+                                       Mounting Kits : 4
+                                       EV Chargers : 7
+                                       Users : 12
+                                    ========================================== */
+
+                                    label: function (context) {
+
+                                        const label =
+                                            context.label || "";
+
+
+                                        const value =
+                                            context.parsed ?? 0;
+
+
+                                        return `${label} : ${value}`;
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            );
+
+        }
+
+
+
+        /* =====================================================
+           CARD ENTRANCE ANIMATION
+        ====================================================== */
+
+        const animatedItems =
+            document.querySelectorAll(
+
+                ".stat-card, " +
+                ".analytics-card, " +
+                ".quick-item, " +
+                ".system-card"
+
+            );
+
+
+        animatedItems.forEach(
+
+            function (item, index) {
+
+                item.style.animationDelay =
+                    (index * 0.08) + "s";
+
+            }
+
+        );
+
+
+
+        /* =====================================================
+           QUICK ITEM RIPPLE EFFECT
+        ====================================================== */
+
+        document
+            .querySelectorAll(".quick-item")
+            .forEach(
+
+                function (item) {
+
+
+                    item.addEventListener(
+
+                        "click",
+
+                        function () {
+
+
+                            item.classList.add(
+                                "clicked"
+                            );
+
+
+                            setTimeout(
+
+                                function () {
+
+                                    item.classList.remove(
+                                        "clicked"
+                                    );
+
+                                },
+
+                                500
+
+                            );
+
+                        }
+
+                    );
+
+                }
+
+            );
+
+
+
+        /* =====================================================
+           PREMIUM HOVER EFFECT
+        ====================================================== */
+
+        document
+            .querySelectorAll(".stat-card")
+            .forEach(
+
+                function (card) {
+
+
+                    card.addEventListener(
+
+                        "mouseenter",
+
+                        function () {
+
+                            card.style.zIndex =
+                                "5";
+
+                        }
+
+                    );
+
+
+                    card.addEventListener(
+
+                        "mouseleave",
+
+                        function () {
+
+                            card.style.zIndex =
+                                "";
+
+                        }
+
+                    );
+
+                }
+
+            );
+
+
+    });
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,2930 @@
+/* =========================================================
+   SUNGREEN SOLAR ADMIN
+   ADD MOUNTING KIT
+   PREMIUM PROFESSIONAL CSS
+   THEME: SOFT LIGHT MINT GREEN
+   ========================================================= */
+
+
+/* =========================================================
+   01. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+
+    --mk-primary: #2fae68;
+    --mk-primary-dark: #238a50;
+    --mk-primary-light: #65d58e;
+
+    --mk-mint: #c8f8d9;
+    --mk-mint-light: #eafff1;
+    --mk-mint-soft: #f4fff8;
+
+    --mk-page: #f6fff9;
+
+    --mk-white: #ffffff;
+
+    --mk-text: #17352a;
+    --mk-text-dark: #10281e;
+
+    --mk-muted: #70827a;
+    --mk-muted-light: #91a59b;
+
+    --mk-border: #d8eade;
+    --mk-border-strong: #c2dfce;
+
+    --mk-danger: #ef4444;
+    --mk-danger-dark: #dc2626;
+
+    --mk-success: #16a34a;
+
+    --mk-shadow-xs:
+        0 2px 8px rgba(25, 100, 55, 0.05);
+
+    --mk-shadow-sm:
+        0 6px 20px rgba(25, 100, 55, 0.07);
+
+    --mk-shadow-md:
+        0 14px 38px rgba(25, 100, 55, 0.10);
+
+    --mk-shadow-lg:
+        0 24px 65px rgba(25, 100, 55, 0.14);
+
+    --mk-radius-sm: 10px;
+    --mk-radius-md: 15px;
+    --mk-radius-lg: 21px;
+
+    --mk-transition:
+        all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --mk-smooth:
+        cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+/* =========================================================
+   02. RESET
+   ========================================================= */
+
+.mounting-kit-admin-page *,
+.mounting-kit-admin-page *::before,
+.mounting-kit-admin-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   03. PAGE
+   ========================================================= */
+
+.mounting-kit-admin-page {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 32px;
+
+    color: var(--mk-text);
+
+    background:
+        radial-gradient(
+            circle at 8% 5%,
+            rgba(200, 248, 217, 0.70),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 92% 12%,
+            rgba(101, 213, 142, 0.10),
+            transparent 23%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fffa 0%,
+            #f1fff6 48%,
+            #fafffc 100%
+        );
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   04. BACKGROUND DECORATION
+   ========================================================= */
+
+.mounting-kit-admin-page::before,
+.mounting-kit-admin-page::after {
+
+    content: "";
+
+    position: absolute;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    z-index: 0;
+}
+
+
+.mounting-kit-admin-page::before {
+
+    width: 360px;
+    height: 360px;
+
+    top: -190px;
+    right: -120px;
+
+    background:
+        rgba(200, 248, 217, 0.50);
+
+    filter: blur(2px);
+}
+
+
+.mounting-kit-admin-page::after {
+
+    width: 280px;
+    height: 280px;
+
+    bottom: 4%;
+    left: -150px;
+
+    background:
+        rgba(101, 213, 142, 0.07);
+
+    filter: blur(2px);
+}
+
+
+/* =========================================================
+   05. HEADER
+   ========================================================= */
+
+.mounting-kit-admin-page .admin-page-header {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto 28px;
+
+    padding: 25px 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    border:
+        1px solid rgba(216, 234, 222, 0.95);
+
+    border-radius:
+        var(--mk-radius-lg);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.97),
+            rgba(235, 255, 242, 0.94)
+        );
+
+    box-shadow:
+        var(--mk-shadow-md);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    animation:
+        mkHeaderReveal 0.65s var(--mk-smooth) both;
+}
+
+
+/* =========================================================
+   HEADER TOP ACCENT
+   ========================================================= */
+
+.mounting-kit-admin-page .admin-page-header::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 28px;
+    right: 28px;
+
+    height: 3px;
+
+    border-radius:
+        0 0 10px 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--mk-primary-dark),
+            var(--mk-primary),
+            var(--mk-primary-light)
+        );
+}
+
+
+/* =========================================================
+   06. HEADER CONTENT
+   ========================================================= */
+
+.mounting-kit-admin-page .header-content {
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   HEADER ICON
+   ========================================================= */
+
+.mounting-kit-admin-page .header-icon {
+
+    width: 62px;
+    height: 62px;
+
+    flex: 0 0 62px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    font-size: 29px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mk-primary),
+            var(--mk-primary-light)
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 11px 28px
+        rgba(47, 174, 104, 0.24);
+
+    animation:
+        mkIconFloat 3.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   HEADER TEXT
+   ========================================================= */
+
+.mounting-kit-admin-page .header-text {
+    min-width: 0;
+}
+
+
+.mounting-kit-admin-page .header-label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        var(--mk-primary-dark);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+
+.mounting-kit-admin-page .header-text h1 {
+
+    margin: 0;
+
+    color:
+        var(--mk-text-dark);
+
+    font-size:
+        clamp(24px, 3vw, 34px);
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+}
+
+
+.mounting-kit-admin-page .header-text p {
+
+    margin: 7px 0 0;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   07. BACK BUTTON
+   ========================================================= */
+
+.mounting-kit-admin-page .back-btn {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 46px;
+
+    padding: 0 18px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid var(--mk-border);
+
+    border-radius: 12px;
+
+    background:
+        #ffffff;
+
+    color:
+        var(--mk-text);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        var(--mk-shadow-xs);
+
+    overflow: hidden;
+
+    transition:
+        var(--mk-transition);
+}
+
+
+.mounting-kit-admin-page .back-btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(200, 248, 217, 0.75),
+            transparent
+        );
+
+    transform:
+        translateX(-120%);
+
+    transition:
+        transform 0.55s ease;
+}
+
+
+.mounting-kit-admin-page .back-btn:hover::before {
+    transform:
+        translateX(120%);
+}
+
+
+.mounting-kit-admin-page .back-btn:hover {
+
+    color:
+        var(--mk-primary-dark);
+
+    border-color:
+        var(--mk-primary-light);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 9px 24px
+        rgba(47, 174, 104, 0.13);
+}
+
+
+.mounting-kit-admin-page .back-icon {
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.mounting-kit-admin-page .back-btn:hover .back-icon {
+    transform:
+        translateX(-4px);
+}
+
+
+/* =========================================================
+   08. FORM SECTION
+   ========================================================= */
+
+.mounting-kit-admin-page .mounting-kit-form-section {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.mounting-kit-admin-page .mounting-kit-form {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   09. FORM CARD
+   ========================================================= */
+
+.mounting-kit-admin-page .form-card {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 28px;
+
+    border:
+        1px solid var(--mk-border);
+
+    border-radius:
+        var(--mk-radius-lg);
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    box-shadow:
+        var(--mk-shadow-sm);
+
+    backdrop-filter:
+        blur(13px);
+
+    -webkit-backdrop-filter:
+        blur(13px);
+
+    overflow: hidden;
+
+    animation:
+        mkCardReveal 0.65s var(--mk-smooth) both;
+
+    transition:
+        var(--mk-transition);
+}
+
+
+.mounting-kit-admin-page .form-card:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+
+.mounting-kit-admin-page .form-card:nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+
+.mounting-kit-admin-page .form-card:hover {
+
+    border-color:
+        rgba(47, 174, 104, 0.28);
+
+    box-shadow:
+        var(--mk-shadow-md);
+}
+
+
+/* =========================================================
+   LEFT ACCENT
+   ========================================================= */
+
+.mounting-kit-admin-page .form-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 28px;
+    bottom: 28px;
+    left: 0;
+
+    width: 4px;
+
+    border-radius:
+        0 7px 7px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--mk-primary),
+            var(--mk-primary-light)
+        );
+}
+
+
+/* =========================================================
+   10. CARD HEADER
+   ========================================================= */
+
+.mounting-kit-admin-page .form-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 22px;
+
+    border-bottom:
+        1px solid var(--mk-border);
+}
+
+
+.mounting-kit-admin-page .card-header-icon {
+
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mk-mint-light),
+            var(--mk-mint)
+        );
+
+    border:
+        1px solid #b9e9c9;
+
+    color:
+        var(--mk-primary-dark);
+
+    font-size: 22px;
+
+    transition:
+        var(--mk-transition);
+}
+
+
+.mounting-kit-admin-page .form-card:hover .card-header-icon {
+
+    transform:
+        rotate(-4deg) scale(1.05);
+
+    box-shadow:
+        0 8px 20px
+        rgba(47, 174, 104, 0.12);
+}
+
+
+.mounting-kit-admin-page .card-header-text {
+    min-width: 0;
+}
+
+
+.mounting-kit-admin-page .card-header-text h2 {
+
+    margin: 0;
+
+    color:
+        var(--mk-text-dark);
+
+    font-size: 19px;
+
+    line-height: 1.3;
+
+    font-weight: 800;
+}
+
+
+.mounting-kit-admin-page .card-header-text p {
+
+    margin: 5px 0 0;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   11. FORM GRID
+   ========================================================= */
+
+.mounting-kit-admin-page .form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+.mounting-kit-admin-page .form-group {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.mounting-kit-admin-page .form-group.full-width {
+
+    grid-column:
+        1 / -1;
+}
+
+
+/* =========================================================
+   12. LABELS
+   ========================================================= */
+
+.mounting-kit-admin-page .form-group label,
+.mounting-kit-admin-page .dynamic-file-input label,
+.mounting-kit-admin-page .dynamic-title-input label {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color:
+        var(--mk-text-dark);
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    font-weight: 750;
+}
+
+
+.mounting-kit-admin-page .form-group label span,
+.mounting-kit-admin-page .dynamic-file-input label span {
+
+    color:
+        var(--mk-danger);
+
+    margin-left: 3px;
+}
+
+
+/* =========================================================
+   13. INPUTS
+   ========================================================= */
+
+.mounting-kit-admin-page .form-group input,
+.mounting-kit-admin-page .form-group textarea,
+.mounting-kit-admin-page .dynamic-title-input input {
+
+    width: 100%;
+
+    border:
+        1px solid var(--mk-border);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfffc
+        );
+
+    color:
+        var(--mk-text-dark);
+
+    font-family:
+        inherit;
+
+    font-size: 14px;
+
+    transition:
+        var(--mk-transition);
+}
+
+
+.mounting-kit-admin-page .form-group input,
+.mounting-kit-admin-page .dynamic-title-input input {
+
+    height: 49px;
+
+    padding:
+        0 15px;
+}
+
+
+.mounting-kit-admin-page .form-group textarea {
+
+    min-height: 170px;
+
+    padding:
+        15px 16px;
+
+    line-height: 1.65;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   INPUT HOVER
+   ========================================================= */
+
+.mounting-kit-admin-page .form-group input:hover,
+.mounting-kit-admin-page .form-group textarea:hover,
+.mounting-kit-admin-page .dynamic-title-input input:hover {
+
+    border-color:
+        var(--mk-border-strong);
+
+    background:
+        #ffffff;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+.mounting-kit-admin-page .form-group input:focus,
+.mounting-kit-admin-page .form-group textarea:focus,
+.mounting-kit-admin-page .dynamic-title-input input:focus {
+
+    border-color:
+        var(--mk-primary-light);
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(101, 213, 142, 0.13),
+        0 7px 22px
+        rgba(47, 174, 104, 0.06);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.mounting-kit-admin-page input::placeholder,
+.mounting-kit-admin-page textarea::placeholder {
+
+    color:
+        #9aada5;
+
+    transition:
+        opacity 0.2s ease;
+}
+
+
+.mounting-kit-admin-page input:focus::placeholder,
+.mounting-kit-admin-page textarea:focus::placeholder {
+
+    opacity:
+        0.45;
+}
+
+
+/* =========================================================
+   VALID INPUT
+   ========================================================= */
+
+.mounting-kit-admin-page .form-group input:valid:not(:placeholder-shown),
+.mounting-kit-admin-page .form-group textarea:valid:not(:placeholder-shown) {
+
+    border-color:
+        rgba(22, 163, 74, 0.32);
+}
+
+
+/* =========================================================
+   14. FIELD HINT
+   ========================================================= */
+
+.mounting-kit-admin-page .field-hint {
+
+    margin-top: 7px;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 11.5px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   15. DYNAMIC SECTION HEADER
+   ========================================================= */
+
+.mounting-kit-admin-page .dynamic-section-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+
+    padding:
+        15px 17px;
+
+    border:
+        1px solid var(--mk-border);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fffa,
+            var(--mk-mint-soft)
+        );
+}
+
+
+.mounting-kit-admin-page .dynamic-section-header strong {
+
+    display: block;
+
+    color:
+        var(--mk-text-dark);
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+.mounting-kit-admin-page .dynamic-section-header small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 11.5px;
+}
+
+
+/* =========================================================
+   16. ADD BUTTON
+   ========================================================= */
+
+.mounting-kit-admin-page .add-item-btn {
+
+    min-height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        0 16px;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mk-primary-dark),
+            var(--mk-primary),
+            var(--mk-primary-light)
+        );
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    font-size: 12.5px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px
+        rgba(47, 174, 104, 0.20);
+
+    transition:
+        var(--mk-transition);
+}
+
+
+.mounting-kit-admin-page .add-item-btn span {
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.mounting-kit-admin-page .add-item-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 27px
+        rgba(47, 174, 104, 0.26);
+}
+
+
+.mounting-kit-admin-page .add-item-btn:hover span {
+
+    transform:
+        rotate(90deg);
+}
+
+
+.mounting-kit-admin-page .add-item-btn:active {
+
+    transform:
+        translateY(0) scale(0.97);
+}
+
+
+/* =========================================================
+   17. DYNAMIC ITEMS
+   ========================================================= */
+
+.mounting-kit-admin-page .dynamic-items {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+
+.mounting-kit-admin-page .dynamic-item {
+
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 15px;
+
+    padding: 19px;
+
+    border:
+        1px solid var(--mk-border);
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fafffc
+        );
+
+    box-shadow:
+        var(--mk-shadow-xs);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+    animation:
+        mkItemReveal 0.45s var(--mk-smooth) both;
+}
+
+
+.mounting-kit-admin-page .dynamic-item:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(47, 174, 104, 0.30);
+
+    box-shadow:
+        var(--mk-shadow-sm);
+}
+
+
+/* =========================================================
+   18. ITEM NUMBER
+   ========================================================= */
+
+.mounting-kit-admin-page .dynamic-item-number {
+
+    width: 39px;
+
+    flex: 0 0 39px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.mounting-kit-admin-page .dynamic-item-number span {
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mk-mint-light),
+            var(--mk-mint)
+        );
+
+    border:
+        1px solid #b9e9c9;
+
+    color:
+        var(--mk-primary-dark);
+
+    font-size: 13px;
+
+    font-weight: 850;
+
+    box-shadow:
+        0 5px 12px
+        rgba(47, 174, 104, 0.08);
+}
+
+
+/* =========================================================
+   19. DYNAMIC CONTENT
+   ========================================================= */
+
+.mounting-kit-admin-page .dynamic-file-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 1fr)
+        minmax(220px, 1fr);
+
+    gap: 17px;
+}
+
+
+.mounting-kit-admin-page .image-item .dynamic-file-content {
+
+    grid-template-columns:
+        minmax(250px, 0.85fr)
+        minmax(300px, 1.15fr);
+}
+
+
+/* =========================================================
+   20. FILE INPUT
+   ========================================================= */
+
+.mounting-kit-admin-page .dynamic-file-input {
+
+    min-width: 0;
+}
+
+
+.mounting-kit-admin-page
+.dynamic-file-input
+input[type="file"] {
+
+    width: 100%;
+
+    min-height: 49px;
+
+    padding: 7px;
+
+    border:
+        1px dashed #afd8bd;
+
+    border-radius: 12px;
+
+    background:
+        #f7fff9;
+
+    color:
+        var(--mk-muted);
+
+    font-family:
+        inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        var(--mk-transition);
+}
+
+
+.mounting-kit-admin-page
+.dynamic-file-input
+input[type="file"]:hover {
+
+    border-color:
+        var(--mk-primary-light);
+
+    background:
+        var(--mk-mint-light);
+}
+
+
+.mounting-kit-admin-page
+.dynamic-file-input
+input[type="file"]:focus {
+
+    outline: none;
+
+    border-color:
+        var(--mk-primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(101, 213, 142, 0.12);
+}
+
+
+/* =========================================================
+   FILE SELECT BUTTON
+   ========================================================= */
+
+.mounting-kit-admin-page
+.dynamic-file-input
+input[type="file"]::file-selector-button {
+
+    margin-right: 10px;
+
+    padding:
+        8px 12px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mk-primary),
+            var(--mk-primary-light)
+        );
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.mounting-kit-admin-page
+.dynamic-file-input
+input[type="file"]::file-selector-button:hover {
+
+    background:
+        var(--mk-primary-dark);
+
+    transform:
+        translateY(-1px);
+}
+
+
+.mounting-kit-admin-page .dynamic-file-input small,
+.mounting-kit-admin-page .dynamic-title-input small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 10.5px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   21. IMAGE PREVIEW
+   ========================================================= */
+
+.mounting-kit-admin-page .dynamic-preview {
+
+    min-height: 145px;
+
+    border:
+        1px dashed #c4dfcf;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fafffc,
+            #f1fff6
+        );
+
+    overflow: hidden;
+}
+
+
+.mounting-kit-admin-page .preview-placeholder {
+
+    min-height: 145px;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    color:
+        #94aaa0;
+}
+
+
+.mounting-kit-admin-page .preview-placeholder span {
+
+    font-size: 29px;
+
+    line-height: 1;
+
+    opacity:
+        0.7;
+}
+
+
+.mounting-kit-admin-page .preview-placeholder small {
+
+    font-size: 11px;
+}
+
+
+.mounting-kit-admin-page .preview-placeholder.error {
+
+    color:
+        var(--mk-danger);
+
+    background:
+        #fff7f7;
+}
+
+
+/* =========================================================
+   22. IMAGE RESULT
+   ========================================================= */
+
+.mounting-kit-admin-page .image-preview-result {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 145px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        #f7fbf8;
+
+    overflow: hidden;
+}
+
+
+.mounting-kit-admin-page .image-preview-result img {
+
+    width: 100%;
+
+    height: 145px;
+
+    display: block;
+
+    object-fit: contain;
+
+    padding: 8px;
+
+    transition:
+        transform 0.4s var(--mk-smooth);
+}
+
+
+.mounting-kit-admin-page .dynamic-item:hover
+.image-preview-result img {
+
+    transform:
+        scale(1.035);
+}
+
+
+/* =========================================================
+   IMAGE NAME
+   ========================================================= */
+
+.mounting-kit-admin-page .image-preview-name {
+
+    position: absolute;
+
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+
+    padding:
+        7px 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(16, 40, 30, 0.82);
+
+    color:
+        #ffffff;
+
+    font-size: 10px;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    backdrop-filter:
+        blur(5px);
+}
+
+
+/* =========================================================
+   23. PDF TITLE
+   ========================================================= */
+
+.mounting-kit-admin-page .dynamic-title-input {
+
+    min-width: 0;
+}
+
+
+.mounting-kit-admin-page .dynamic-title-input input {
+
+    height: 48px;
+
+    padding:
+        0 14px;
+}
+
+
+/* =========================================================
+   24. PDF PREVIEW
+   ========================================================= */
+
+.mounting-kit-admin-page .pdf-file-preview {
+
+    grid-column:
+        1 / -1;
+
+    min-height: 74px;
+
+    border:
+        1px dashed #c4dfcf;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fbfffc,
+            #f3fff7
+        );
+
+    overflow: hidden;
+}
+
+
+.mounting-kit-admin-page .pdf-placeholder {
+
+    min-height: 74px;
+
+    padding:
+        12px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color:
+        var(--mk-muted);
+}
+
+
+.mounting-kit-admin-page .pdf-placeholder > span {
+
+    width: 43px;
+    height: 43px;
+
+    flex: 0 0 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 11px;
+
+    background:
+        #fff2f2;
+
+    font-size: 21px;
+}
+
+
+.mounting-kit-admin-page .pdf-placeholder strong,
+.mounting-kit-admin-page .pdf-selected-info strong {
+
+    display: block;
+
+    color:
+        var(--mk-text-dark);
+
+    font-size: 12px;
+
+    line-height: 1.35;
+}
+
+
+.mounting-kit-admin-page .pdf-placeholder small,
+.mounting-kit-admin-page .pdf-selected-info small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 10.5px;
+}
+
+
+.mounting-kit-admin-page .pdf-placeholder.error {
+
+    background:
+        #fff8f8;
+
+    color:
+        var(--mk-danger);
+}
+
+
+/* =========================================================
+   25. SELECTED PDF
+   ========================================================= */
+
+.mounting-kit-admin-page .pdf-selected {
+
+    min-height: 74px;
+
+    padding:
+        11px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.mounting-kit-admin-page .pdf-selected-icon {
+
+    width: 43px;
+    height: 43px;
+
+    flex: 0 0 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff1f1,
+            #ffe6e6
+        );
+
+    font-size: 21px;
+}
+
+
+.mounting-kit-admin-page .pdf-selected-info {
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.mounting-kit-admin-page .pdf-selected-info strong {
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.mounting-kit-admin-page .pdf-check {
+
+    width: 29px;
+    height: 29px;
+
+    flex: 0 0 29px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        #dcfce7;
+
+    color:
+        #15803d;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   26. REMOVE BUTTON
+   ========================================================= */
+
+.mounting-kit-admin-page .remove-item-btn {
+
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    align-self: flex-start;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid #f3cccc;
+
+    border-radius: 10px;
+
+    background:
+        #fff7f7;
+
+    color:
+        var(--mk-danger);
+
+    font-family:
+        inherit;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        var(--mk-transition);
+}
+
+
+.mounting-kit-admin-page
+.remove-item-btn:not(:disabled):hover {
+
+    border-color:
+        var(--mk-danger);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mk-danger),
+            var(--mk-danger-dark)
+        );
+
+    color:
+        #ffffff;
+
+    transform:
+        rotate(90deg) scale(1.05);
+
+    box-shadow:
+        0 8px 19px
+        rgba(239, 68, 68, 0.20);
+}
+
+
+.mounting-kit-admin-page
+.remove-item-btn:disabled {
+
+    opacity:
+        0.35;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =========================================================
+   27. INFORMATION BOX
+   ========================================================= */
+
+.mounting-kit-admin-page .dynamic-info {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-top: 18px;
+
+    padding:
+        14px 16px;
+
+    border:
+        1px solid #c5ecd2;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mk-mint-light),
+            #f8fffa
+        );
+}
+
+
+.mounting-kit-admin-page .dynamic-info > span {
+
+    width: 25px;
+    height: 25px;
+
+    flex: 0 0 25px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        var(--mk-primary);
+
+    color:
+        #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.mounting-kit-admin-page .dynamic-info p {
+
+    margin:
+        1px 0 0;
+
+    color:
+        #587168;
+
+    font-size: 11.5px;
+
+    line-height: 1.6;
+}
+
+
+.mounting-kit-admin-page .dynamic-info strong {
+
+    color:
+        var(--mk-primary-dark);
+}
+
+
+/* =========================================================
+   28. FORM ACTIONS
+   ========================================================= */
+
+.mounting-kit-admin-page .form-actions {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 2px;
+
+    padding:
+        15px 18px;
+
+    border:
+        1px solid rgba(216, 234, 222, 0.95);
+
+    border-radius: 17px;
+
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    box-shadow:
+        0 14px 40px
+        rgba(47, 174, 104, 0.12);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+}
+
+
+/* =========================================================
+   29. CANCEL
+   ========================================================= */
+
+.mounting-kit-admin-page .cancel-btn {
+
+    min-width: 90px;
+
+    min-height: 46px;
+
+    padding:
+        0 20px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid var(--mk-border);
+
+    border-radius: 11px;
+
+    background:
+        #ffffff;
+
+    color:
+        var(--mk-muted);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition:
+        var(--mk-transition);
+}
+
+
+.mounting-kit-admin-page .cancel-btn:hover {
+
+    color:
+        var(--mk-danger);
+
+    border-color:
+        #f1caca;
+
+    background:
+        #fffafa;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(239, 68, 68, 0.08);
+}
+
+
+/* =========================================================
+   30. SUBMIT BUTTON
+   ========================================================= */
+
+.mounting-kit-admin-page .submit-btn {
+
+    position: relative;
+
+    min-width: 237px;
+
+    min-height: 46px;
+
+    padding:
+        0 21px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mk-primary-dark),
+            var(--mk-primary),
+            var(--mk-primary-light)
+        );
+
+    background-size:
+        200% 200%;
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 24px
+        rgba(47, 174, 104, 0.24);
+
+    overflow: hidden;
+
+    transition:
+        var(--mk-transition);
+}
+
+
+/* =========================================================
+   SUBMIT SHINE
+   ========================================================= */
+
+.mounting-kit-admin-page .submit-btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -125%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.28),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left 0.65s ease;
+}
+
+
+.mounting-kit-admin-page .submit-btn:hover::before {
+    left: 145%;
+}
+
+
+.mounting-kit-admin-page .submit-btn:hover {
+
+    transform:
+        translateY(-3px);
+
+    background-position:
+        100% 50%;
+
+    box-shadow:
+        0 15px 31px
+        rgba(47, 174, 104, 0.29);
+}
+
+
+.mounting-kit-admin-page .submit-btn:active {
+
+    transform:
+        translateY(0) scale(0.98);
+}
+
+
+.mounting-kit-admin-page .submit-btn:disabled {
+
+    opacity:
+        0.78;
+
+    cursor:
+        wait;
+
+    transform:
+        none;
+}
+
+
+/* =========================================================
+   SUBMIT ICONS
+   ========================================================= */
+
+.mounting-kit-admin-page .submit-icon {
+
+    font-size: 18px;
+
+    line-height: 1;
+}
+
+
+.mounting-kit-admin-page .submit-arrow {
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.mounting-kit-admin-page .submit-btn:hover .submit-arrow {
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.mounting-kit-admin-page .submit-spinner {
+
+    display: inline-block;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    animation:
+        mkSpinner 0.8s linear infinite;
+}
+
+
+/* =========================================================
+   31. SCROLLBAR
+   ========================================================= */
+
+.mounting-kit-admin-page ::-webkit-scrollbar {
+
+    width: 8px;
+    height: 8px;
+}
+
+
+.mounting-kit-admin-page ::-webkit-scrollbar-track {
+
+    background:
+        #edf9f1;
+
+    border-radius:
+        10px;
+}
+
+
+.mounting-kit-admin-page ::-webkit-scrollbar-thumb {
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--mk-primary-light),
+            var(--mk-primary)
+        );
+
+    border-radius:
+        10px;
+}
+
+
+.mounting-kit-admin-page
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        var(--mk-primary-dark);
+}
+
+
+/* =========================================================
+   32. ANIMATIONS
+   ========================================================= */
+
+@keyframes mkHeaderReveal {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(-18px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes mkCardReveal {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes mkItemReveal {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(13px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes mkIconFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-4px);
+    }
+}
+
+
+@keyframes mkSpinner {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   33. NEW ITEM
+   ========================================================= */
+
+.mounting-kit-admin-page .new-item {
+
+    animation:
+        mkNewItem 0.5s
+        var(--mk-smooth)
+        both;
+}
+
+
+@keyframes mkNewItem {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(20px)
+            scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   34. TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .mounting-kit-admin-page {
+
+        padding:
+            24px;
+    }
+
+
+    .mounting-kit-admin-page .admin-page-header {
+
+        padding:
+            22px;
+    }
+
+
+    .mounting-kit-admin-page .form-card {
+
+        padding:
+            23px;
+    }
+
+
+    .mounting-kit-admin-page
+    .image-item
+    .dynamic-file-content {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-file-content {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+}
+
+
+/* =========================================================
+   35. MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .mounting-kit-admin-page {
+
+        padding:
+            15px;
+    }
+
+
+    .mounting-kit-admin-page
+    .admin-page-header {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        padding:
+            21px;
+
+        gap:
+            18px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-content {
+
+        align-items:
+            flex-start;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-icon {
+
+        width: 52px;
+        height: 52px;
+
+        flex-basis: 52px;
+
+        border-radius:
+            15px;
+
+        font-size:
+            24px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-text h1 {
+
+        font-size:
+            24px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-text p {
+
+        font-size:
+            13px;
+    }
+
+
+    .mounting-kit-admin-page
+    .back-btn {
+
+        width: 100%;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-card {
+
+        padding:
+            20px;
+
+        border-radius:
+            17px;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-group.full-width {
+
+        grid-column:
+            auto;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-section-header {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        gap:
+            14px;
+    }
+
+
+    .mounting-kit-admin-page
+    .add-item-btn {
+
+        width: 100%;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-item {
+
+        flex-wrap:
+            wrap;
+
+        padding:
+            15px;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-item-number {
+
+        width:
+            auto;
+
+        flex-basis:
+            auto;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-file-content,
+
+    .mounting-kit-admin-page
+    .image-item
+    .dynamic-file-content {
+
+        width: 100%;
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .mounting-kit-admin-page
+    .remove-item-btn {
+
+        position:
+            absolute;
+
+        top:
+            13px;
+
+        right:
+            13px;
+    }
+
+
+    .mounting-kit-admin-page
+    .pdf-file-preview {
+
+        grid-column:
+            auto;
+    }
+
+
+    /* =====================================================
+       MOBILE ACTIONS
+       ===================================================== */
+
+    .mounting-kit-admin-page
+    .form-actions {
+
+        position:
+            relative;
+
+        bottom:
+            auto;
+
+        flex-direction:
+            column-reverse;
+
+        align-items:
+            stretch;
+
+        justify-content:
+            center;
+
+        padding:
+            12px;
+
+        gap:
+            10px;
+
+        border-radius:
+            14px;
+    }
+
+
+    .mounting-kit-admin-page
+    .cancel-btn,
+
+    .mounting-kit-admin-page
+    .submit-btn {
+
+        width: 100%;
+
+        min-width: 0;
+
+        min-height:
+            48px;
+    }
+}
+
+
+/* =========================================================
+   36. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .mounting-kit-admin-page {
+
+        padding:
+            10px;
+    }
+
+
+    .mounting-kit-admin-page
+    .admin-page-header {
+
+        padding:
+            17px;
+
+        border-radius:
+            17px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-content {
+
+        gap:
+            11px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-icon {
+
+        width:
+            46px;
+
+        height:
+            46px;
+
+        flex-basis:
+            46px;
+
+        border-radius:
+            14px;
+
+        font-size:
+            21px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-label {
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-text h1 {
+
+        font-size:
+            21px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-text p {
+
+        font-size:
+            12px;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-card {
+
+        padding:
+            16px;
+
+        border-radius:
+            15px;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-card-header {
+
+        gap:
+            11px;
+
+        padding-bottom:
+            17px;
+
+        margin-bottom:
+            18px;
+    }
+
+
+    .mounting-kit-admin-page
+    .card-header-icon {
+
+        width:
+            42px;
+
+        height:
+            42px;
+
+        flex-basis:
+            42px;
+
+        font-size:
+            19px;
+    }
+
+
+    .mounting-kit-admin-page
+    .card-header-text h2 {
+
+        font-size:
+            16px;
+    }
+
+
+    .mounting-kit-admin-page
+    .card-header-text p {
+
+        font-size:
+            11px;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-item {
+
+        gap:
+            10px;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-preview,
+
+    .mounting-kit-admin-page
+    .preview-placeholder,
+
+    .mounting-kit-admin-page
+    .image-preview-result {
+
+        min-height:
+            125px;
+    }
+
+
+    .mounting-kit-admin-page
+    .image-preview-result img {
+
+        height:
+            125px;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-info {
+
+        padding:
+            12px;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-info p {
+
+        font-size:
+            10.5px;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-actions {
+
+        padding:
+            10px;
+    }
+}
+
+
+/* =========================================================
+   37. EXTRA SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .mounting-kit-admin-page {
+
+        padding:
+            7px;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-card {
+
+        padding:
+            13px;
+    }
+
+
+    .mounting-kit-admin-page
+    .admin-page-header {
+
+        padding:
+            14px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-icon {
+
+        width:
+            42px;
+
+        height:
+            42px;
+
+        flex-basis:
+            42px;
+
+        font-size:
+            19px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-text h1 {
+
+        font-size:
+            19px;
+    }
+
+
+    .mounting-kit-admin-page
+    .header-text p {
+
+        font-size:
+            11px;
+    }
+
+
+    .mounting-kit-admin-page
+    .dynamic-item {
+
+        padding:
+            12px;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-group input,
+
+    .mounting-kit-admin-page
+    .dynamic-title-input input {
+
+        height:
+            46px;
+
+        font-size:
+            13px;
+    }
+
+
+    .mounting-kit-admin-page
+    .form-group textarea {
+
+        min-height:
+            145px;
+
+        font-size:
+            13px;
+    }
+}
+
+
+/* =========================================================
+   38. ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mounting-kit-admin-page *,
+    .mounting-kit-admin-page *::before,
+    .mounting-kit-admin-page *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+}
+
+
+/* =========================================================
+   39. TEXT SELECTION
+   ========================================================= */
+
+.mounting-kit-admin-page ::selection {
+
+    background:
+        rgba(200, 248, 217, 0.90);
+
+    color:
+        var(--mk-text-dark);
+}
+
+
+/* =========================================================
+   40. FOCUS VISIBLE
+   ========================================================= */
+
+.mounting-kit-admin-page
+button:focus-visible,
+
+.mounting-kit-admin-page
+a:focus-visible,
+
+.mounting-kit-admin-page
+input:focus-visible,
+
+.mounting-kit-admin-page
+textarea:focus-visible {
+
+    outline:
+        3px solid
+        rgba(47, 174, 104, 0.25);
+
+    outline-offset:
+        2px;
+}
+
+
+/* =========================================================
+   END
+   ========================================================= */

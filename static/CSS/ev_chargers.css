@@ -1,0 +1,3633 @@
+/* =========================================================
+   SUNGREEN SOLAR
+   EV CHARGERS — PREMIUM END LEVEL UI
+   Animations • Transitions • Glassmorphism • Responsive
+========================================================= */
+
+
+/* =========================================================
+   01. ROOT
+========================================================= */
+
+.ev-page {
+
+    --ev-dark: #07110d;
+    --ev-dark-2: #0b1913;
+    --ev-dark-3: #10251b;
+
+    --ev-mint: #dfffee;
+    --ev-mint-2: #b9f5d3;
+    --ev-green: #20d878;
+    --ev-green-dark: #0b8f4d;
+
+    --ev-white: #ffffff;
+    --ev-text: #173025;
+    --ev-muted: #66766e;
+
+    --ev-border: rgba(32, 216, 120, 0.16);
+
+    --ev-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.12);
+
+    --ev-transition:
+        0.45s cubic-bezier(.22, 1, .36, 1);
+
+    width: 100%;
+    overflow: hidden;
+    background: #f5fbf7;
+    color: var(--ev-text);
+
+}
+
+
+/* =========================================================
+   02. COMMON CONTAINER
+========================================================= */
+
+.ev-module-container {
+
+    width: min(1280px, calc(100% - 50px));
+    margin: auto;
+    position: relative;
+    z-index: 5;
+
+}
+
+
+/* =========================================================
+   03. HERO
+========================================================= */
+
+.ev-hero {
+
+    min-height: 92vh;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(32, 216, 120, .20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(77, 255, 160, .10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #06100c,
+            #0a1912 55%,
+            #10271c
+        );
+
+    color: white;
+
+    isolation: isolate;
+
+}
+
+
+.ev-hero::before {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent
+        );
+
+    pointer-events: none;
+
+}
+
+
+.ev-hero-grid {
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 48%,
+            rgba(32,216,120,.08) 50%,
+            transparent 52%
+        );
+
+    opacity: .4;
+
+    animation:
+        heroGridMove 12s linear infinite;
+
+}
+
+
+@keyframes heroGridMove {
+
+    0% {
+        transform: translateX(-5%);
+    }
+
+    50% {
+        transform: translateX(5%);
+    }
+
+    100% {
+        transform: translateX(-5%);
+    }
+
+}
+
+
+/* =========================================================
+   04. HERO ORBS
+========================================================= */
+
+.ev-hero-orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(2px);
+
+    pointer-events: none;
+
+    animation:
+        orbFloat 7s ease-in-out infinite;
+
+}
+
+
+.ev-orb-one {
+
+    width: 420px;
+    height: 420px;
+
+    right: -130px;
+    top: 5%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(32,216,120,.22),
+            transparent 68%
+        );
+
+}
+
+
+.ev-orb-two {
+
+    width: 280px;
+    height: 280px;
+
+    left: -120px;
+    bottom: 5%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(92,255,173,.13),
+            transparent 70%
+        );
+
+    animation-delay: -3s;
+
+}
+
+
+@keyframes orbFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate3d(0,-30px,0)
+            scale(1.06);
+
+    }
+
+}
+
+
+/* =========================================================
+   05. HERO CONTENT
+========================================================= */
+
+.ev-hero-content {
+
+    max-width: 850px;
+
+    padding:
+        100px
+        0
+        130px;
+
+    animation:
+        heroContentReveal 1s
+        cubic-bezier(.22,1,.36,1)
+        both;
+
+}
+
+
+@keyframes heroContentReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(55px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   06. EYEBROW
+========================================================= */
+
+.ev-eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        9px
+        15px;
+
+    border:
+        1px solid
+        rgba(32,216,120,.28);
+
+    border-radius: 100px;
+
+    background:
+        rgba(32,216,120,.07);
+
+    backdrop-filter:
+        blur(15px);
+
+    color:
+        var(--ev-mint-2);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 30px;
+
+    animation:
+        fadeUp .8s .1s both;
+
+}
+
+
+.eyebrow-icon {
+
+    width: 27px;
+    height: 27px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(32,216,120,.15);
+
+    animation:
+        pulseGlow 2s infinite;
+
+}
+
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(32,216,120,.2);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 0 9px
+            rgba(32,216,120,0);
+
+    }
+
+}
+
+
+/* =========================================================
+   07. HERO TITLE
+========================================================= */
+
+.ev-hero h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            55px,
+            8vw,
+            105px
+        );
+
+    line-height: .95;
+
+    letter-spacing:
+        -5px;
+
+    font-weight:
+        900;
+
+    max-width:
+        900px;
+
+    animation:
+        fadeUp .9s .2s both;
+
+}
+
+
+.ev-hero h1 span {
+
+    display: block;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff,
+            #7dffb7,
+            #20d878
+        );
+
+    background-size:
+        200% auto;
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    animation:
+        gradientText 5s
+        ease-in-out infinite;
+
+}
+
+
+@keyframes gradientText {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+/* =========================================================
+   08. HERO DESCRIPTION
+========================================================= */
+
+.ev-hero-content > p {
+
+    max-width: 700px;
+
+    margin:
+        30px 0;
+
+    color:
+        rgba(255,255,255,.68);
+
+    font-size:
+        clamp(16px, 2vw, 19px);
+
+    line-height:
+        1.8;
+
+    animation:
+        fadeUp .9s .3s both;
+
+}
+
+
+/* =========================================================
+   09. HERO LINE
+========================================================= */
+
+.hero-line {
+
+    width: 110px;
+    height: 3px;
+
+    margin:
+        30px 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--ev-green),
+            transparent
+        );
+
+    animation:
+        lineGrow 1s .5s both;
+
+}
+
+
+@keyframes lineGrow {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 110px;
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   10. HERO STATS
+========================================================= */
+
+.hero-stats {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    animation:
+        fadeUp 1s .45s both;
+
+}
+
+
+.hero-stat {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.hero-stat strong {
+
+    font-size: 23px;
+
+    color:
+        white;
+
+}
+
+
+.hero-stat span {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size:
+        12px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+.hero-stat-divider {
+
+    width: 1px;
+    height: 40px;
+
+    background:
+        rgba(255,255,255,.16);
+
+}
+
+
+/* =========================================================
+   11. SCROLL INDICATOR
+========================================================= */
+
+.ev-scroll-indicator {
+
+    position: absolute;
+
+    bottom: 35px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border: 0;
+
+    background: transparent;
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        var(--ev-transition);
+
+    animation:
+        scrollBounce 2.2s infinite;
+
+}
+
+
+.ev-scroll-indicator:hover {
+
+    color: white;
+
+    gap: 18px;
+
+}
+
+
+.scroll-arrow {
+
+    width: 34px;
+    height: 34px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+}
+
+
+@keyframes scrollBounce {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, 0);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -8px);
+    }
+
+}
+
+
+.scroll-indicator-hidden {
+
+    opacity: 0;
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   12. PRODUCTS SECTION
+========================================================= */
+
+.ev-products-section {
+
+    position: relative;
+
+    padding:
+        110px
+        0
+        130px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7fcf9,
+            #eef8f2
+        );
+
+}
+
+
+.ev-section-heading {
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        .8fr;
+
+    gap: 80px;
+
+    align-items: end;
+
+    margin-bottom: 65px;
+
+}
+
+
+.section-label {
+
+    display: inline-block;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing:
+        2.5px;
+
+    color:
+        var(--ev-green-dark);
+
+    margin-bottom: 15px;
+
+}
+
+
+.ev-section-heading h2,
+.ev-features-heading h2 {
+
+    margin: 0;
+
+    font-size:
+        clamp(38px, 5vw, 68px);
+
+    line-height: 1;
+
+    letter-spacing:
+        -3px;
+
+    color:
+        #10251b;
+
+}
+
+
+.ev-section-heading h2 span,
+.ev-features-heading h2 span {
+
+    color:
+        var(--ev-green-dark);
+
+}
+
+
+.section-heading-right p {
+
+    margin: 0;
+
+    color:
+        var(--ev-muted);
+
+    line-height:
+        1.8;
+
+    font-size:
+        15px;
+
+}
+
+
+.section-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(32,216,120,.4),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   13. FILTER BAR
+========================================================= */
+
+.ev-filter-bar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 22px 25px;
+
+    margin-bottom: 20px;
+
+    border:
+        1px solid
+        rgba(16,55,35,.08);
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,.75);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 15px 50px
+        rgba(20,70,40,.07);
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-filter-bar:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 20px 60px
+        rgba(20,70,40,.11);
+
+}
+
+
+.ev-filter-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.filter-icon {
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 15px;
+
+    background:
+        #e0faea;
+
+    color:
+        var(--ev-green-dark);
+
+    font-size: 20px;
+
+}
+
+
+.ev-filter-info strong {
+
+    display: block;
+
+    font-size: 14px;
+
+}
+
+
+.ev-filter-info small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        var(--ev-muted);
+
+}
+
+
+.ev-filter-select-wrap {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.ev-filter-select-wrap label {
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        1px;
+
+    color:
+        var(--ev-muted);
+
+}
+
+
+.ev-select-container {
+
+    position: relative;
+
+}
+
+
+.ev-filter-select {
+
+    appearance: none;
+
+    min-width: 220px;
+
+    padding:
+        13px
+        42px
+        13px
+        17px;
+
+    border:
+        1px solid
+        rgba(16,55,35,.12);
+
+    border-radius: 12px;
+
+    background:
+        white;
+
+    color:
+        #163124;
+
+    font-weight:
+        700;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-filter-select:hover,
+.ev-filter-select:focus {
+
+    border-color:
+        var(--ev-green);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(32,216,120,.08);
+
+}
+
+
+.filter-select-arrow {
+
+    position: absolute;
+
+    right: 15px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    pointer-events: none;
+
+    color:
+        var(--ev-green-dark);
+
+}
+
+
+/* =========================================================
+   14. RESULT BAR
+========================================================= */
+
+.ev-filter-result {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding:
+        13px 4px;
+
+    margin-bottom:
+        25px;
+
+    color:
+        var(--ev-muted);
+
+}
+
+
+.filter-result-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+}
+
+
+.filter-result-left span {
+
+    color:
+        var(--ev-green-dark);
+
+}
+
+
+.filter-result-left p {
+
+    margin: 0;
+
+    font-size: 13px;
+
+}
+
+
+.ev-filter-result > strong {
+
+    display: grid;
+
+    place-items: center;
+
+    min-width: 36px;
+    height: 36px;
+
+    padding: 0 10px;
+
+    border-radius: 100px;
+
+    background:
+        #dff9e9;
+
+    color:
+        var(--ev-green-dark);
+
+}
+
+
+/* =========================================================
+   15. PRODUCT GRID
+========================================================= */
+
+.ev-products-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+
+}
+
+
+/* =========================================================
+   16. PRODUCT CARD
+========================================================= */
+
+.ev-product-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 26px;
+
+    background:
+        white;
+
+    border:
+        1px solid
+        rgba(16,55,35,.08);
+
+    box-shadow:
+        0 15px 45px
+        rgba(15,60,35,.07);
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        transform .55s
+        cubic-bezier(.22,1,.36,1),
+        box-shadow .55s
+        cubic-bezier(.22,1,.36,1);
+
+    animation:
+        cardReveal .8s both;
+
+}
+
+
+.ev-product-card:hover {
+
+    transform:
+        translateY(-12px);
+
+    box-shadow:
+        0 30px 80px
+        rgba(15,70,40,.15);
+
+}
+
+
+.ev-product-card:focus-visible {
+
+    box-shadow:
+        0 0 0 4px
+        rgba(32,216,120,.25),
+        0 30px 70px
+        rgba(15,70,40,.15);
+
+}
+
+
+@keyframes cardReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   17. PRODUCT IMAGE
+========================================================= */
+
+.ev-product-image {
+
+    height: 330px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf9f1,
+            #dff5e8
+        );
+
+}
+
+
+.ev-product-image img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    padding: 28px;
+
+    transition:
+        transform .8s
+        cubic-bezier(.22,1,.36,1),
+        filter .6s ease;
+
+}
+
+
+.ev-product-card:hover
+.ev-product-image img {
+
+    transform:
+        scale(1.08)
+        translateY(-5px);
+
+    filter:
+        drop-shadow(
+            0 20px 20px
+            rgba(0,0,0,.13)
+        );
+
+}
+
+
+/* =========================================================
+   18. IMAGE OVERLAY
+========================================================= */
+
+.image-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(4,25,14,.45)
+        );
+
+    opacity: 0;
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-product-card:hover
+.image-overlay {
+
+    opacity: 1;
+
+}
+
+
+/* =========================================================
+   19. PRODUCT NUMBER
+========================================================= */
+
+.product-number {
+
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.85);
+
+    backdrop-filter:
+        blur(12px);
+
+    color:
+        var(--ev-green-dark);
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.08);
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-product-card:hover
+.product-number {
+
+    transform:
+        rotate(10deg)
+        scale(1.08);
+
+}
+
+
+/* =========================================================
+   20. NEW BADGE
+========================================================= */
+
+.new-badge {
+
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        8px 12px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(7,25,15,.88);
+
+    color:
+        white;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing:
+        1px;
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+.new-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--ev-green);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(32,216,120,.13);
+
+    animation:
+        pulseDot 1.8s infinite;
+
+}
+
+
+@keyframes pulseDot {
+
+    50% {
+        transform: scale(.7);
+        opacity: .5;
+    }
+
+}
+
+
+/* =========================================================
+   21. VIEW MORE IMAGE ACTION
+========================================================= */
+
+.product-image-action {
+
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding:
+        13px 15px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.94);
+
+    backdrop-filter:
+        blur(15px);
+
+    color:
+        #10251b;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transform:
+        translateY(25px);
+
+    opacity: 0;
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-product-card:hover
+.product-image-action {
+
+    transform:
+        translateY(0);
+
+    opacity: 1;
+
+}
+
+
+.view-arrow {
+
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        var(--ev-green);
+
+    color:
+        #052312;
+
+    transition:
+        .35s ease;
+
+}
+
+
+.ev-product-card:hover
+.view-arrow {
+
+    transform:
+        rotate(45deg);
+
+}
+
+
+/* =========================================================
+   22. PRODUCT CONTENT
+========================================================= */
+
+.ev-product-content {
+
+    position: relative;
+
+    padding:
+        26px 26px 24px;
+
+}
+
+
+.product-category {
+
+    display: inline-block;
+
+    margin-bottom: 9px;
+
+    color:
+        var(--ev-green-dark);
+
+    
+
+    font-weight: 900;
+
+    letter-spacing:
+        1.5px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.product-title {
+
+    margin:
+        0 0 7px;
+
+    color:
+        #10251b;
+
+    font-size: 23px;
+
+    line-height: 1.15;
+
+    letter-spacing:
+        -.7px;
+
+    transition:
+        color .35s ease;
+
+}
+
+
+.ev-product-card:hover
+.product-title {
+
+    color:
+        var(--ev-green-dark);
+
+}
+
+
+.product-subtitle {
+
+    margin:
+        0 0 12px;
+
+    color:
+        #68766e;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.product-description {
+
+    display:
+        -webkit-box;
+
+    -webkit-line-clamp: 3;
+
+    -webkit-box-orient:
+        vertical;
+
+    overflow: hidden;
+
+    margin:
+        14px 0 20px;
+
+    color:
+        #708078;
+
+    font-size: 13px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.product-content-divider {
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        #edf2ee;
+
+}
+
+
+.ev-product-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 17px;
+
+    color:
+        #52655b;
+
+    font-weight: 800;
+
+}
+
+
+.product-arrow {
+
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        #edf9f1;
+
+    color:
+        var(--ev-green-dark);
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-product-card:hover
+.product-arrow {
+
+    background:
+        var(--ev-green);
+
+    color:
+        #062312;
+
+    transform:
+        rotate(45deg);
+
+}
+
+
+/* =========================================================
+   23. CARD SHINE
+========================================================= */
+
+.card-shine {
+
+    position: absolute;
+
+    top: -100%;
+    left: -70%;
+
+    width: 45%;
+    height: 300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    transform:
+        rotate(25deg);
+
+    pointer-events: none;
+
+}
+
+
+.ev-product-card:hover
+.card-shine {
+
+    animation:
+        cardShine .9s ease;
+
+}
+
+
+@keyframes cardShine {
+
+    from {
+        left: -70%;
+    }
+
+    to {
+        left: 140%;
+    }
+
+}
+
+
+/* =========================================================
+   24. EMPTY STATES
+========================================================= */
+
+.ev-empty-state,
+.ev-filter-empty {
+
+    grid-column:
+        1 / -1;
+
+    min-height:
+        350px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    border:
+        1px dashed
+        rgba(32,216,120,.25);
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(255,255,255,.6);
+
+}
+
+
+.empty-ev-icon,
+.ev-filter-empty-icon {
+
+    width: 75px;
+    height: 75px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        #e2faeb;
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+
+    animation:
+        pulseGlow 2s infinite;
+
+}
+
+
+.ev-empty-state h3,
+.ev-filter-empty h3 {
+
+    margin:
+        0 0 8px;
+
+}
+
+
+.ev-empty-state p,
+.ev-filter-empty p {
+
+    margin: 0;
+
+    color:
+        var(--ev-muted);
+
+}
+
+
+/* =========================================================
+   25. FEATURES SECTION
+========================================================= */
+
+.ev-features-section {
+
+    padding:
+        110px 0;
+
+    background:
+        #07120d;
+
+    color: white;
+
+    position: relative;
+
+}
+
+
+.ev-features-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(32,216,120,.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(32,216,120,.08),
+            transparent 30%
+        );
+
+}
+
+
+.ev-features-heading {
+
+    position: relative;
+
+    margin-bottom: 60px;
+
+}
+
+
+.ev-features-heading h2 {
+
+    color:
+        white;
+
+}
+
+
+.ev-features-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.ev-feature-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 300px;
+
+    padding:
+        28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:
+        24px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-feature-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: -70px;
+    bottom: -70px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(32,216,120,.08);
+
+    transition:
+        .5s ease;
+
+}
+
+
+.ev-feature-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(32,216,120,.3);
+
+    background:
+        rgba(255,255,255,.06);
+
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.25);
+
+}
+
+
+.ev-feature-card:hover::after {
+
+    transform:
+        scale(2);
+
+}
+
+
+.feature-number {
+
+    display: block;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-weight: 900;
+
+    margin-bottom: 25px;
+
+}
+
+
+.feature-icon {
+
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 25px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(32,216,120,.1);
+
+    color:
+        var(--ev-green);
+
+    font-size: 25px;
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-feature-card:hover
+.feature-icon {
+
+    transform:
+        rotate(-8deg)
+        scale(1.1);
+
+    background:
+        var(--ev-green);
+
+    color:
+        #06130b;
+
+    box-shadow:
+        0 10px 35px
+        rgba(32,216,120,.2);
+
+}
+
+
+.ev-feature-card h3 {
+
+    margin:
+        0 0 13px;
+
+    font-size:
+        18px;
+
+}
+
+
+.ev-feature-card p {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.55);
+
+    line-height:
+        1.7;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =========================================================
+   26. CTA
+========================================================= */
+
+.ev-module-cta {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        120px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a2417,
+            #103c25
+        );
+
+    color: white;
+
+}
+
+
+.cta-glow {
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -150px;
+    top: -220px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(32,216,120,.2),
+            transparent 65%
+        );
+
+    animation:
+        orbFloat 8s infinite;
+
+}
+
+
+.cta-glow-two {
+
+    right: auto;
+    left: -250px;
+    top: auto;
+    bottom: -300px;
+
+    animation-delay:
+        -3s;
+
+}
+
+
+.cta-content {
+
+    position: relative;
+
+    max-width: 850px;
+
+    text-align: center;
+
+    margin: auto;
+
+}
+
+
+.cta-content h2 {
+
+    margin:
+        0 0 25px;
+
+    font-size:
+        clamp(40px, 6vw, 75px);
+
+    line-height: 1;
+
+    letter-spacing:
+        -3px;
+
+}
+
+
+.cta-content h2 span {
+
+    display: block;
+
+    color:
+        var(--ev-green);
+
+}
+
+
+.cta-content p {
+
+    max-width:
+        650px;
+
+    margin:
+        0 auto 35px;
+
+    color:
+        rgba(255,255,255,.62);
+
+    line-height:
+        1.8;
+
+}
+
+
+.ev-cta-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        15px 17px 15px 22px;
+
+    border-radius:
+        100px;
+
+    background:
+        var(--ev-green);
+
+    color:
+        #062312;
+
+    text-decoration:
+        none;
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+    transition:
+        var(--ev-transition);
+
+}
+
+
+.ev-cta-button strong {
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,0,0,.1);
+
+    transition:
+        .35s ease;
+
+}
+
+
+.ev-cta-button:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(32,216,120,.22);
+
+}
+
+
+.ev-cta-button:hover strong {
+
+    transform:
+        rotate(-45deg);
+
+}
+
+
+/* =========================================================
+   27. PRODUCT MODAL
+========================================================= */
+
+.ev-product-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+
+}
+
+
+.ev-product-modal.active {
+
+    visibility: visible;
+
+    opacity: 1;
+
+}
+
+
+.ev-modal-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(2,12,7,.78);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+.ev-modal-dialog {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(1100px, 100%);
+
+    max-height:
+        90vh;
+
+    overflow:
+        auto;
+
+    border-radius:
+        30px;
+
+    background:
+        #f9fdfb;
+
+    box-shadow:
+        0 40px 120px
+        rgba(0,0,0,.4);
+
+    transform:
+        translateY(40px)
+        scale(.94);
+
+    opacity: 0;
+
+    transition:
+        .55s
+        cubic-bezier(.22,1,.36,1);
+
+}
+
+
+.ev-product-modal.active
+.ev-modal-dialog {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+
+}
+
+
+/* =========================================================
+   28. MODAL CLOSE
+========================================================= */
+
+.ev-modal-close {
+
+    position: absolute;
+
+    z-index: 20;
+
+    top: 18px;
+    right: 18px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.9);
+
+    color:
+        #13271d;
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.1);
+
+    transition:
+        .35s ease;
+
+}
+
+
+.ev-modal-close:hover {
+
+    transform:
+        rotate(90deg)
+        scale(1.08);
+
+    background:
+        #dff9e9;
+
+    color:
+        var(--ev-green-dark);
+
+}
+
+
+/* =========================================================
+   29. MODAL GRID
+========================================================= */
+
+.ev-modal-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        .95fr
+        1.05fr;
+
+    min-height:
+        650px;
+
+}
+
+
+/* =========================================================
+   30. MODAL GALLERY
+========================================================= */
+
+.ev-modal-gallery {
+
+    padding:
+        30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eaf8ef,
+            #dff2e7
+        );
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+}
+
+
+.ev-modal-image-wrap {
+
+    position: relative;
+
+    height:
+        480px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        24px;
+
+    background:
+        rgba(255,255,255,.55);
+
+    overflow:
+        hidden;
+
+}
+
+
+.ev-modal-image {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 35px;
+
+    animation:
+        modalImageIn .45s
+        cubic-bezier(.22,1,.36,1);
+
+}
+
+
+@keyframes modalImageIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+.ev-modal-placeholder {
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    color:
+        var(--ev-green-dark);
+
+    font-size:
+        50px;
+
+}
+
+
+.ev-modal-image-prev,
+.ev-modal-image-next {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.92);
+
+    color:
+        #13271d;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.1);
+
+    transition:
+        .3s ease;
+
+}
+
+
+.ev-modal-image-prev {
+
+    left: 15px;
+
+}
+
+
+.ev-modal-image-next {
+
+    right: 15px;
+
+}
+
+
+.ev-modal-image-prev:hover,
+.ev-modal-image-next:hover {
+
+    background:
+        var(--ev-green);
+
+    transform:
+        translateY(-50%)
+        scale(1.1);
+
+}
+
+
+.ev-modal-image-counter {
+
+    position: absolute;
+
+    bottom: 15px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        6px 12px;
+
+    border-radius:
+        100px;
+
+    background:
+        rgba(0,0,0,.65);
+
+    color: white;
+
+    font-size:
+        11px;
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+.ev-modal-image-thumbs {
+
+    display:
+        flex;
+
+    gap: 9px;
+
+    overflow-x:
+        auto;
+
+    padding-top:
+        15px;
+
+}
+
+
+.ev-modal-thumb {
+
+    flex: 0 0 65px;
+
+    width: 65px;
+    height: 65px;
+
+    padding: 5px;
+
+    border:
+        2px solid
+        transparent;
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+
+}
+
+
+.ev-modal-thumb img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+
+.ev-modal-thumb:hover,
+.ev-modal-thumb.active {
+
+    border-color:
+        var(--ev-green);
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+/* =========================================================
+   31. MODAL CONTENT
+========================================================= */
+
+.ev-modal-content {
+
+    padding:
+        55px 50px;
+
+    overflow-y:
+        auto;
+
+}
+
+
+.modal-top-row {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap: 15px;
+
+}
+
+
+.modal-category {
+
+    color:
+        var(--ev-green-dark);
+
+    font-size:
+        11px !important;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1.5px;
+
+}
+
+
+.modal-new-badge {
+
+    padding:
+        6px 10px;
+
+    border-radius:
+        100px;
+
+    background:
+        #dff9e9;
+
+    color:
+        var(--ev-green-dark);
+
+    font-weight:
+        900;
+
+}
+
+
+.ev-modal-content h2 {
+
+    margin:
+        18px 0 8px;
+
+    font-size:
+        clamp(32px, 4vw, 52px);
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -2px;
+
+    color:
+        #10251b;
+
+}
+
+
+.ev-modal-content h3 {
+
+    margin:
+        0;
+
+    color:
+        #728078;
+
+    font-size:
+        15px;
+
+}
+
+
+.modal-divider {
+
+    width:
+        75px;
+
+    height:
+        3px;
+
+    margin:
+        25px 0;
+
+    border-radius:
+        5px;
+
+    background:
+        var(--ev-green);
+
+}
+
+
+#evModalProductDescription {
+
+    color:
+        #65736b;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   32. MODAL META
+========================================================= */
+
+.modal-meta {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        12px;
+
+    margin:
+        28px 0;
+
+}
+
+
+.modal-meta-item {
+
+    display:
+        flex;
+
+    gap:
+        11px;
+
+    padding:
+        14px;
+
+    border:
+        1px solid
+        rgba(16,55,35,.07);
+
+    border-radius:
+        14px;
+
+    background:
+        #f3f9f5;
+
+    transition:
+        .35s ease;
+
+}
+
+
+.modal-meta-item:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(32,216,120,.25);
+
+}
+
+
+.meta-icon {
+
+    width:
+        30px;
+
+    height:
+        30px;
+
+    flex:
+        0 0 30px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        9px;
+
+    background:
+        #dff9e9;
+
+    color:
+        var(--ev-green-dark);
+
+}
+
+
+.modal-meta-item strong {
+
+    display:
+        block;
+
+    color:
+        #173025;
+
+}
+
+
+.modal-meta-item small {
+
+    display:
+        block;
+
+    margin-top:
+        3px;
+
+    color:
+        #78867e;
+
+}
+
+
+/* =========================================================
+   33. BROCHURES
+========================================================= */
+
+.modal-brochures-wrapper {
+
+    margin-top:
+        20px;
+
+}
+
+
+.modal-brochures-heading {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        10px;
+
+    color:
+        #173025;
+
+}
+
+
+.modal-pdf-list {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        8px;
+
+}
+
+
+.modal-pdf-item {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        11px 13px;
+
+    border:
+        1px solid
+        rgba(16,55,35,.08);
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    color:
+        #173025;
+
+    text-decoration:
+        none;
+
+    transition:
+        .35s ease;
+
+}
+
+
+.modal-pdf-item:hover {
+
+    transform:
+        translateX(5px);
+
+    border-color:
+        rgba(32,216,120,.3);
+
+    background:
+        #f1fbf5;
+
+}
+
+
+.modal-pdf-item-info {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+}
+
+
+.modal-pdf-item-icon {
+
+    font-size:
+        17px;
+
+}
+
+
+.modal-pdf-item-name {
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+}
+
+
+.modal-pdf-item-arrow {
+
+    color:
+        var(--ev-green-dark);
+
+}
+
+
+/* =========================================================
+   34. MODAL ACTIONS
+========================================================= */
+
+.modal-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-top:
+        25px;
+
+}
+
+
+.modal-pdf-button {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        13px 17px;
+
+    border-radius:
+        12px;
+
+    background:
+        var(--ev-green);
+
+    color:
+        #062312;
+
+    text-decoration:
+        none;
+
+    font-size:
+        12px;
+
+    font-weight:
+        900;
+
+    transition:
+        .35s ease;
+
+}
+
+
+.modal-pdf-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(32,216,120,.2);
+
+}
+
+
+.modal-close-secondary {
+
+    padding:
+        13px 17px;
+
+    border:
+        1px solid
+        rgba(16,55,35,.1);
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    color:
+        #52655b;
+
+    cursor:
+        pointer;
+
+    font-weight:
+        800;
+
+    transition:
+        .35s ease;
+
+}
+
+
+.modal-close-secondary:hover {
+
+    background:
+        #edf7f0;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   35. GENERAL ANIMATION
+========================================================= */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   36. SCROLLBAR
+========================================================= */
+
+.ev-product-modal::-webkit-scrollbar,
+.ev-modal-dialog::-webkit-scrollbar,
+.ev-modal-image-thumbs::-webkit-scrollbar {
+
+    width: 7px;
+    height: 7px;
+
+}
+
+
+.ev-product-modal::-webkit-scrollbar-thumb,
+.ev-modal-dialog::-webkit-scrollbar-thumb,
+.ev-modal-image-thumbs::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(32,216,120,.45);
+
+    border-radius:
+        20px;
+
+}
+
+
+/* =========================================================
+   37. RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .ev-products-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .ev-features-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .ev-section-heading {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            25px;
+
+    }
+
+
+    .ev-modal-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .ev-modal-gallery {
+
+        min-height:
+            480px;
+
+    }
+
+
+    .ev-modal-image-wrap {
+
+        height:
+            400px;
+
+    }
+
+}
+
+
+/* =========================================================
+   38. RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .ev-module-container {
+
+        width:
+            min(
+                100% - 28px,
+                1280px
+            );
+
+    }
+
+
+    .ev-hero {
+
+        min-height:
+            850px;
+
+    }
+
+
+    .ev-hero-content {
+
+        padding:
+            90px 0 130px;
+
+    }
+
+
+    .ev-hero h1 {
+
+        font-size:
+            clamp(48px, 15vw, 75px);
+
+        letter-spacing:
+            -3px;
+
+    }
+
+
+    .ev-hero-content > p {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .hero-stats {
+
+        gap:
+            15px;
+
+        flex-wrap:
+            wrap;
+
+    }
+
+
+    .hero-stat-divider {
+
+        display:
+            none;
+
+    }
+
+
+    .ev-products-section,
+    .ev-features-section,
+    .ev-module-cta {
+
+        padding:
+            75px 0;
+
+    }
+
+
+    .ev-section-heading h2,
+    .ev-features-heading h2 {
+
+        font-size:
+            43px;
+
+        letter-spacing:
+            -2px;
+
+    }
+
+
+    .ev-filter-bar {
+
+        align-items:
+            stretch;
+
+        flex-direction:
+            column;
+
+        padding:
+            18px;
+
+    }
+
+
+    .ev-filter-select-wrap {
+
+        align-items:
+            stretch;
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .ev-filter-select {
+
+        width:
+            100%;
+
+    }
+
+
+    .ev-products-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+
+    }
+
+
+    .ev-product-image {
+
+        height:
+            300px;
+
+    }
+
+
+    .ev-features-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .ev-feature-card {
+
+        min-height:
+            auto;
+
+    }
+
+
+    .ev-modal-dialog {
+
+        max-height:
+            94vh;
+
+        border-radius:
+            22px;
+
+    }
+
+
+    .ev-modal-content {
+
+        padding:
+            30px 22px;
+
+    }
+
+
+    .ev-modal-gallery {
+
+        padding:
+            15px;
+
+        min-height:
+            350px;
+
+    }
+
+
+    .ev-modal-image-wrap {
+
+        height:
+            320px;
+
+    }
+
+
+    .modal-meta {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .modal-actions {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+    }
+
+
+    .modal-pdf-button,
+    .modal-close-secondary {
+
+        justify-content:
+            center;
+
+        text-align:
+            center;
+
+    }
+
+
+    .ev-scroll-indicator {
+
+        bottom:
+            20px;
+
+        font-size:
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   39. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .ev-hero h1 {
+
+        font-size:
+            45px;
+
+    }
+
+
+    .ev-eyebrow {
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1.5px;
+
+    }
+
+
+    .hero-stat strong {
+
+        font-size:
+            18px;
+
+    }
+
+
+    .hero-stat span {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .ev-product-image {
+
+        height:
+            270px;
+
+    }
+
+
+    .ev-product-content {
+
+        padding:
+            21px;
+
+    }
+
+
+    .product-title {
+
+        font-size:
+            20px;
+
+    }
+
+
+    .cta-content h2 {
+
+        font-size:
+            43px;
+
+    }
+
+}
+
+
+/* =========================================================
+   40. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            .01ms !important;
+
+    }
+
+}

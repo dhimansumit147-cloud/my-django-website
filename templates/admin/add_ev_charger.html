@@ -1,0 +1,1596 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}
+Add EV Charger | SunGreen Solar Admin
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/admin/add_ev_chargers.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="ev-admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <section class="admin-page-header">
+
+        <div class="header-content">
+
+            <div class="header-icon">
+                ⚡
+            </div>
+
+            <div class="header-text">
+
+                <span class="header-label">
+                    SUNGREEN SOLAR ADMIN
+                </span>
+
+                <h1>
+                    Add EV Charger
+                </h1>
+
+                <p>
+                    Create a new electric vehicle charger product
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="{% url 'ev_chargers' %}"
+            class="back-btn"
+        >
+
+            <span class="back-icon">
+                ←
+            </span>
+
+            <span>
+                Back to Manage
+            </span>
+
+        </a>
+
+    </section>
+
+
+    <!-- =====================================================
+         FORM
+    ====================================================== -->
+
+    <section class="ev-form-section">
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+            class="ev-form"
+            id="evChargerForm"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- =================================================
+                 PRODUCT INFORMATION
+            ================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        ⚡
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Product Information
+                        </h2>
+
+                        <p>
+                            Enter the basic details of your EV charger
+                            product.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- =================================================
+                         CATEGORY
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <label for="category">
+
+                            Category
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            name="category"
+                            id="category"
+                            value="{{ category|default:'' }}"
+                            placeholder="e.g. AC EV Charger, DC Fast Charger, Home Charger"
+                            autocomplete="off"
+                            required
+                        >
+
+
+                        <div class="field-hint">
+
+                            Enter the EV charger category manually.
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NAME 1
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <label for="name1">
+
+                            Name 1 / Main Heading
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            name="name1"
+                            id="name1"
+                            value="{{ name1|default:'' }}"
+                            placeholder="e.g. SunGreen 22kW EV Charger"
+                            autocomplete="off"
+                            required
+                        >
+
+
+                        <div class="field-hint">
+
+                            Enter the main name or heading of the EV charger.
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NAME 2
+                    ================================================== -->
+
+                    <div class="form-group full-width">
+
+                        <label for="name2">
+
+                            Name 2 / Subheading
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            name="name2"
+                            id="name2"
+                            value="{{ name2|default:'' }}"
+                            placeholder="e.g. Smart Fast Charging Solution"
+                            autocomplete="off"
+                        >
+
+
+                        <div class="field-hint">
+
+                            Add a short product tagline or subheading.
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DESCRIPTION
+                    ================================================== -->
+
+                    <div class="form-group full-width">
+
+                        <label for="description">
+
+                            Product Description
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <textarea
+                            name="description"
+                            id="description"
+                            rows="7"
+                            placeholder="Enter detailed information about this EV charger product..."
+                            required
+                        >{{ description|default:'' }}</textarea>
+
+
+                        <div class="field-hint">
+
+                            Describe charging power, compatibility,
+                            features, safety, installation and applications.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 PRODUCT IMAGES
+            ====================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        🖼️
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Product Images
+                        </h2>
+
+                        <p>
+                            Add one or multiple images of the EV charger
+                            product.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dynamic-section-header">
+
+                    <div>
+
+                        <strong>
+                            EV Charger Images
+                        </strong>
+
+                        <small>
+                            Add as many product images as required.
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-item-btn"
+                        id="addImageBtn"
+                    >
+
+                        <span>
+                            +
+                        </span>
+
+                        Add Image
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="imageFields"
+                    class="dynamic-items"
+                >
+
+
+                    <!-- FIRST IMAGE -->
+
+                    <div class="dynamic-item image-item">
+
+                        <div class="dynamic-item-number">
+
+                            <span>
+                                1
+                            </span>
+
+                        </div>
+
+
+                        <div class="dynamic-file-content">
+
+                            <div class="dynamic-file-input">
+
+                                <label>
+
+                                    Product Image
+
+                                    <span>
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="file"
+                                    name="images"
+                                    class="image-input"
+                                    accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                                    required
+                                >
+
+
+                                <small>
+                                    JPG, JPEG, PNG or WEBP
+                                </small>
+
+                            </div>
+
+
+                            <div class="dynamic-preview image-preview-single">
+
+                                <div class="preview-placeholder">
+
+                                    <span>
+                                        🖼️
+                                    </span>
+
+                                    <small>
+                                        Image preview
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="remove-item-btn"
+                            disabled
+                            title="First image cannot be removed"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dynamic-info">
+
+                    <span>
+                        ℹ
+                    </span>
+
+                    <p>
+
+                        The
+                        <strong>first uploaded image</strong>
+                        will be used as the main product image.
+
+                        You can add multiple images if required.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 PDFS
+            ====================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        📄
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Product Brochures / PDFs
+                        </h2>
+
+                        <p>
+                            Add EV charger brochures, datasheets,
+                            installation guides or technical documents.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dynamic-section-header">
+
+                    <div>
+
+                        <strong>
+                            EV Charger Documents
+                        </strong>
+
+                        <small>
+                            Add multiple brochures and datasheets.
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-item-btn brochure-add-btn"
+                        id="addBrochureBtn"
+                    >
+
+                        <span>
+                            +
+                        </span>
+
+                        Add Brochure
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="brochureFields"
+                    class="dynamic-items"
+                >
+
+
+                    <!-- FIRST PDF -->
+
+                    <div class="dynamic-item brochure-item">
+
+                        <div class="dynamic-item-number">
+
+                            <span>
+                                1
+                            </span>
+
+                        </div>
+
+
+                        <div class="dynamic-file-content">
+
+
+                            <div class="dynamic-file-input">
+
+                                <label>
+                                    Brochure / PDF
+                                </label>
+
+
+                                <input
+                                    type="file"
+                                    name="pdfs"
+                                    class="pdf-input"
+                                    accept=".pdf,application/pdf"
+                                >
+
+
+                                <small>
+                                    PDF files only
+                                </small>
+
+                            </div>
+
+
+                            <div class="dynamic-title-input">
+
+                                <label>
+                                    PDF Title
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    name="pdf_titles"
+                                    class="pdf-title-input"
+                                    placeholder="e.g. 22kW EV Charger Datasheet"
+                                    autocomplete="off"
+                                >
+
+
+                                <small>
+                                    Enter a title for this document.
+                                </small>
+
+                            </div>
+
+
+                            <div class="pdf-file-preview">
+
+                                <div class="pdf-placeholder">
+
+                                    <span>
+                                        📄
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            No PDF selected
+                                        </strong>
+
+                                        <small>
+                                            Select a brochure or datasheet
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="remove-item-btn"
+                            disabled
+                            title="First brochure cannot be removed"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dynamic-info">
+
+                    <span>
+                        ℹ
+                    </span>
+
+                    <p>
+
+                        You can add multiple PDF documents.
+                        Each PDF can have its own title.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 ACTIONS
+            ====================================================== -->
+
+            <div class="form-actions">
+
+                <a
+                    href="{% url 'ev_chargers' %}"
+                    class="cancel-btn"
+                >
+                    Cancel
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="submitButton"
+                >
+
+                    <span class="submit-icon">
+                        +
+                    </span>
+
+                    <span class="submit-text">
+                        Add EV Charger
+                    </span>
+
+                    <span class="submit-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const imageFields =
+        document.getElementById("imageFields");
+
+    const addImageBtn =
+        document.getElementById("addImageBtn");
+
+    const brochureFields =
+        document.getElementById("brochureFields");
+
+    const addBrochureBtn =
+        document.getElementById("addBrochureBtn");
+
+    const form =
+        document.getElementById("evChargerForm");
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+
+    /* =====================================================
+       IMAGE PREVIEW
+    ===================================================== */
+
+    function setupImagePreview(input) {
+
+        if (!input) {
+            return;
+        }
+
+        input.addEventListener("change", function () {
+
+            const item =
+                this.closest(".image-item");
+
+            if (!item) {
+                return;
+            }
+
+            const preview =
+                item.querySelector(
+                    ".image-preview-single"
+                );
+
+            if (!preview) {
+                return;
+            }
+
+            if (!this.files || !this.files[0]) {
+
+                preview.innerHTML = `
+                    <div class="preview-placeholder">
+                        <span>🖼️</span>
+                        <small>Image preview</small>
+                    </div>
+                `;
+
+                return;
+
+            }
+
+            const file =
+                this.files[0];
+
+            const validTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+            const validExtension =
+                /\.(jpg|jpeg|png|webp)$/i.test(
+                    file.name
+                );
+
+            if (
+                !validTypes.includes(file.type)
+                &&
+                !validExtension
+            ) {
+
+                preview.innerHTML = `
+                    <div class="preview-placeholder error">
+                        <span>⚠️</span>
+                        <small>Invalid image file</small>
+                    </div>
+                `;
+
+                this.value = "";
+
+                return;
+
+            }
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                function (event) {
+
+                    preview.innerHTML = `
+
+                        <div class="image-preview-result">
+
+                            <img
+                                src="${event.target.result}"
+                                alt="EV Charger Image"
+                            >
+
+                            <div class="image-preview-name">
+                                ${file.name}
+                            </div>
+
+                        </div>
+
+                    `;
+
+                };
+
+            reader.readAsDataURL(file);
+
+        });
+
+    }
+
+
+    /* =====================================================
+       PDF PREVIEW
+    ===================================================== */
+
+    function setupPdfPreview(input) {
+
+        if (!input) {
+            return;
+        }
+
+        input.addEventListener("change", function () {
+
+            const item =
+                this.closest(".brochure-item");
+
+            if (!item) {
+                return;
+            }
+
+            const preview =
+                item.querySelector(
+                    ".pdf-file-preview"
+                );
+
+            if (!preview) {
+                return;
+            }
+
+            if (!this.files || !this.files[0]) {
+
+                preview.innerHTML = `
+                    <div class="pdf-placeholder">
+
+                        <span>📄</span>
+
+                        <div>
+
+                            <strong>
+                                No PDF selected
+                            </strong>
+
+                            <small>
+                                Select a brochure or datasheet
+                            </small>
+
+                        </div>
+
+                    </div>
+                `;
+
+                return;
+
+            }
+
+            const file =
+                this.files[0];
+
+            const isPDF =
+                file.type === "application/pdf"
+                ||
+                file.name
+                    .toLowerCase()
+                    .endsWith(".pdf");
+
+            if (!isPDF) {
+
+                preview.innerHTML = `
+                    <div class="pdf-placeholder error">
+
+                        <span>⚠️</span>
+
+                        <div>
+
+                            <strong>
+                                Invalid PDF
+                            </strong>
+
+                            <small>
+                                Please select a PDF file
+                            </small>
+
+                        </div>
+
+                    </div>
+                `;
+
+                this.value = "";
+
+                return;
+
+            }
+
+            const fileSize =
+                (
+                    file.size /
+                    1024 /
+                    1024
+                ).toFixed(2);
+
+            preview.innerHTML = `
+
+                <div class="pdf-selected">
+
+                    <div class="pdf-selected-icon">
+                        📄
+                    </div>
+
+                    <div class="pdf-selected-info">
+
+                        <strong>
+                            ${file.name}
+                        </strong>
+
+                        <small>
+                            PDF • ${fileSize} MB
+                        </small>
+
+                    </div>
+
+                    <span class="pdf-check">
+                        ✓
+                    </span>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+
+    /* =====================================================
+       UPDATE IMAGE NUMBERS
+    ===================================================== */
+
+    function updateImageNumbers() {
+
+        const items =
+            imageFields.querySelectorAll(
+                ".image-item"
+            );
+
+        items.forEach(function (item, index) {
+
+            const number =
+                item.querySelector(
+                    ".dynamic-item-number span"
+                );
+
+            if (number) {
+
+                number.textContent =
+                    index + 1;
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       UPDATE PDF NUMBERS
+    ===================================================== */
+
+    function updateBrochureNumbers() {
+
+        const items =
+            brochureFields.querySelectorAll(
+                ".brochure-item"
+            );
+
+        items.forEach(function (item, index) {
+
+            const number =
+                item.querySelector(
+                    ".dynamic-item-number span"
+                );
+
+            if (number) {
+
+                number.textContent =
+                    index + 1;
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       ADD IMAGE
+    ===================================================== */
+
+    if (addImageBtn) {
+
+        addImageBtn.addEventListener(
+            "click",
+            function () {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "dynamic-item image-item new-item";
+
+                item.innerHTML = `
+
+                    <div class="dynamic-item-number">
+
+                        <span>
+                            1
+                        </span>
+
+                    </div>
+
+
+                    <div class="dynamic-file-content">
+
+                        <div class="dynamic-file-input">
+
+                            <label>
+                                Product Image
+                            </label>
+
+                            <input
+                                type="file"
+                                name="images"
+                                class="image-input"
+                                accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                            >
+
+                            <small>
+                                JPG, JPEG, PNG or WEBP
+                            </small>
+
+                        </div>
+
+
+                        <div class="dynamic-preview image-preview-single">
+
+                            <div class="preview-placeholder">
+
+                                <span>
+                                    🖼️
+                                </span>
+
+                                <small>
+                                    Image preview
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="remove-item-btn"
+                        title="Remove image"
+                    >
+                        ×
+                    </button>
+
+                `;
+
+                imageFields.appendChild(item);
+
+                setupImagePreview(
+                    item.querySelector(
+                        ".image-input"
+                    )
+                );
+
+                updateImageNumbers();
+
+                item.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       REMOVE IMAGE
+    ===================================================== */
+
+    imageFields.addEventListener(
+        "click",
+        function (event) {
+
+            const button =
+                event.target.closest(
+                    ".remove-item-btn"
+                );
+
+            if (!button) {
+                return;
+            }
+
+            if (button.disabled) {
+                return;
+            }
+
+            const item =
+                button.closest(
+                    ".image-item"
+                );
+
+            if (!item) {
+                return;
+            }
+
+            item.remove();
+
+            updateImageNumbers();
+
+        }
+    );
+
+
+    /* =====================================================
+       ADD BROCHURE
+    ===================================================== */
+
+    if (addBrochureBtn) {
+
+        addBrochureBtn.addEventListener(
+            "click",
+            function () {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "dynamic-item brochure-item new-item";
+
+                item.innerHTML = `
+
+                    <div class="dynamic-item-number">
+
+                        <span>
+                            1
+                        </span>
+
+                    </div>
+
+
+                    <div class="dynamic-file-content">
+
+
+                        <div class="dynamic-file-input">
+
+                            <label>
+                                Brochure / PDF
+                            </label>
+
+                            <input
+                                type="file"
+                                name="pdfs"
+                                class="pdf-input"
+                                accept=".pdf,application/pdf"
+                            >
+
+                            <small>
+                                PDF files only
+                            </small>
+
+                        </div>
+
+
+                        <div class="dynamic-title-input">
+
+                            <label>
+                                PDF Title
+                            </label>
+
+
+                            <input
+                                type="text"
+                                name="pdf_titles"
+                                class="pdf-title-input"
+                                placeholder="e.g. 22kW EV Charger Datasheet"
+                                autocomplete="off"
+                            >
+
+
+                            <small>
+                                Enter a title for this document.
+                            </small>
+
+                        </div>
+
+
+                        <div class="pdf-file-preview">
+
+                            <div class="pdf-placeholder">
+
+                                <span>
+                                    📄
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        No PDF selected
+                                    </strong>
+
+                                    <small>
+                                        Select a brochure or datasheet
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="remove-item-btn"
+                        title="Remove brochure"
+                    >
+                        ×
+                    </button>
+
+                `;
+
+                brochureFields.appendChild(item);
+
+                setupPdfPreview(
+                    item.querySelector(
+                        ".pdf-input"
+                    )
+                );
+
+                updateBrochureNumbers();
+
+                const title =
+                    item.querySelector(
+                        ".pdf-title-input"
+                    );
+
+                if (title) {
+                    title.focus();
+                }
+
+                item.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       REMOVE BROCHURE
+    ===================================================== */
+
+    brochureFields.addEventListener(
+        "click",
+        function (event) {
+
+            const button =
+                event.target.closest(
+                    ".remove-item-btn"
+                );
+
+            if (!button) {
+                return;
+            }
+
+            if (button.disabled) {
+                return;
+            }
+
+            const item =
+                button.closest(
+                    ".brochure-item"
+                );
+
+            if (!item) {
+                return;
+            }
+
+            item.remove();
+
+            updateBrochureNumbers();
+
+        }
+    );
+
+
+    /* =====================================================
+       INITIAL IMAGE PREVIEW
+    ===================================================== */
+
+    document
+        .querySelectorAll(".image-input")
+        .forEach(function (input) {
+
+            setupImagePreview(input);
+
+        });
+
+
+    /* =====================================================
+       INITIAL PDF PREVIEW
+    ===================================================== */
+
+    document
+        .querySelectorAll(".pdf-input")
+        .forEach(function (input) {
+
+            setupPdfPreview(input);
+
+        });
+
+
+    /* =====================================================
+       DESCRIPTION AUTO HEIGHT
+    ===================================================== */
+
+    const description =
+        document.getElementById(
+            "description"
+        );
+
+    if (description) {
+
+        description.addEventListener(
+            "input",
+            function () {
+
+                this.style.height =
+                    "auto";
+
+                this.style.height =
+                    this.scrollHeight + "px";
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       REMOVE LEADING SPACES
+    ===================================================== */
+
+    [
+        "category",
+        "name1",
+        "name2"
+    ].forEach(function (fieldId) {
+
+        const field =
+            document.getElementById(
+                fieldId
+            );
+
+        if (!field) {
+            return;
+        }
+
+        field.addEventListener(
+            "input",
+            function () {
+
+                this.value =
+                    this.value.replace(
+                        /^\s+/,
+                        ""
+                    );
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       FORM SUBMIT VALIDATION
+    ===================================================== */
+
+    if (form) {
+
+        form.addEventListener(
+            "submit",
+            function (event) {
+
+                const category =
+                    document.getElementById(
+                        "category"
+                    );
+
+                const name1 =
+                    document.getElementById(
+                        "name1"
+                    );
+
+                const descriptionField =
+                    document.getElementById(
+                        "description"
+                    );
+
+
+                /* CATEGORY */
+
+                if (
+                    !category ||
+                    !category.value.trim()
+                ) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Please enter an EV charger category."
+                    );
+
+                    category.focus();
+
+                    return;
+
+                }
+
+
+                /* NAME */
+
+                if (
+                    !name1 ||
+                    !name1.value.trim()
+                ) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "EV charger product name is required."
+                    );
+
+                    name1.focus();
+
+                    return;
+
+                }
+
+
+                /* DESCRIPTION */
+
+                if (
+                    !descriptionField ||
+                    !descriptionField.value.trim()
+                ) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "EV charger product description is required."
+                    );
+
+                    descriptionField.focus();
+
+                    return;
+
+                }
+
+
+                /* IMAGE */
+
+                const imageInputs =
+                    imageFields.querySelectorAll(
+                        ".image-input"
+                    );
+
+                let hasImage = false;
+
+                imageInputs.forEach(
+                    function (input) {
+
+                        if (
+                            input.files &&
+                            input.files.length
+                        ) {
+
+                            hasImage = true;
+
+                        }
+
+                    }
+                );
+
+
+                if (!hasImage) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Please upload at least one EV charger product image."
+                    );
+
+                    return;
+
+                }
+
+
+                /* PDF TITLE */
+
+                const pdfItems =
+                    brochureFields.querySelectorAll(
+                        ".brochure-item"
+                    );
+
+
+                for (
+                    let i = 0;
+                    i < pdfItems.length;
+                    i++
+                ) {
+
+                    const pdfInput =
+                        pdfItems[i].querySelector(
+                            ".pdf-input"
+                        );
+
+                    const titleInput =
+                        pdfItems[i].querySelector(
+                            ".pdf-title-input"
+                        );
+
+
+                    if (
+                        pdfInput &&
+                        pdfInput.files &&
+                        pdfInput.files.length &&
+                        titleInput &&
+                        !titleInput.value.trim()
+                    ) {
+
+                        event.preventDefault();
+
+                        alert(
+                            "Please enter a title for PDF " +
+                            (i + 1) +
+                            "."
+                        );
+
+                        titleInput.focus();
+
+                        return;
+
+                    }
+
+                }
+
+
+                /* DOUBLE SUBMIT PROTECTION */
+
+                if (submitButton) {
+
+                    submitButton.disabled =
+                        true;
+
+                    submitButton.classList.add(
+                        "loading"
+                    );
+
+                    submitButton.innerHTML = `
+
+                        <span class="submit-spinner">
+                            ⟳
+                        </span>
+
+                        <span>
+                            Saving EV Charger...
+                        </span>
+
+                    `;
+
+                }
+
+            }
+        );
+
+    }
+
+});
+
+</script>
+
+
+{% endblock %}

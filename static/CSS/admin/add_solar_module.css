@@ -1,0 +1,2292 @@
+/* =========================================================
+   SUNGREEN SOLAR ADMIN
+   ADD SOLAR MODULE
+   PREMIUM / END LEVEL CSS
+========================================================= */
+
+
+/* =========================================================
+   01. ROOT VARIABLES
+========================================================= */
+
+:root {
+
+    --solar-primary: #0f766e;
+    --solar-primary-dark: #115e59;
+    --solar-primary-light: #ccfbf1;
+
+    --solar-green: #16a34a;
+    --solar-green-dark: #15803d;
+    --solar-green-light: #dcfce7;
+
+    --solar-yellow: #f59e0b;
+    --solar-yellow-light: #fef3c7;
+
+    --solar-red: #dc2626;
+    --solar-red-light: #fee2e2;
+
+    --solar-blue: #2563eb;
+    --solar-blue-light: #dbeafe;
+
+    --page-bg: #f4f8f7;
+    --card-bg: #ffffff;
+
+    --text-dark: #17201f;
+    --text-main: #273330;
+    --text-muted: #667573;
+    --text-light: #8b9a97;
+
+    --border: #dfe8e6;
+    --border-light: #edf2f1;
+
+    --shadow-sm:
+        0 2px 8px rgba(15, 118, 110, 0.06);
+
+    --shadow-md:
+        0 10px 30px rgba(15, 118, 110, 0.09);
+
+    --shadow-lg:
+        0 20px 50px rgba(15, 118, 110, 0.12);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    --transition:
+        all 0.28s cubic-bezier(.4, 0, .2, 1);
+}
+
+
+/* =========================================================
+   02. PAGE
+========================================================= */
+
+.solar-admin-page {
+
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding:
+        28px 32px
+        60px;
+
+    color: var(--text-main);
+
+    box-sizing: border-box;
+
+    animation:
+        pageEnter 0.55s ease both;
+}
+
+
+@keyframes pageEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   03. PAGE HEADER
+========================================================= */
+
+.admin-page-header {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding:
+        28px 32px;
+
+    margin-bottom: 28px;
+
+    border-radius: var(--radius-xl);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f5fffc 55%,
+            #ecfdf5 100%
+        );
+
+    border: 1px solid rgba(15, 118, 110, 0.12);
+
+    box-shadow: var(--shadow-md);
+
+    overflow: hidden;
+}
+
+
+/* Decorative Glow */
+
+.admin-page-header::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -70px;
+    top: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(20, 184, 166, 0.15),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+.admin-page-header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    left: 35%;
+
+    bottom: -110px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34, 197, 94, 0.08),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   04. HEADER CONTENT
+========================================================= */
+
+.header-content {
+
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    min-width: 0;
+}
+
+
+.header-icon {
+
+    width: 64px;
+    height: 64px;
+
+    flex: 0 0 64px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    font-size: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ccfbf1,
+            #d1fae5
+        );
+
+    border: 1px solid #b7eee4;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.8),
+        0 8px 20px rgba(15,118,110,.10);
+
+    transition: var(--transition);
+}
+
+
+.header-icon:hover {
+
+    transform:
+        translateY(-3px)
+        rotate(4deg);
+
+    box-shadow:
+        0 12px 28px rgba(15,118,110,.16);
+}
+
+
+.header-text {
+
+    min-width: 0;
+}
+
+
+.header-label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--solar-primary);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.6px;
+
+    text-transform: uppercase;
+}
+
+
+.header-text h1 {
+
+    margin: 0;
+
+    color: var(--text-dark);
+
+    font-size: clamp(25px, 3vw, 34px);
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -0.7px;
+}
+
+
+.header-text p {
+
+    margin:
+        7px 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   05. BACK BUTTON
+========================================================= */
+
+.back-btn {
+
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 44px;
+
+    padding:
+        0 17px;
+
+    border-radius: 11px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.85);
+
+    color: var(--text-main);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,.04);
+
+    transition: var(--transition);
+}
+
+
+.back-btn:hover {
+
+    color: var(--solar-primary);
+
+    border-color: #99d8d0;
+
+    background: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(15,118,110,.10);
+}
+
+
+.back-icon {
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    transition: transform .25s ease;
+}
+
+
+.back-btn:hover .back-icon {
+
+    transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   06. FORM SECTION
+========================================================= */
+
+.module-form-section {
+
+    width: 100%;
+}
+
+
+.module-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   07. FORM CARD
+========================================================= */
+
+.form-card {
+
+    position: relative;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+    overflow: hidden;
+
+    transition: var(--transition);
+}
+
+
+.form-card:hover {
+
+    border-color: #c8dedb;
+
+    box-shadow: var(--shadow-md);
+}
+
+
+/* =========================================================
+   08. FORM CARD HEADER
+========================================================= */
+
+.form-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding:
+        22px 26px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfefd
+        );
+
+    border-bottom: 1px solid var(--border-light);
+}
+
+
+.card-header-icon {
+
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    font-size: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ecfdf5,
+            #ccfbf1
+        );
+
+    border: 1px solid #c9eee7;
+}
+
+
+.card-header-text h2 {
+
+    margin: 0;
+
+    color: var(--text-dark);
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    letter-spacing: -.25px;
+}
+
+
+.card-header-text p {
+
+    margin:
+        4px 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   09. FORM GRID
+========================================================= */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        22px;
+
+    padding:
+        27px;
+}
+
+
+.form-group {
+
+    min-width: 0;
+}
+
+
+.form-group.full-width {
+
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   10. LABELS
+========================================================= */
+
+.form-group label,
+.dynamic-file-input label,
+.dynamic-title-input label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--text-dark);
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    line-height: 1.3;
+}
+
+
+.form-group label span,
+.dynamic-file-input label span {
+
+    color: var(--solar-red);
+
+    margin-left: 2px;
+}
+
+
+/* =========================================================
+   11. INPUTS
+========================================================= */
+
+.form-group input,
+.form-group textarea,
+.dynamic-title-input input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d6e2df;
+
+    border-radius: 11px;
+
+    background: #fbfdfc;
+
+    color: var(--text-dark);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+
+.form-group input,
+.dynamic-title-input input {
+
+    height: 47px;
+
+    padding:
+        0 14px;
+}
+
+
+.form-group textarea {
+
+    min-height: 155px;
+
+    padding:
+        13px 14px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.dynamic-title-input input::placeholder {
+
+    color: #9aa9a6;
+}
+
+
+/* Focus */
+
+.form-group input:focus,
+.form-group textarea:focus,
+.dynamic-title-input input:focus {
+
+    border-color: var(--solar-primary);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(15,118,110,.09);
+
+    transform: translateY(-1px);
+}
+
+
+/* Valid */
+
+.form-group input:valid:not(:placeholder-shown),
+.dynamic-title-input input:valid:not(:placeholder-shown) {
+
+    border-color: #b9dcd6;
+}
+
+
+/* =========================================================
+   12. FIELD HINT
+========================================================= */
+
+.field-hint {
+
+    margin-top: 7px;
+
+    color: var(--text-light);
+
+    font-size: 11.5px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   13. DYNAMIC SECTION HEADER
+========================================================= */
+
+.dynamic-section-header {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding:
+        20px 26px;
+
+    border-bottom: 1px solid var(--border-light);
+
+    background: #fcfefd;
+}
+
+
+.dynamic-section-header strong {
+
+    display: block;
+
+    color: var(--text-dark);
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+.dynamic-section-header small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 11.5px;
+}
+
+
+/* =========================================================
+   14. ADD ITEM BUTTON
+========================================================= */
+
+.add-item-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 40px;
+
+    padding:
+        0 15px;
+
+    border: 1px solid #b8ddd7;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0fdfa,
+            #ecfdf5
+        );
+
+    color: var(--solar-primary);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+
+.add-item-btn span {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 6px;
+
+    background: var(--solar-primary);
+
+    color: white;
+
+    font-size: 16px;
+
+    line-height: 1;
+}
+
+
+.add-item-btn:hover {
+
+    color: white;
+
+    border-color: var(--solar-primary);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--solar-primary),
+            #0d9488
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(15,118,110,.18);
+}
+
+
+.add-item-btn:hover span {
+
+    background: rgba(255,255,255,.2);
+}
+
+
+.add-item-btn:active {
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   15. DYNAMIC ITEMS
+========================================================= */
+
+.dynamic-items {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 22px 26px;
+}
+
+
+.dynamic-item {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 42px minmax(0, 1fr) 38px;
+
+    gap: 15px;
+
+    align-items: start;
+
+    padding: 18px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fbfefd
+        );
+
+    box-shadow:
+        0 4px 12px rgba(15,118,110,.035);
+
+    transition: var(--transition);
+
+    animation:
+        itemEnter .35s ease both;
+}
+
+
+@keyframes itemEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.dynamic-item:hover {
+
+    border-color: #bcded8;
+
+    box-shadow:
+        0 10px 25px rgba(15,118,110,.08);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   16. ITEM NUMBER
+========================================================= */
+
+.dynamic-item-number {
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
+}
+
+
+.dynamic-item-number span {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ccfbf1,
+            #d1fae5
+        );
+
+    color: var(--solar-primary-dark);
+
+    border: 1px solid #b9e9e1;
+
+    font-size: 13px;
+
+    font-weight: 850;
+}
+
+
+/* =========================================================
+   17. DYNAMIC FILE CONTENT
+========================================================= */
+
+.dynamic-file-content {
+
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, .9fr)
+        minmax(250px, 1.1fr);
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+
+.dynamic-file-input {
+
+    min-width: 0;
+}
+
+
+.dynamic-file-input small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--text-light);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   18. FILE INPUT
+========================================================= */
+
+.dynamic-file-input input[type="file"] {
+
+    width: 100%;
+
+    min-height: 47px;
+
+    box-sizing: border-box;
+
+    padding:
+        6px;
+
+    border: 1px dashed #b9d5d1;
+
+    border-radius: 11px;
+
+    background: #f8fcfb;
+
+    color: var(--text-muted);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+
+.dynamic-file-input input[type="file"]:hover {
+
+    border-color: var(--solar-primary);
+
+    background: #f0fdfa;
+}
+
+
+.dynamic-file-input input[type="file"]:focus {
+
+    outline: none;
+
+    border-color: var(--solar-primary);
+
+    box-shadow:
+        0 0 0 4px rgba(15,118,110,.08);
+}
+
+
+.dynamic-file-input input[type="file"]::file-selector-button {
+
+    height: 34px;
+
+    margin-right: 9px;
+
+    padding:
+        0 12px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: var(--solar-primary);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+
+.dynamic-file-input input[type="file"]::file-selector-button:hover {
+
+    background: var(--solar-primary-dark);
+}
+
+
+/* =========================================================
+   19. IMAGE PREVIEW
+========================================================= */
+
+.dynamic-preview {
+
+    min-width: 0;
+}
+
+
+.image-preview-single {
+
+    min-height: 125px;
+
+    border: 1px dashed #c9dcd9;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fcfb,
+            #f3faf8
+        );
+
+    overflow: hidden;
+}
+
+
+.preview-placeholder {
+
+    min-height: 125px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    color: #9aaba8;
+}
+
+
+.preview-placeholder span {
+
+    font-size: 28px;
+
+    opacity: .7;
+}
+
+
+.preview-placeholder small {
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   20. IMAGE PREVIEW RESULT
+========================================================= */
+
+.image-preview-result {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 125px;
+
+    overflow: hidden;
+
+    border-radius: 11px;
+
+    background: #eef5f3;
+}
+
+
+.image-preview-result img {
+
+    display: block;
+
+    width: 100%;
+    height: 145px;
+
+    object-fit: contain;
+
+    background: white;
+}
+
+
+.image-preview-name {
+
+    position: absolute;
+
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+
+    padding:
+        7px 9px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(20, 35, 33, .78);
+
+    backdrop-filter: blur(6px);
+
+    color: white;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   21. REMOVE BUTTON
+========================================================= */
+
+.remove-item-btn {
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #f0caca;
+
+    border-radius: 10px;
+
+    background: #fff7f7;
+
+    color: var(--solar-red);
+
+    font-family: inherit;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+
+.remove-item-btn:hover:not(:disabled) {
+
+    color: white;
+
+    border-color: var(--solar-red);
+
+    background: var(--solar-red);
+
+    transform:
+        scale(1.06)
+        rotate(4deg);
+
+    box-shadow:
+        0 7px 16px rgba(220,38,38,.18);
+}
+
+
+.remove-item-btn:disabled {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   22. REMOVE ANIMATION
+========================================================= */
+
+.dynamic-item.remove-item {
+
+    opacity: 0;
+
+    transform:
+        translateX(30px)
+        scale(.97);
+
+    transition:
+        all .25s ease;
+}
+
+
+/* =========================================================
+   23. DYNAMIC INFO
+========================================================= */
+
+.dynamic-info {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin:
+        0 26px 25px;
+
+    padding:
+        13px 15px;
+
+    border: 1px solid #d7eee9;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0fdfa,
+            #f0fdf4
+        );
+}
+
+
+.dynamic-info > span {
+
+    flex: 0 0 auto;
+
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--solar-primary);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.dynamic-info p {
+
+    margin: 0;
+
+    color: #52706b;
+
+    font-size: 11.5px;
+
+    line-height: 1.55;
+}
+
+
+.dynamic-info strong {
+
+    color: var(--solar-primary-dark);
+}
+
+
+/* =========================================================
+   24. BROCHURE LAYOUT
+========================================================= */
+
+.brochure-item .dynamic-file-content {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, .75fr)
+        minmax(220px, 1fr)
+        minmax(250px, 1.15fr);
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   25. PDF TITLE INPUT
+========================================================= */
+
+.dynamic-title-input {
+
+    min-width: 0;
+}
+
+
+.dynamic-title-input input {
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   26. PDF PREVIEW
+========================================================= */
+
+.pdf-file-preview {
+
+    min-height: 80px;
+
+    border: 1px dashed #d1deda;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fafcfb,
+            #f5f9f8
+        );
+
+    overflow: hidden;
+}
+
+
+.pdf-placeholder {
+
+    min-height: 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        10px 13px;
+
+    box-sizing: border-box;
+}
+
+
+.pdf-placeholder > span {
+
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #fee2e2;
+
+    font-size: 20px;
+}
+
+
+.pdf-placeholder strong {
+
+    display: block;
+
+    color: var(--text-main);
+
+    font-size: 12px;
+}
+
+
+.pdf-placeholder small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--text-light);
+
+    font-size: 10.5px;
+}
+
+
+/* =========================================================
+   27. SELECTED PDF
+========================================================= */
+
+.pdf-selected {
+
+    min-height: 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        10px 13px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #f9fcfb
+        );
+}
+
+
+.pdf-selected-icon {
+
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #fee2e2;
+
+    font-size: 20px;
+}
+
+
+.pdf-selected-info {
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.pdf-selected-info strong {
+
+    display: block;
+
+    color: var(--text-dark);
+
+    font-size: 11.5px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.pdf-selected-info small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--text-light);
+
+    font-size: 10.5px;
+}
+
+
+.pdf-check {
+
+    width: 24px;
+    height: 24px;
+
+    flex: 0 0 24px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--solar-green);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   28. ERROR STATES
+========================================================= */
+
+.preview-placeholder.error,
+.pdf-placeholder.error {
+
+    color: var(--solar-red);
+
+    background: #fff8f8;
+}
+
+
+.preview-placeholder.error span,
+.pdf-placeholder.error > span {
+
+    background: var(--solar-red-light);
+}
+
+
+/* =========================================================
+   29. FORM ACTIONS
+========================================================= */
+
+.form-actions {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding:
+        20px 24px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    background:
+        rgba(255,255,255,.9);
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* =========================================================
+   30. CANCEL BUTTON
+========================================================= */
+
+.cancel-btn {
+
+    min-height: 47px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        0 21px;
+
+    border: 1px solid #d7e1df;
+
+    border-radius: 11px;
+
+    background: white;
+
+    color: var(--text-muted);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    transition: var(--transition);
+}
+
+
+.cancel-btn:hover {
+
+    color: var(--text-main);
+
+    border-color: #bdccca;
+
+    background: #f8faf9;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   31. SUBMIT BUTTON
+========================================================= */
+
+.submit-btn {
+
+    min-height: 47px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding:
+        0 19px;
+
+    border: 1px solid var(--solar-primary);
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--solar-primary),
+            #0d9488
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px rgba(15,118,110,.18);
+
+    transition: var(--transition);
+}
+
+
+.submit-btn:hover:not(:disabled) {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d9488,
+            #0f766e
+        );
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(15,118,110,.25);
+}
+
+
+.submit-btn:active:not(:disabled) {
+
+    transform: translateY(0);
+}
+
+
+.submit-btn:disabled {
+
+    opacity: .8;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.submit-icon {
+
+    width: 21px;
+    height: 21px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: rgba(255,255,255,.16);
+
+    font-size: 15px;
+}
+
+
+.submit-arrow {
+
+    font-size: 18px;
+
+    transition:
+        transform .25s ease;
+}
+
+
+.submit-btn:hover .submit-arrow {
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   32. SUBMIT SPINNER
+========================================================= */
+
+.submit-spinner {
+
+    display: inline-flex;
+
+    animation:
+        spin 1s linear infinite;
+
+    font-size: 18px;
+}
+
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   33. CUSTOM SCROLLBAR
+========================================================= */
+
+.solar-admin-page ::-webkit-scrollbar {
+
+    width: 8px;
+    height: 8px;
+}
+
+
+.solar-admin-page ::-webkit-scrollbar-track {
+
+    background: #f1f6f5;
+
+    border-radius: 20px;
+}
+
+
+.solar-admin-page ::-webkit-scrollbar-thumb {
+
+    background: #b8cfcb;
+
+    border-radius: 20px;
+}
+
+
+.solar-admin-page ::-webkit-scrollbar-thumb:hover {
+
+    background: #8fb7b1;
+}
+
+
+/* =========================================================
+   34. TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .solar-admin-page {
+
+        padding:
+            24px 22px
+            50px;
+    }
+
+
+    .brochure-item .dynamic-file-content {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .brochure-item
+    .pdf-file-preview {
+
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   35. TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .admin-page-header {
+
+        padding: 23px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .back-btn {
+
+        align-self: flex-start;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+        padding: 22px;
+    }
+
+
+    .form-group.full-width {
+
+        grid-column: auto;
+    }
+
+
+    .dynamic-item {
+
+        grid-template-columns:
+            38px minmax(0, 1fr) 36px;
+
+        padding: 15px;
+    }
+
+
+    .dynamic-file-content {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .brochure-item .dynamic-file-content {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .brochure-item
+    .pdf-file-preview {
+
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================================
+   36. MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .solar-admin-page {
+
+        padding:
+            15px 12px
+            35px;
+    }
+
+
+    .module-form {
+
+        gap: 17px;
+    }
+
+
+    /* HEADER */
+
+    .admin-page-header {
+
+        padding: 19px;
+
+        margin-bottom: 17px;
+
+        border-radius: 17px;
+    }
+
+
+    .header-content {
+
+        width: 100%;
+
+        gap: 12px;
+    }
+
+
+    .header-icon {
+
+        width: 50px;
+        height: 50px;
+
+        flex-basis: 50px;
+
+        border-radius: 14px;
+
+        font-size: 23px;
+    }
+
+
+    .header-label {
+
+        font-size: 9px;
+
+        letter-spacing: 1.2px;
+    }
+
+
+    .header-text h1 {
+
+        font-size: 23px;
+    }
+
+
+    .header-text p {
+
+        font-size: 12px;
+    }
+
+
+    .back-btn {
+
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+
+
+    /* CARD */
+
+    .form-card {
+
+        border-radius: 15px;
+    }
+
+
+    .form-card-header {
+
+        padding: 17px;
+
+        gap: 11px;
+    }
+
+
+    .card-header-icon {
+
+        width: 40px;
+        height: 40px;
+
+        flex-basis: 40px;
+
+        font-size: 18px;
+
+        border-radius: 11px;
+    }
+
+
+    .card-header-text h2 {
+
+        font-size: 16px;
+    }
+
+
+    .card-header-text p {
+
+        font-size: 11px;
+    }
+
+
+    /* FORM */
+
+    .form-grid {
+
+        gap: 17px;
+
+        padding: 17px;
+    }
+
+
+    .form-group input,
+    .dynamic-title-input input {
+
+        height: 45px;
+
+        font-size: 13px;
+    }
+
+
+    .form-group textarea {
+
+        min-height: 135px;
+
+        font-size: 13px;
+    }
+
+
+    /* DYNAMIC HEADER */
+
+    .dynamic-section-header {
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+        padding: 17px;
+    }
+
+
+    .add-item-btn {
+
+        width: 100%;
+    }
+
+
+    /* ITEMS */
+
+    .dynamic-items {
+
+        padding: 15px;
+
+        gap: 12px;
+    }
+
+
+    .dynamic-item {
+
+        grid-template-columns:
+            32px minmax(0, 1fr) 34px;
+
+        gap: 9px;
+
+        padding: 12px;
+    }
+
+
+    .dynamic-item-number span {
+
+        width: 30px;
+        height: 30px;
+
+        border-radius: 9px;
+
+        font-size: 11px;
+    }
+
+
+    .remove-item-btn {
+
+        width: 32px;
+        height: 32px;
+
+        border-radius: 8px;
+
+        font-size: 19px;
+    }
+
+
+    /* FILE */
+
+    .dynamic-file-input input[type="file"] {
+
+        min-height: 44px;
+
+        font-size: 10px;
+    }
+
+
+    .dynamic-file-input input[type="file"]::file-selector-button {
+
+        height: 31px;
+
+        padding: 0 9px;
+
+        font-size: 10px;
+    }
+
+
+    /* IMAGE */
+
+    .image-preview-single {
+
+        min-height: 115px;
+    }
+
+
+    .preview-placeholder {
+
+        min-height: 115px;
+    }
+
+
+    .image-preview-result img {
+
+        height: 130px;
+    }
+
+
+    /* INFO */
+
+    .dynamic-info {
+
+        margin:
+            0 15px 17px;
+
+        padding: 11px;
+    }
+
+
+    .dynamic-info p {
+
+        font-size: 10.5px;
+    }
+
+
+    /* ACTIONS */
+
+    .form-actions {
+
+        padding: 15px;
+
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+
+        border-radius: 15px;
+    }
+
+
+    .cancel-btn,
+    .submit-btn {
+
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+}
+
+
+/* =========================================================
+   37. VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .solar-admin-page {
+
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+
+    .header-text h1 {
+
+        font-size: 21px;
+    }
+
+
+    .dynamic-item {
+
+        grid-template-columns:
+            28px minmax(0, 1fr) 30px;
+
+        gap: 7px;
+
+        padding: 10px;
+    }
+
+
+    .dynamic-item-number span {
+
+        width: 27px;
+        height: 27px;
+    }
+
+
+    .remove-item-btn {
+
+        width: 29px;
+        height: 29px;
+    }
+}
+
+
+/* =========================================================
+   38. ACCESSIBILITY
+========================================================= */
+
+.back-btn:focus-visible,
+.add-item-btn:focus-visible,
+.remove-item-btn:focus-visible,
+.cancel-btn:focus-visible,
+.submit-btn:focus-visible {
+
+    outline: 3px solid rgba(15,118,110,.22);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   39. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .solar-admin-page,
+    .dynamic-item,
+    .submit-spinner {
+
+        animation: none !important;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        transition-duration: .01ms !important;
+    }
+}

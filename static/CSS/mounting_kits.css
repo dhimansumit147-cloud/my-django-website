@@ -1,0 +1,5820 @@
+/* =========================================================
+   SUNGREEN SOLAR
+   MOUNTING KITS - PREMIUM END LEVEL CSS
+   ========================================================= */
+
+/* =========================================================
+   01. ROOT VARIABLES
+========================================================= */
+
+:root {
+
+    --mk-green-50: #f2fbf6;
+    --mk-green-100: #dff5e8;
+    --mk-green-200: #bde8ce;
+    --mk-green-300: #91d6ad;
+    --mk-green-400: #5cbd82;
+    --mk-green-500: #2f9d61;
+    --mk-green-600: #23804d;
+    --mk-green-700: #1b663e;
+    --mk-green-800: #145032;
+    --mk-green-900: #0d3824;
+
+    --mk-dark: #0a1811;
+    --mk-dark-2: #10241a;
+    --mk-text: #17241c;
+    --mk-muted: #68756d;
+
+    --mk-white: #ffffff;
+    --mk-border: rgba(28, 94, 57, 0.12);
+
+    --mk-shadow-sm:
+        0 8px 25px rgba(12, 60, 35, 0.08);
+
+    --mk-shadow-md:
+        0 18px 50px rgba(12, 60, 35, 0.12);
+
+    --mk-shadow-lg:
+        0 30px 80px rgba(12, 60, 35, 0.18);
+
+    --mk-radius-sm: 12px;
+    --mk-radius-md: 20px;
+    --mk-radius-lg: 30px;
+
+    --mk-transition:
+        all 0.45s cubic-bezier(.22, 1, .36, 1);
+
+    --mk-transition-fast:
+        all 0.25s ease;
+
+}
+
+
+/* =========================================================
+   02. PAGE
+========================================================= */
+
+.mounting-kits-page {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f6fbf8 45%,
+            #ffffff 100%
+        );
+
+    color: var(--mk-text);
+
+}
+
+
+/* =========================================================
+   03. COMMON CONTAINER
+========================================================= */
+
+.mounting-kits-page .battery-module-container {
+
+    width: min(1240px, calc(100% - 40px));
+
+    margin-inline: auto;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   04. HERO SECTION
+========================================================= */
+
+.mounting-kits-page .battery-hero {
+
+    min-height: 680px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(81, 188, 120, 0.20),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(75, 170, 111, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #07140d 0%,
+            #0c2116 48%,
+            #123521 100%
+        );
+
+}
+
+
+/* =========================================================
+   HERO GRID
+========================================================= */
+
+.mounting-kits-page .battery-hero-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.16;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    animation:
+        heroGridMove 18s linear infinite;
+
+}
+
+
+/* =========================================================
+   HERO ORBS
+========================================================= */
+
+.mounting-kits-page .battery-hero-orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(2px);
+
+    opacity: 0.65;
+
+}
+
+
+.mounting-kits-page .battery-orb-one {
+
+    width: 430px;
+
+    height: 430px;
+
+    right: -150px;
+
+    top: -130px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(71, 196, 119, 0.30),
+            transparent 68%
+        );
+
+    animation:
+        orbFloatOne 8s ease-in-out infinite;
+
+}
+
+
+.mounting-kits-page .battery-orb-two {
+
+    width: 360px;
+
+    height: 360px;
+
+    left: -180px;
+
+    bottom: -160px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(71, 196, 119, 0.20),
+            transparent 70%
+        );
+
+    animation:
+        orbFloatTwo 10s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.mounting-kits-page .battery-hero-content {
+
+    max-width: 850px;
+
+    padding:
+        120px
+        0
+        110px;
+
+    animation:
+        heroContentReveal 1s
+        cubic-bezier(.22,1,.36,1)
+        both;
+
+}
+
+
+.mounting-kits-page .battery-eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 16px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid
+        rgba(154, 232, 180, 0.25);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    color: #b9eac8;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+.mounting-kits-page .eyebrow-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 25px;
+
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(86, 190, 120, 0.18);
+
+    animation:
+        iconPulse 2.5s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.mounting-kits-page .battery-hero h1 {
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(48px, 6vw, 86px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .battery-hero h1 span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff 5%,
+            #8de0a9 50%,
+            #42b973 100%
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        gradientShift 5s ease infinite;
+
+    background-size: 200% auto;
+
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.mounting-kits-page .battery-hero p {
+
+    max-width: 700px;
+
+    margin:
+        28px
+        0
+        0;
+
+    color:
+        rgba(235, 249, 240, 0.76);
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+}
+
+
+/* =========================================================
+   HERO LINE
+========================================================= */
+
+.mounting-kits-page .hero-line {
+
+    width: 110px;
+
+    height: 2px;
+
+    margin-top: 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #54c47f,
+            transparent
+        );
+
+    animation:
+        lineGrow 1.2s
+        cubic-bezier(.22,1,.36,1)
+        0.4s both;
+
+}
+
+
+/* =========================================================
+   HERO STATS
+========================================================= */
+
+.mounting-kits-page .hero-stats {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    margin-top: 32px;
+
+}
+
+
+.mounting-kits-page .hero-stat {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.mounting-kits-page .hero-stat strong {
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .hero-stat span {
+
+    color:
+        rgba(222, 243, 229, 0.58);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+
+}
+
+
+.mounting-kits-page .hero-stat-divider {
+
+    width: 1px;
+
+    height: 42px;
+
+    background:
+        rgba(255,255,255,0.14);
+
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+.mounting-kits-page .battery-scroll-indicator {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border: 0;
+
+    background: transparent;
+
+    color:
+        rgba(255,255,255,0.72);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .scroll-arrow {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: 1px solid
+        rgba(255,255,255,0.20);
+
+    border-radius: 50%;
+
+    transition: var(--mk-transition);
+
+    animation:
+        scrollBounce 1.8s ease-in-out infinite;
+
+}
+
+
+.mounting-kits-page .battery-scroll-indicator:hover {
+
+    color: #ffffff;
+
+}
+
+
+.mounting-kits-page .battery-scroll-indicator:hover
+.scroll-arrow {
+
+    background:
+        rgba(76, 186, 116, 0.20);
+
+    border-color:
+        rgba(120, 220, 150, 0.55);
+
+    transform: translateY(5px);
+
+}
+
+
+.mounting-kits-page
+.scroll-indicator-hidden {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translate(-50%, 20px);
+
+}
+
+
+/* =========================================================
+   PRODUCTS SECTION
+========================================================= */
+
+.mounting-kits-page .battery-products-section {
+
+    position: relative;
+
+    padding:
+        115px
+        0
+        125px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fcfa,
+            #ffffff
+        );
+
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.mounting-kits-page .battery-section-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 60px;
+
+    margin-bottom: 55px;
+
+}
+
+
+.mounting-kits-page .battery-section-heading-left {
+
+    max-width: 650px;
+
+}
+
+
+.mounting-kits-page .section-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--mk-green-600);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+}
+
+
+.mounting-kits-page .section-label::before {
+
+    content: "";
+
+    width: 28px;
+
+    height: 2px;
+
+    background:
+        var(--mk-green-500);
+
+}
+
+
+.mounting-kits-page .battery-section-heading h2 {
+
+    margin: 16px 0 0;
+
+    font-size:
+        clamp(38px, 4vw, 58px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+
+    color: var(--mk-dark);
+
+}
+
+
+.mounting-kits-page .battery-section-heading h2 span {
+
+    display: block;
+
+    color: var(--mk-green-500);
+
+}
+
+
+.mounting-kits-page .section-heading-right {
+
+    max-width: 420px;
+
+}
+
+
+.mounting-kits-page .section-heading-right p {
+
+    margin: 0;
+
+    color: var(--mk-muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+}
+
+
+.mounting-kits-page .section-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--mk-green-400),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.mounting-kits-page .battery-filter-bar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 22px 25px;
+
+    margin-bottom: 16px;
+
+    border: 1px solid
+        var(--mk-border);
+
+    border-radius:
+        var(--mk-radius-md);
+
+    background:
+        rgba(255,255,255,0.88);
+
+    box-shadow:
+        var(--mk-shadow-sm);
+
+    backdrop-filter:
+        blur(14px);
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-filter-bar:hover {
+
+    border-color:
+        rgba(47,157,97,0.25);
+
+    box-shadow:
+        var(--mk-shadow-md);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.mounting-kits-page .battery-filter-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.mounting-kits-page .filter-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 14px;
+
+    background:
+        var(--mk-green-50);
+
+    font-size: 21px;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-filter-bar:hover
+.filter-icon {
+
+    transform:
+        rotate(-8deg)
+        scale(1.06);
+
+}
+
+
+.mounting-kits-page .battery-filter-info strong {
+
+    display: block;
+
+    color: var(--mk-text);
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .battery-filter-info small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--mk-muted);
+
+    font-size: 12px;
+
+}
+
+
+.mounting-kits-page .battery-filter-select-wrap {
+
+    min-width: 250px;
+
+}
+
+
+.mounting-kits-page .battery-filter-select-wrap label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--mk-muted);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+
+.mounting-kits-page .battery-select-container {
+
+    position: relative;
+
+}
+
+
+.mounting-kits-page .battery-filter-select {
+
+    width: 100%;
+
+    min-height: 44px;
+
+    padding:
+        0
+        45px
+        0
+        15px;
+
+    appearance: none;
+
+    border: 1px solid
+        rgba(35,128,77,0.16);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: var(--mk-text);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        var(--mk-transition-fast);
+
+}
+
+
+.mounting-kits-page .battery-filter-select:hover,
+.mounting-kits-page .battery-filter-select:focus {
+
+    border-color:
+        var(--mk-green-400);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(47,157,97,0.08);
+
+}
+
+
+.mounting-kits-page .filter-select-arrow {
+
+    position: absolute;
+
+    right: 14px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    pointer-events: none;
+
+    color: var(--mk-green-600);
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   RESULT BAR
+========================================================= */
+
+.mounting-kits-page .battery-filter-result {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 5px 25px;
+
+}
+
+
+.mounting-kits-page .filter-result-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+}
+
+
+.mounting-kits-page .filter-result-left span {
+
+    font-size: 15px;
+
+}
+
+
+.mounting-kits-page .filter-result-left p {
+
+    margin: 0;
+
+    color: var(--mk-muted);
+
+    font-size: 12px;
+
+}
+
+
+.mounting-kits-page .battery-filter-result > strong {
+
+    display: grid;
+
+    place-items: center;
+
+    min-width: 38px;
+
+    height: 30px;
+
+    padding: 0 10px;
+
+    border-radius: 999px;
+
+    background:
+        var(--mk-green-100);
+
+    color:
+        var(--mk-green-700);
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.mounting-kits-page .battery-products-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.mounting-kits-page .battery-product-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(25, 94, 56, 0.10);
+
+    border-radius:
+        var(--mk-radius-lg);
+
+    background:
+        rgba(255,255,255,0.94);
+
+    box-shadow:
+        0 10px 35px
+        rgba(16,65,39,0.07);
+
+    cursor: pointer;
+
+    outline: none;
+
+    transform:
+        translateY(0);
+
+    transition:
+        transform 0.55s
+        cubic-bezier(.22,1,.36,1),
+        box-shadow 0.55s
+        cubic-bezier(.22,1,.36,1),
+        border-color 0.35s ease;
+
+    animation:
+        cardReveal 0.75s
+        cubic-bezier(.22,1,.36,1)
+        both;
+
+}
+
+
+.mounting-kits-page .battery-product-card:nth-child(2) {
+
+    animation-delay: .08s;
+
+}
+
+
+.mounting-kits-page .battery-product-card:nth-child(3) {
+
+    animation-delay: .16s;
+
+}
+
+
+.mounting-kits-page .battery-product-card:nth-child(4) {
+
+    animation-delay: .24s;
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover {
+
+    transform:
+        translateY(-12px);
+
+    border-color:
+        rgba(47,157,97,0.28);
+
+    box-shadow:
+        0 28px 65px
+        rgba(18,86,49,0.15);
+
+}
+
+
+.mounting-kits-page .battery-product-card:focus-visible {
+
+    box-shadow:
+        0 0 0 4px
+        rgba(47,157,97,0.18),
+        var(--mk-shadow-lg);
+
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+========================================================= */
+
+.mounting-kits-page .battery-product-image {
+
+    position: relative;
+
+    height: 280px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef8f1,
+            #dcefe3
+        );
+
+}
+
+
+.mounting-kits-page .battery-product-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.8s
+        cubic-bezier(.22,1,.36,1),
+        filter 0.6s ease;
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover
+.battery-product-image img {
+
+    transform:
+        scale(1.08);
+
+    filter:
+        saturate(1.08)
+        contrast(1.02);
+
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.mounting-kits-page .image-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(5,25,14,0.65),
+            transparent 55%
+        );
+
+    opacity: 0.72;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover
+.image-overlay {
+
+    opacity: 0.9;
+
+}
+
+
+/* =========================================================
+   PRODUCT NUMBER
+========================================================= */
+
+.mounting-kits-page .product-number {
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 17px;
+
+    left: 17px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: 1px solid
+        rgba(255,255,255,0.25);
+
+    border-radius: 12px;
+
+    background:
+        rgba(7,30,17,0.42);
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover
+.product-number {
+
+    background:
+        var(--mk-green-500);
+
+    border-color:
+        var(--mk-green-400);
+
+    transform:
+        rotate(-5deg)
+        scale(1.08);
+
+}
+
+
+/* =========================================================
+   NEW BADGE
+========================================================= */
+
+.mounting-kits-page .new-badge {
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 18px;
+
+    right: 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    border-radius: 999px;
+
+    background:
+        rgba(17,77,43,0.75);
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    backdrop-filter:
+        blur(10px);
+
+    animation:
+        badgePulse 2.2s
+        ease-in-out
+        infinite;
+
+}
+
+
+.mounting-kits-page .new-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #83e6a5;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(131,230,165,0.14);
+
+}
+
+
+/* =========================================================
+   IMAGE ACTION
+========================================================= */
+
+.mounting-kits-page .product-image-action {
+
+    position: absolute;
+
+    z-index: 4;
+
+    left: 20px;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    opacity: 0.9;
+
+    transform:
+        translateY(8px);
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover
+.product-image-action {
+
+    transform:
+        translateY(0);
+
+    opacity: 1;
+
+}
+
+
+.mounting-kits-page .view-arrow {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    backdrop-filter:
+        blur(10px);
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover
+.view-arrow {
+
+    background:
+        var(--mk-green-500);
+
+    border-color:
+        var(--mk-green-400);
+
+    transform:
+        rotate(8deg);
+
+}
+
+
+/* =========================================================
+   NO IMAGE
+========================================================= */
+
+.mounting-kits-page .no-product-image {
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff,
+            #e8f4ec
+        );
+
+}
+
+
+.mounting-kits-page .no-image-icon {
+
+    font-size: 48px;
+
+    animation:
+        toolFloat 3s ease-in-out infinite;
+
+}
+
+
+.mounting-kits-page .no-image-text {
+
+    color:
+        var(--mk-green-700);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   PRODUCT CONTENT
+========================================================= */
+
+.mounting-kits-page .battery-product-content {
+
+    position: relative;
+
+    padding:
+        25px 25px 23px;
+
+}
+
+
+.mounting-kits-page .product-category {
+
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color:
+        var(--mk-green-600);
+
+    font-size: 11px !important;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+}
+
+
+.mounting-kits-page .product-title {
+
+    margin: 0;
+
+    color:
+        var(--mk-dark);
+
+    font-size: 22px;
+
+    line-height: 1.25;
+
+    font-weight: 800;
+
+    transition:
+        var(--mk-transition-fast);
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover
+.product-title {
+
+    color:
+        var(--mk-green-600);
+
+}
+
+
+.mounting-kits-page .product-subtitle {
+
+    margin:
+        8px
+        0
+        0;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.mounting-kits-page .product-description {
+
+    display:
+        -webkit-box;
+
+    overflow: hidden;
+
+    -webkit-line-clamp: 3;
+
+    -webkit-box-orient: vertical;
+
+    margin:
+        14px
+        0
+        0;
+
+    color:
+        #707c74;
+
+    font-size: 13px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.mounting-kits-page .product-content-divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin:
+        20px
+        0
+        17px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(36,121,73,0.18),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.mounting-kits-page .battery-product-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color:
+        var(--mk-green-600);
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .product-arrow {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    background:
+        var(--mk-green-50);
+
+    font-size: 15px;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover
+.product-arrow {
+
+    color: #ffffff;
+
+    background:
+        var(--mk-green-500);
+
+    transform:
+        translateX(4px)
+        rotate(5deg);
+
+}
+
+
+/* =========================================================
+   CARD SHINE
+========================================================= */
+
+.mounting-kits-page .card-shine {
+
+    position: absolute;
+
+    z-index: 8;
+
+    width: 160px;
+
+    height: 160px;
+
+    top: -100px;
+
+    left: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.65),
+            transparent 70%
+        );
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease;
+
+}
+
+
+.mounting-kits-page .battery-product-card:hover
+.card-shine {
+
+    opacity: 0.5;
+
+    animation:
+        shineMove 1.2s
+        ease forwards;
+
+}
+
+
+/* =========================================================
+   FILTER EMPTY
+========================================================= */
+
+.mounting-kits-page .battery-filter-empty,
+.mounting-kits-page .battery-empty-state {
+
+    grid-column:
+        1 / -1;
+
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px;
+
+    border:
+        1px dashed
+        rgba(35,128,77,0.25);
+
+    border-radius:
+        var(--mk-radius-lg);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7fcf9,
+            #ffffff
+        );
+
+    text-align: center;
+
+}
+
+
+.mounting-kits-page .empty-battery-icon,
+.mounting-kits-page .battery-filter-empty-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 70px;
+
+    height: 70px;
+
+    margin-bottom: 18px;
+
+    border-radius: 22px;
+
+    background:
+        var(--mk-green-100);
+
+    font-size: 30px;
+
+    animation:
+        toolFloat 3s ease-in-out infinite;
+
+}
+
+
+.mounting-kits-page .battery-empty-state h3,
+.mounting-kits-page .battery-filter-empty h3 {
+
+    margin: 0;
+
+    color:
+        var(--mk-dark);
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .battery-empty-state p,
+.mounting-kits-page .battery-filter-empty p {
+
+    max-width: 450px;
+
+    margin:
+        10px
+        0
+        0;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   FEATURES SECTION
+========================================================= */
+
+.mounting-kits-page .battery-features-section {
+
+    position: relative;
+
+    padding:
+        110px
+        0
+        120px;
+
+    background:
+        #eef8f2;
+
+    overflow: hidden;
+
+}
+
+
+.mounting-kits-page .battery-features-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    right: -250px;
+
+    top: -250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(76,182,111,0.13),
+            transparent 70%
+        );
+
+    animation:
+        orbFloatOne 10s ease-in-out infinite;
+
+}
+
+
+.mounting-kits-page .battery-features-heading {
+
+    margin-bottom: 55px;
+
+}
+
+
+.mounting-kits-page .battery-features-heading h2 {
+
+    max-width: 700px;
+
+    margin:
+        15px
+        0
+        0;
+
+    font-size:
+        clamp(36px, 4vw, 58px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    color:
+        var(--mk-dark);
+
+}
+
+
+.mounting-kits-page .battery-features-heading h2 span {
+
+    color:
+        var(--mk-green-500);
+
+}
+
+
+.mounting-kits-page .battery-features-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+    gap: 20px;
+
+}
+
+
+.mounting-kits-page .battery-feature-card {
+
+    position: relative;
+
+    min-height: 290px;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(29,101,59,0.10);
+
+    border-radius:
+        var(--mk-radius-md);
+
+    background:
+        rgba(255,255,255,0.82);
+
+    box-shadow:
+        0 12px 35px
+        rgba(21,82,46,0.06);
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-feature-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    background:
+        #ffffff;
+
+    border-color:
+        rgba(47,157,97,0.22);
+
+    box-shadow:
+        0 25px 55px
+        rgba(21,82,46,0.13);
+
+}
+
+
+.mounting-kits-page .feature-number {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 22px;
+
+    color:
+        rgba(35,128,77,0.17);
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-feature-card:hover
+.feature-number {
+
+    color:
+        rgba(35,128,77,0.35);
+
+    transform:
+        scale(1.15);
+
+}
+
+
+.mounting-kits-page .feature-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 58px;
+
+    height: 58px;
+
+    margin-top: 18px;
+
+    border-radius: 17px;
+
+    background:
+        var(--mk-green-100);
+
+    font-size: 25px;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-feature-card:hover
+.feature-icon {
+
+    color: #ffffff;
+
+    background:
+        var(--mk-green-500);
+
+    transform:
+        rotate(-7deg)
+        scale(1.08);
+
+}
+
+
+.mounting-kits-page .battery-feature-card h3 {
+
+    margin:
+        25px
+        0
+        10px;
+
+    color:
+        var(--mk-dark);
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .battery-feature-card p {
+
+    margin: 0;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 13px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   CTA SECTION
+========================================================= */
+
+.mounting-kits-page .battery-module-cta {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        105px
+        0
+        110px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #07140d,
+            #0d2818 50%,
+            #123b24
+        );
+
+    isolation: isolate;
+
+}
+
+
+.mounting-kits-page .battery-module-cta::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.045) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    opacity: 0.45;
+
+    animation:
+        heroGridMove 20s linear infinite;
+
+}
+
+
+.mounting-kits-page .cta-glow {
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    left: -220px;
+
+    top: -250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(68,194,117,0.22),
+            transparent 70%
+        );
+
+    animation:
+        orbFloatTwo 8s ease-in-out infinite;
+
+}
+
+
+.mounting-kits-page .cta-glow-two {
+
+    left: auto;
+
+    right: -240px;
+
+    top: auto;
+
+    bottom: -280px;
+
+    animation:
+        orbFloatOne 9s ease-in-out infinite;
+
+}
+
+
+.mounting-kits-page .cta-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+}
+
+
+.mounting-kits-page .cta-content .section-label {
+
+    color:
+        #8ddaa8;
+
+}
+
+
+.mounting-kits-page .cta-content h2 {
+
+    margin:
+        16px
+        0
+        20px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(38px, 5vw, 68px);
+
+    line-height: 1.02;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .cta-content h2 span {
+
+    display: block;
+
+    color:
+        #62cf8c;
+
+}
+
+
+.mounting-kits-page .cta-content p {
+
+    max-width: 690px;
+
+    margin: 0;
+
+    color:
+        rgba(231,247,237,0.68);
+
+    font-size: 15px;
+
+    line-height: 1.85;
+
+}
+
+
+.mounting-kits-page .battery-cta-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-top: 30px;
+
+    padding:
+        15px
+        16px
+        15px
+        22px;
+
+    border:
+        1px solid
+        rgba(126,220,157,0.35);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-cta-button strong {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background:
+        var(--mk-green-500);
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-cta-button:hover {
+
+    color: #ffffff;
+
+    border-color:
+        rgba(126,220,157,0.65);
+
+    background:
+        rgba(76,188,117,0.14);
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 18px 40px
+        rgba(0,0,0,0.25);
+
+}
+
+
+.mounting-kits-page .battery-cta-button:hover strong {
+
+    transform:
+        translateX(5px)
+        rotate(-5deg);
+
+}
+
+
+/* =========================================================
+   PRODUCT MODAL
+========================================================= */
+
+.mounting-kits-page .battery-product-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+
+}
+
+
+.mounting-kits-page .battery-product-modal.active {
+
+    visibility: visible;
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+}
+
+
+.mounting-kits-page .battery-modal-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(3,15,9,0.78);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+.mounting-kits-page .battery-modal-dialog {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1100px, 100%);
+
+    max-height: min(850px, 92vh);
+
+    overflow: auto;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    border-radius:
+        28px;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 40px 120px
+        rgba(0,0,0,0.35);
+
+    transform:
+        translateY(35px)
+        scale(0.96);
+
+    opacity: 0;
+
+    transition:
+        transform 0.55s
+        cubic-bezier(.22,1,.36,1),
+        opacity 0.35s ease;
+
+}
+
+
+.mounting-kits-page .battery-product-modal.active
+.battery-modal-dialog {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+
+}
+
+
+.mounting-kits-page .battery-modal-dialog::-webkit-scrollbar {
+
+    width: 7px;
+
+}
+
+
+.mounting-kits-page .battery-modal-dialog::-webkit-scrollbar-thumb {
+
+    border-radius: 999px;
+
+    background:
+        var(--mk-green-400);
+
+}
+
+
+/* =========================================================
+   MODAL CLOSE
+========================================================= */
+
+.mounting-kits-page .battery-modal-close {
+
+    position: absolute;
+
+    z-index: 20;
+
+    top: 18px;
+
+    right: 18px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 42px;
+
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(20,70,40,0.12);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.88);
+
+    color:
+        var(--mk-dark);
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-modal-close:hover {
+
+    color: #ffffff;
+
+    background:
+        var(--mk-green-500);
+
+    transform:
+        rotate(90deg);
+
+}
+
+
+/* =========================================================
+   MODAL GRID
+========================================================= */
+
+.mounting-kits-page .battery-modal-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+}
+
+
+/* =========================================================
+   MODAL GALLERY
+========================================================= */
+
+.mounting-kits-page .battery-modal-gallery {
+
+    min-width: 0;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #edf8f1,
+            #f8fcfa
+        );
+
+}
+
+
+.mounting-kits-page .battery-modal-image-wrap {
+
+    position: relative;
+
+    height: 480px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        #ffffff;
+
+}
+
+
+.mounting-kits-page .battery-modal-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    padding: 20px;
+
+    transition:
+        opacity 0.3s ease;
+
+}
+
+
+.mounting-kits-page .battery-modal-placeholder {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    background:
+        #edf8f1;
+
+    color:
+        var(--mk-green-700);
+
+    font-size: 50px;
+
+}
+
+
+.mounting-kits-page .battery-modal-placeholder small {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   MODAL IMAGE NAVIGATION
+========================================================= */
+
+.mounting-kits-page .battery-modal-image-prev,
+.mounting-kits-page .battery-modal-image-next {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    display: grid;
+
+    place-items: center;
+
+    width: 42px;
+
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+    border-radius: 50%;
+
+    background:
+        rgba(9,40,23,0.72);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(10px);
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-modal-image-prev {
+
+    left: 15px;
+
+}
+
+
+.mounting-kits-page .battery-modal-image-next {
+
+    right: 15px;
+
+}
+
+
+.mounting-kits-page .battery-modal-image-prev:hover,
+.mounting-kits-page .battery-modal-image-next:hover {
+
+    background:
+        var(--mk-green-500);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+}
+
+
+.mounting-kits-page .battery-modal-image-counter {
+
+    position: absolute;
+
+    right: 15px;
+
+    bottom: 15px;
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 48px;
+
+    height: 30px;
+
+    padding: 0 10px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(9,40,23,0.70);
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+/* =========================================================
+   THUMBNAILS
+========================================================= */
+
+.mounting-kits-page .battery-modal-image-thumbs {
+
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+
+    padding-top: 14px;
+
+}
+
+
+.mounting-kits-page .battery-modal-thumb {
+
+    flex: 0 0 70px;
+
+    width: 70px;
+
+    height: 65px;
+
+    padding: 4px;
+
+    border:
+        2px solid
+        transparent;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .battery-modal-thumb img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 7px;
+
+}
+
+
+.mounting-kits-page .battery-modal-thumb:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+.mounting-kits-page .battery-modal-thumb.active {
+
+    border-color:
+        var(--mk-green-500);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(35,128,77,0.18);
+
+}
+
+
+/* =========================================================
+   MODAL CONTENT
+========================================================= */
+
+.mounting-kits-page .battery-modal-content {
+
+    padding:
+        45px
+        40px
+        35px;
+
+}
+
+
+.mounting-kits-page .modal-top-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+}
+
+
+.mounting-kits-page .modal-category {
+
+    color:
+        var(--mk-green-600);
+
+    font-size: 11px !important;
+
+    font-weight: 800;
+
+    letter-spacing: 1.6px;
+
+    text-transform: uppercase;
+
+}
+
+
+.mounting-kits-page .modal-new-badge {
+
+    display: none;
+
+    align-items: center;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background:
+        var(--mk-green-100);
+
+    color:
+        var(--mk-green-700);
+
+    font-size: 10px !important;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .battery-modal-content h2 {
+
+    margin:
+        14px
+        0
+        0;
+
+    color:
+        var(--mk-dark);
+
+    font-size:
+        clamp(30px, 4vw, 45px);
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .battery-modal-content h3 {
+
+    margin:
+        8px
+        0
+        0;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 14px;
+
+}
+
+
+.mounting-kits-page .modal-divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin:
+        24px
+        0
+        20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(35,128,77,0.20),
+            transparent
+        );
+
+}
+
+
+.mounting-kits-page .battery-modal-content
+> p {
+
+    margin: 0;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   MODAL META
+========================================================= */
+
+.mounting-kits-page .modal-meta {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+
+.mounting-kits-page .modal-meta-item {
+
+    display: flex;
+
+    gap: 11px;
+
+    padding: 12px;
+
+    border:
+        1px solid
+        rgba(35,128,77,0.09);
+
+    border-radius: 12px;
+
+    background:
+        #f8fcf9;
+
+    transition:
+        var(--mk-transition-fast);
+
+}
+
+
+.mounting-kits-page .modal-meta-item:hover {
+
+    background:
+        var(--mk-green-50);
+
+    border-color:
+        rgba(35,128,77,0.20);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.mounting-kits-page .meta-icon {
+
+    flex: 0 0 30px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 9px;
+
+    background:
+        var(--mk-green-100);
+
+    color:
+        var(--mk-green-600);
+
+    font-size: 13px;
+
+}
+
+
+.mounting-kits-page .modal-meta-item strong {
+
+    display: block;
+
+    color:
+        var(--mk-text);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+}
+
+
+.mounting-kits-page .modal-meta-item small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 9px;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================================
+   BROCHURES
+========================================================= */
+
+.mounting-kits-page .modal-brochures-wrapper {
+
+    margin-top: 25px;
+
+}
+
+
+.mounting-kits-page .modal-brochures-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+
+    color:
+        var(--mk-text);
+
+    font-size: 12px;
+
+}
+
+
+.mounting-kits-page .modal-pdf-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    max-height: 130px;
+
+    overflow-y: auto;
+
+}
+
+
+.mounting-kits-page .modal-pdf-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding:
+        10px
+        12px;
+
+    border:
+        1px solid
+        rgba(35,128,77,0.10);
+
+    border-radius: 10px;
+
+    color:
+        var(--mk-text);
+
+    text-decoration: none;
+
+    background:
+        #f9fcfa;
+
+    transition:
+        var(--mk-transition-fast);
+
+}
+
+
+.mounting-kits-page .modal-pdf-item:hover {
+
+    color:
+        var(--mk-green-700);
+
+    border-color:
+        rgba(35,128,77,0.22);
+
+    background:
+        var(--mk-green-50);
+
+    transform:
+        translateX(4px);
+
+}
+
+
+.mounting-kits-page .modal-pdf-item-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+}
+
+
+.mounting-kits-page .modal-pdf-item-icon {
+
+    font-size: 16px;
+
+}
+
+
+.mounting-kits-page .modal-pdf-item-name {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+.mounting-kits-page .modal-pdf-item-arrow {
+
+    font-size: 14px;
+
+}
+
+
+.mounting-kits-page .modal-no-pdf {
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background:
+        #f7faf8;
+
+    text-align: center;
+
+}
+
+
+.mounting-kits-page .modal-no-pdf span {
+
+    font-size: 20px;
+
+}
+
+
+.mounting-kits-page .modal-no-pdf p {
+
+    margin:
+        5px
+        0
+        0;
+
+    color:
+        var(--mk-muted);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   MODAL ACTIONS
+========================================================= */
+
+.mounting-kits-page .modal-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+
+.mounting-kits-page .modal-pdf-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex: 1;
+
+    min-height: 46px;
+
+    padding:
+        0
+        15px;
+
+    border-radius: 10px;
+
+    background:
+        var(--mk-green-600);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .modal-pdf-button:hover {
+
+    color: #ffffff;
+
+    background:
+        var(--mk-green-700);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(35,128,77,0.22);
+
+}
+
+
+.mounting-kits-page .modal-close-secondary {
+
+    min-height: 46px;
+
+    padding:
+        0
+        20px;
+
+    border:
+        1px solid
+        rgba(35,128,77,0.15);
+
+    border-radius: 10px;
+
+    background:
+        #f5f8f6;
+
+    color:
+        var(--mk-text);
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        var(--mk-transition);
+
+}
+
+
+.mounting-kits-page .modal-close-secondary:hover {
+
+    background:
+        #e9f3ed;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   IMAGE ERROR PLACEHOLDER
+========================================================= */
+
+.mounting-kits-page .image-error-placeholder {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    background:
+        #edf8f1;
+
+    color:
+        var(--mk-green-700);
+
+}
+
+
+.mounting-kits-page .image-error-placeholder span {
+
+    font-size: 40px;
+
+}
+
+
+.mounting-kits-page .image-error-placeholder small {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   BODY MODAL LOCK
+========================================================= */
+
+body.battery-modal-open {
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes heroContentReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes cardReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes heroGridMove {
+
+    from {
+
+        background-position:
+            0 0,
+            0 0;
+
+    }
+
+    to {
+
+        background-position:
+            70px 70px,
+            70px 70px;
+
+    }
+
+}
+
+
+@keyframes orbFloatOne {
+
+    0%,
+    100% {
+
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate3d(-25px,25px,0)
+            scale(1.08);
+
+    }
+
+}
+
+
+@keyframes orbFloatTwo {
+
+    0%,
+    100% {
+
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate3d(30px,-20px,0)
+            scale(1.06);
+
+    }
+
+}
+
+
+@keyframes iconPulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.12);
+
+    }
+
+}
+
+
+@keyframes gradientShift {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+
+@keyframes lineGrow {
+
+    from {
+
+        width: 0;
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        width: 110px;
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes scrollBounce {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(7px);
+
+    }
+
+}
+
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 0
+            rgba(94,210,133,0);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 0 6px
+            rgba(94,210,133,0.08);
+
+    }
+
+}
+
+
+@keyframes toolFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-7px)
+            rotate(3deg);
+
+    }
+
+}
+
+
+@keyframes shineMove {
+
+    0% {
+
+        transform:
+            translate(-50px,-50px);
+
+    }
+
+    100% {
+
+        transform:
+            translate(700px,500px);
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .mounting-kits-page
+    .battery-products-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+
+    }
+
+
+    .mounting-kits-page
+    .battery-features-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+
+    }
+
+
+    .mounting-kits-page
+    .battery-module-container {
+
+        width:
+            min(
+                100%,
+                calc(100% - 50px)
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 850px
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .mounting-kits-page
+    .battery-hero {
+
+        min-height: 620px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-section-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+
+    }
+
+
+    .mounting-kits-page
+    .section-heading-right {
+
+        max-width: 600px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-image-wrap {
+
+        height: 350px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-content {
+
+        padding:
+            35px 28px;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 650px
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .mounting-kits-page
+    .battery-module-container {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
+
+    .mounting-kits-page
+    .battery-hero-content {
+
+        padding:
+            100px
+            0
+            95px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-hero h1 {
+
+        font-size:
+            clamp(43px, 12vw, 62px);
+
+        letter-spacing:
+            -2px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-hero p {
+
+        font-size: 14px;
+
+        line-height: 1.75;
+
+    }
+
+
+    .mounting-kits-page
+    .hero-stats {
+
+        gap: 15px;
+
+    }
+
+
+    .mounting-kits-page
+    .hero-stat strong {
+
+        font-size: 17px;
+
+    }
+
+
+    .mounting-kits-page
+    .hero-stat span {
+
+        font-size: 9px;
+
+    }
+
+
+    .mounting-kits-page
+    .hero-stat-divider {
+
+        height: 34px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-products-section {
+
+        padding:
+            75px
+            0
+            80px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-section-heading h2 {
+
+        font-size: 40px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-filter-bar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 18px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-filter-select-wrap {
+
+        min-width: 100%;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-products-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-product-image {
+
+        height: 270px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-features-section {
+
+        padding:
+            75px
+            0
+            80px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-features-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-feature-card {
+
+        min-height: auto;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-module-cta {
+
+        padding:
+            75px
+            0
+            80px;
+
+    }
+
+
+    .mounting-kits-page
+    .cta-content h2 {
+
+        font-size: 42px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-dialog {
+
+        max-height: 94vh;
+
+        border-radius: 20px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-gallery {
+
+        padding: 14px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-image-wrap {
+
+        height: 290px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-content {
+
+        padding:
+            28px 20px 24px;
+
+    }
+
+
+    .mounting-kits-page
+    .modal-meta {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .mounting-kits-page
+    .modal-actions {
+
+        flex-direction: column;
+
+    }
+
+
+    .mounting-kits-page
+    .modal-close-secondary {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 450px
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .mounting-kits-page
+    .battery-hero-content {
+
+        padding-top: 90px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-eyebrow {
+
+        font-size: 9px;
+
+        letter-spacing: 1.4px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-hero h1 {
+
+        font-size: 43px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-hero p {
+
+        font-size: 13px;
+
+    }
+
+
+    .mounting-kits-page
+    .hero-stats {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .mounting-kits-page
+    .hero-stat-divider {
+
+        display: none;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-scroll-indicator {
+
+        bottom: 20px;
+
+        font-size: 9px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-section-heading h2 {
+
+        font-size: 35px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-product-content {
+
+        padding:
+            21px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-product-image {
+
+        height: 245px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-product-card {
+
+        border-radius: 22px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-image-wrap {
+
+        height: 245px;
+
+    }
+
+
+    .mounting-kits-page
+    .battery-modal-close {
+
+        top: 10px;
+
+        right: 10px;
+
+        width: 36px;
+
+        height: 36px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mounting-kits-page *,
+    .mounting-kits-page *::before,
+    .mounting-kits-page *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SUNGREEN SOLAR
+   MOUNTING KITS
+   PREMIUM PRODUCT MODAL
+   ========================================================= */
+
+
+/* =========================================================
+   MODAL ROOT
+   ========================================================= */
+
+.battery-product-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    visibility: hidden;
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+
+/* ACTIVE */
+
+.battery-product-modal.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   BACKDROP
+   ========================================================= */
+
+.battery-modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(16, 185, 129, 0.08),
+            transparent 45%
+        ),
+        rgba(3, 10, 8, 0.82);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    opacity: 0;
+
+    transition:
+        opacity 0.45s ease;
+}
+
+
+.battery-product-modal.active
+.battery-modal-backdrop {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   MODAL DIALOG
+   ========================================================= */
+
+.battery-modal-dialog {
+    position: relative;
+    z-index: 2;
+
+    width: min(1180px, 100%);
+    max-height: 90vh;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f8fffb 45%,
+            #f1faf6 100%
+        );
+
+    border: 1px solid rgba(16, 185, 129, 0.18);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.45),
+        0 10px 35px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+
+    transform:
+        translateY(45px)
+        scale(0.94);
+
+    opacity: 0;
+
+    transition:
+        transform 0.45s cubic-bezier(.16, 1, .3, 1),
+        opacity 0.35s ease;
+
+    overflow-y: auto;
+}
+
+
+/* ACTIVE DIALOG */
+
+.battery-product-modal.active
+.battery-modal-dialog {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   MODAL SCROLLBAR
+   ========================================================= */
+
+.battery-modal-dialog::-webkit-scrollbar {
+    width: 7px;
+}
+
+.battery-modal-dialog::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.battery-modal-dialog::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.35);
+    border-radius: 20px;
+}
+
+.battery-modal-dialog::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.65);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.battery-modal-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    z-index: 20;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    color: #17231e;
+
+    font-size: 28px;
+    font-weight: 400;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.battery-modal-close:hover {
+
+    transform:
+        rotate(90deg)
+        scale(1.08);
+
+    background: #0f9f6e;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 30px rgba(15, 159, 110, 0.35);
+}
+
+
+.battery-modal-close:active {
+    transform:
+        rotate(90deg)
+        scale(0.94);
+}
+
+
+/* =========================================================
+   MODAL GRID
+   ========================================================= */
+
+.battery-modal-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(420px, 1fr)
+        minmax(430px, 1fr);
+
+    min-height: 620px;
+}
+
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+.battery-modal-gallery {
+
+    position: relative;
+
+    padding: 34px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(16, 185, 129, 0.16),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #eefcf5,
+            #dff7eb
+        );
+
+    border-right:
+        1px solid rgba(16, 185, 129, 0.12);
+}
+
+
+/* =========================================================
+   IMAGE WRAPPER
+   ========================================================= */
+
+.battery-modal-image-wrap {
+
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 1 / 0.82;
+
+    min-height: 400px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.96),
+            rgba(244,252,248,0.96)
+        );
+
+    border:
+        1px solid rgba(16, 185, 129, 0.12);
+
+    box-shadow:
+        0 18px 45px rgba(0, 80, 50, 0.08);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.battery-modal-image-wrap::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(16, 185, 129, 0.10);
+
+    filter: blur(45px);
+
+    animation:
+        modalGlow 5s ease-in-out infinite;
+}
+
+
+@keyframes modalGlow {
+
+    0%,
+    100% {
+        transform: scale(0.9);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.9;
+    }
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.battery-modal-image {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 88%;
+    max-height: 88%;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 18px 25px rgba(0, 0, 0, 0.13)
+        );
+
+    transition:
+        transform 0.5s cubic-bezier(.16, 1, .3, 1),
+        opacity 0.3s ease;
+}
+
+
+.battery-modal-image:hover {
+
+    transform:
+        scale(1.045);
+}
+
+
+/* =========================================================
+   IMAGE PLACEHOLDER
+   ========================================================= */
+
+.battery-modal-placeholder {
+
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #0f9f6e;
+
+    animation:
+        placeholderFloat 3s ease-in-out infinite;
+}
+
+
+.battery-modal-placeholder span {
+
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 24px;
+
+    background:
+        rgba(16, 185, 129, 0.10);
+
+    font-size: 42px;
+
+    box-shadow:
+        0 15px 35px rgba(16, 185, 129, 0.12);
+}
+
+
+.battery-modal-placeholder small {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+@keyframes placeholderFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =========================================================
+   IMAGE PREVIOUS / NEXT
+   ========================================================= */
+
+.battery-modal-image-prev,
+.battery-modal-image-next {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 10;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(16, 185, 129, 0.18);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.92);
+
+    color: #087f59;
+
+    font-size: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.battery-modal-image-prev {
+    left: 16px;
+}
+
+
+.battery-modal-image-next {
+    right: 16px;
+}
+
+
+.battery-modal-image-prev:hover,
+.battery-modal-image-next:hover {
+
+    background: #0f9f6e;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 28px rgba(15, 159, 110, 0.30);
+}
+
+
+.battery-modal-image-prev:hover {
+    transform:
+        translateY(-50%)
+        translateX(-3px);
+}
+
+
+.battery-modal-image-next:hover {
+    transform:
+        translateY(-50%)
+        translateX(3px);
+}
+
+
+/* =========================================================
+   IMAGE COUNTER
+   ========================================================= */
+
+.battery-modal-image-counter {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 15px;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    padding: 7px 14px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(15, 35, 27, 0.82);
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   THUMBNAILS
+   ========================================================= */
+
+.battery-modal-image-thumbs {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    padding: 5px 2px;
+
+    overflow-x: auto;
+}
+
+
+.battery-modal-thumb {
+
+    flex: 0 0 70px;
+
+    width: 70px;
+    height: 60px;
+
+    padding: 4px;
+
+    border-radius: 12px;
+
+    border:
+        2px solid transparent;
+
+    background: #ffffff;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.battery-modal-thumb img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+}
+
+
+.battery-modal-thumb:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,0.10);
+}
+
+
+.battery-modal-thumb.active {
+
+    border-color: #0f9f6e;
+
+    box-shadow:
+        0 0 0 3px rgba(15, 159, 110, 0.12);
+}
+
+
+/* =========================================================
+   MODAL CONTENT
+   ========================================================= */
+
+.battery-modal-content {
+
+    position: relative;
+
+    padding: 48px 48px 42px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   TOP ROW
+   ========================================================= */
+
+.modal-top-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+
+.modal-category {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 7px 13px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(15, 159, 110, 0.09);
+
+    color: #087f59;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.modal-new-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 11px;
+
+    border-radius: 30px;
+
+    background:
+        #ecfdf5;
+
+    color: #078653;
+
+    border:
+        1px solid rgba(15, 159, 110, 0.15);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+
+.modal-new-badge::before {
+
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #16a36d;
+
+    box-shadow:
+        0 0 0 4px rgba(22, 163, 109, 0.10);
+
+    animation:
+        newPulse 1.8s ease-in-out infinite;
+}
+
+
+@keyframes newPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.65);
+        opacity: 0.55;
+    }
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.battery-modal-content h2 {
+
+    margin: 0;
+
+    max-width: 650px;
+
+    color: #10251c;
+
+    font-size: clamp(30px, 4vw, 48px);
+
+    line-height: 1.08;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.battery-modal-content h3 {
+
+    margin: 10px 0 0;
+
+    color: #4b6359;
+
+    font-size: 17px;
+
+    line-height: 1.5;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.modal-divider {
+
+    width: 70px;
+    height: 4px;
+
+    margin: 22px 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0f9f6e,
+            #55d49d
+        );
+
+    transform-origin: left;
+
+    animation:
+        dividerReveal 0.8s ease both;
+}
+
+
+@keyframes dividerReveal {
+
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.battery-modal-content
+#mountingModalProductDescription {
+
+    margin: 0 0 25px;
+
+    color: #53685e;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    max-width: 650px;
+}
+
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.modal-meta {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+
+.modal-meta-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    background:
+        #f6fbf8;
+
+    border:
+        1px solid rgba(15, 159, 110, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.modal-meta-item:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        #effaf5;
+
+    box-shadow:
+        0 10px 25px rgba(15, 159, 110, 0.08);
+}
+
+
+.meta-icon {
+
+    flex: 0 0 35px;
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(15, 159, 110, 0.10);
+
+    color: #0f9f6e;
+
+    font-size: 16px;
+}
+
+
+.modal-meta-item strong {
+
+    display: block;
+
+    color: #1c3329;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 3px;
+}
+
+
+.modal-meta-item small {
+
+    display: block;
+
+    color: #708178;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   BROCHURES
+   ========================================================= */
+
+.modal-brochures-wrapper {
+
+    margin-top: 2px;
+
+    padding: 17px;
+
+    border-radius: 17px;
+
+    background:
+        #f8fcfa;
+
+    border:
+        1px solid rgba(15, 159, 110, 0.10);
+}
+
+
+.modal-brochures-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 11px;
+
+    color: #1c3329;
+
+    font-size: 13px;
+}
+
+
+.modal-brochures-heading span {
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   PDF LIST
+   ========================================================= */
+
+.modal-pdf-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.modal-pdf-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 11px 13px;
+
+    border-radius: 11px;
+
+    text-decoration: none;
+
+    background: #ffffff;
+
+    border:
+        1px solid rgba(15, 159, 110, 0.10);
+
+    color: #263d33;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.modal-pdf-item:hover {
+
+    transform:
+        translateX(4px);
+
+    border-color:
+        rgba(15, 159, 110, 0.35);
+
+    box-shadow:
+        0 8px 20px rgba(15, 159, 110, 0.08);
+
+    color: #087f59;
+}
+
+
+.modal-pdf-item-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+
+.modal-pdf-item-icon {
+
+    width: 31px;
+    height: 31px;
+
+    flex: 0 0 31px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        #fff1f1;
+
+    font-size: 15px;
+}
+
+
+.modal-pdf-item-name {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.modal-pdf-item-arrow {
+
+    font-size: 17px;
+
+    color: #0f9f6e;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.modal-pdf-item:hover
+.modal-pdf-item-arrow {
+
+    transform:
+        translate(3px, -3px);
+}
+
+
+/* =========================================================
+   NO PDF
+   ========================================================= */
+
+.modal-no-pdf {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    color: #738078;
+
+    font-size: 12px;
+}
+
+
+.modal-no-pdf span {
+
+    font-size: 18px;
+}
+
+
+.modal-no-pdf p {
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.modal-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-top: 20px;
+}
+
+
+/* PDF BUTTON */
+
+.modal-pdf-button {
+
+    flex: 1;
+
+    min-height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 12px 18px;
+
+    border-radius: 13px;
+
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0c9466,
+            #13b77c
+        );
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 12px 25px rgba(15, 159, 110, 0.22);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+.modal-pdf-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    color: #ffffff;
+
+    filter:
+        brightness(1.04);
+
+    box-shadow:
+        0 18px 35px rgba(15, 159, 110, 0.32);
+}
+
+
+.modal-pdf-button strong {
+
+    font-size: 18px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.modal-pdf-button:hover strong {
+
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================================
+   SECONDARY CLOSE
+   ========================================================= */
+
+.modal-close-secondary {
+
+    min-height: 50px;
+
+    padding: 12px 20px;
+
+    border:
+        1px solid rgba(24, 48, 38, 0.13);
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    color: #32483e;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.modal-close-secondary:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #f2f8f5;
+
+    border-color:
+        rgba(15, 159, 110, 0.25);
+
+    color:
+        #087f59;
+}
+
+
+/* =========================================================
+   BODY LOCK
+   ========================================================= */
+
+body.battery-modal-open {
+
+    overflow: hidden !important;
+}
+
+
+/* =========================================================
+   MODAL ANIMATION
+   ========================================================= */
+
+.battery-product-modal.active
+.modal-top-row,
+.battery-product-modal.active
+.battery-modal-content h2,
+.battery-product-modal.active
+.battery-modal-content h3,
+.battery-product-modal.active
+.modal-divider,
+.battery-product-modal.active
+#mountingModalProductDescription,
+.battery-product-modal.active
+.modal-meta,
+.battery-product-modal.active
+.modal-brochures-wrapper,
+.battery-product-modal.active
+.modal-actions {
+
+    animation:
+        modalContentReveal 0.55s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+
+.battery-product-modal.active
+.modal-top-row {
+    animation-delay: 0.08s;
+}
+
+
+.battery-product-modal.active
+.battery-modal-content h2 {
+    animation-delay: 0.12s;
+}
+
+
+.battery-product-modal.active
+.battery-modal-content h3 {
+    animation-delay: 0.16s;
+}
+
+
+.battery-product-modal.active
+.modal-divider {
+    animation-delay: 0.20s;
+}
+
+
+.battery-product-modal.active
+#mountingModalProductDescription {
+    animation-delay: 0.24s;
+}
+
+
+.battery-product-modal.active
+.modal-meta {
+    animation-delay: 0.28s;
+}
+
+
+.battery-product-modal.active
+.modal-brochures-wrapper {
+    animation-delay: 0.32s;
+}
+
+
+.battery-product-modal.active
+.modal-actions {
+    animation-delay: 0.36s;
+}
+
+
+@keyframes modalContentReveal {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .battery-product-modal {
+        padding: 20px;
+    }
+
+    .battery-modal-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .battery-modal-gallery {
+
+        padding: 25px;
+
+        min-height: 420px;
+
+        border-right: none;
+
+        border-bottom:
+            1px solid rgba(16, 185, 129, 0.12);
+    }
+
+    .battery-modal-image-wrap {
+
+        min-height: 340px;
+    }
+
+    .battery-modal-content {
+
+        padding: 35px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .battery-product-modal {
+
+        padding: 10px;
+    }
+
+    .battery-modal-dialog {
+
+        max-height: 94vh;
+
+        border-radius: 20px;
+    }
+
+    .battery-modal-gallery {
+
+        padding: 18px;
+
+        min-height: 320px;
+    }
+
+    .battery-modal-image-wrap {
+
+        min-height: 280px;
+
+        border-radius: 17px;
+    }
+
+    .battery-modal-content {
+
+        padding: 27px 22px 25px;
+    }
+
+    .battery-modal-content h2 {
+
+        font-size: 30px;
+    }
+
+    .battery-modal-content
+    #mountingModalProductDescription {
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+    .modal-meta {
+
+        grid-template-columns: 1fr;
+    }
+
+    .modal-actions {
+
+        flex-direction: column;
+    }
+
+    .modal-pdf-button,
+    .modal-close-secondary {
+
+        width: 100%;
+    }
+
+    .modal-close-secondary {
+
+        order: 2;
+    }
+
+    .battery-modal-close {
+
+        width: 40px;
+        height: 40px;
+
+        top: 10px;
+        right: 10px;
+
+        font-size: 24px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .battery-product-modal {
+
+        padding: 6px;
+    }
+
+    .battery-modal-dialog {
+
+        border-radius: 17px;
+    }
+
+    .battery-modal-gallery {
+
+        min-height: 280px;
+
+        padding: 12px;
+    }
+
+    .battery-modal-image-wrap {
+
+        min-height: 245px;
+
+        aspect-ratio: 1 / 0.9;
+    }
+
+    .battery-modal-content {
+
+        padding: 24px 17px 20px;
+    }
+
+    .battery-modal-content h2 {
+
+        font-size: 26px;
+
+        letter-spacing: -0.8px;
+    }
+
+    .battery-modal-content h3 {
+
+        font-size: 14px;
+    }
+
+    .modal-top-row {
+
+        flex-wrap: wrap;
+
+        gap: 7px;
+    }
+
+    .modal-category,
+    .modal-new-badge {
+
+        font-size: 10px;
+    }
+
+    .modal-meta-item {
+
+        padding: 11px;
+    }
+
+    .modal-meta-item small {
+
+        font-size: 10px;
+    }
+
+    .battery-modal-image-prev,
+    .battery-modal-image-next {
+
+        width: 36px;
+        height: 36px;
+
+        font-size: 17px;
+    }
+
+    .battery-modal-image-prev {
+
+        left: 8px;
+    }
+
+    .battery-modal-image-next {
+
+        right: 8px;
+    }
+
+    .battery-modal-thumb {
+
+        flex-basis: 58px;
+
+        width: 58px;
+        height: 52px;
+    }
+
+    .modal-brochures-wrapper {
+
+        padding: 12px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .battery-product-modal,
+    .battery-modal-dialog,
+    .battery-modal-close,
+    .battery-modal-image,
+    .battery-modal-thumb,
+    .modal-meta-item,
+    .modal-pdf-item,
+    .modal-pdf-button {
+
+        transition: none !important;
+        animation: none !important;
+    }
+}

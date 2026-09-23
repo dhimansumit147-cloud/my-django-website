@@ -1,0 +1,3039 @@
+/* =========================================================
+   SUNGREEN SOLAR ADMIN
+   ADD NEW SLIDER
+   END-LEVEL PREMIUM ADMIN CSS
+   ========================================================= */
+
+
+/* =========================================================
+   01. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+
+    --solar-primary: #16a34a;
+    --solar-primary-dark: #15803d;
+    --solar-primary-deep: #166534;
+    --solar-primary-light: #4ade80;
+
+    --solar-mint: #ecfdf5;
+    --solar-mint-soft: #f0fdf4;
+    --solar-mint-light: #f7fff9;
+
+    --white: #ffffff;
+
+    --text-dark: #0f172a;
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+
+    --border: #dbe7df;
+    --border-light: #e7f1eb;
+
+    --danger: #ef4444;
+    --danger-dark: #dc2626;
+    --danger-soft: #fef2f2;
+
+    --shadow-sm:
+        0 4px 15px rgba(15, 23, 42, .05);
+
+    --shadow-md:
+        0 12px 35px rgba(15, 23, 42, .08);
+
+    --shadow-lg:
+        0 25px 70px rgba(15, 23, 42, .10);
+
+    --shadow-green:
+        0 15px 40px rgba(22, 163, 74, .20);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 30px;
+
+    --transition-fast: .2s ease;
+
+    --transition:
+        .35s cubic-bezier(.4, 0, .2, 1);
+
+    --transition-smooth:
+        .55s cubic-bezier(.16, 1, .3, 1);
+}
+
+
+/* =========================================================
+   02. GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(34, 197, 94, .045),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(74, 222, 128, .035),
+            transparent 30%
+        ),
+        #f8fafc;
+
+    color: var(--text-main);
+
+    font-family:
+        'Poppins',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    border: none;
+}
+
+
+/* =========================================================
+   03. MAIN PAGE
+   ========================================================= */
+
+.slider-page {
+
+    width:
+        min(1180px, calc(100% - 40px));
+
+    margin:
+        0 auto;
+
+    padding:
+        32px 0 70px;
+
+    position: relative;
+
+    animation:
+        pageReveal .7s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+
+/* =========================================================
+   04. PAGE HEADER
+   ========================================================= */
+
+.page-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin:
+        0 0 30px 0;
+
+    padding: 0;
+
+    position: relative;
+
+    animation:
+        headerReveal .75s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+
+/* =========================================================
+   HEADER CONTENT
+   ========================================================= */
+
+.page-title > div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 0;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+/* =========================================================
+   TITLE ICON
+   ========================================================= */
+
+.title-icon {
+
+    width: 62px;
+    height: 62px;
+
+    flex:
+        0 0 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dcfce7,
+            #bbf7d0
+        );
+
+    color:
+        var(--solar-primary-dark);
+
+    box-shadow:
+        0 10px 25px rgba(34, 197, 94, .14);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+
+/* ICON SHINE */
+
+.title-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 160px;
+
+    top: -50px;
+    left: -110px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.65),
+            transparent
+        );
+
+    transform:
+        rotate(25deg);
+
+    transition:
+        left .8s ease;
+}
+
+.title-icon:hover::before {
+
+    left: 100px;
+}
+
+.title-icon:hover {
+
+    transform:
+        translateY(-4px)
+        rotate(-1deg);
+
+    box-shadow:
+        0 17px 35px rgba(34, 197, 94, .22);
+}
+
+.title-icon i {
+
+    font-size: 27px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   05. EYEBROW
+   ========================================================= */
+
+.eyebrow {
+
+    display: block;
+
+    margin:
+        0 0 5px 0;
+
+    padding: 0;
+
+    color:
+        var(--solar-primary-dark);
+
+    font-size: 11px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   EYEBROW DOT
+   ========================================================= */
+
+.eyebrow::before {
+
+    content: "";
+
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    margin-right: 7px;
+
+    vertical-align: middle;
+
+    border-radius: 50%;
+
+    background:
+        var(--solar-primary);
+
+    box-shadow:
+        0 0 0 4px rgba(34, 197, 94, .10);
+
+}
+
+
+/* =========================================================
+   06. MAIN HEADING
+   ========================================================= */
+
+.page-title h2 {
+
+    display: block;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    color:
+        var(--text-dark);
+
+    font-size:
+        28px;
+
+    line-height:
+        1.25;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        -.3px;
+}
+
+
+/* =========================================================
+   HEADING UNDERLINE
+   ========================================================= */
+
+.page-title h2::after {
+
+    content: "";
+
+    display: block;
+
+    width:
+        55px;
+
+    height:
+        3px;
+
+    margin:
+        7px 0 0;
+
+    border-radius:
+        50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--solar-primary),
+            var(--solar-primary-light)
+        );
+
+    transform-origin:
+        left;
+
+    animation:
+        lineReveal .7s .2s ease both;
+}
+
+
+/* =========================================================
+   07. HEADER DESCRIPTION
+   ========================================================= */
+
+.page-title p {
+
+    display: block;
+
+    margin:
+        7px 0 0 0;
+
+    padding:
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.45;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        0;
+}
+
+
+/* =========================================================
+   08. FORM CONTAINER
+   ========================================================= */
+
+.slider-form {
+
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(250,253,251,.98)
+        );
+
+    border:
+        1px solid rgba(219, 231, 223, .9);
+
+    border-radius:
+        var(--radius-xl);
+
+    box-shadow:
+        var(--shadow-lg);
+
+    overflow:
+        hidden;
+
+    animation:
+        formReveal .8s .15s cubic-bezier(.16,1,.3,1) both;
+}
+
+
+/* =========================================================
+   FORM TOP LINE
+   ========================================================= */
+
+.slider-form::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #16a34a,
+            #4ade80,
+            #bbf7d0
+        );
+}
+
+
+/* =========================================================
+   FORM DECORATION
+   ========================================================= */
+
+.slider-form::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: -125px;
+    right: -125px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34,197,94,.08),
+            transparent 68%
+        );
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   09. FORM GROUP
+   ========================================================= */
+
+.form-group {
+
+    margin:
+        0 0 27px;
+
+    position:
+        relative;
+
+    animation:
+        fieldReveal .6s cubic-bezier(.16,1,.3,1) both;
+}
+
+
+/* =========================================================
+   FORM LABEL
+   ========================================================= */
+
+.form-group label {
+
+    display:
+        block;
+
+    margin:
+        0 0 10px;
+
+    padding:
+        0;
+
+    color:
+        var(--text-dark);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.4;
+
+    font-weight:
+        750;
+}
+
+
+/* =========================================================
+   10. INPUT
+   ========================================================= */
+
+.form-group input[type="text"],
+.form-group textarea {
+
+    width:
+        100%;
+
+    min-height:
+        54px;
+
+    padding:
+        15px 17px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        15px;
+
+    outline:
+        none;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fbfffc,
+            #f7fbf8
+        );
+
+    color:
+        var(--text-dark);
+
+    font-size:
+        14px;
+
+    font-weight:
+        500;
+
+    box-shadow:
+        inset 0 1px 2px rgba(15,23,42,.025);
+
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
+}
+
+
+/* PLACEHOLDER */
+
+.form-group input[type="text"]::placeholder,
+.form-group textarea::placeholder {
+
+    color:
+        #a1acb8;
+
+    font-weight:
+        400;
+}
+
+
+/* INPUT HOVER */
+
+.form-group input[type="text"]:hover,
+.form-group textarea:hover {
+
+    border-color:
+        #b9d9c4;
+
+    background:
+        #ffffff;
+}
+
+
+/* INPUT FOCUS */
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+
+    border-color:
+        var(--solar-primary);
+
+    background:
+        #ffffff;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,.09),
+        0 12px 30px rgba(15,23,42,.06);
+}
+
+
+/* =========================================================
+   11. TEXTAREA
+   ========================================================= */
+
+.form-group textarea {
+
+    min-height:
+        145px;
+
+    resize:
+        vertical;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   12. TWO COLUMN
+   ========================================================= */
+
+.form-row {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        25px;
+}
+
+
+/* =========================================================
+   13. FILE UPLOAD
+   ========================================================= */
+
+.file-upload {
+
+    width:
+        100%;
+
+    min-height:
+        190px;
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        30px;
+
+    border:
+        2px dashed #9de2b2;
+
+    border-radius:
+        22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f3fff6,
+            #edfcf2
+        );
+
+    cursor:
+        pointer;
+
+    overflow:
+        hidden;
+
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+
+/* UPLOAD SHINE */
+
+.file-upload::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    top:
+        -120%;
+
+    left:
+        -40%;
+
+    width:
+        40%;
+
+    height:
+        300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.7),
+            transparent
+        );
+
+    transform:
+        rotate(20deg);
+
+    transition:
+        left .8s ease;
+}
+
+.file-upload:hover::before {
+
+    left:
+        120%;
+}
+
+.file-upload:hover {
+
+    border-color:
+        var(--solar-primary);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ecfdf5,
+            #dcfce7
+        );
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 18px 40px rgba(34,197,94,.10);
+}
+
+
+/* =========================================================
+   14. UPLOAD ICON
+   ========================================================= */
+
+.upload-icon {
+
+    width:
+        66px;
+
+    height:
+        66px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dcfce7,
+            #bbf7d0
+        );
+
+    color:
+        var(--solar-primary-dark);
+
+    box-shadow:
+        0 10px 25px rgba(34,197,94,.13);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.file-upload:hover .upload-icon {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 15px 30px rgba(34,197,94,.20);
+}
+
+.upload-icon i {
+
+    font-size:
+        32px;
+}
+
+
+/* =========================================================
+   15. UPLOAD TEXT
+   ========================================================= */
+
+.upload-content {
+
+    text-align:
+        center;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+}
+
+.upload-content strong {
+
+    display:
+        block;
+
+    color:
+        var(--text-dark);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.4;
+
+    font-weight:
+        750;
+}
+
+.upload-content span {
+
+    display:
+        block;
+
+    margin:
+        5px 0 0;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.4;
+}
+
+
+/* =========================================================
+   16. FILE INPUT
+   ========================================================= */
+
+.file-upload input[type="file"] {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    opacity:
+        0;
+
+    cursor:
+        pointer;
+
+    z-index:
+        5;
+}
+
+
+/* =========================================================
+   17. IMAGE PREVIEW BOX
+   ========================================================= */
+
+.image-preview-box {
+
+    display:
+        none;
+
+    width:
+        100%;
+
+    margin:
+        22px 0 0;
+
+    padding:
+        20px;
+
+    border:
+        1px solid #d7ebdd;
+
+    border-radius:
+        22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fcf9
+        );
+
+    box-shadow:
+        0 15px 35px rgba(15,23,42,.07);
+
+    opacity:
+        0;
+
+    transform:
+        translateY(15px)
+        scale(.98);
+}
+
+
+/* SHOW */
+
+.image-preview-box.show {
+
+    display:
+        block;
+
+    animation:
+        previewReveal .55s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+
+/* =========================================================
+   18. PREVIEW HEADER
+   ========================================================= */
+
+.preview-header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    margin:
+        0 0 15px;
+}
+
+.preview-label {
+
+    display:
+        block;
+
+    color:
+        var(--solar-primary-dark);
+
+    font-size:
+        10px;
+
+    line-height:
+        1.2;
+
+    font-weight:
+        850;
+
+    letter-spacing:
+        1.5px;
+}
+
+.preview-header h4 {
+
+    margin:
+        4px 0 0;
+
+    padding:
+        0;
+
+    color:
+        var(--text-dark);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.4;
+
+    font-weight:
+        750;
+}
+
+
+/* =========================================================
+   19. REMOVE PREVIEW
+   ========================================================= */
+
+.remove-preview {
+
+    width:
+        36px;
+
+    height:
+        36px;
+
+    flex:
+        0 0 36px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--danger-soft);
+
+    color:
+        var(--danger-dark);
+
+    font-size:
+        22px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.remove-preview:hover {
+
+    background:
+        var(--danger);
+
+    color:
+        #ffffff;
+
+    transform:
+        rotate(90deg)
+        scale(1.08);
+
+    box-shadow:
+        0 8px 20px rgba(239,68,68,.22);
+}
+
+
+/* =========================================================
+   20. PREVIEW IMAGE WRAPPER
+   ========================================================= */
+
+.preview-image-wrapper {
+
+    width:
+        100%;
+
+    min-height:
+        270px;
+
+    padding:
+        8px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        17px;
+
+    background:
+        #f1f5f9;
+
+    overflow:
+        hidden;
+}
+
+.preview-image-wrapper img {
+
+    width:
+        100%;
+
+    height:
+        270px;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    border-radius:
+        13px;
+
+    transition:
+        transform .6s cubic-bezier(.16,1,.3,1);
+}
+
+.preview-image-wrapper:hover img {
+
+    transform:
+        scale(1.035);
+}
+
+
+/* =========================================================
+   21. PREVIEW INFO
+   ========================================================= */
+
+.preview-info {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    margin:
+        12px 0 0;
+
+    padding:
+        10px 13px;
+
+    border-radius:
+        11px;
+
+    background:
+        var(--solar-mint);
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.4;
+
+    font-weight:
+        600;
+}
+
+#imageName {
+
+    max-width:
+        70%;
+
+    overflow:
+        hidden;
+
+    white-space:
+        nowrap;
+
+    text-overflow:
+        ellipsis;
+
+    color:
+        var(--solar-primary-dark);
+}
+
+#imageSize {
+
+    color:
+        var(--text-muted);
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   22. STATUS BOX
+   ========================================================= */
+
+.status-box {
+
+    padding:
+        20px;
+
+    border:
+        1px solid #dcece1;
+
+    border-radius:
+        19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fbfffc,
+            #f5faf7
+        );
+}
+
+.status-box > label:first-child {
+
+    margin-bottom:
+        14px;
+}
+
+
+/* =========================================================
+   23. CHECKBOX AREA
+   ========================================================= */
+
+.checkbox-area {
+
+    display:
+        flex !important;
+
+    align-items:
+        center;
+
+    gap:
+        13px;
+
+    padding:
+        14px 16px;
+
+    margin:
+        0 !important;
+
+    border:
+        1px solid #dcece1;
+
+    border-radius:
+        14px;
+
+    background:
+        #ffffff;
+
+    cursor:
+        pointer;
+
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.checkbox-area:hover {
+
+    border-color:
+        #9de2b2;
+
+    background:
+        #f7fff9;
+
+    transform:
+        translateX(3px);
+
+    box-shadow:
+        0 8px 20px rgba(34,197,94,.06);
+}
+
+
+/* =========================================================
+   24. HIDDEN CHECKBOX
+   ========================================================= */
+
+.checkbox-area input {
+
+    position:
+        absolute;
+
+    opacity:
+        0;
+
+    width:
+        0;
+
+    height:
+        0;
+}
+
+
+/* =========================================================
+   25. CUSTOM CHECK
+   ========================================================= */
+
+.custom-check {
+
+    width:
+        22px;
+
+    height:
+        22px;
+
+    flex:
+        0 0 22px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        2px solid #cbd5e1;
+
+    border-radius:
+        7px;
+
+    background:
+        #ffffff;
+
+    color:
+        transparent;
+
+    transition:
+        all var(--transition);
+}
+
+.checkbox-area input:checked + .custom-check {
+
+    border-color:
+        var(--solar-primary);
+
+    background:
+        var(--solar-primary);
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        0 5px 15px rgba(34,197,94,.22);
+
+    animation:
+        checkPop .35s cubic-bezier(.16,1,.3,1);
+}
+
+.custom-check i {
+
+    font-size:
+        15px;
+
+    font-weight:
+        900;
+}
+
+
+/* =========================================================
+   26. STATUS TEXT
+   ========================================================= */
+
+.status-text {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+}
+
+.status-text strong {
+
+    color:
+        var(--text-dark);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.4;
+
+    font-weight:
+        750;
+}
+
+.status-text small {
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+    font-weight:
+        400;
+}
+
+
+/* =========================================================
+   27. FORM ACTIONS
+   ========================================================= */
+
+.form-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        flex-end;
+
+    gap:
+        13px;
+
+    margin:
+        10px 0 0;
+}
+
+
+/* =========================================================
+   28. SAVE BUTTON
+   ========================================================= */
+
+.save-btn {
+
+    min-height:
+        56px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        14px 30px;
+
+    border:
+        none;
+
+    border-radius:
+        50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #4ade80
+        );
+
+    color:
+        #ffffff;
+
+    font-size:
+        14px;
+
+    line-height:
+        1;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .15px;
+
+    cursor:
+        pointer;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 12px 30px rgba(22,163,74,.22);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+}
+
+
+/* BUTTON SHINE */
+
+.save-btn::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        -120%;
+
+    width:
+        80%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .7s ease;
+}
+
+.save-btn:hover::before {
+
+    left:
+        130%;
+}
+
+.save-btn:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 18px 40px rgba(22,163,74,.30);
+
+    filter:
+        saturate(1.08);
+}
+
+.save-btn:active {
+
+    transform:
+        translateY(-1px)
+        scale(.98);
+}
+
+.save-btn i {
+
+    font-size:
+        18px;
+}
+
+.save-btn .save-arrow {
+
+    transition:
+        transform var(--transition);
+}
+
+.save-btn:hover .save-arrow {
+
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   29. CANCEL BUTTON
+   ========================================================= */
+
+.cancel-btn {
+
+    min-height:
+        56px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        8px;
+
+    padding:
+        14px 27px;
+
+    border:
+        1px solid #dbe3e7;
+
+    border-radius:
+        50px;
+
+    background:
+        #ffffff;
+
+    color:
+        #475569;
+
+    font-size:
+        14px;
+
+    line-height:
+        1;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.cancel-btn:hover {
+
+    background:
+        #f8fafc;
+
+    border-color:
+        #cbd5e1;
+
+    color:
+        #1e293b;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(15,23,42,.08);
+}
+
+
+/* =========================================================
+   30. OLD ADD BUTTON SUPPORT
+   ========================================================= */
+
+.add-btn {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        9px;
+
+    padding:
+        12px 25px;
+
+    border-radius:
+        50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #86efac
+        );
+
+    color:
+        #065f46 !important;
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+
+    box-shadow:
+        0 10px 25px rgba(34,197,94,.18);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        color var(--transition);
+}
+
+.add-btn:hover {
+
+    transform:
+        translateY(-4px);
+
+    color:
+        #ffffff !important;
+
+    box-shadow:
+        0 15px 35px rgba(34,197,94,.25);
+}
+
+
+/* =========================================================
+   31. OLD TABLE SUPPORT
+   ========================================================= */
+
+.slider-table {
+
+    width:
+        100%;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius:
+        24px;
+
+    overflow:
+        hidden;
+
+    border-collapse:
+        separate;
+
+    border-spacing:
+        0;
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+.slider-table th {
+
+    padding:
+        18px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ecfdf5,
+            #f0fdf4
+        );
+
+    color:
+        var(--solar-primary-dark);
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+
+    text-align:
+        left;
+
+    border-bottom:
+        1px solid #d1fae5;
+}
+
+.slider-table td {
+
+    padding:
+        17px 20px;
+
+    color:
+        #475569;
+
+    font-size:
+        13px;
+
+    border-bottom:
+        1px solid #f1f5f9;
+}
+
+.slider-table tbody tr {
+
+    transition:
+        background var(--transition);
+}
+
+.slider-table tbody tr:hover {
+
+    background:
+        #f7fff9;
+}
+
+
+/* =========================================================
+   32. TABLE IMAGE
+   ========================================================= */
+
+.slider-table img {
+
+    width:
+        140px;
+
+    height:
+        85px;
+
+    object-fit:
+        cover;
+
+    border-radius:
+        15px;
+
+    border:
+        3px solid #dcfce7;
+
+    box-shadow:
+        0 7px 20px rgba(15,23,42,.08);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.slider-table img:hover {
+
+    transform:
+        scale(1.06);
+
+    border-color:
+        var(--solar-primary);
+
+    box-shadow:
+        0 12px 28px rgba(34,197,94,.16);
+}
+
+
+/* =========================================================
+   33. STATUS BADGES
+   ========================================================= */
+
+.active,
+.inactive {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        7px 14px;
+
+    border-radius:
+        50px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+}
+
+.active {
+
+    background:
+        #dcfce7;
+
+    color:
+        #15803d;
+}
+
+.active::before {
+
+    content:
+        "";
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        #22c55e;
+
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,.10);
+}
+
+.inactive {
+
+    background:
+        #fee2e2;
+
+    color:
+        #dc2626;
+}
+
+
+/* =========================================================
+   34. EDIT / DELETE
+   ========================================================= */
+
+.edit,
+.delete {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        9px 16px;
+
+    border-radius:
+        50px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        750;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        box-shadow var(--transition);
+}
+
+.edit {
+
+    background:
+        #ecfdf5;
+
+    color:
+        #15803d;
+}
+
+.edit:hover {
+
+    background:
+        #22c55e;
+
+    color:
+        #ffffff;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(34,197,94,.20);
+}
+
+.delete {
+
+    background:
+        #fef2f2;
+
+    color:
+        #dc2626;
+}
+
+.delete:hover {
+
+    background:
+        #ef4444;
+
+    color:
+        #ffffff;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(239,68,68,.20);
+}
+
+
+/* =========================================================
+   35. FILE NAME
+   ========================================================= */
+
+#fileName {
+
+    margin:
+        10px 0 0;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.4;
+
+    transition:
+        color var(--transition);
+}
+
+#fileName.selected-file {
+
+    color:
+        var(--solar-primary-dark);
+
+    font-weight:
+        750;
+}
+
+
+/* =========================================================
+   36. PAGE HEADER SUPPORT
+   ========================================================= */
+
+.page-header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    margin:
+        0 0 30px;
+}
+
+.page-header h2 {
+
+    margin:
+        0;
+
+    color:
+        var(--text-dark);
+
+    font-size:
+        30px;
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   37. ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+
+    outline:
+        3px solid rgba(34,197,94,.25);
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   38. ANIMATIONS
+   ========================================================= */
+
+@keyframes pageReveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes headerReveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(-20px);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes formReveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(35px)
+            scale(.985);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes fieldReveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes lineReveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            scaleX(0);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            scaleX(1);
+    }
+}
+
+
+@keyframes previewReveal {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(18px)
+            scale(.96);
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(-2px)
+            scale(1.01);
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes checkPop {
+
+    0% {
+
+        transform:
+            scale(.7);
+    }
+
+    70% {
+
+        transform:
+            scale(1.12);
+    }
+
+    100% {
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   39. TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .slider-page {
+
+        width:
+            calc(100% - 30px);
+
+        max-width:
+            760px;
+
+        padding-top:
+            25px;
+    }
+
+    .slider-form {
+
+        padding:
+            32px;
+
+        border-radius:
+            25px;
+    }
+
+    .form-row {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            0;
+    }
+
+    .page-header {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+    .slider-table {
+
+        display:
+            block;
+
+        overflow-x:
+            auto;
+
+        white-space:
+            nowrap;
+    }
+}
+
+
+/* =========================================================
+   40. MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .slider-page {
+
+        width:
+            calc(100% - 24px);
+
+        padding:
+            20px 0 45px;
+    }
+
+
+    /* HEADER */
+
+    .page-title {
+
+        align-items:
+            flex-start;
+
+        gap:
+            14px;
+
+        margin:
+            0 0 24px;
+    }
+
+    .title-icon {
+
+        width:
+            52px;
+
+        height:
+            52px;
+
+        flex-basis:
+            52px;
+
+        border-radius:
+            15px;
+    }
+
+    .title-icon i {
+
+        font-size:
+            22px;
+    }
+
+
+    .eyebrow {
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1px;
+
+        margin:
+            0 0 4px;
+    }
+
+
+    .page-title h2 {
+
+        font-size:
+            22px;
+
+        line-height:
+            1.2;
+    }
+
+
+    .page-title h2::after {
+
+        width:
+            45px;
+
+        height:
+            3px;
+
+        margin-top:
+            6px;
+    }
+
+
+    .page-title p {
+
+        margin:
+            6px 0 0;
+
+        font-size:
+            11px;
+
+        line-height:
+            1.4;
+    }
+
+
+    /* FORM */
+
+    .slider-form {
+
+        padding:
+            24px 18px;
+
+        border-radius:
+            21px;
+    }
+
+
+    /* INPUT */
+
+    .form-group {
+
+        margin-bottom:
+            22px;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+
+        min-height:
+            51px;
+
+        padding:
+            13px 14px;
+
+        border-radius:
+            13px;
+
+        font-size:
+            13px;
+    }
+
+    .form-group textarea {
+
+        min-height:
+            125px;
+    }
+
+
+    /* UPLOAD */
+
+    .file-upload {
+
+        min-height:
+            165px;
+
+        padding:
+            22px 15px;
+
+        border-radius:
+            18px;
+    }
+
+    .upload-icon {
+
+        width:
+            55px;
+
+        height:
+            55px;
+
+        border-radius:
+            17px;
+    }
+
+    .upload-icon i {
+
+        font-size:
+            27px;
+    }
+
+    .upload-content strong {
+
+        font-size:
+            13px;
+    }
+
+    .upload-content span {
+
+        font-size:
+            10px;
+    }
+
+
+    /* PREVIEW */
+
+    .image-preview-box {
+
+        padding:
+            14px;
+
+        border-radius:
+            18px;
+    }
+
+    .preview-image-wrapper {
+
+        min-height:
+            190px;
+    }
+
+    .preview-image-wrapper img {
+
+        height:
+            190px;
+    }
+
+    .preview-info {
+
+        font-size:
+            10px;
+    }
+
+
+    /* STATUS */
+
+    .status-box {
+
+        padding:
+            15px;
+    }
+
+    .checkbox-area {
+
+        padding:
+            12px;
+    }
+
+
+    /* ACTION BUTTONS */
+
+    .form-actions {
+
+        width:
+            100%;
+
+        flex-direction:
+            column-reverse;
+
+        align-items:
+            stretch;
+
+        gap:
+            10px;
+    }
+
+    .save-btn,
+    .cancel-btn {
+
+        width:
+            100%;
+
+        min-height:
+            53px;
+    }
+
+
+    /* TABLE */
+
+    .slider-table img {
+
+        width:
+            90px;
+
+        height:
+            60px;
+    }
+
+    .edit,
+    .delete {
+
+        padding:
+            8px 11px;
+
+        font-size:
+            11px;
+    }
+}
+
+
+/* =========================================================
+   41. VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .page-title {
+
+        gap:
+            11px;
+    }
+
+    .title-icon {
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+        flex-basis:
+            48px;
+    }
+
+    .title-icon i {
+
+        font-size:
+            20px;
+    }
+
+    .eyebrow {
+
+        font-size:
+            8px;
+
+        letter-spacing:
+            .8px;
+    }
+
+    .page-title h2 {
+
+        font-size:
+            19px;
+    }
+
+    .page-title p {
+
+        font-size:
+            10px;
+    }
+
+    .slider-form {
+
+        padding:
+            20px 14px;
+    }
+
+    .preview-header h4 {
+
+        font-size:
+            13px;
+    }
+
+    .save-btn,
+    .cancel-btn {
+
+        font-size:
+            13px;
+    }
+}
+
+
+/* =========================================================
+   42. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+}
+
+/* =========================================================
+   43. EDIT SLIDER - PREMIUM IMAGE SIZE OVERRIDE
+   ========================================================= */
+
+/* Current image preview */
+.image-preview {
+
+    width: 100%;
+
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    padding: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #dcece1;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8fcf9,
+            #f1f7f3
+        );
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, .06);
+
+    overflow: hidden;
+}
+
+
+/* Current image */
+.image-preview img {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 700px;
+
+    height: 280px;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: 14px;
+
+    background: #f1f5f9;
+
+    transition:
+        transform .45s cubic-bezier(.16, 1, .3, 1),
+        box-shadow .35s ease;
+}
+
+
+/* Image hover */
+.image-preview:hover img {
+
+    transform: scale(1.015);
+
+    box-shadow:
+        0 12px 28px rgba(15, 23, 42, .10);
+}
+
+
+/* =========================================================
+   NEW IMAGE UPLOAD AREA
+   ========================================================= */
+
+.file-upload {
+
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    min-height: 170px;
+}
+
+
+/* =========================================================
+   PREVIEW IMAGE - IF USED LATER
+   ========================================================= */
+
+.image-preview-box {
+
+    max-width: 720px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.preview-image-wrapper {
+
+    max-width: 100%;
+
+    min-height: 0;
+
+    aspect-ratio: 16 / 6;
+
+    padding: 7px;
+}
+
+
+.preview-image-wrapper img {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 0;
+
+    max-height: 260px;
+
+    object-fit: cover;
+
+    object-position: center;
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+    .image-preview img {
+
+        height: 300px;
+    }
+
+    .file-upload {
+
+        min-height: 175px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .image-preview {
+
+        max-width: 100%;
+    }
+
+    .image-preview img {
+
+        height: 250px;
+    }
+
+    .preview-image-wrapper {
+
+        aspect-ratio: 16 / 7;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .image-preview {
+
+        padding: 7px;
+
+        border-radius: 16px;
+    }
+
+    .image-preview img {
+
+        width: 100%;
+
+        height: 180px;
+
+        border-radius: 11px;
+    }
+
+    .file-upload {
+
+        min-height: 150px;
+    }
+
+    .preview-image-wrapper {
+
+        aspect-ratio: 16 / 8;
+
+        padding: 5px;
+    }
+
+    .preview-image-wrapper img {
+
+        max-height: 190px;
+
+        border-radius: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .image-preview img {
+
+        height: 155px;
+    }
+
+    .preview-image-wrapper {
+
+        aspect-ratio: 16 / 9;
+    }
+}

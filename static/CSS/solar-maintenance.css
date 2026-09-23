@@ -1,0 +1,2760 @@
+/* =========================================================
+   SUNGREEN — SOLAR MAINTENANCE PAGE
+   PREMIUM PRO LEVEL CSS
+   LIGHT MINT / WHITE VISUAL SYSTEM
+   ========================================================= */
+
+
+/* =========================================================
+   01. GOOGLE FONTS
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800&display=swap');
+
+
+/* =========================================================
+   02. ROOT VARIABLES
+   ========================================================= */
+
+.maintenance-page {
+
+    --maintenance-white: #ffffff;
+
+    --maintenance-bg: #f7fcfa;
+    --maintenance-bg-soft: #eefaf5;
+    --maintenance-bg-mint: #e4f6ef;
+
+    --maintenance-mint: #9bd8c4;
+    --maintenance-mint-light: #dff5ec;
+    --maintenance-mint-soft: #effbf6;
+
+    --maintenance-green: #1d604d;
+    --maintenance-green-dark: #123f32;
+    --maintenance-green-deep: #0d3027;
+
+    --maintenance-text: #17352d;
+    --maintenance-text-soft: #60766f;
+
+    --maintenance-border: rgba(29, 96, 77, 0.12);
+
+    --maintenance-shadow:
+        0 25px 70px rgba(22, 73, 58, 0.10);
+
+    --maintenance-shadow-hover:
+        0 35px 90px rgba(22, 73, 58, 0.18);
+
+    --maintenance-radius: 28px;
+
+    --maintenance-transition:
+        0.75s cubic-bezier(.22, 1, .36, 1);
+
+    --maintenance-fast:
+        0.35s cubic-bezier(.22, 1, .36, 1);
+
+    color: var(--maintenance-text);
+
+    font-family: "Inter", sans-serif;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   03. GLOBAL RESET
+   ========================================================= */
+
+.maintenance-page *,
+.maintenance-page *::before,
+.maintenance-page *::after {
+    box-sizing: border-box;
+}
+
+.maintenance-page img {
+    display: block;
+    max-width: 100%;
+}
+
+.maintenance-page a {
+    text-decoration: none;
+}
+
+.maintenance-page h1,
+.maintenance-page h2,
+.maintenance-page h3,
+.maintenance-page p {
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   04. CONTAINER
+   ========================================================= */
+
+.maintenance-page .container {
+
+    width: min(1180px, calc(100% - 40px));
+
+    margin-inline: auto;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   05. HERO
+   ========================================================= */
+
+.maintenance-hero {
+
+    position: relative;
+
+    min-height: 850px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(155, 216, 196, 0.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f9fdfb 0%,
+            #eefaf5 52%,
+            #e1f4ec 100%
+        );
+
+    padding: 120px 0 90px;
+}
+
+
+/* Background glow */
+
+.maintenance-hero-bg {
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    right: -250px;
+    top: -300px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139, 207, 183, 0.28),
+            transparent 68%
+        );
+
+    filter: blur(10px);
+
+    animation: maintenanceHeroGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes maintenanceHeroGlow {
+
+    from {
+        transform: scale(0.95);
+        opacity: .6;
+    }
+
+    to {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   06. HERO ORBITS
+   ========================================================= */
+
+.maintenance-orbit {
+
+    position: absolute;
+
+    border: 1px solid rgba(29, 96, 77, 0.08);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.orbit-1 {
+
+    width: 620px;
+    height: 620px;
+
+    right: -250px;
+    bottom: -280px;
+
+    animation: orbitRotate 20s linear infinite;
+}
+
+.orbit-2 {
+
+    width: 420px;
+    height: 420px;
+
+    right: -130px;
+    bottom: -180px;
+
+    animation: orbitRotateReverse 16s linear infinite;
+}
+
+@keyframes orbitRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes orbitRotateReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* =========================================================
+   07. HERO GRID
+   ========================================================= */
+
+.maintenance-hero-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(420px, .9fr);
+
+    align-items: center;
+
+    gap: 90px;
+}
+
+
+/* =========================================================
+   08. HERO CONTENT
+   ========================================================= */
+
+.maintenance-hero-content {
+
+    max-width: 650px;
+}
+
+.maintenance-kicker {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+
+    color: var(--maintenance-green);
+
+    margin-bottom: 28px;
+}
+
+.maintenance-kicker span {
+
+    width: 42px;
+    height: 2px;
+
+    background: var(--maintenance-green);
+
+    position: relative;
+}
+
+.maintenance-kicker span::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--maintenance-mint);
+
+    right: -2px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+.maintenance-hero-content h1 {
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: clamp(48px, 6vw, 82px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+
+    color: var(--maintenance-green-deep);
+
+    margin-bottom: 30px;
+}
+
+.maintenance-hero-content h1 strong {
+
+    display: block;
+
+    color: var(--maintenance-green);
+
+    font-weight: 800;
+}
+
+
+.maintenance-hero-content > p {
+
+    max-width: 620px;
+
+    color: var(--maintenance-text-soft);
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    margin-bottom: 38px;
+}
+
+
+/* =========================================================
+   09. HERO BUTTONS
+   ========================================================= */
+
+.maintenance-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-bottom: 48px;
+}
+
+.maintenance-btn {
+
+    min-height: 58px;
+
+    padding: 0 24px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    border-radius: 100px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition:
+        transform var(--maintenance-fast),
+        box-shadow var(--maintenance-fast),
+        background var(--maintenance-fast),
+        color var(--maintenance-fast);
+
+}
+
+.maintenance-btn i {
+
+    transition:
+        transform var(--maintenance-fast);
+}
+
+
+.maintenance-btn-primary {
+
+    color: #fff;
+
+    background: var(--maintenance-green-dark);
+
+    box-shadow:
+        0 15px 35px rgba(18, 63, 50, .20);
+}
+
+.maintenance-btn-primary:hover {
+
+    transform: translateY(-5px);
+
+    background: var(--maintenance-green);
+
+    box-shadow:
+        0 22px 45px rgba(18, 63, 50, .28);
+}
+
+.maintenance-btn-primary:hover i {
+
+    transform: translate(4px, -2px);
+}
+
+
+.maintenance-btn-secondary {
+
+    color: var(--maintenance-green-dark);
+
+    border: 1px solid var(--maintenance-border);
+
+    background: rgba(255,255,255,.65);
+
+    backdrop-filter: blur(12px);
+}
+
+.maintenance-btn-secondary:hover {
+
+    transform: translateY(-5px);
+
+    background: #fff;
+
+    border-color: rgba(29,96,77,.25);
+
+    box-shadow: 0 15px 35px rgba(22,73,58,.10);
+}
+
+
+/* =========================================================
+   10. HERO MINI STATS
+   ========================================================= */
+
+.maintenance-mini-stats {
+
+    display: flex;
+
+    gap: 0;
+
+    border-top: 1px solid var(--maintenance-border);
+
+    padding-top: 26px;
+}
+
+.maintenance-mini-stats > div {
+
+    min-width: 150px;
+
+    padding-right: 25px;
+
+    margin-right: 25px;
+
+    border-right: 1px solid var(--maintenance-border);
+}
+
+.maintenance-mini-stats > div:last-child {
+
+    border-right: 0;
+
+    margin-right: 0;
+
+    padding-right: 0;
+}
+
+.maintenance-mini-stats strong {
+
+    display: block;
+
+    font-size: 22px;
+
+    color: var(--maintenance-green-dark);
+
+    margin-bottom: 5px;
+}
+
+.maintenance-mini-stats span {
+
+    font-size: 11px;
+
+    color: var(--maintenance-text-soft);
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   11. HERO IMAGE
+   ========================================================= */
+
+.maintenance-hero-visual {
+
+    position: relative;
+
+    min-height: 620px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.maintenance-photo {
+
+    position: relative;
+
+    width: min(520px, 100%);
+
+    height: 590px;
+
+    overflow: hidden;
+
+    border-radius: 45px;
+
+    box-shadow: var(--maintenance-shadow);
+
+    transform: rotate(2deg);
+
+    transition:
+        transform 1s cubic-bezier(.22,1,.36,1),
+        box-shadow 1s ease;
+}
+
+.maintenance-photo::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(13,48,39,0.02),
+            rgba(13,48,39,0.28)
+        );
+}
+
+.maintenance-photo img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: scale(1.04);
+
+    transition:
+        transform 1.4s cubic-bezier(.22,1,.36,1);
+}
+
+.maintenance-hero-visual:hover .maintenance-photo {
+
+    transform: rotate(0deg) translateY(-8px);
+
+    box-shadow: var(--maintenance-shadow-hover);
+}
+
+.maintenance-hero-visual:hover .maintenance-photo img {
+
+    transform: scale(1.12);
+}
+
+
+/* =========================================================
+   12. FLOATING PANEL
+   ========================================================= */
+
+.maintenance-floating-panel {
+
+    position: absolute;
+
+    left: -45px;
+
+    bottom: 65px;
+
+    z-index: 8;
+
+    min-width: 270px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 22px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.92);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 25px 60px rgba(18,63,50,.16);
+
+    border: 1px solid rgba(255,255,255,.8);
+
+    animation:
+        maintenanceFloat 5s ease-in-out infinite;
+}
+
+@keyframes maintenanceFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.maintenance-floating-icon {
+
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 15px;
+
+    background: var(--maintenance-mint-light);
+
+    color: var(--maintenance-green);
+
+    font-size: 21px;
+}
+
+.maintenance-floating-panel strong {
+
+    display: block;
+
+    color: var(--maintenance-green-dark);
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+.maintenance-floating-panel span {
+
+    display: block;
+
+    color: var(--maintenance-text-soft);
+
+    font-size: 11px;
+}
+
+
+.maintenance-vertical-text {
+
+    position: absolute;
+
+    right: -45px;
+
+    top: 50%;
+
+    transform: rotate(90deg) translateX(50%);
+
+    transform-origin: center;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: rgba(29,96,77,.45);
+}
+
+
+/* =========================================================
+   13. INTRO SECTION
+   ========================================================= */
+
+.maintenance-intro {
+
+    position: relative;
+
+    padding: 135px 0;
+
+    background: #fff;
+}
+
+.maintenance-intro-grid {
+
+    display: grid;
+
+    grid-template-columns: .95fr 1.05fr;
+
+    gap: 100px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   14. INTRO IMAGE
+   ========================================================= */
+
+.intro-image-box {
+
+    position: relative;
+
+    height: 600px;
+
+    overflow: hidden;
+
+    border-radius: 32px;
+
+    box-shadow: var(--maintenance-shadow);
+}
+
+.intro-image-box img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 1.2s cubic-bezier(.22,1,.36,1);
+}
+
+.intro-image-box:hover img {
+
+    transform: scale(1.09);
+}
+
+.intro-image-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(13,48,39,.45)
+        );
+}
+
+.intro-badge {
+
+    position: absolute;
+
+    left: 25px;
+    bottom: 25px;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 16px 19px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.94);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.12);
+}
+
+.intro-badge > i {
+
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 13px;
+
+    color: var(--maintenance-green);
+
+    background: var(--maintenance-mint-light);
+}
+
+.intro-badge strong {
+
+    display: block;
+
+    font-size: 13px;
+
+    color: var(--maintenance-green-dark);
+
+    margin-bottom: 4px;
+}
+
+.intro-badge span {
+
+    display: block;
+
+    color: var(--maintenance-text-soft);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   15. SECTION LABEL
+   ========================================================= */
+
+.maintenance-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: var(--maintenance-green);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 22px;
+}
+
+.maintenance-label::before {
+
+    content: "";
+
+    width: 26px;
+    height: 2px;
+
+    background: var(--maintenance-mint);
+}
+
+
+/* =========================================================
+   16. INTRO CONTENT
+   ========================================================= */
+
+.maintenance-intro-content h2,
+.maintenance-heading h2,
+.performance-content h2,
+.why-content h2,
+.checklist-heading h2 {
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: clamp(38px, 4.5vw, 60px);
+
+    line-height: 1.08;
+
+    letter-spacing: -2px;
+
+    color: var(--maintenance-green-deep);
+
+    margin-bottom: 27px;
+}
+
+.maintenance-intro-content h2 span,
+.maintenance-heading h2 span,
+.performance-content h2 span,
+.why-content h2 span,
+.checklist-heading h2 span {
+
+    display: block;
+
+    color: var(--maintenance-green);
+}
+
+.maintenance-intro-content > p {
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    color: var(--maintenance-text-soft);
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   17. HIGHLIGHT
+   ========================================================= */
+
+.maintenance-highlight {
+
+    margin-top: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    background: var(--maintenance-bg-soft);
+
+    border: 1px solid var(--maintenance-border);
+
+    transition:
+        transform var(--maintenance-fast),
+        box-shadow var(--maintenance-fast);
+}
+
+.maintenance-highlight:hover {
+
+    transform: translateX(8px);
+
+    box-shadow: 0 15px 35px rgba(29,96,77,.09);
+}
+
+.highlight-icon {
+
+    width: 52px;
+    height: 52px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex: 0 0 52px;
+
+    border-radius: 15px;
+
+    background: var(--maintenance-green-dark);
+
+    color: #fff;
+
+    font-size: 20px;
+}
+
+.maintenance-highlight strong {
+
+    display: block;
+
+    font-size: 14px;
+
+    color: var(--maintenance-green-dark);
+
+    margin-bottom: 5px;
+}
+
+.maintenance-highlight span {
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: var(--maintenance-text-soft);
+}
+
+
+/* =========================================================
+   18. SERVICES SECTION
+   ========================================================= */
+
+.maintenance-services {
+
+    position: relative;
+
+    padding: 140px 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #effaf6,
+            #f9fdfb
+        );
+}
+
+.maintenance-heading {
+
+    max-width: 780px;
+
+    margin-bottom: 65px;
+}
+
+.maintenance-heading > p {
+
+    max-width: 680px;
+
+    color: var(--maintenance-text-soft);
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+.maintenance-heading.centered {
+
+    text-align: center;
+
+    margin-inline: auto;
+}
+
+.maintenance-heading.centered > p {
+
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   19. SERVICE GRID
+   ========================================================= */
+
+.maintenance-service-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.maintenance-service-card {
+
+    position: relative;
+
+    min-height: 355px;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.82);
+
+    border: 1px solid var(--maintenance-border);
+
+    overflow: hidden;
+
+    transition:
+        transform var(--maintenance-transition),
+        box-shadow var(--maintenance-transition),
+        background var(--maintenance-transition),
+        border-color var(--maintenance-transition);
+}
+
+.maintenance-service-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: -80px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background: var(--maintenance-mint-light);
+
+    transition:
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.maintenance-service-card:hover {
+
+    transform: translateY(-12px);
+
+    background: #fff;
+
+    border-color: rgba(29,96,77,.20);
+
+    box-shadow:
+        var(--maintenance-shadow-hover);
+}
+
+.maintenance-service-card:hover::before {
+
+    transform: scale(2.4);
+}
+
+
+/* =========================================================
+   20. SERVICE TOP
+   ========================================================= */
+
+.service-card-top {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 42px;
+}
+
+.service-card-top > span {
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    color: rgba(29,96,77,.35);
+
+    transition:
+        color var(--maintenance-fast),
+        transform var(--maintenance-fast);
+}
+
+.maintenance-service-card:hover .service-card-top > span {
+
+    color: var(--maintenance-green);
+
+    transform: translateX(5px);
+}
+
+.service-icon {
+
+    width: 56px;
+    height: 56px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 17px;
+
+    background: var(--maintenance-bg-soft);
+
+    color: var(--maintenance-green);
+
+    font-size: 22px;
+
+    transition:
+        transform var(--maintenance-transition),
+        background var(--maintenance-fast),
+        color var(--maintenance-fast);
+}
+
+.maintenance-service-card:hover .service-icon {
+
+    transform:
+        rotate(-8deg)
+        scale(1.1);
+
+    background: var(--maintenance-green-dark);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   21. SERVICE CONTENT
+   ========================================================= */
+
+.maintenance-service-card h3 {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 21px;
+
+    color: var(--maintenance-green-dark);
+
+    margin-bottom: 15px;
+}
+
+.maintenance-service-card p {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: var(--maintenance-text-soft);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    margin-bottom: 22px;
+}
+
+.maintenance-service-card a {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: var(--maintenance-green);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    transition: gap var(--maintenance-fast);
+}
+
+.maintenance-service-card a:hover {
+
+    gap: 15px;
+}
+
+
+/* =========================================================
+   22. PERFORMANCE
+   ========================================================= */
+
+.maintenance-performance {
+
+    padding: 140px 0;
+
+    background: #fff;
+}
+
+.performance-panel {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 620px;
+
+    border-radius: 35px;
+
+    overflow: hidden;
+
+    background: var(--maintenance-bg-soft);
+
+    box-shadow:
+        0 25px 80px rgba(18,63,50,.08);
+}
+
+.performance-image {
+
+    position: relative;
+
+    min-height: 620px;
+
+    overflow: hidden;
+}
+
+.performance-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 1.2s cubic-bezier(.22,1,.36,1);
+}
+
+.performance-image:hover img {
+
+    transform: scale(1.08);
+}
+
+.performance-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 50%,
+            rgba(13,48,39,.5)
+        );
+}
+
+.performance-image-label {
+
+    position: absolute;
+
+    z-index: 3;
+
+    left: 30px;
+    bottom: 30px;
+
+    padding: 12px 17px;
+
+    border-radius: 100px;
+
+    background: rgba(255,255,255,.9);
+
+    color: var(--maintenance-green-dark);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.performance-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 70px;
+}
+
+.performance-content > p {
+
+    color: var(--maintenance-text-soft);
+
+    line-height: 1.85;
+
+    font-size: 15px;
+
+    max-width: 540px;
+}
+
+
+/* =========================================================
+   23. PERFORMANCE LIST
+   ========================================================= */
+
+.performance-list {
+
+    margin-top: 28px;
+
+    display: grid;
+
+    gap: 13px;
+}
+
+.performance-list > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 16px;
+
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.72);
+
+    transition:
+        transform var(--maintenance-fast),
+        background var(--maintenance-fast);
+}
+
+.performance-list > div:hover {
+
+    transform: translateX(8px);
+
+    background: #fff;
+}
+
+.performance-list i {
+
+    color: var(--maintenance-green);
+
+    font-size: 16px;
+}
+
+.performance-list span {
+
+    color: var(--maintenance-green-dark);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   24. PROCESS
+   ========================================================= */
+
+.maintenance-process {
+
+    padding: 145px 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(155,216,196,.18),
+            transparent 38%
+        ),
+        #f7fcfa;
+}
+
+
+/* =========================================================
+   25. TIMELINE
+   ========================================================= */
+
+.maintenance-timeline {
+
+    position: relative;
+
+    max-width: 900px;
+
+    margin: 80px auto 0;
+}
+
+.timeline-line {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(29,96,77,.25),
+            transparent
+        );
+
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+
+    position: relative;
+
+    width: 50%;
+
+    padding: 0 55px 75px 0;
+
+    display: flex;
+
+    justify-content: flex-end;
+}
+
+.timeline-item.timeline-reverse {
+
+    margin-left: 50%;
+
+    padding:
+        0 0 75px 55px;
+
+    justify-content: flex-start;
+}
+
+.timeline-number {
+
+    position: absolute;
+
+    top: 0;
+
+    right: -25px;
+
+    width: 50px;
+    height: 50px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--maintenance-green-dark);
+
+    color: #fff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    z-index: 4;
+
+    box-shadow:
+        0 0 0 8px #f7fcfa,
+        0 0 0 9px rgba(29,96,77,.12);
+
+    transition:
+        transform var(--maintenance-transition),
+        background var(--maintenance-fast);
+}
+
+.timeline-item.timeline-reverse .timeline-number {
+
+    left: -25px;
+
+    right: auto;
+}
+
+.timeline-item:hover .timeline-number {
+
+    transform:
+        scale(1.15)
+        rotate(8deg);
+
+    background: var(--maintenance-green);
+}
+
+.timeline-content {
+
+    max-width: 330px;
+
+    padding: 25px;
+
+    border-radius: 22px;
+
+    background: #fff;
+
+    border: 1px solid var(--maintenance-border);
+
+    box-shadow:
+        0 15px 40px rgba(18,63,50,.06);
+
+    transition:
+        transform var(--maintenance-transition),
+        box-shadow var(--maintenance-transition);
+}
+
+.timeline-item:hover .timeline-content {
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 25px 55px rgba(18,63,50,.12);
+}
+
+.timeline-content > span {
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    color: var(--maintenance-green);
+
+    font-weight: 800;
+}
+
+.timeline-content h3 {
+
+    font-family: "Poppins", sans-serif;
+
+    color: var(--maintenance-green-dark);
+
+    font-size: 19px;
+
+    margin: 8px 0 10px;
+}
+
+.timeline-content p {
+
+    color: var(--maintenance-text-soft);
+
+    font-size: 13px;
+
+    line-height: 1.75;
+
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   26. WHY SUNGREEN
+   ========================================================= */
+
+.maintenance-why {
+
+    padding: 140px 0;
+
+    background: #fff;
+}
+
+.maintenance-why-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+    align-items: center;
+}
+
+.why-content > p {
+
+    max-width: 560px;
+
+    color: var(--maintenance-text-soft);
+
+    line-height: 1.85;
+
+    font-size: 15px;
+
+    margin-bottom: 18px;
+}
+
+.maintenance-dark-btn {
+
+    margin-top: 25px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 17px 22px;
+
+    border-radius: 100px;
+
+    background: var(--maintenance-green-dark);
+
+    color: #fff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition:
+        transform var(--maintenance-fast),
+        background var(--maintenance-fast),
+        box-shadow var(--maintenance-fast);
+}
+
+.maintenance-dark-btn:hover {
+
+    transform: translateY(-5px);
+
+    background: var(--maintenance-green);
+
+    box-shadow:
+        0 18px 35px rgba(18,63,50,.20);
+}
+
+.maintenance-dark-btn i {
+
+    transition:
+        transform var(--maintenance-fast);
+}
+
+.maintenance-dark-btn:hover i {
+
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   27. WHY CARDS
+   ========================================================= */
+
+.why-cards {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+}
+
+.why-card {
+
+    min-height: 185px;
+
+    padding: 24px;
+
+    border-radius: 22px;
+
+    background: var(--maintenance-bg-soft);
+
+    border: 1px solid var(--maintenance-border);
+
+    transition:
+        transform var(--maintenance-transition),
+        background var(--maintenance-fast),
+        box-shadow var(--maintenance-transition);
+}
+
+.why-card:hover {
+
+    transform: translateY(-8px);
+
+    background: #fff;
+
+    box-shadow:
+        0 25px 55px rgba(18,63,50,.10);
+}
+
+.why-card > i {
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 15px;
+
+    background: #fff;
+
+    color: var(--maintenance-green);
+
+    font-size: 20px;
+
+    margin-bottom: 20px;
+
+    transition:
+        transform var(--maintenance-fast),
+        background var(--maintenance-fast),
+        color var(--maintenance-fast);
+}
+
+.why-card:hover > i {
+
+    transform: rotate(-8deg) scale(1.08);
+
+    background: var(--maintenance-green-dark);
+
+    color: #fff;
+}
+
+.why-card strong {
+
+    display: block;
+
+    color: var(--maintenance-green-dark);
+
+    font-size: 14px;
+
+    margin-bottom: 6px;
+}
+
+.why-card span {
+
+    color: var(--maintenance-text-soft);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   28. CHECKLIST
+   ========================================================= */
+
+.maintenance-checklist {
+
+    padding: 130px 0;
+
+    background: var(--maintenance-bg-soft);
+}
+
+.checklist-layout {
+
+    display: grid;
+
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 100px;
+
+    align-items: start;
+}
+
+.checklist-heading {
+
+    position: sticky;
+
+    top: 120px;
+}
+
+.checklist-heading > p {
+
+    max-width: 450px;
+
+    color: var(--maintenance-text-soft);
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   29. CHECK ITEMS
+   ========================================================= */
+
+.checklist-items {
+
+    border-top: 1px solid var(--maintenance-border);
+}
+
+.check-item {
+
+    display: grid;
+
+    grid-template-columns: 60px 1fr 40px;
+
+    align-items: center;
+
+    min-height: 90px;
+
+    gap: 20px;
+
+    border-bottom: 1px solid var(--maintenance-border);
+
+    transition:
+        padding var(--maintenance-transition),
+        background var(--maintenance-fast);
+}
+
+.check-item:hover {
+
+    padding-left: 20px;
+
+    background: rgba(255,255,255,.65);
+}
+
+.check-item > span {
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    color: rgba(29,96,77,.42);
+}
+
+.check-item strong {
+
+    color: var(--maintenance-green-dark);
+
+    font-size: 16px;
+}
+
+.check-item i {
+
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: var(--maintenance-green);
+
+    transition:
+        transform var(--maintenance-fast),
+        background var(--maintenance-fast),
+        color var(--maintenance-fast);
+}
+
+.check-item:hover i {
+
+    transform: rotate(45deg);
+
+    background: var(--maintenance-green-dark);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   30. FINAL CTA
+   ========================================================= */
+
+.maintenance-contact {
+
+    position: relative;
+
+    padding: 145px 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(155,216,196,.25),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #123f32,
+            #0b2c24
+        );
+
+    color: #fff;
+}
+
+.contact-glow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(5px);
+
+    pointer-events: none;
+}
+
+.contact-glow-one {
+
+    width: 500px;
+    height: 500px;
+
+    left: -250px;
+    top: -250px;
+
+    border: 1px solid rgba(155,216,196,.16);
+
+    animation:
+        contactRotate 15s linear infinite;
+}
+
+.contact-glow-two {
+
+    width: 400px;
+    height: 400px;
+
+    right: -200px;
+    bottom: -220px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    animation:
+        contactRotate 20s linear infinite reverse;
+}
+
+@keyframes contactRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.maintenance-contact-content {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+.contact-icon {
+
+    width: 75px;
+    height: 75px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin: 0 auto 28px;
+
+    border-radius: 23px;
+
+    background: rgba(155,216,196,.14);
+
+    border: 1px solid rgba(155,216,196,.22);
+
+    color: var(--maintenance-mint);
+
+    font-size: 28px;
+
+    animation:
+        contactIconFloat 4s ease-in-out infinite;
+}
+
+@keyframes contactIconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.maintenance-contact .maintenance-label {
+
+    color: var(--maintenance-mint);
+}
+
+.maintenance-contact .maintenance-label::before {
+
+    background: var(--maintenance-mint);
+}
+
+.maintenance-contact h2 {
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: clamp(40px, 5vw, 68px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 25px;
+}
+
+.maintenance-contact h2 span {
+
+    display: block;
+
+    color: var(--maintenance-mint);
+}
+
+.maintenance-contact-content > p {
+
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    color: rgba(255,255,255,.70);
+
+    line-height: 1.85;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   31. CTA BUTTONS
+   ========================================================= */
+
+.contact-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 13px;
+}
+
+.contact-primary,
+.contact-secondary {
+
+    min-height: 58px;
+
+    padding: 0 25px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border-radius: 100px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition:
+        transform var(--maintenance-fast),
+        box-shadow var(--maintenance-fast),
+        background var(--maintenance-fast);
+}
+
+.contact-primary {
+
+    background: var(--maintenance-mint);
+
+    color: var(--maintenance-green-deep);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.15);
+}
+
+.contact-primary:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 22px 45px rgba(0,0,0,.25);
+
+    background: #b2ead8;
+}
+
+.contact-primary i {
+
+    transition:
+        transform var(--maintenance-fast);
+}
+
+.contact-primary:hover i {
+
+    transform: translate(4px,-3px);
+}
+
+.contact-secondary {
+
+    color: #fff;
+
+    border: 1px solid rgba(255,255,255,.20);
+
+    background: rgba(255,255,255,.05);
+}
+
+.contact-secondary:hover {
+
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,.10);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.15);
+}
+
+
+/* =========================================================
+   32. REVEAL ANIMATIONS
+   ========================================================= */
+
+.maintenance-reveal-right {
+
+    opacity: 0;
+
+    transform:
+        translateX(90px);
+
+    transition:
+        opacity 1s cubic-bezier(.22,1,.36,1),
+        transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.maintenance-reveal-left {
+
+    opacity: 0;
+
+    transform:
+        translateX(-90px);
+
+    transition:
+        opacity 1s cubic-bezier(.22,1,.36,1),
+        transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.maintenance-reveal-up {
+
+    opacity: 0;
+
+    transform:
+        translateY(70px);
+
+    transition:
+        opacity 1s cubic-bezier(.22,1,.36,1),
+        transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.maintenance-visible {
+
+    opacity: 1;
+
+    transform:
+        translate(0,0);
+}
+
+
+/* =========================================================
+   33. STAGGER ANIMATION
+   ========================================================= */
+
+.maintenance-service-card:nth-child(1) {
+    transition-delay: .05s;
+}
+
+.maintenance-service-card:nth-child(2) {
+    transition-delay: .12s;
+}
+
+.maintenance-service-card:nth-child(3) {
+    transition-delay: .19s;
+}
+
+.maintenance-service-card:nth-child(4) {
+    transition-delay: .26s;
+}
+
+.maintenance-service-card:nth-child(5) {
+    transition-delay: .33s;
+}
+
+.maintenance-service-card:nth-child(6) {
+    transition-delay: .40s;
+}
+
+.why-card:nth-child(2) {
+    transition-delay: .08s;
+}
+
+.why-card:nth-child(3) {
+    transition-delay: .16s;
+}
+
+.why-card:nth-child(4) {
+    transition-delay: .24s;
+}
+
+
+/* =========================================================
+   34. SELECTION
+   ========================================================= */
+
+.maintenance-page ::selection {
+
+    background: var(--maintenance-mint);
+
+    color: var(--maintenance-green-deep);
+}
+
+
+/* =========================================================
+   35. RESPONSIVE — LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .maintenance-hero-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 45px;
+    }
+
+    .maintenance-hero-content h1 {
+
+        font-size: 60px;
+    }
+
+    .maintenance-intro-grid,
+    .maintenance-why-grid {
+
+        gap: 55px;
+    }
+
+    .performance-content {
+
+        padding: 50px;
+    }
+
+}
+
+
+/* =========================================================
+   36. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .maintenance-hero {
+
+        min-height: auto;
+
+        padding: 110px 0 80px;
+    }
+
+    .maintenance-hero-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+    .maintenance-hero-content {
+
+        max-width: 750px;
+    }
+
+    .maintenance-hero-visual {
+
+        min-height: 550px;
+    }
+
+    .maintenance-photo {
+
+        width: min(560px, 90%);
+
+        margin-inline: auto;
+    }
+
+    .maintenance-floating-panel {
+
+        left: 5%;
+    }
+
+    .maintenance-intro-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+    .intro-image-box {
+
+        height: 520px;
+
+        max-width: 650px;
+
+        margin-inline: auto;
+    }
+
+    .maintenance-service-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .performance-panel {
+
+        grid-template-columns: 1fr;
+    }
+
+    .performance-image {
+
+        min-height: 500px;
+    }
+
+    .maintenance-why-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+    .checklist-layout {
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .checklist-heading {
+
+        position: static;
+    }
+
+}
+
+
+/* =========================================================
+   37. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .maintenance-page .container {
+
+        width: min(100% - 28px, 1180px);
+    }
+
+    .maintenance-hero {
+
+        padding: 95px 0 65px;
+    }
+
+    .maintenance-hero-content h1 {
+
+        font-size: clamp(42px, 13vw, 60px);
+
+        letter-spacing: -2px;
+    }
+
+    .maintenance-hero-content > p {
+
+        font-size: 15px;
+
+        line-height: 1.75;
+    }
+
+    .maintenance-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .maintenance-btn {
+
+        width: 100%;
+    }
+
+    .maintenance-mini-stats {
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .maintenance-mini-stats > div {
+
+        border-right: 0;
+
+        border-bottom: 1px solid var(--maintenance-border);
+
+        padding: 0 0 15px;
+
+        margin: 0;
+    }
+
+    .maintenance-mini-stats > div:last-child {
+
+        border-bottom: 0;
+
+        padding-bottom: 0;
+    }
+
+    .maintenance-hero-visual {
+
+        min-height: 470px;
+    }
+
+    .maintenance-photo {
+
+        height: 450px;
+
+        width: 94%;
+
+        border-radius: 30px;
+    }
+
+    .maintenance-floating-panel {
+
+        left: 0;
+
+        bottom: 25px;
+
+        min-width: 230px;
+
+        padding: 14px;
+    }
+
+    .maintenance-vertical-text {
+
+        display: none;
+    }
+
+    .maintenance-intro,
+    .maintenance-services,
+    .maintenance-performance,
+    .maintenance-process,
+    .maintenance-why,
+    .maintenance-checklist {
+
+        padding: 85px 0;
+    }
+
+    .maintenance-intro-content h2,
+    .maintenance-heading h2,
+    .performance-content h2,
+    .why-content h2,
+    .checklist-heading h2 {
+
+        font-size: 38px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .intro-image-box {
+
+        height: 430px;
+    }
+
+    .maintenance-service-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .maintenance-service-card {
+
+        min-height: 330px;
+    }
+
+    .performance-image {
+
+        min-height: 390px;
+    }
+
+    .performance-content {
+
+        padding: 38px 25px;
+    }
+
+    .why-cards {
+
+        grid-template-columns: 1fr;
+    }
+
+    .why-card {
+
+        min-height: auto;
+
+        padding: 22px;
+    }
+
+    .maintenance-timeline {
+
+        margin-top: 55px;
+
+        padding-left: 28px;
+    }
+
+    .timeline-line {
+
+        left: 15px;
+
+        transform: none;
+    }
+
+    .timeline-item,
+    .timeline-item.timeline-reverse {
+
+        width: 100%;
+
+        margin: 0;
+
+        padding:
+            0 0 40px 42px;
+
+        display: block;
+    }
+
+    .timeline-number,
+    .timeline-item.timeline-reverse .timeline-number {
+
+        left: -10px;
+
+        right: auto;
+
+        width: 50px;
+        height: 50px;
+    }
+
+    .timeline-content {
+
+        max-width: none;
+    }
+
+    .check-item {
+
+        grid-template-columns:
+            40px 1fr 32px;
+
+        gap: 10px;
+
+        min-height: 78px;
+    }
+
+    .check-item strong {
+
+        font-size: 13px;
+    }
+
+    .maintenance-contact {
+
+        padding: 100px 0;
+    }
+
+    .maintenance-contact h2 {
+
+        font-size: 40px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .contact-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .contact-primary,
+    .contact-secondary {
+
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   38. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .maintenance-hero-content h1 {
+
+        font-size: 39px;
+    }
+
+    .maintenance-hero-visual {
+
+        min-height: 420px;
+    }
+
+    .maintenance-photo {
+
+        height: 405px;
+    }
+
+    .maintenance-floating-panel {
+
+        min-width: 210px;
+    }
+
+    .maintenance-floating-icon {
+
+        width: 42px;
+        height: 42px;
+
+        flex-basis: 42px;
+    }
+
+    .maintenance-intro-content h2,
+    .maintenance-heading h2,
+    .performance-content h2,
+    .why-content h2,
+    .checklist-heading h2 {
+
+        font-size: 34px;
+    }
+
+    .maintenance-contact h2 {
+
+        font-size: 35px;
+    }
+
+}
+
+
+/* =========================================================
+   39. ACCESSIBILITY
+   ========================================================= */
+
+.maintenance-page a:focus-visible {
+
+    outline: 3px solid rgba(155,216,196,.8);
+
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   40. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .maintenance-page *,
+    .maintenance-page *::before,
+    .maintenance-page *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: .01ms !important;
+    }
+
+    .maintenance-reveal-right,
+    .maintenance-reveal-left,
+    .maintenance-reveal-up {
+
+        opacity: 1;
+
+        transform: none;
+    }
+}

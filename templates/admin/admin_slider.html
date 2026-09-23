@@ -1,0 +1,366 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/admin/admin_slider.css' %}"
+>
+
+<style>
+
+/* ===================================
+   ACTION AREA
+=================================== */
+
+.action-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* ===================================
+   DELETE FORM
+=================================== */
+
+.delete-form {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ===================================
+   DELETE BUTTON
+=================================== */
+
+.delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    background: #fef2f2;
+    color: #dc2626;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background: #ef4444;
+    color: white;
+    transform: translateY(-3px);
+}
+
+
+/* ===================================
+   CANCEL BUTTON
+=================================== */
+
+.cancel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 35px;
+    border-radius: 50px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cancel-btn:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+    transform: translateY(-3px);
+}
+
+
+/* ===================================
+   FORM ACTIONS
+=================================== */
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media (max-width: 600px) {
+
+    .action-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+}
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="slider-page">
+
+
+    <!-- ===================================
+         PAGE HEADER
+    =================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                Manage Slider
+            </h2>
+
+        </div>
+
+
+        <a
+            href="{% url 'add-slider' %}"
+            class="add-btn"
+        >
+
+            <i class="bi bi-plus-lg"></i>
+
+            Add Slider
+
+        </a>
+
+    </div>
+
+
+
+    <!-- ===================================
+         SLIDER TABLE
+    =================================== -->
+
+    <table class="slider-table">
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    Image
+                </th>
+
+                <th>
+                    Title
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+                <th>
+                    Action
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+
+        {% for slider in sliders %}
+
+            <tr>
+
+
+                <!-- ===================================
+                     IMAGE
+                =================================== -->
+
+                <td>
+
+                    {% if slider.image %}
+
+                        <img
+                            src="{{ slider.image.url }}"
+                            alt="{{ slider.title }}"
+                        >
+
+                    {% else %}
+
+                        No Image
+
+                    {% endif %}
+
+                </td>
+
+
+
+                <!-- ===================================
+                     TITLE
+                =================================== -->
+
+                <td>
+
+                    {{ slider.title }}
+
+                </td>
+
+
+
+                <!-- ===================================
+                     STATUS
+                =================================== -->
+
+                <td>
+
+                    {% if slider.status %}
+
+                        <span class="active">
+                            Active
+                        </span>
+
+                    {% else %}
+
+                        <span class="inactive">
+                            Inactive
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+
+
+                <!-- ===================================
+                     ACTION
+                =================================== -->
+
+                <td>
+
+                    <div class="action-area">
+
+
+                        <!-- ===================================
+                             EDIT
+                        =================================== -->
+
+                        <a
+                            href="{% url 'edit-slider' slider.id %}"
+                            class="edit"
+                        >
+
+                            <i class="bi bi-pencil"></i>
+
+                            Edit
+
+                        </a>
+
+
+
+                        <!-- ===================================
+                             DELETE
+                        =================================== -->
+
+                        <form
+                            method="POST"
+                            action="{% url 'delete-slider' slider.id %}"
+                            class="delete-form"
+                            onsubmit="return confirmDelete('{{ slider.title|escapejs }}');"
+                        >
+
+                            {% csrf_token %}
+
+
+                            <button
+                                type="submit"
+                                class="delete-btn"
+                            >
+
+                                <i class="bi bi-trash"></i>
+
+                                Delete
+
+                            </button>
+
+                        </form>
+
+
+                    </div>
+
+                </td>
+
+
+            </tr>
+
+        {% empty %}
+
+
+            <!-- ===================================
+                 EMPTY STATE
+            =================================== -->
+
+            <tr>
+
+                <td
+                    colspan="4"
+                    style="text-align: center; padding: 40px;"
+                >
+
+                    No Slider Found
+
+                </td>
+
+            </tr>
+
+
+        {% endfor %}
+
+
+        </tbody>
+
+    </table>
+
+
+</div>
+
+
+
+<!-- ===================================
+     DELETE CONFIRMATION
+=================================== -->
+
+<script>
+
+function confirmDelete(title) {
+
+    return confirm(
+        'Are you sure you want to delete "' + title + '"?'
+    );
+
+}
+
+</script>
+
+
+{% endblock %}

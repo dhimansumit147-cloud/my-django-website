@@ -1,0 +1,714 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+    All Users | SunGreen Solar Admin
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/admin/all_users.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="users-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-title">
+
+            <div class="title-icon">
+
+                <i class="bi bi-people-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <h1>
+                    All Users
+                </h1>
+
+                <p>
+                    Manage registered users and administrators.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ADD USER
+             ONLY SUPERUSER
+        ================================================== -->
+
+        {% if request.user.is_superuser %}
+
+            <a
+                href="{% url 'add-user' %}"
+                class="btn btn-primary"
+            >
+
+                <i class="bi bi-person-plus-fill"></i>
+
+                <span>
+                    Add User
+                </span>
+
+            </a>
+
+        {% endif %}
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MESSAGES
+    ====================================================== -->
+
+    {% if messages %}
+
+        <div class="messages-container">
+
+            {% for message in messages %}
+
+                <div
+                    class="user-message
+                    {% if message.tags %}
+                        message-{{ message.tags }}
+                    {% endif %}
+                    "
+                >
+
+                    {% if message.tags == "success" %}
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                    {% elif message.tags == "error" %}
+
+                        <i class="bi bi-exclamation-circle-fill"></i>
+
+                    {% elif message.tags == "warning" %}
+
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+
+                    {% else %}
+
+                        <i class="bi bi-info-circle-fill"></i>
+
+                    {% endif %}
+
+
+                    <span>
+                        {{ message }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+
+
+    <!-- =====================================================
+         USERS TABLE CARD
+    ====================================================== -->
+
+    <div class="users-table-card">
+
+
+        <!-- =================================================
+             TABLE HEADER
+        ================================================== -->
+
+        <div class="table-header">
+
+
+            <div class="table-heading">
+
+                <div class="table-heading-icon">
+
+                    <i class="bi bi-people-fill"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        User Management
+                    </h2>
+
+                    <p>
+                        View and manage all registered accounts.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 USER COUNT
+            ================================================== -->
+
+            <div class="user-count">
+
+                <i class="bi bi-person-lines-fill"></i>
+
+                <span>
+                    {{ users|length }} Users
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             TABLE
+        ====================================================== -->
+
+        <div class="users-table-wrapper">
+
+            <table class="users-table">
+
+
+                <!-- =================================================
+                     TABLE HEAD
+                ================================================== -->
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Username
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Joined
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <!-- =================================================
+                     TABLE BODY
+                ================================================== -->
+
+                <tbody>
+
+
+                    {% for user in users %}
+
+
+                    <tr>
+
+
+                        <!-- =========================================
+                             NUMBER
+                        ========================================== -->
+
+                        <td class="serial-number">
+
+                            {{ forloop.counter }}
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             USERNAME
+                        ========================================== -->
+
+                        <td>
+
+                            <div class="username-cell">
+
+
+                                <!-- AVATAR -->
+
+                                <div class="user-avatar">
+
+                                    {% if user.first_name %}
+
+                                        {{ user.first_name|first|upper }}
+
+                                    {% else %}
+
+                                        {{ user.username|first|upper }}
+
+                                    {% endif %}
+
+                                </div>
+
+
+
+                                <!-- USERNAME INFO -->
+
+                                <div class="username-info">
+
+                                    <strong>
+                                        {{ user.username }}
+                                    </strong>
+
+
+                                    {% if user.is_superuser %}
+
+                                        <small>
+                                            Superuser
+                                        </small>
+
+                                    {% elif user.is_staff %}
+
+                                        <small>
+                                            Administrator
+                                        </small>
+
+                                    {% else %}
+
+                                        <small>
+                                            Registered User
+                                        </small>
+
+                                    {% endif %}
+
+                                </div>
+
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             NAME
+                        ========================================== -->
+
+                        <td>
+
+                            <span class="user-name">
+
+                                {% if user.first_name or user.last_name %}
+
+                                    {{ user.first_name }}
+                                    {{ user.last_name }}
+
+                                {% else %}
+
+                                    —
+
+                                {% endif %}
+
+                            </span>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             EMAIL
+                        ========================================== -->
+
+                        <td>
+
+                            {% if user.email %}
+
+                                <span class="user-email">
+
+                                    {{ user.email }}
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="no-data">
+
+                                    —
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             ROLE
+                        ========================================== -->
+
+                        <td>
+
+
+                            {% if user.is_superuser %}
+
+                                <!-- SUPERUSER -->
+
+                                <span class="badge badge-superuser">
+
+                                    <i class="bi bi-shield-fill-check"></i>
+
+                                    Superuser
+
+                                </span>
+
+
+                            {% elif user.is_staff %}
+
+                                <!-- STAFF -->
+
+                                <span class="badge badge-success">
+
+                                    <i class="bi bi-person-badge-fill"></i>
+
+                                    Staff
+
+                                </span>
+
+
+                            {% else %}
+
+                                <!-- NORMAL USER -->
+
+                                <span class="badge badge-secondary">
+
+                                    <i class="bi bi-person-fill"></i>
+
+                                    User
+
+                                </span>
+
+
+                            {% endif %}
+
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             STATUS
+                        ========================================== -->
+
+                        <td>
+
+
+                            {% if user.is_active %}
+
+                                <span class="badge badge-active">
+
+                                    <span class="status-dot"></span>
+
+                                    Active
+
+                                </span>
+
+
+                            {% else %}
+
+                                <span class="badge badge-danger">
+
+                                    <span class="status-dot"></span>
+
+                                    Inactive
+
+                                </span>
+
+
+                            {% endif %}
+
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             JOINED
+                        ========================================== -->
+
+                        <td>
+
+                            <span class="joined-date">
+
+                                <i class="bi bi-calendar3"></i>
+
+                                {{ user.date_joined|date:"d M Y" }}
+
+                            </span>
+
+                        </td>
+
+
+
+                        <!-- =========================================
+                             ACTIONS
+                        ========================================== -->
+
+                        <td>
+
+
+                            <div class="user-actions">
+
+
+                                <!-- =================================
+                                     VIEW
+                                     STAFF + SUPERUSER
+                                ================================== -->
+
+                                <a
+                                    href="{% url 'user-details' user_id=user.id %}"
+                                    class="action-btn view-btn"
+                                    title="View User"
+                                >
+
+                                    <i class="bi bi-eye-fill"></i>
+
+                                </a>
+
+
+
+                                <!-- =================================
+                                     EDIT
+                                     ONLY SUPERUSER
+                                ================================== -->
+
+                                {% if request.user.is_superuser %}
+
+                                    <a
+                                        href="{% url 'edit-user' user_id=user.id %}"
+                                        class="action-btn edit-btn"
+                                        title="Edit User"
+                                    >
+
+                                        <i class="bi bi-pencil-fill"></i>
+
+                                    </a>
+
+                                {% endif %}
+
+
+
+                                <!-- =================================
+                                     DELETE
+                                     ONLY SUPERUSER
+                                ================================== -->
+
+                                {% if request.user.is_superuser %}
+
+
+                                    {% if user.id != request.user.id %}
+
+
+                                        <form
+                                            method="POST"
+                                            action="{% url 'delete-user' user_id=user.id %}"
+                                            class="delete-user-form"
+                                            onsubmit="return confirmDelete('{{ user.username|escapejs }}');"
+                                        >
+
+                                            {% csrf_token %}
+
+
+                                            <button
+                                                type="submit"
+                                                class="action-btn delete-btn"
+                                                title="Delete User"
+                                            >
+
+                                                <i class="bi bi-trash3-fill"></i>
+
+                                            </button>
+
+                                        </form>
+
+
+                                    {% else %}
+
+
+                                        <!-- =================================
+                                             CURRENT SUPERUSER
+                                        ================================== -->
+
+                                        <span
+                                            class="action-btn disabled-btn"
+                                            title="You cannot delete your own account"
+                                        >
+
+                                            <i class="bi bi-shield-lock-fill"></i>
+
+                                        </span>
+
+
+                                    {% endif %}
+
+
+                                {% endif %}
+
+
+                            </div>
+
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% empty %}
+
+
+                    <!-- =================================================
+                         EMPTY USERS
+                    ================================================== -->
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="empty-users"
+                        >
+
+
+                            <div class="empty-icon">
+
+                                <i class="bi bi-people-fill"></i>
+
+                            </div>
+
+
+                            <h3>
+                                No Users Found
+                            </h3>
+
+
+                            <p>
+                                There are currently no registered users.
+                            </p>
+
+
+
+                            <!-- =========================================
+                                 ADD FIRST USER
+                                 ONLY SUPERUSER
+                            ========================================== -->
+
+                            {% if request.user.is_superuser %}
+
+                                <a
+                                    href="{% url 'add-user' %}"
+                                    class="empty-add-btn"
+                                >
+
+                                    <i class="bi bi-person-plus-fill"></i>
+
+                                    Add First User
+
+                                </a>
+
+                            {% endif %}
+
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     DELETE CONFIRMATION SCRIPT
+========================================================= -->
+
+<script>
+
+function confirmDelete(username) {
+
+    const message =
+        "Are you sure you want to delete user \"" +
+        username +
+        "\"?\n\n" +
+        "This action cannot be undone.";
+
+
+    return confirm(message);
+
+}
+
+</script>
+
+
+{% endblock %}

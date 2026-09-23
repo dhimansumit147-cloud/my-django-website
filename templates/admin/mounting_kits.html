@@ -1,0 +1,772 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}
+Mounting Kits | Admin Dashboard
+{% endblock %}
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/admin/mounting_kits.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="solar-admin">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="solar-header">
+
+        <div class="solar-title">
+
+            <span class="solar-header-label">
+                🔧 SOLAR MOUNTING MANAGEMENT
+            </span>
+
+            <h1>
+                Mounting Kits
+            </h1>
+
+            <p>
+                Manage mounting kit products, images,
+                descriptions and brochures from your admin dashboard.
+            </p>
+
+        </div>
+
+        <div class="solar-badge">
+            🔧 Mounting Kit Management
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PRODUCTS CARD
+    ====================================================== -->
+
+    <div class="solar-card products-card">
+
+
+        <!-- =================================================
+             PRODUCTS HEADER
+        ================================================== -->
+
+        <div class="products-header">
+
+            <div class="card-heading">
+
+                <div class="card-icon">
+                    🔧
+                </div>
+
+                <div>
+
+                    <h2>
+                        All Mounting Kits
+                    </h2>
+
+                    <span>
+                        Manage your mounting kit catalog
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="products-header-actions">
+
+                <!-- PRODUCT COUNT -->
+
+                <div class="products-count">
+
+                    <strong>
+                        {{ products|length }}
+                    </strong>
+
+                    <span>
+                        Kits
+                    </span>
+
+                </div>
+
+
+                <!-- ADD MOUNTING KIT -->
+
+                <a
+                    href="{% url 'add_mounting_kit' %}"
+                    class="add-product-btn"
+                >
+
+                    <span class="add-btn-icon">
+                        +
+                    </span>
+
+                    <span>
+                        Add Mounting Kit
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             CATEGORY FILTER
+        ====================================================== -->
+
+        <div class="battery-filter-section">
+
+            <form
+                method="GET"
+                action="{% url 'mounting_kits' %}"
+                class="battery-filter-form"
+            >
+
+                <div class="battery-filter-left">
+
+                    <div class="filter-icon">
+                        🔎
+                    </div>
+
+                    <div class="filter-content">
+
+                        <label for="categoryFilter">
+                            Filter by Category
+                        </label>
+
+                        <select
+                            name="category"
+                            id="categoryFilter"
+                            class="category-filter"
+                        >
+
+                            <option
+                                value=""
+                                {% if not selected_category %}
+                                    selected
+                                {% endif %}
+                            >
+                                All Mounting Kits
+                            </option>
+
+
+                            {% for category in categories %}
+
+                                <option
+                                    value="{{ category }}"
+                                    {% if selected_category == category %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    {{ category }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     FILTER RESULT
+                ================================================== -->
+
+                <div class="filter-result">
+
+                    {% if selected_category %}
+
+                        <span>
+                            Showing:
+                        </span>
+
+                        <strong>
+                            {{ selected_category }}
+                        </strong>
+
+                        <a
+                            href="{% url 'mounting_kits' %}"
+                            class="clear-filter-btn"
+                        >
+                            ✕ Clear
+                        </a>
+
+                    {% else %}
+
+                        <span>
+                            Showing all mounting kit products
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- =====================================================
+             TABLE
+        ====================================================== -->
+
+        <div class="table-wrapper">
+
+            <table class="product-table">
+
+                <thead>
+
+                    <tr>
+
+                        <!-- IMAGES -->
+
+                        <th>
+                            Images
+                        </th>
+
+                        <!-- CATEGORY -->
+
+                        <th>
+                            Category
+                        </th>
+
+                        <!-- PRODUCT -->
+
+                        <th>
+                            Product
+                        </th>
+
+                        <!-- DESCRIPTION -->
+
+                        <th>
+                            Description
+                        </th>
+
+                        <!-- BROCHURES -->
+
+                        <th>
+                            Brochures
+                        </th>
+
+                        <!-- ACTIONS -->
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for product in products %}
+
+                    <tr>
+
+
+                        <!-- =====================================
+                             IMAGES
+                        ====================================== -->
+
+                        <td>
+
+                            <div class="product-image-wrapper">
+
+                                {% with main_image=product.images.all|first %}
+
+                                    {% if main_image %}
+
+                                        <img
+                                            src="{{ main_image.image.url }}"
+                                            alt="{{ product.name1 }}"
+                                            class="product-image"
+                                        >
+
+                                    {% else %}
+
+                                        <div class="no-image">
+                                            🔧
+                                        </div>
+
+                                    {% endif %}
+
+                                {% endwith %}
+
+
+                                {% with image_count=product.images.count %}
+
+                                    {% if image_count > 0 %}
+
+                                        <span class="image-count-badge">
+
+                                            🖼️
+                                            {{ image_count }}
+
+                                        </span>
+
+                                    {% endif %}
+
+                                {% endwith %}
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- =====================================
+                             CATEGORY
+                        ====================================== -->
+
+                        <td>
+
+                            <div class="product-category">
+
+                                {% if product.category %}
+
+                                    <span class="category-badge" style="text-transform: uppercase;">
+                                        {{ product.category }}
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="category-empty">
+                                        No Category
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- =====================================
+                             PRODUCT
+                        ====================================== -->
+
+                        <td>
+
+                            <div class="product-name">
+
+                                <strong>
+                                    {{ product.name1 }}
+                                </strong>
+
+                                {% if product.name2 %}
+
+                                    <span>
+                                        {{ product.name2 }}
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- =====================================
+                             DESCRIPTION
+                        ====================================== -->
+
+                        <td>
+
+                            <div class="product-description">
+
+                                {% if product.description %}
+
+                                    {{ product.description|truncatechars:100 }}
+
+                                {% else %}
+
+                                    No description available.
+
+                                {% endif %}
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- =====================================
+                             BROCHURES / PDFs
+                        ====================================== -->
+
+                        <td>
+
+                            {% with pdf_list=product.pdfs.all %}
+
+                                {% if pdf_list %}
+
+                                    <div class="pdf-list">
+
+                                        {% for pdf in pdf_list %}
+
+                                            {% if pdf.pdf %}
+
+                                                <a
+                                                    href="{{ pdf.pdf.url }}"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="pdf-badge"
+                                                    title="{{ pdf.title|default:'View PDF' }}"
+                                                >
+
+                                                    <span>
+                                                        📄
+                                                    </span>
+
+                                                    <span class="pdf-title">
+
+                                                        {% if pdf.title %}
+
+                                                            {{ pdf.title|truncatechars:30 }}
+
+                                                        {% else %}
+
+                                                            View PDF
+
+                                                        {% endif %}
+
+                                                    </span>
+
+                                                </a>
+
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <div class="pdf-count">
+
+                                        📚
+                                        {{ product.pdfs.count }}
+                                        document{{ product.pdfs.count|pluralize }}
+
+                                    </div>
+
+                                {% else %}
+
+                                    <span class="no-pdf">
+                                        No PDF
+                                    </span>
+
+                                {% endif %}
+
+                            {% endwith %}
+
+                        </td>
+
+
+                        <!-- =====================================
+                             ACTIONS
+                        ====================================== -->
+
+                        <td>
+
+                            <div class="action-group">
+
+
+                                <!-- EDIT -->
+
+                                <a
+                                    href="{% url 'edit_mounting_kit' product.id %}"
+                                    class="action-btn edit-btn"
+                                    title="Edit Mounting Kit"
+                                    aria-label="Edit {{ product.name1 }}"
+                                >
+                                    ✏️
+                                </a>
+
+
+                                <!-- DELETE -->
+
+                                <form
+                                    method="POST"
+                                    action="{% url 'delete_mounting_kit' product.id %}"
+                                    class="delete-form"
+                                >
+
+                                    {% csrf_token %}
+
+                                    <button
+                                        type="submit"
+                                        class="action-btn delete-btn"
+                                        title="Delete Mounting Kit"
+                                        aria-label="Delete {{ product.name1 }}"
+                                    >
+                                        🗑️
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+
+                    <!-- =================================================
+                         EMPTY STATE
+                    ================================================== -->
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="empty-table-cell"
+                        >
+
+                            <div class="empty-state">
+
+                                <div class="empty-icon">
+                                    🔧
+                                </div>
+
+
+                                {% if selected_category %}
+
+                                    <strong>
+                                        No Mounting Kits Found
+                                    </strong>
+
+                                    <p>
+                                        No products found in this category.
+                                    </p>
+
+                                    <a
+                                        href="{% url 'mounting_kits' %}"
+                                        class="empty-add-btn"
+                                    >
+                                        View All Mounting Kits
+                                    </a>
+
+                                {% else %}
+
+                                    <strong>
+                                        No Mounting Kit Products Yet
+                                    </strong>
+
+                                    <p>
+                                        Your mounting kit catalog is empty.
+                                    </p>
+
+                                    <span>
+                                        Add your first mounting kit
+                                        using the button above.
+                                    </span>
+
+                                    <br>
+                                    <br>
+
+                                    <a
+                                        href="{% url 'add_mounting_kit' %}"
+                                        class="empty-add-btn"
+                                    >
+                                        + Add Mounting Kit
+                                    </a>
+
+                                {% endif %}
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       DELETE CONFIRMATION
+    ===================================================== */
+
+    const deleteForms =
+        document.querySelectorAll(".delete-form");
+
+    deleteForms.forEach(function (form) {
+
+        form.addEventListener("submit", function (event) {
+
+            const button =
+                form.querySelector(".delete-btn");
+
+            const productName =
+                button
+                ? button.getAttribute("aria-label")
+                : "this mounting kit";
+
+            const confirmed = confirm(
+                "Are you sure you want to delete " +
+                productName.replace("Delete ", "") +
+                "?\n\nThis will permanently delete the product, images and PDFs."
+            );
+
+            if (!confirmed) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+            if (button) {
+
+                button.classList.add("loading");
+
+                button.disabled = true;
+
+                button.innerHTML =
+                    '<span class="button-spinner"></span>';
+
+            }
+
+        });
+
+    });
+
+
+    /* =====================================================
+       TABLE ROW ANIMATION
+    ===================================================== */
+
+    const rows =
+        document.querySelectorAll(
+            ".product-table tbody tr"
+        );
+
+    rows.forEach(function (row, index) {
+
+        row.style.animationDelay =
+            `${index * 0.06}s`;
+
+    });
+
+
+    /* =====================================================
+       IMAGE LOAD EFFECT
+    ===================================================== */
+
+    const images =
+        document.querySelectorAll(".product-image");
+
+    images.forEach(function (image) {
+
+        if (image.complete) {
+
+            image.classList.add("image-loaded");
+
+        }
+
+        image.addEventListener("load", function () {
+
+            image.classList.add("image-loaded");
+
+        });
+
+    });
+
+
+    /* =====================================================
+       ADD MOUNTING KIT BUTTON
+    ===================================================== */
+
+    const addButton =
+        document.querySelector(".add-product-btn");
+
+    if (addButton) {
+
+        addButton.addEventListener("click", function () {
+
+            addButton.classList.add("clicked");
+
+        });
+
+    }
+
+
+    /* =====================================================
+       PDF LINK EFFECT
+    ===================================================== */
+
+    const pdfLinks =
+        document.querySelectorAll(".pdf-badge");
+
+    pdfLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            link.classList.add("pdf-clicked");
+
+        });
+
+    });
+
+
+    /* =====================================================
+       CATEGORY FILTER
+    ===================================================== */
+
+    const categoryFilter =
+        document.getElementById("categoryFilter");
+
+    if (categoryFilter) {
+
+        categoryFilter.addEventListener(
+            "change",
+            function () {
+
+                this.form.submit();
+
+            }
+        );
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

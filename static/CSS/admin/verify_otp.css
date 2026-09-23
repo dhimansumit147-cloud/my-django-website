@@ -1,0 +1,763 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =====================================
+   BODY
+===================================== */
+
+.forgot-password-body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4fff8 0%,
+            #e8f8ef 50%,
+            #f8fffb 100%
+        );
+
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+/* =====================================
+   BACKGROUND CIRCLES
+===================================== */
+
+.background-circle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.circle-one {
+    width: 420px;
+    height: 420px;
+
+    top: -180px;
+    left: -150px;
+
+    background: rgba(25, 135, 84, 0.10);
+}
+
+.circle-two {
+    width: 500px;
+    height: 500px;
+
+    right: -220px;
+    bottom: -230px;
+
+    background: rgba(25, 135, 84, 0.08);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.forgot-password-box {
+    position: relative;
+    z-index: 2;
+
+    width: min(900px, 100%);
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    padding: 50px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.10);
+
+    border: 1px solid rgba(25, 135, 84, 0.08);
+
+    overflow: visible;
+
+    height: auto;
+    max-height: none;
+}
+
+
+/* =====================================
+   TOP GREEN LINE
+===================================== */
+
+.forgot-top-line {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #198754,
+        #32b96c,
+        #198754
+    );
+
+    border-radius: 22px 22px 0 0;
+}
+
+
+/* =====================================
+   TWO COLUMN
+===================================== */
+
+.otp-two-column {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 55px;
+
+    align-items: center;
+}
+
+
+/* =====================================
+   LEFT SIDE
+===================================== */
+
+.otp-left {
+    width: 100%;
+}
+
+.otp-left h2 {
+    color: #183b2a;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    margin: 20px 0 12px;
+}
+
+.otp-left .forgot-description {
+    color: #6c757d;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin: 0;
+
+    max-width: 380px;
+}
+
+
+/* =====================================
+   LOGO
+===================================== */
+
+.forgot-password-logo {
+    display: block;
+
+    width: 145px;
+    max-width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =====================================
+   TIMER
+===================================== */
+
+.otp-timer-box {
+    margin-top: 28px;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    gap: 9px;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    background: #f0faf4;
+
+    border: 1px solid #d7eee0;
+
+    color: #557062;
+
+    font-size: 14px;
+}
+
+.otp-timer-box i {
+    color: #198754;
+
+    font-size: 18px;
+}
+
+.otp-timer-box strong {
+    color: #198754;
+
+    font-size: 16px;
+
+    margin-left: auto;
+
+    letter-spacing: 1px;
+}
+
+.otp-timer-box strong.expired {
+    color: #dc3545;
+}
+
+
+/* =====================================
+   RIGHT SIDE
+===================================== */
+
+.otp-right {
+    width: 100%;
+
+    min-width: 0;
+}
+
+
+/* =====================================
+   LABEL
+===================================== */
+
+.otp-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #34483d;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =====================================
+   INPUT BOX
+===================================== */
+
+.forgot-input-box {
+    width: 100%;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 16px;
+
+    background: #f8faf9;
+
+    border: 1px solid #dce5df;
+
+    border-radius: 12px;
+
+    transition: 0.25s ease;
+}
+
+.forgot-input-box:focus-within {
+    background: #ffffff;
+
+    border-color: #198754;
+
+    box-shadow:
+        0 0 0 4px rgba(25, 135, 84, 0.10);
+}
+
+.forgot-input-box i {
+    color: #198754;
+
+    font-size: 20px;
+}
+
+.forgot-input-box input {
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #26382e;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    text-align: center;
+}
+
+.forgot-input-box input::placeholder {
+    color: #9aa8a0;
+
+    font-size: 14px;
+
+    letter-spacing: 0;
+    font-weight: 400;
+}
+
+
+/* =====================================
+   VERIFY BUTTON
+===================================== */
+
+.forgot-submit-btn {
+    width: 100%;
+
+    height: 55px;
+
+    margin-top: 18px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #198754,
+        #157347
+    );
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    box-shadow:
+        0 8px 20px rgba(25, 135, 84, 0.20);
+}
+
+.forgot-submit-btn i {
+    font-size: 18px;
+}
+
+.forgot-submit-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(25, 135, 84, 0.28);
+}
+
+.forgot-submit-btn:active {
+    transform: translateY(0);
+}
+
+.forgot-submit-btn:disabled,
+.forgot-submit-btn.disabled {
+    background: #adb5bd;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+/* =====================================
+   SUCCESS MESSAGE
+===================================== */
+
+.success {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 18px;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    background: #eaf8f0;
+
+    border: 1px solid #ccebd8;
+
+    color: #198754;
+
+    font-size: 14px;
+}
+
+.success i {
+    font-size: 18px;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================
+   ERROR MESSAGE
+===================================== */
+
+.error {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 18px;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    background: #fff1f1;
+
+    border: 1px solid #f3cccc;
+
+    color: #dc3545;
+
+    font-size: 14px;
+}
+
+.error i {
+    font-size: 18px;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================
+   RESEND SECTION
+===================================== */
+
+.resend-section {
+    width: 100%;
+
+    margin-top: 25px;
+
+    text-align: center;
+}
+
+.resend-section p {
+    color: #777;
+
+    font-size: 13px;
+
+    margin-bottom: 9px;
+}
+
+
+/* =====================================
+   RESEND BUTTON
+===================================== */
+
+.resend-otp-btn {
+    border: none;
+
+    background: transparent;
+
+    color: #198754;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 5px 8px;
+
+    transition: 0.2s ease;
+}
+
+.resend-otp-btn:hover {
+    color: #146c43;
+
+    text-decoration: underline;
+}
+
+.resend-otp-btn i {
+    font-size: 16px;
+}
+
+
+/* =====================================
+   CHANGE EMAIL
+===================================== */
+
+.forgot-back-login {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 22px;
+
+    color: #198754;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.forgot-back-login:hover {
+    color: #146c43;
+
+    text-decoration: underline;
+}
+
+
+/* =====================================
+   WEBSITE LINK
+===================================== */
+
+.forgot-home {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 18px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #edf0ee;
+
+    color: #777;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.forgot-home:hover {
+    color: #198754;
+}
+
+.forgot-home .bi-arrow-up-right {
+    font-size: 12px;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 800px) {
+
+    .forgot-password-body {
+        padding: 30px 18px;
+    }
+
+    .forgot-password-box {
+        width: min(600px, 100%);
+
+        padding: 40px 35px;
+    }
+
+    .otp-two-column {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .otp-left {
+        text-align: center;
+    }
+
+    .forgot-password-logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .otp-left .forgot-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .otp-timer-box {
+        max-width: 380px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        justify-content: center;
+    }
+
+    .otp-timer-box strong {
+        margin-left: 5px;
+    }
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 500px) {
+
+    .forgot-password-body {
+        padding: 20px 12px;
+
+        align-items: flex-start;
+    }
+
+    .forgot-password-box {
+        width: 100%;
+
+        margin-top: 15px;
+
+        padding: 35px 20px 25px;
+
+        border-radius: 18px;
+    }
+
+    .forgot-top-line {
+        border-radius: 18px 18px 0 0;
+    }
+
+    .otp-two-column {
+        gap: 28px;
+    }
+
+    .forgot-password-logo {
+        width: 120px;
+    }
+
+    .otp-left h2 {
+        font-size: 25px;
+
+        margin-top: 16px;
+    }
+
+    .otp-left .forgot-description {
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+    .otp-timer-box {
+        padding: 12px;
+
+        font-size: 12px;
+    }
+
+    .otp-timer-box strong {
+        font-size: 14px;
+    }
+
+    .forgot-input-box {
+        height: 55px;
+
+        padding: 0 13px;
+    }
+
+    .forgot-input-box input {
+        font-size: 17px;
+
+        letter-spacing: 4px;
+    }
+
+    .forgot-submit-btn {
+        height: 52px;
+
+        font-size: 14px;
+    }
+
+    .resend-section {
+        margin-top: 22px;
+    }
+}
+
+
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
+
+@media (max-width: 350px) {
+
+    .forgot-password-box {
+        padding: 30px 15px 22px;
+    }
+
+    .otp-left h2 {
+        font-size: 22px;
+    }
+
+    .otp-timer-box {
+        gap: 5px;
+
+        font-size: 11px;
+    }
+
+    .otp-timer-box strong {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,1275 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Contact Us | Sungreen Solar
+{% endblock %}
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/contact.css' %}"
+>
+
+<style>
+/* =========================================================
+   DJANGO MESSAGE TOAST
+========================================================= */
+
+.Sungreen-toast-container {
+    position: fixed;
+    top: 95px;
+    right: 25px;
+    z-index: 99999;
+    width: min(420px, calc(100vw - 30px));
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    pointer-events: none;
+}
+
+.Sungreen-toast {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 45px 20px 18px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+    overflow: hidden;
+    pointer-events: auto;
+    animation: toastIn .55s cubic-bezier(.16, 1, .3, 1) forwards;
+}
+
+.toast-icon {
+    flex: 0 0 auto;
+}
+
+.toast-check-circle,
+.toast-error-circle,
+.toast-info-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.toast-success .toast-check-circle {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.toast-error .toast-error-circle {
+    color: #dc2626;
+    background: #fee2e2;
+}
+
+.toast-info .toast-info-circle {
+    color: #2563eb;
+    background: #dbeafe;
+}
+
+.toast-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.toast-label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #64748b;
+}
+
+.toast-content strong {
+    display: block;
+    color: #0f172a;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.toast-content p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.toast-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s ease;
+}
+
+.toast-close:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    transform-origin: left;
+    animation: toastProgress 6s linear forwards;
+}
+
+.toast-success .toast-progress {
+    background: #22c55e;
+}
+
+.toast-error .toast-progress {
+    background: #ef4444;
+}
+
+.toast-info .toast-progress {
+    background: #3b82f6;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(70px) scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes toastOut {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(70px) scale(.94);
+    }
+}
+
+@keyframes toastProgress {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .Sungreen-toast-container {
+        top: 80px;
+        right: 15px;
+        left: 15px;
+        width: auto;
+    }
+
+    .Sungreen-toast {
+        padding: 15px 40px 17px 14px;
+    }
+
+    .toast-check-circle,
+    .toast-error-circle,
+    .toast-info-circle {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="contact-page">
+
+
+<!-- =====================================================
+     DJANGO MESSAGE POPUP
+====================================================== -->
+
+{% if messages %}
+
+<div class="Sungreen-toast-container">
+
+    {% for message in messages %}
+
+    <div
+        class="Sungreen-toast
+        {% if message.tags == 'success' %}
+            toast-success
+        {% elif message.tags == 'error' %}
+            toast-error
+        {% else %}
+            toast-info
+        {% endif %}"
+        role="alert"
+    >
+
+        <div class="toast-icon">
+
+            {% if message.tags == 'success' %}
+
+            <div class="toast-check-circle">
+                <i class="bi bi-check-lg"></i>
+            </div>
+
+            {% elif message.tags == 'error' %}
+
+            <div class="toast-error-circle">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            {% else %}
+
+            <div class="toast-info-circle">
+                <i class="bi bi-info-lg"></i>
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="toast-content">
+
+            <span class="toast-label">
+
+                {% if message.tags == 'success' %}
+                    SUCCESS
+                {% elif message.tags == 'error' %}
+                    ERROR
+                {% else %}
+                    INFORMATION
+                {% endif %}
+
+            </span>
+
+
+            <strong>
+
+                {% if message.tags == 'success' %}
+                    Message Sent Successfully!
+                {% elif message.tags == 'error' %}
+                    Something Went Wrong.
+                {% else %}
+                    Sungreen Solar
+                {% endif %}
+
+            </strong>
+
+
+            <p>
+                {{ message }}
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="toast-close"
+            aria-label="Close notification"
+        >
+            <i class="bi bi-x"></i>
+        </button>
+
+
+        <div class="toast-progress"></div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="contact-hero">
+
+    <div class="contact-hero-grid"></div>
+
+    <div class="contact-glow contact-glow-1"></div>
+
+    <div class="contact-glow contact-glow-2"></div>
+
+
+    <div class="container">
+
+        <div class="contact-hero-content">
+
+            <div class="contact-eyebrow">
+
+                <span></span>
+
+                Sungreen SOLAR
+
+            </div>
+
+
+            <h1>
+                Let's Go
+                <strong>
+                    Solar Together.
+                </strong>
+            </h1>
+
+
+            <p>
+                Have a question about solar or your energy needs?
+                Our team is here to help you find the right
+                solar solution.
+            </p>
+
+
+            <div class="contact-hero-actions">
+
+                <a
+                    href="#contact-form"
+                    class="contact-primary-btn"
+                >
+                    Contact Us
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+
+                <a
+                    href="tel:1800940408"
+                    class="contact-outline-btn"
+                >
+                    <i class="bi bi-telephone"></i>
+                    1800 940 408
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-hero-badge">
+
+            <div class="hero-badge-icon">
+                <i class="bi bi-sun-fill"></i>
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Solar Made Simple
+                </strong>
+
+                <span>
+                    Friendly help from Sungreen
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT INTRO
+====================================================== -->
+
+<section class="contact-intro">
+
+    <div class="container">
+
+        <div class="contact-section-heading">
+
+            <div
+                class="contact-label"
+                style="font-size: 18px;"
+            >
+                CONTACT Sungreen
+            </div>
+
+
+            <h2>
+                We're here to
+                <span>
+                    help you.
+                </span>
+            </h2>
+
+
+            <p>
+                Thinking about solar or need help with your
+                system? Contact our team and we will be happy
+                to help you.
+            </p>
+
+        </div>
+
+
+        <div class="contact-info-grid">
+
+            <!-- PHONE -->
+
+            <a
+                href="tel:1800940408"
+                class="contact-info-card"
+            >
+
+                <div class="contact-card-icon">
+                    <i class="bi bi-telephone-fill"></i>
+                </div>
+
+
+                <div class="contact-card-content">
+
+                    <span style="font-size: 16px;">
+                        CALL US
+                    </span>
+
+                    <h3 style="font-size: 14px;">
+                        1800 940 408
+                    </h3>
+
+                    <p style="font-size: 13px;">
+                        Talk to our team
+                    </p>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right contact-card-arrow"></i>
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <a
+                href="mailto:info@Sungreen.com.au"
+                class="contact-info-card"
+            >
+
+                <div class="contact-card-icon">
+                    <i class="bi bi-envelope-fill"></i>
+                </div>
+
+
+                <div class="contact-card-content">
+
+                    <span style="font-size: 16px;">
+                        EMAIL
+                    </span>
+
+                    <h3 style="font-size: 14px;">
+                        info@Sungreen.com.au
+                    </h3>
+
+                    <p style="font-size: 13px;">
+                        Send us a message
+                    </p>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right contact-card-arrow"></i>
+
+            </a>
+
+
+            <!-- SUPPORT -->
+
+            <div class="contact-info-card contact-info-static">
+
+                <div class="contact-card-icon">
+                    <i class="bi bi-headset"></i>
+                </div>
+
+
+                <div class="contact-card-content">
+
+                    <span style="font-size: 16px;">
+                        SUPPORT
+                    </span>
+
+                    <h3 style="font-size: 14px;">
+                        Solar Help
+                    </h3>
+
+                    <p style="font-size: 13px;">
+                        Get help with your solar system
+                    </p>
+
+                </div>
+
+
+                <i class="bi bi-check-circle-fill contact-card-check"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN CONTACT AREA
+====================================================== -->
+
+<section class="contact-main">
+
+    <div class="container">
+
+        <div class="contact-main-grid">
+
+            <!-- =================================================
+                 LEFT
+            ================================================== -->
+
+            <div class="contact-details">
+
+                <div
+                    class="contact-label"
+                    style="font-size: 16px;"
+                >
+                    FIND Sungreen
+                </div>
+
+
+                <h2>
+                    Visit our
+                    <span>
+                        Queensland offices.
+                    </span>
+                </h2>
+
+
+                <p>
+                    Sungreen Solar helps customers across Queensland.
+                    You can contact our team directly or visit one
+                    of our offices below.
+                </p>
+
+
+                <!-- OFFICE 01 -->
+
+                <div class="address-card">
+
+                    <div class="address-number">
+                        01
+                    </div>
+
+
+                    <div class="address-icon">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
+
+
+                    <div class="address-content">
+
+                        <span style="font-size: 16px;">
+                            QLD OFFICE
+                        </span>
+
+                        <h3>
+                            Milton
+                        </h3>
+
+                        <p style="font-size: 16px;">
+                            1/16 Mcdougall St,<br>
+                            Milton QLD 4064
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OFFICE 02 -->
+
+                <div class="address-card">
+
+                    <div class="address-number">
+                        02
+                    </div>
+
+
+                    <div class="address-icon">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
+
+
+                    <div class="address-content">
+
+                        <span style="font-size: 16px;">
+                            QLD OFFICE
+                        </span>
+
+                        <h3>
+                            Beaudesert
+                        </h3>
+
+                        <p style="font-size: 16px;">
+                            7/22 William St,<br>
+                            Beaudesert QLD 4285
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK CONTACT -->
+
+                <div class="quick-contact">
+
+                    <div class="quick-contact-icon">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+
+
+                    <div>
+
+                        <strong style="font-size: 15px;">
+                            Need help?
+                        </strong>
+
+
+                        <span style="font-size: 14px;">
+
+                            Call us on
+
+                            <a href="tel:1800940408">
+                                1800 940 408
+                            </a>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORM
+            ================================================== -->
+
+            <div
+                class="contact-form-wrapper"
+                id="contact-form"
+            >
+
+                <div class="form-top">
+
+                    <div>
+
+                        <div
+                            class="contact-label"
+                            style="font-size: 16px;"
+                        >
+                            SEND A MESSAGE
+                        </div>
+
+
+                        <h2>
+                            How can we
+                            <span>
+                                help you?
+                            </span>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="form-icon">
+                        <i class="bi bi-chat-square-text-fill"></i>
+                    </div>
+
+                </div>
+
+
+                <form
+                    class="Sungreen-contact-form"
+                    method="POST"
+                    action="{% url 'contact' %}"
+                >
+
+                    {% csrf_token %}
+
+
+                    <!-- NAME + EMAIL -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Name
+                                <sup>*</sup>
+                            </label>
+
+
+                            <div class="input-box">
+
+                                <i class="bi bi-person"></i>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Your name"
+                                    autocomplete="name"
+                                    maxlength="100"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email
+                                <sup>*</sup>
+                            </label>
+
+
+                            <div class="input-box">
+
+                                <i class="bi bi-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Your email"
+                                    autocomplete="email"
+                                    maxlength="150"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHONE + SUBJECT -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone
+                                <sup>*</sup>
+                            </label>
+
+
+                            <div class="input-box">
+
+                                <i class="bi bi-phone"></i>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="Your phone number"
+                                    autocomplete="tel"
+                                    maxlength="20"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="subject">
+                                Subject
+                            </label>
+
+
+                            <div class="input-box">
+
+                                <i class="bi bi-bookmark"></i>
+
+                                <input
+                                    type="text"
+                                    id="subject"
+                                    name="subject"
+                                    placeholder="What do you need help with?"
+                                    maxlength="200"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SERVICE -->
+
+                    <div class="form-group">
+
+                        <label for="service">
+                            Service
+                        </label>
+
+
+                        <div class="input-box select-box">
+
+                            <i class="bi bi-grid"></i>
+
+
+                            <select
+                                id="service"
+                                name="service"
+                            >
+
+                                <option
+                                    value=""
+                                    selected
+                                >
+                                    Select a service
+                                </option>
+
+
+                                <option value="residential-solar">
+                                    Home Solar
+                                </option>
+
+
+                                <option value="commercial-solar">
+                                    Business Solar
+                                </option>
+
+
+                                <option value="solar-maintenance">
+                                    Solar Maintenance
+                                </option>
+
+
+                                <option value="solar-battery">
+                                    Solar Battery
+                                </option>
+
+
+                                <option value="solar-support">
+                                    Solar Support
+                                </option>
+
+
+                                <option value="Mounting-Kits">
+                                    Mounting Kits
+                                </option>
+
+
+                                <option value="Ev-Chargers">
+                                    EV Chargers
+                                </option>
+
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                            <sup>*</sup>
+                        </label>
+
+
+                        <div class="textarea-box">
+
+                            <i class="bi bi-pencil-square"></i>
+
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="6"
+                                maxlength="2000"
+                                placeholder="Tell us what you need help with..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM BOTTOM -->
+
+                    <div class="form-bottom">
+
+                        <div class="form-security">
+
+                            <i class="bi bi-shield-check"></i>
+
+                            <span style="font-size: 14px;">
+                                Your information is safe and private.
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="form-submit"
+                        >
+
+                            <span>
+                                Send Message
+                            </span>
+
+                            <i class="bi bi-arrow-up-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BENEFITS
+====================================================== -->
+
+<section class="contact-benefits">
+
+    <div class="container">
+
+        <div class="benefits-heading">
+
+            <div class="contact-label">
+                WHY CONTACT US
+            </div>
+
+
+            <h2>
+                Get help from the
+                <span>
+                    right team.
+                </span>
+            </h2>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+            <!-- 01 -->
+
+            <div class="benefit-card">
+
+                <div class="benefit-number">
+                    01
+                </div>
+
+
+                <div class="benefit-icon">
+                    <i class="bi bi-person-check-fill"></i>
+                </div>
+
+
+                <h3>
+                    Friendly Support
+                </h3>
+
+
+                <p>
+                    Get simple and helpful advice for your
+                    solar needs.
+                </p>
+
+            </div>
+
+
+            <!-- 02 -->
+
+            <div class="benefit-card">
+
+                <div class="benefit-number">
+                    02
+                </div>
+
+
+                <div class="benefit-icon">
+                    <i class="bi bi-chat-left-dots-fill"></i>
+                </div>
+
+
+                <h3>
+                    Simple Answers
+                </h3>
+
+
+                <p>
+                    We explain things clearly and keep the
+                    process easy to understand.
+                </p>
+
+            </div>
+
+
+            <!-- 03 -->
+
+            <div class="benefit-card">
+
+                <div class="benefit-number">
+                    03
+                </div>
+
+
+                <div class="benefit-icon">
+                    <i class="bi bi-sun-fill"></i>
+                </div>
+
+
+                <h3>
+                    Solar Experts
+                </h3>
+
+
+                <p>
+                    Talk to a team that understands solar
+                    energy and solar systems.
+                </p>
+
+            </div>
+
+
+            <!-- 04 -->
+
+            <div class="benefit-card">
+
+                <div class="benefit-number">
+                    04
+                </div>
+
+
+                <div class="benefit-icon">
+                    <i class="bi bi-headset"></i>
+                </div>
+
+
+                <h3>
+                    Ongoing Help
+                </h3>
+
+
+                <p>
+                    We are here to help with questions,
+                    support and your solar needs.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+====================================================== -->
+
+<section class="contact-final">
+
+    <div class="final-glow final-glow-1"></div>
+
+    <div class="final-glow final-glow-2"></div>
+
+
+    <div class="container">
+
+        <div class="contact-final-content">
+
+            <div class="final-icon">
+                <i class="bi bi-sun-fill"></i>
+            </div>
+
+
+            <div class="contact-label">
+                START YOUR SOLAR JOURNEY
+            </div>
+
+
+            <h2>
+                Have Questions?
+                <span>
+                    Let's Talk Solar.
+                </span>
+            </h2>
+
+
+            <p>
+                Contact Sungreen Solar today. Our team is ready
+                to answer your questions and help you choose
+                the right solar solution.
+            </p>
+
+
+            <div class="final-actions">
+
+                <a
+                    href="#contact-form"
+                    class="final-primary"
+                >
+                    Send A Message
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+
+                <a
+                    href="tel:1800940408"
+                    class="final-secondary"
+                >
+                    <i class="bi bi-telephone-fill"></i>
+                    1800 940 408
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- =========================================================
+     TOAST JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const toasts =
+        document.querySelectorAll(".Sungreen-toast");
+
+
+    function closeToast(toast) {
+
+        if (!toast || !toast.isConnected) {
+            return;
+        }
+
+        toast.style.animation =
+            "toastOut .45s cubic-bezier(.16,1,.3,1) forwards";
+
+
+        setTimeout(function () {
+
+            if (toast && toast.isConnected) {
+                toast.remove();
+            }
+
+        }, 450);
+
+    }
+
+
+    toasts.forEach(function (toast) {
+
+        const closeButton =
+            toast.querySelector(".toast-close");
+
+
+        if (closeButton) {
+
+            closeButton.addEventListener(
+                "click",
+                function () {
+                    closeToast(toast);
+                }
+            );
+
+        }
+
+
+        setTimeout(function () {
+
+            if (
+                toast &&
+                toast.isConnected
+            ) {
+                closeToast(toast);
+            }
+
+        }, 6000);
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

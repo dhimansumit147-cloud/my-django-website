@@ -1,0 +1,714 @@
+/* =========================================================
+   ADD USER PAGE
+========================================================= */
+
+.add-user-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 30px;
+    animation: pageFadeIn 0.55s ease both;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.add-user-page .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 28px;
+    padding: 24px 28px;
+    border-radius: 18px;
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f8fbff
+    );
+    border: 1px solid #e7edf5;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.07);
+    animation: slideDown 0.6s ease both;
+}
+
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+.header-icon {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+    color: #ffffff;
+    font-size: 23px;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+
+.page-header h2 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 750;
+    color: #172033;
+}
+
+
+.page-header p {
+    margin: 5px 0 0;
+    color: #718096;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 17px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #334155;
+    background: #ffffff;
+    border: 1px solid #dce4ef;
+    font-size: 14px;
+    font-weight: 600;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    color: #2563eb;
+    background: #f8fbff;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.messages-container {
+    margin-bottom: 22px;
+}
+
+
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    animation: alertSlide 0.45s ease both;
+}
+
+
+.alert i {
+    font-size: 18px;
+}
+
+
+.alert-success {
+    color: #166534;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+}
+
+
+.alert-error {
+    color: #991b1b;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+
+.alert-warning {
+    color: #92400e;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+}
+
+
+.alert-info {
+    color: #1e40af;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+}
+
+
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+
+.form-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #e6ebf2;
+    box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
+    animation: formReveal 0.7s ease both;
+}
+
+
+/* =========================================================
+   FORM CARD HEADER
+========================================================= */
+
+.form-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 25px 30px;
+    background: linear-gradient(
+        135deg,
+        #f8fbff,
+        #f1f5ff
+    );
+    border-bottom: 1px solid #e8edf5;
+}
+
+
+.form-card-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: #e8f0ff;
+    color: #2563eb;
+    font-size: 20px;
+}
+
+
+.form-card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #172033;
+}
+
+
+.form-card-header p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #7b8798;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-container form {
+    padding: 30px;
+}
+
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #edf1f6;
+    color: #25324a;
+    font-size: 15px;
+    font-weight: 750;
+}
+
+
+.section-title i {
+    color: #2563eb;
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.form-group label {
+    color: #344054;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+
+.form-group label span {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+.input-wrapper > i {
+    position: absolute;
+    left: 15px;
+    z-index: 2;
+    color: #8a97a8;
+    font-size: 16px;
+    pointer-events: none;
+    transition: color 0.25s ease;
+}
+
+
+.input-wrapper input {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px 0 43px;
+    border: 1px solid #dbe2ea;
+    border-radius: 11px;
+    outline: none;
+    background: #fbfcfe;
+    color: #1f2937;
+    font-size: 14px;
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.input-wrapper input::placeholder {
+    color: #a1acba;
+}
+
+
+.input-wrapper input:hover {
+    border-color: #b8c4d3;
+    background: #ffffff;
+}
+
+
+.input-wrapper input:focus {
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.10);
+}
+
+
+.input-wrapper:focus-within > i {
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.password-wrapper input {
+    padding-right: 48px;
+}
+
+
+.password-toggle {
+    position: absolute;
+    right: 8px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #8a97a8;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.password-toggle:hover {
+    color: #2563eb;
+    background: #eef4ff;
+}
+
+
+/* =========================================================
+   PERMISSION CARD
+========================================================= */
+
+.permission-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px 19px;
+    border: 1px solid #e1e7ef;
+    border-radius: 13px;
+    background: #fbfcfe;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.permission-card:hover {
+    transform: translateY(-2px);
+    border-color: #b9c9e6;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+
+.permission-card input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.custom-checkbox {
+    width: 21px;
+    height: 21px;
+    flex: 0 0 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #c8d1dc;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #ffffff;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.custom-checkbox i {
+    display: none;
+    font-size: 14px;
+}
+
+
+.permission-card input:checked + .custom-checkbox {
+    border-color: #2563eb;
+    background: #2563eb;
+    transform: scale(1.05);
+}
+
+
+.permission-card input:checked + .custom-checkbox i {
+    display: block;
+}
+
+
+.permission-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+.permission-content strong {
+    color: #273449;
+    font-size: 14px;
+}
+
+
+.permission-content small {
+    color: #7d8999;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 25px;
+    border-top: 1px solid #edf1f6;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.form-actions .btn {
+    min-width: 130px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 650;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.btn-cancel {
+    color: #475467;
+    background: #ffffff;
+    border: 1px solid #d8e0e9;
+}
+
+
+.btn-cancel:hover {
+    color: #1f2937;
+    background: #f8fafc;
+    border-color: #c5cfdb;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(15, 23, 42, 0.08);
+}
+
+
+.create-user-btn {
+    border: 0;
+    color: #ffffff;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+    box-shadow: 0 7px 18px rgba(37, 99, 235, 0.22);
+}
+
+
+.create-user-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.30);
+}
+
+
+.create-user-btn:active,
+.btn-cancel:active,
+.back-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes pageFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes slideDown {
+
+    from {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes formReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.99);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+@keyframes alertSlide {
+
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .add-user-page {
+        padding: 20px;
+    }
+
+
+    .add-user-page .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .form-container form {
+        padding: 22px;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .add-user-page {
+        padding: 14px;
+    }
+
+
+    .header-content {
+        align-items: flex-start;
+    }
+
+
+    .header-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 19px;
+    }
+
+
+    .page-header h2 {
+        font-size: 21px;
+    }
+
+
+    .form-card-header {
+        padding: 20px;
+    }
+
+
+    .form-container form {
+        padding: 18px;
+    }
+
+
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+}

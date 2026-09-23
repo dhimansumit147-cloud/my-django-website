@@ -1,0 +1,432 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'CSS/admin/admin_slider.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="slider-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-title">
+
+        <div class="title-icon">
+            <i class="bi bi-images"></i>
+        </div>
+
+        <div>
+
+            <span class="eyebrow">
+                SUNGREEN SOLAR ADMIN
+            </span>
+
+            <h2>
+                Add New Slider
+            </h2>
+
+            <p>
+                Create a premium homepage slider banner
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SLIDER FORM
+    ====================================================== -->
+
+    <form
+        method="POST"
+        enctype="multipart/form-data"
+        class="slider-form"
+    >
+
+        {% csrf_token %}
+
+
+        <!-- =================================================
+             TITLE
+        ================================================== -->
+
+        <div class="form-group">
+
+            <label for="sliderTitle">
+                Slider Title
+            </label>
+
+            <input
+                type="text"
+                id="sliderTitle"
+                name="title"
+                placeholder="Enter Slider Title"
+                required
+            >
+
+        </div>
+
+
+        <!-- =================================================
+             SUBTITLE
+        ================================================== -->
+
+        <div class="form-group">
+
+            <label for="sliderSubtitle">
+                Slider Subtitle
+            </label>
+
+            <textarea
+                id="sliderSubtitle"
+                name="subtitle"
+                placeholder="Enter Slider Subtitle"
+            ></textarea>
+
+        </div>
+
+
+        <!-- =================================================
+             IMAGE UPLOAD
+        ================================================== -->
+
+        <div class="form-group">
+
+            <label>
+                Slider Image
+            </label>
+
+
+            <div class="file-upload">
+
+                <div class="upload-icon">
+                    <i class="bi bi-cloud-arrow-up"></i>
+                </div>
+
+                <div class="upload-content">
+
+                    <strong>
+                        Upload Slider Image
+                    </strong>
+
+                    <span>
+                        PNG, JPG, JPEG or WEBP
+                    </span>
+
+                </div>
+
+
+                <input
+                    type="file"
+                    name="image"
+                    id="sliderImage"
+                    accept="image/*"
+                    required
+                >
+
+            </div>
+
+
+            <!-- =================================================
+                 IMAGE PREVIEW
+            ================================================== -->
+
+            <div
+                class="image-preview-box"
+                id="imagePreviewBox"
+            >
+
+                <div class="preview-header">
+
+                    <div>
+
+                        <span class="preview-label">
+                            IMAGE PREVIEW
+                        </span>
+
+                        <h4>
+                            Selected Slider Image
+                        </h4>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="remove-preview"
+                        id="removePreview"
+                        title="Remove selected image"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="preview-image-wrapper">
+
+                    <img
+                        src=""
+                        alt="Slider Image Preview"
+                        id="imagePreview"
+                    >
+
+                </div>
+
+
+                <div class="preview-info">
+
+                    <span id="imageName">
+                        No image selected
+                    </span>
+
+                    <span id="imageSize">
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BUTTON
+        ================================================== -->
+
+        <div class="form-row">
+
+
+            <div class="form-group">
+
+                <label for="buttonText">
+                    Button Text
+                </label>
+
+                <input
+                    type="text"
+                    id="buttonText"
+                    name="button_text"
+                    placeholder="Example: Learn More"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="buttonLink">
+                    Button Link
+                </label>
+
+                <input
+                    type="text"
+                    id="buttonLink"
+                    name="button_link"
+                    placeholder="Example: /contact/"
+                >
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             STATUS
+        ================================================== -->
+
+        <div class="form-group status-box">
+
+            <label>
+                Slider Status
+            </label>
+
+
+            <label class="checkbox-area">
+
+                <input
+                    type="checkbox"
+                    name="status"
+                    value="1"
+                    checked
+                >
+
+                <span class="custom-check">
+                    <i class="bi bi-check"></i>
+                </span>
+
+                <span class="status-text">
+
+                    <strong>
+                        Active
+                    </strong>
+
+                    <small>
+                        Display this slider on the home page
+                    </small>
+
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <!-- =================================================
+             SAVE BUTTON
+        ================================================== -->
+
+        <button
+            type="submit"
+            class="save-btn"
+        >
+
+            <i class="bi bi-check-circle"></i>
+
+            <span>
+                Save Slider
+            </span>
+
+            <i class="bi bi-arrow-right save-arrow"></i>
+
+        </button>
+
+
+    </form>
+
+</div>
+
+
+
+<!-- =========================================================
+     IMAGE PREVIEW JAVASCRIPT
+========================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const imageInput =
+        document.getElementById("sliderImage");
+
+    const previewBox =
+        document.getElementById("imagePreviewBox");
+
+    const previewImage =
+        document.getElementById("imagePreview");
+
+    const imageName =
+        document.getElementById("imageName");
+
+    const imageSize =
+        document.getElementById("imageSize");
+
+    const removePreview =
+        document.getElementById("removePreview");
+
+
+    /* =====================================================
+       IMAGE SELECT
+    ===================================================== */
+
+    imageInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (!file) {
+            return;
+        }
+
+
+        /* Validate image */
+
+        if (!file.type.startsWith("image/")) {
+
+            alert("Please select a valid image file.");
+
+            this.value = "";
+
+            return;
+        }
+
+
+        /* Create preview */
+
+        const reader = new FileReader();
+
+
+        reader.onload = function (event) {
+
+            previewImage.src =
+                event.target.result;
+
+            previewBox.classList.add("show");
+
+
+            /* File name */
+
+            imageName.textContent =
+                file.name;
+
+
+            /* File size */
+
+            let size = file.size / 1024;
+
+            if (size < 1024) {
+
+                imageSize.textContent =
+                    size.toFixed(1) + " KB";
+
+            } else {
+
+                imageSize.textContent =
+                    (size / 1024).toFixed(2) + " MB";
+
+            }
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    });
+
+
+    /* =====================================================
+       REMOVE IMAGE
+    ===================================================== */
+
+    removePreview.addEventListener("click", function () {
+
+        imageInput.value = "";
+
+        previewImage.src = "";
+
+        imageName.textContent =
+            "No image selected";
+
+        imageSize.textContent =
+            "—";
+
+        previewBox.classList.remove("show");
+
+    });
+
+});
+
+</script>
+
+
+{% endblock %}

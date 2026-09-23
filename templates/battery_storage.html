@@ -1,0 +1,2655 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Battery Storage | Sungreen Solar
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/battery_storage.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="battery-page">
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <section
+        class="battery-hero"
+        aria-labelledby="batteryHeroTitle"
+    >
+
+        <div class="battery-hero-grid"></div>
+
+        <div class="battery-hero-orb battery-orb-one"></div>
+
+        <div class="battery-hero-orb battery-orb-two"></div>
+
+
+        <div class="battery-module-container">
+
+            <div class="battery-hero-content">
+
+                <div class="battery-eyebrow">
+
+                    <span
+                        class="eyebrow-icon"
+                        aria-hidden="true"
+                    >
+                        🔋
+                    </span>
+
+                    <span>
+                        Sungreen SOLAR
+                    </span>
+
+                </div>
+
+
+                <h1 id="batteryHeroTitle">
+
+                    Advanced
+
+                    <span>
+                        Battery Storage
+                    </span>
+
+                </h1>
+
+
+                <p>
+                    Discover advanced battery storage solutions
+                    designed for reliable energy storage,
+                    intelligent energy management and greater
+                    energy independence for modern solar systems.
+                </p>
+
+
+                <div class="hero-line"></div>
+
+
+                <div class="hero-stats">
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            {{ batteries|length }}
+                        </strong>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="hero-stat-divider"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            Smart
+                        </strong>
+
+                        <span>
+                            Energy Storage
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="hero-stat-divider"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            Reliable
+                        </strong>
+
+                        <span>
+                            Battery Technology
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="battery-scroll-indicator"
+            id="batteryScrollIndicator"
+            aria-label="Explore battery storage products"
+        >
+
+            <span>
+                Explore Battery Storage
+            </span>
+
+            <span
+                class="scroll-arrow"
+                aria-hidden="true"
+            >
+                ↓
+            </span>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTS SECTION
+    ====================================================== -->
+
+    <section
+        class="battery-products-section"
+        id="battery-products"
+        aria-labelledby="batteryProductsTitle"
+    >
+
+        <div class="battery-module-container">
+
+            <!-- =================================================
+                 SECTION HEADING
+            ================================================== -->
+
+            <div class="battery-section-heading">
+
+                <div class="battery-section-heading-left">
+
+                    <span class="section-label">
+                        OUR BATTERY RANGE
+                    </span>
+
+
+                    <h2 id="batteryProductsTitle">
+
+                        Battery Storage
+
+                        <span>
+                            Built For Energy Freedom.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="section-heading-right">
+
+                    <p>
+                        Explore our battery storage range,
+                        selected for reliability, intelligent
+                        energy management, solar compatibility
+                        and long-term performance.
+                    </p>
+
+
+                    <div class="section-line"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTER BAR
+            ================================================== -->
+
+            <div class="battery-filter-bar">
+
+                <div class="battery-filter-info">
+
+                    <span
+                        class="filter-icon"
+                        aria-hidden="true"
+                    >
+                        🔋
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Filter Battery Storage
+                        </strong>
+
+
+                        <small>
+                            Select a category to explore products
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="battery-filter-select-wrap">
+
+                    <label for="batteryCategoryFilter">
+                        Category
+                    </label>
+
+
+                    <div class="battery-select-container">
+
+                        <select
+                            id="batteryCategoryFilter"
+                            class="battery-filter-select"
+                        >
+
+                            <option value="all">
+                                All Battery Storage
+                            </option>
+
+
+                            {% for category in categories %}
+
+                                {% if category %}
+
+                                    <option
+                                        value="{{ category|slugify }}"
+                                    >
+                                        {{ category }}
+                                    </option>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </select>
+
+
+                        <span
+                            class="filter-select-arrow"
+                            aria-hidden="true"
+                        >
+                            ↓
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RESULT BAR
+            ================================================== -->
+
+            <div
+                class="battery-filter-result"
+                aria-live="polite"
+            >
+
+                <div class="filter-result-left">
+
+                    <span aria-hidden="true">
+                        🔋
+                    </span>
+
+
+                    <p id="batteryFilterResultText">
+                        Showing all battery storage products
+                    </p>
+
+                </div>
+
+
+                <strong id="batteryFilterProductCount">
+                    {{ batteries|length }}
+                </strong>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT GRID
+            ================================================== -->
+
+            <div
+                class="battery-products-grid"
+                id="batteryProductsGrid"
+            >
+
+                {% for battery in batteries %}
+
+                    <!-- =================================================
+                         PRODUCT CARD
+                    ================================================= -->
+
+                    <article
+                        class="battery-product-card"
+                        tabindex="0"
+                        role="button"
+                        aria-label="View {{ battery.name1|default:'Battery Storage' }}"
+                        data-product-id="{{ battery.id }}"
+                        data-category="{{ battery.category|default:'Battery Storage'|slugify }}"
+                    >
+
+                        <!-- =================================================
+                             PRODUCT IMAGE
+                        ================================================= -->
+
+                        <div class="battery-product-image">
+
+                            {% if battery.images.all %}
+
+                                {% for product_image in battery.images.all %}
+
+                                    {% if product_image.image %}
+
+                                        {% if forloop.first %}
+
+                                            <img
+                                                src="{{ product_image.image.url }}"
+                                                alt="{{ battery.name1|default:'Battery Storage' }}"
+                                                loading="lazy"
+                                            >
+
+                                        {% endif %}
+
+                                    {% endif %}
+
+                                {% empty %}
+
+                                    {% if battery.image %}
+
+                                        <img
+                                            src="{{ battery.image.url }}"
+                                            alt="{{ battery.name1|default:'Battery Storage' }}"
+                                            loading="lazy"
+                                        >
+
+                                    {% else %}
+
+                                        <div class="no-product-image">
+
+                                            <span
+                                                class="no-image-icon"
+                                                aria-hidden="true"
+                                            >
+                                                🔋
+                                            </span>
+
+
+                                            <span class="no-image-text">
+                                                Battery Storage
+                                            </span>
+
+                                        </div>
+
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            {% elif battery.image %}
+
+                                <img
+                                    src="{{ battery.image.url }}"
+                                    alt="{{ battery.name1|default:'Battery Storage' }}"
+                                    loading="lazy"
+                                >
+
+                            {% else %}
+
+                                <div class="no-product-image">
+
+                                    <span
+                                        class="no-image-icon"
+                                        aria-hidden="true"
+                                    >
+                                        🔋
+                                    </span>
+
+
+                                    <span class="no-image-text">
+                                        Battery Storage
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
+                            <div
+                                class="image-overlay"
+                                aria-hidden="true"
+                            ></div>
+
+
+                            <div
+                                class="product-number"
+                                aria-hidden="true"
+                            >
+
+                                {% if forloop.counter < 10 %}
+
+                                    0{{ forloop.counter }}
+
+                                {% else %}
+
+                                    {{ forloop.counter }}
+
+                                {% endif %}
+
+                            </div>
+
+
+                            {% if battery.created_at %}
+
+                                <div
+                                    class="new-badge"
+                                    data-created="{{ battery.created_at|date:'c' }}"
+                                >
+
+                                    <span
+                                        class="new-dot"
+                                        aria-hidden="true"
+                                    ></span>
+
+
+                                    <span>
+                                        NEW
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
+                            <div
+                                class="product-image-action"
+                                aria-hidden="true"
+                            >
+
+                                <span>
+                                    View More Details
+                                </span>
+
+
+                                <span class="view-arrow">
+                                    ↗
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             PRODUCT CONTENT
+                        ================================================== -->
+
+                        <div class="battery-product-content">
+
+                            <div class="product-category" style="font-size: 16px;">
+
+                                {{ battery.category|default:"BATTERY STORAGE" }}
+
+                            </div>
+
+
+                            <h3 class="product-title">
+
+                                {{ battery.name1|default:"Battery Storage" }}
+
+                            </h3>
+
+
+                            {% if battery.name2 %}
+
+                                
+
+                            {% endif %}
+
+
+                            {% if battery.description %}
+
+                                <p class="product-description">
+
+                                    {{ battery.description }}
+
+                                </p>
+
+                            {% else %}
+
+                                <p class="product-description">
+
+                                    Advanced battery storage solution
+                                    designed for efficient and reliable
+                                    solar energy management.
+
+                                </p>
+
+                            {% endif %}
+
+
+                            <div class="product-content-divider"></div>
+
+
+                            <div class="battery-product-footer">
+
+                                <span style="font-size: 14px;">
+                                    View More Details
+                                </span>
+
+
+                                <span
+                                    class="product-arrow"
+                                    aria-hidden="true"
+                                >
+                                    ↗
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="card-shine"
+                            aria-hidden="true"
+                        ></div>
+
+
+
+                        <!-- =================================================
+                             ALL PRODUCT IMAGES
+                        ================================================== -->
+
+                        <div
+                            class="battery-product-images-data"
+                            hidden
+                        >
+
+                            {% for product_image in battery.images.all %}
+
+                                {% if product_image.image %}
+
+                                    <a
+                                        href="{{ product_image.image.url }}"
+                                        data-image-title="{{ battery.name1|default:'Battery Storage' }}"
+                                    >
+                                        {{ battery.name1|default:"Battery Storage" }}
+                                    </a>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+
+                            {% if battery.image %}
+
+                                <a
+                                    href="{{ battery.image.url }}"
+                                    data-image-title="{{ battery.name1|default:'Battery Storage' }}"
+                                >
+                                    {{ battery.name1|default:"Battery Storage" }}
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             PRODUCT PDFs
+                        ================================================== -->
+
+                        <div
+                            class="battery-product-pdfs"
+                            hidden
+                        >
+
+                            {% if battery.pdf %}
+
+                                <a
+                                    href="{{ battery.pdf.url }}"
+                                    data-pdf-title="Main Product PDF"
+                                >
+                                    Main Product PDF
+                                </a>
+
+                            {% endif %}
+
+
+                            {% for pdf_file in battery.pdfs.all %}
+
+                                {% if pdf_file.pdf %}
+
+                                    <a
+                                        href="{{ pdf_file.pdf.url }}"
+                                        data-pdf-title="{{ pdf_file.title|default:'Battery Brochure' }}"
+                                    >
+                                        {{ pdf_file.title|default:"Battery Brochure" }}
+                                    </a>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </article>
+
+                {% empty %}
+
+                    <!-- =================================================
+                         NO PRODUCTS
+                    ================================================== -->
+
+                    <div class="battery-empty-state">
+
+                        <div
+                            class="empty-battery-icon"
+                            aria-hidden="true"
+                        >
+                            🔋
+                        </div>
+
+
+                        <h3>
+                            Battery Storage Coming Soon
+                        </h3>
+
+
+                        <p>
+                            Our latest battery storage solutions
+                            will be available here soon.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+
+
+                <!-- =================================================
+                     FILTER EMPTY
+                ================================================== -->
+
+                <div
+                    id="batteryFilterEmpty"
+                    class="battery-filter-empty"
+                    style="display: none;"
+                >
+
+                    <div
+                        class="battery-filter-empty-icon"
+                        aria-hidden="true"
+                    >
+                        🔋
+                    </div>
+
+
+                    <h3>
+                        No Battery Storage Found
+                    </h3>
+
+
+                    <p>
+                        There are no battery storage products
+                        available in this category.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FEATURES SECTION
+    ====================================================== -->
+
+    <section
+        class="battery-features-section"
+        aria-labelledby="batteryFeaturesTitle"
+    >
+
+        <div class="battery-module-container">
+
+            <div class="battery-features-heading">
+
+                <span class="section-label">
+                    WHY BATTERY STORAGE
+                </span>
+
+
+                <h2 id="batteryFeaturesTitle">
+
+                    More Control.
+
+                    <span>
+                        More Energy.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <div class="battery-features-grid">
+
+                <div class="battery-feature-card">
+
+                    <span class="feature-number"style="font-size: 18px;">
+                        01
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        ☀
+                    </div>
+
+
+                    <h3>
+                        Store Solar Energy
+                    </h3>
+
+
+                    <p>
+                        Capture excess solar energy during
+                        the day and store it for later use.
+                    </p>
+
+                </div>
+
+
+                <div class="battery-feature-card">
+
+                    <span class="feature-number"style="font-size: 18px;">
+                        02
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        ⚡
+                    </div>
+
+
+                    <h3>
+                        Reduce Grid Dependence
+                    </h3>
+
+
+                    <p>
+                        Use stored energy when solar generation
+                        is low and reduce reliance on grid power.
+                    </p>
+
+                </div>
+
+
+                <div class="battery-feature-card">
+
+                    <span class="feature-number"style="font-size: 18px;">
+                        03
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        🏠
+                    </div>
+
+
+                    <h3>
+                        Backup Energy
+                    </h3>
+
+
+                    <p>
+                        Keep essential appliances powered with
+                        suitable battery backup solutions.
+                    </p>
+
+                </div>
+
+
+                <div class="battery-feature-card">
+
+                    <span class="feature-number"style="font-size: 18px;">
+                        04
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        📊
+                    </div>
+
+
+                    <h3>
+                        Smart Energy Management
+                    </h3>
+
+
+                    <p>
+                        Manage stored energy intelligently
+                        for better efficiency and performance.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA SECTION
+    ====================================================== -->
+
+    <section class="battery-module-cta">
+
+        <div
+            class="cta-glow"
+            aria-hidden="true"
+        ></div>
+
+
+        <div
+            class="cta-glow cta-glow-two"
+            aria-hidden="true"
+        ></div>
+
+
+        <div class="battery-module-container">
+
+            <div class="cta-content">
+
+                <span class="section-label">
+                    POWER YOUR FUTURE
+                </span>
+
+
+                <h2>
+
+                    Store today.
+
+                    <span>
+                        Power tomorrow.
+                    </span>
+
+                </h2>
+
+
+                <p>
+                    Looking for the right battery storage
+                    solution for your solar system? Our team
+                    can help you choose a reliable solution
+                    based on your energy requirements.
+                </p>
+
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="battery-cta-button"
+                >
+
+                    <span>
+                        Talk To Our Team
+                    </span>
+
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     PRODUCT DETAILS MODAL
+========================================================== -->
+
+<div
+    class="battery-product-modal"
+    id="batteryProductModal"
+    aria-hidden="true"
+>
+
+    <!-- BACKDROP -->
+
+    <div
+        class="battery-modal-backdrop"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- MODAL -->
+
+    <div
+        class="battery-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="batteryModalProductTitle"
+    >
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            class="battery-modal-close"
+            id="batteryModalClose"
+            aria-label="Close product details"
+        >
+            ×
+        </button>
+
+
+        <div class="battery-modal-grid">
+
+            <!-- =================================================
+                 MODAL IMAGE GALLERY
+            ================================================== -->
+
+            <div class="battery-modal-gallery">
+
+                <div class="battery-modal-image-wrap">
+
+                    <button
+                        type="button"
+                        class="battery-modal-image-prev"
+                        id="batteryModalImagePrev"
+                        aria-label="Previous product image"
+                    >
+                        ←
+                    </button>
+
+
+                    <img
+                        id="batteryModalProductImage"
+                        src=""
+                        alt=""
+                        class="battery-modal-image"
+                    >
+
+
+                    <div
+                        id="batteryModalImagePlaceholder"
+                        class="battery-modal-placeholder"
+                    >
+
+                        <span aria-hidden="true">
+                            🔋
+                        </span>
+
+
+                        <small>
+                            Battery Storage
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="battery-modal-image-next"
+                        id="batteryModalImageNext"
+                        aria-label="Next product image"
+                    >
+                        →
+                    </button>
+
+
+                    <div
+                        id="batteryModalImageCounter"
+                        class="battery-modal-image-counter"
+                    >
+                        1 / 1
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="batteryModalImageThumbs"
+                    class="battery-modal-image-thumbs"
+                    aria-label="Product images"
+                ></div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MODAL CONTENT
+            ================================================== -->
+
+            <div class="battery-modal-content">
+
+                <div class="modal-top-row">
+
+                    <span
+                        id="batteryModalProductCategory"
+                        class="modal-category"style="font-size: 16px;"
+                    >
+                        BATTERY STORAGE
+                    </span>
+
+
+                    <span
+                        id="batteryModalNewBadge"
+                        class="modal-new-badge"style="font-size: 18px;"
+                    >
+                        NEW
+                    </span>
+
+                </div>
+
+
+                <h2 id="batteryModalProductTitle">
+                    Battery Storage
+                </h2>
+
+
+                <h3 id="batteryModalProductSubtitle"></h3>
+
+
+                <div class="modal-divider"></div>
+
+
+                <p id="batteryModalProductDescription">
+                    Advanced battery storage solution.
+                </p>
+
+
+
+                <!-- =================================================
+                     MODAL FEATURES
+                ================================================== -->
+
+                <div class="modal-meta">
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </span>
+
+
+                        <div>
+
+                            <strong style="font-size: 14px;">
+                                Reliable Storage
+                            </strong>
+
+
+                            <small style="font-size: 12px;">
+                                Dependable battery technology
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            ⚡
+                        </span>
+
+
+                        <div>
+
+                            <strong style="font-size: 14px;">
+                                Smart Energy
+                            </strong>
+
+
+                            <small style="font-size: 12px;">
+                                Intelligent energy management
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            🔋
+                        </span>
+
+
+                        <div>
+
+                            <strong style="font-size: 14px;">
+                                Energy Backup
+                            </strong>
+
+
+                            <small style="font-size: 12px;">
+                                Store energy for later use
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            ☀
+                        </span>
+
+
+                        <div>
+
+                            <strong style="font-size: 14px;">
+                                Solar Compatible
+                            </strong>
+
+
+                            <small style="font-size: 12px;">
+                                Designed for solar systems
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BROCHURES
+                ================================================== -->
+
+                <div class="modal-brochures-wrapper">
+
+                    <div class="modal-brochures-heading">
+
+                        <span aria-hidden="true">
+                            📄
+                        </span>
+
+
+                        <strong style="font-size: 14px;">
+                            Brochures & Documents
+                        </strong>
+
+                    </div>
+
+
+                    <div
+                        id="batteryModalPdfList"
+                        class="modal-pdf-list"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     MODAL ACTIONS
+                ================================================== -->
+
+                <div class="modal-actions">
+
+                    <a
+                        id="batteryModalPdfButton"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="modal-pdf-button"
+                    >
+
+                        <span aria-hidden="true">
+                            📄
+                        </span>
+
+
+                        <span>
+                            Open Selected PDF
+                        </span>
+
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="modal-close-secondary"
+                        id="batteryModalSecondaryClose"
+                    >
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /* =====================================================
+           MAIN ELEMENTS
+        ===================================================== */
+
+        const modal =
+            document.getElementById(
+                "batteryProductModal"
+            );
+
+        const modalClose =
+            document.getElementById(
+                "batteryModalClose"
+            );
+
+        const modalSecondaryClose =
+            document.getElementById(
+                "batteryModalSecondaryClose"
+            );
+
+        const modalBackdrop =
+            document.querySelector(
+                ".battery-modal-backdrop"
+            );
+
+        const productCards =
+            document.querySelectorAll(
+                ".battery-product-card"
+            );
+
+        const modalTitle =
+            document.getElementById(
+                "batteryModalProductTitle"
+            );
+
+        const modalSubtitle =
+            document.getElementById(
+                "batteryModalProductSubtitle"
+            );
+
+        const modalCategory =
+            document.getElementById(
+                "batteryModalProductCategory"
+            );
+
+        const modalDescription =
+            document.getElementById(
+                "batteryModalProductDescription"
+            );
+
+        const modalImage =
+            document.getElementById(
+                "batteryModalProductImage"
+            );
+
+        const modalPlaceholder =
+            document.getElementById(
+                "batteryModalImagePlaceholder"
+            );
+
+        const modalNewBadge =
+            document.getElementById(
+                "batteryModalNewBadge"
+            );
+
+        const modalPdfList =
+            document.getElementById(
+                "batteryModalPdfList"
+            );
+
+        const modalPdfButton =
+            document.getElementById(
+                "batteryModalPdfButton"
+            );
+
+
+        /* =====================================================
+           IMAGE GALLERY
+        ===================================================== */
+
+        const modalImagePrev =
+            document.getElementById(
+                "batteryModalImagePrev"
+            );
+
+        const modalImageNext =
+            document.getElementById(
+                "batteryModalImageNext"
+            );
+
+        const modalImageThumbs =
+            document.getElementById(
+                "batteryModalImageThumbs"
+            );
+
+        const modalImageCounter =
+            document.getElementById(
+                "batteryModalImageCounter"
+            );
+
+
+        let currentBatteryImages = [];
+
+        let currentBatteryImageIndex = 0;
+
+
+        /* =====================================================
+           SCROLL
+        ===================================================== */
+
+        const batteryScrollIndicator =
+            document.getElementById(
+                "batteryScrollIndicator"
+            );
+
+        const batteryProductsSection =
+            document.getElementById(
+                "battery-products"
+            );
+
+
+        /* =====================================================
+           FILTER
+        ===================================================== */
+
+        const categoryFilter =
+            document.getElementById(
+                "batteryCategoryFilter"
+            );
+
+        const filterCount =
+            document.getElementById(
+                "batteryFilterProductCount"
+            );
+
+        const filterText =
+            document.getElementById(
+                "batteryFilterResultText"
+            );
+
+        const filterEmpty =
+            document.getElementById(
+                "batteryFilterEmpty"
+            );
+
+
+        /* =====================================================
+           SAFETY CHECK
+        ===================================================== */
+
+        if (!modal) {
+
+            console.error(
+                "Battery modal not found."
+            );
+
+            return;
+
+        }
+
+
+        /* =====================================================
+           HERO SCROLL
+        ===================================================== */
+
+        if (
+            batteryScrollIndicator &&
+            batteryProductsSection
+        ) {
+
+            batteryScrollIndicator.addEventListener(
+                "click",
+                function () {
+
+                    const sectionTop =
+                        batteryProductsSection
+                            .getBoundingClientRect()
+                            .top
+                        +
+                        window.pageYOffset;
+
+                    const navbarOffset = 90;
+
+                    window.scrollTo({
+
+                        top:
+                            Math.max(
+                                0,
+                                sectionTop -
+                                navbarOffset
+                            ),
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           UPDATE MODAL IMAGE
+        ===================================================== */
+
+        function updateBatteryModalImage() {
+
+            if (
+                !currentBatteryImages.length
+            ) {
+
+                modalImage.style.display =
+                    "none";
+
+                modalPlaceholder.style.display =
+                    "flex";
+
+                modalImagePrev.style.display =
+                    "none";
+
+                modalImageNext.style.display =
+                    "none";
+
+                modalImageCounter.style.display =
+                    "none";
+
+                modalImageThumbs.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            const image =
+                currentBatteryImages[
+                    currentBatteryImageIndex
+                ];
+
+
+            modalImage.src =
+                image.url;
+
+
+            modalImage.alt =
+                image.alt;
+
+
+            modalImage.style.display =
+                "block";
+
+
+            modalPlaceholder.style.display =
+                "none";
+
+
+            if (
+                currentBatteryImages.length > 1
+            ) {
+
+                modalImageCounter.textContent =
+                    `${currentBatteryImageIndex + 1} / ${currentBatteryImages.length}`;
+
+                modalImageCounter.style.display =
+                    "flex";
+
+                modalImagePrev.style.display =
+                    "flex";
+
+                modalImageNext.style.display =
+                    "flex";
+
+                modalImageThumbs.style.display =
+                    "flex";
+
+            } else {
+
+                modalImageCounter.style.display =
+                    "none";
+
+                modalImagePrev.style.display =
+                    "none";
+
+                modalImageNext.style.display =
+                    "none";
+
+                modalImageThumbs.style.display =
+                    "none";
+
+            }
+
+
+            modalImageThumbs
+                .querySelectorAll(
+                    ".battery-modal-thumb"
+                )
+                .forEach(
+                    function (
+                        thumb,
+                        index
+                    ) {
+
+                        thumb.classList.toggle(
+                            "active",
+                            index ===
+                            currentBatteryImageIndex
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           LOAD PRODUCT IMAGES
+        ===================================================== */
+
+        function loadBatteryModalImages(card) {
+
+            currentBatteryImages = [];
+
+            currentBatteryImageIndex = 0;
+
+            modalImageThumbs.innerHTML = "";
+
+
+            const imageLinks =
+                card.querySelectorAll(
+                    ".battery-product-images-data a"
+                );
+
+
+            imageLinks.forEach(
+                function (imageLink) {
+
+                    const imageUrl =
+                        imageLink.href;
+
+                    if (!imageUrl) {
+                        return;
+                    }
+
+
+                    const alreadyExists =
+                        currentBatteryImages.some(
+                            function (item) {
+
+                                return (
+                                    item.url ===
+                                    imageUrl
+                                );
+
+                            }
+                        );
+
+
+                    if (alreadyExists) {
+                        return;
+                    }
+
+
+                    currentBatteryImages.push({
+
+                        url:
+                            imageUrl,
+
+                        alt:
+                            imageLink.dataset.imageTitle
+                            ||
+                            "Battery Storage"
+
+                    });
+
+                }
+            );
+
+
+            currentBatteryImages.forEach(
+                function (
+                    image,
+                    index
+                ) {
+
+                    const thumbnail =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    thumbnail.type =
+                        "button";
+
+
+                    thumbnail.className =
+                        "battery-modal-thumb";
+
+
+                    thumbnail.setAttribute(
+                        "aria-label",
+                        `View product image ${index + 1}`
+                    );
+
+
+                    const thumbnailImage =
+                        document.createElement(
+                            "img"
+                        );
+
+
+                    thumbnailImage.src =
+                        image.url;
+
+
+                    thumbnailImage.alt =
+                        "";
+
+
+                    thumbnailImage.loading =
+                        "lazy";
+
+
+                    thumbnail.appendChild(
+                        thumbnailImage
+                    );
+
+
+                    thumbnail.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.stopPropagation();
+
+
+                            currentBatteryImageIndex =
+                                index;
+
+
+                            updateBatteryModalImage();
+
+                        }
+                    );
+
+
+                    modalImageThumbs.appendChild(
+                        thumbnail
+                    );
+
+                }
+            );
+
+
+            updateBatteryModalImage();
+
+        }
+
+
+        /* =====================================================
+           OPEN MODAL
+        ===================================================== */
+
+        function openBatteryModal(card) {
+
+            if (!card) {
+                return;
+            }
+
+
+            const title =
+                card.querySelector(
+                    ".product-title"
+                )?.textContent.trim()
+                ||
+                "Battery Storage";
+
+
+            const subtitle =
+                card.querySelector(
+                    ".product-subtitle"
+                )?.textContent.trim()
+                ||
+                "";
+
+
+            const category =
+                card.querySelector(
+                    ".product-category"
+                )?.textContent.trim()
+                ||
+                "BATTERY STORAGE";
+
+
+            const description =
+                card.querySelector(
+                    ".product-description"
+                )?.textContent.trim()
+                ||
+                "Advanced battery storage solution.";
+
+
+            modalTitle.textContent =
+                title;
+
+
+            modalSubtitle.textContent =
+                subtitle;
+
+
+            modalCategory.textContent =
+                category;
+
+
+            modalDescription.textContent =
+                description;
+
+
+            loadBatteryModalImages(
+                card
+            );
+
+
+            /* =================================================
+               NEW BADGE
+            ================================================== */
+
+            const cardNewBadge =
+                card.querySelector(
+                    ".new-badge"
+                );
+
+
+            if (cardNewBadge) {
+
+                modalNewBadge.style.display =
+                    "inline-flex";
+
+            } else {
+
+                modalNewBadge.style.display =
+                    "none";
+
+            }
+
+
+            /* =================================================
+               PDFs
+            ================================================== */
+
+            modalPdfList.innerHTML =
+                "";
+
+
+            const pdfLinks =
+                card.querySelectorAll(
+                    ".battery-product-pdfs a"
+                );
+
+
+            if (
+                pdfLinks.length > 0
+            ) {
+
+                pdfLinks.forEach(
+                    function (
+                        pdfLink,
+                        index
+                    ) {
+
+                        const pdfUrl =
+                            pdfLink.href;
+
+
+                        const pdfTitle =
+                            pdfLink.dataset.pdfTitle
+                            ||
+                            pdfLink.textContent.trim()
+                            ||
+                            `Battery Document ${index + 1}`;
+
+
+                        const pdfItem =
+                            document.createElement(
+                                "a"
+                            );
+
+
+                        pdfItem.href =
+                            pdfUrl;
+
+
+                        pdfItem.target =
+                            "_blank";
+
+
+                        pdfItem.rel =
+                            "noopener noreferrer";
+
+
+                        pdfItem.className =
+                            "modal-pdf-item";
+
+
+                        const info =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        info.className =
+                            "modal-pdf-item-info";
+
+
+                        const icon =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        icon.className =
+                            "modal-pdf-item-icon";
+
+
+                        icon.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
+
+
+                        icon.textContent =
+                            "📄";
+
+
+                        const name =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        name.className =
+                            "modal-pdf-item-name";
+
+
+                        name.textContent =
+                            pdfTitle;
+
+
+                        info.appendChild(
+                            icon
+                        );
+
+
+                        info.appendChild(
+                            name
+                        );
+
+
+                        const arrow =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        arrow.className =
+                            "modal-pdf-item-arrow";
+
+
+                        arrow.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
+
+
+                        arrow.textContent =
+                            "↗";
+
+
+                        pdfItem.appendChild(
+                            info
+                        );
+
+
+                        pdfItem.appendChild(
+                            arrow
+                        );
+
+
+                        modalPdfList.appendChild(
+                            pdfItem
+                        );
+
+                    }
+                );
+
+
+                modalPdfButton.href =
+                    pdfLinks[0].href;
+
+
+                modalPdfButton.style.display =
+                    "flex";
+
+            } else {
+
+                modalPdfList.innerHTML = `
+
+                    <div class="modal-no-pdf">
+
+                        <span aria-hidden="true">
+                            📄
+                        </span>
+
+                        <p>
+                            No brochures or documents
+                            available for this product.
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                modalPdfButton.href =
+                    "#";
+
+
+                modalPdfButton.style.display =
+                    "none";
+
+            }
+
+
+            /* =================================================
+               SHOW MODAL
+            ================================================== */
+
+            modal.classList.add(
+                "active"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "battery-modal-open"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            setTimeout(
+                function () {
+
+                    if (modalClose) {
+
+                        modalClose.focus();
+
+                    }
+
+                },
+                100
+            );
+
+        }
+
+
+        /* =====================================================
+           CLOSE MODAL
+        ===================================================== */
+
+        function closeBatteryModal() {
+
+            modal.classList.remove(
+                "active"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "battery-modal-open"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+
+            modalPdfButton.href =
+                "#";
+
+
+            currentBatteryImages = [];
+
+            currentBatteryImageIndex = 0;
+
+            modalImageThumbs.innerHTML =
+                "";
+
+        }
+
+
+        /* =====================================================
+           PREVIOUS IMAGE
+        ===================================================== */
+
+        if (modalImagePrev) {
+
+            modalImagePrev.addEventListener(
+                "click",
+                function (event) {
+
+                    event.stopPropagation();
+
+
+                    if (
+                        currentBatteryImages.length <= 1
+                    ) {
+                        return;
+                    }
+
+
+                    currentBatteryImageIndex--;
+
+
+                    if (
+                        currentBatteryImageIndex < 0
+                    ) {
+
+                        currentBatteryImageIndex =
+                            currentBatteryImages.length - 1;
+
+                    }
+
+
+                    updateBatteryModalImage();
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           NEXT IMAGE
+        ===================================================== */
+
+        if (modalImageNext) {
+
+            modalImageNext.addEventListener(
+                "click",
+                function (event) {
+
+                    event.stopPropagation();
+
+
+                    if (
+                        currentBatteryImages.length <= 1
+                    ) {
+                        return;
+                    }
+
+
+                    currentBatteryImageIndex++;
+
+
+                    if (
+                        currentBatteryImageIndex >=
+                        currentBatteryImages.length
+                    ) {
+
+                        currentBatteryImageIndex =
+                            0;
+
+                    }
+
+
+                    updateBatteryModalImage();
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           PRODUCT CARD CLICK
+        ===================================================== */
+
+        productCards.forEach(
+            function (card) {
+
+                card.addEventListener(
+                    "click",
+                    function (event) {
+
+                        if (
+                            event.target.closest(
+                                ".battery-product-pdfs a"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        openBatteryModal(
+                            card
+                        );
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (
+                            event.key === "Enter"
+                            ||
+                            event.key === " "
+                        ) {
+
+                            event.preventDefault();
+
+
+                            openBatteryModal(
+                                card
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CLOSE BUTTON
+        ===================================================== */
+
+        if (modalClose) {
+
+            modalClose.addEventListener(
+                "click",
+                closeBatteryModal
+            );
+
+        }
+
+
+        if (modalSecondaryClose) {
+
+            modalSecondaryClose.addEventListener(
+                "click",
+                closeBatteryModal
+            );
+
+        }
+
+
+        if (modalBackdrop) {
+
+            modalBackdrop.addEventListener(
+                "click",
+                closeBatteryModal
+            );
+
+        }
+
+
+        /* =====================================================
+           ESCAPE + KEYBOARD GALLERY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape"
+                    &&
+                    modal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeBatteryModal();
+
+                    return;
+
+                }
+
+
+                if (
+                    modal.classList.contains(
+                        "active"
+                    )
+                    &&
+                    currentBatteryImages.length > 1
+                ) {
+
+                    if (
+                        event.key === "ArrowLeft"
+                    ) {
+
+                        currentBatteryImageIndex--;
+
+
+                        if (
+                            currentBatteryImageIndex < 0
+                        ) {
+
+                            currentBatteryImageIndex =
+                                currentBatteryImages.length - 1;
+
+                        }
+
+
+                        updateBatteryModalImage();
+
+                    }
+
+
+                    if (
+                        event.key === "ArrowRight"
+                    ) {
+
+                        currentBatteryImageIndex++;
+
+
+                        if (
+                            currentBatteryImageIndex >=
+                            currentBatteryImages.length
+                        ) {
+
+                            currentBatteryImageIndex =
+                                0;
+
+                        }
+
+
+                        updateBatteryModalImage();
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           CATEGORY FILTER
+        ===================================================== */
+
+        if (categoryFilter) {
+
+            categoryFilter.addEventListener(
+                "change",
+                function () {
+
+                    const selectedCategory =
+                        this.value;
+
+
+                    let visibleCount =
+                        0;
+
+
+                    productCards.forEach(
+                        function (card) {
+
+                            const cardCategory =
+                                card.dataset.category
+                                ||
+                                "battery-storage";
+
+
+                            if (
+                                selectedCategory ===
+                                "all"
+                                ||
+                                cardCategory ===
+                                selectedCategory
+                            ) {
+
+                                card.style.display =
+                                    "";
+
+                                visibleCount++;
+
+                            } else {
+
+                                card.style.display =
+                                    "none";
+
+                            }
+
+                        }
+                    );
+
+
+                    if (filterCount) {
+
+                        filterCount.textContent =
+                            visibleCount;
+
+                    }
+
+
+                    if (filterText) {
+
+                        if (
+                            selectedCategory ===
+                            "all"
+                        ) {
+
+                            filterText.textContent =
+                                "Showing all battery storage products";
+
+                        } else {
+
+                            const selectedOption =
+                                categoryFilter.options[
+                                    categoryFilter.selectedIndex
+                                ];
+
+
+                            const categoryName =
+                                selectedOption
+                                    ?.textContent
+                                    .trim()
+                                ||
+                                "selected";
+
+
+                            filterText.textContent =
+                                `Showing ${categoryName} battery storage products`;
+
+                        }
+
+                    }
+
+
+                    if (filterEmpty) {
+
+                        if (
+                            visibleCount ===
+                            0
+                        ) {
+
+                            filterEmpty.style.display =
+                                "flex";
+
+                        } else {
+
+                            filterEmpty.style.display =
+                                "none";
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           SCROLL INDICATOR
+        ===================================================== */
+
+        if (batteryScrollIndicator) {
+
+            window.addEventListener(
+                "scroll",
+                function () {
+
+                    if (
+                        window.scrollY >
+                        200
+                    ) {
+
+                        batteryScrollIndicator.classList.add(
+                            "scroll-indicator-hidden"
+                        );
+
+                    } else {
+
+                        batteryScrollIndicator.classList.remove(
+                            "scroll-indicator-hidden"
+                        );
+
+                    }
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           PRODUCT IMAGE ERROR
+        ===================================================== */
+
+        document
+            .querySelectorAll(
+                ".battery-product-image img"
+            )
+            .forEach(
+                function (image) {
+
+                    image.addEventListener(
+                        "error",
+                        function () {
+
+                            image.style.display =
+                                "none";
+
+
+                            const parent =
+                                image.parentElement;
+
+
+                            if (
+                                parent &&
+                                !parent.querySelector(
+                                    ".image-error-placeholder"
+                                )
+                            ) {
+
+                                const fallback =
+                                    document.createElement(
+                                        "div"
+                                    );
+
+
+                                fallback.className =
+                                    "image-error-placeholder";
+
+
+                                fallback.innerHTML = `
+
+                                    <span>
+                                        🔋
+                                    </span>
+
+                                    <small>
+                                        Battery Storage
+                                    </small>
+
+                                `;
+
+
+                                parent.appendChild(
+                                    fallback
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           MODAL IMAGE ERROR
+        ===================================================== */
+
+        if (modalImage) {
+
+            modalImage.addEventListener(
+                "error",
+                function () {
+
+                    modalImage.style.display =
+                        "none";
+
+
+                    modalPlaceholder.style.display =
+                        "flex";
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        const prefersReducedMotion =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            );
+
+
+        if (
+            prefersReducedMotion.matches
+        ) {
+
+            document.documentElement.style.scrollBehavior =
+                "auto";
+
+        }
+
+    }
+);
+
+</script>
+
+
+{% endblock %}

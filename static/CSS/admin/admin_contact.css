@@ -1,0 +1,3361 @@
+/* =========================================================
+   SUNGREEN SOLAR
+   ADMIN CONTACT ENQUIRIES
+   PREMIUM MINT / GLASS ADMIN UI
+   ========================================================= */
+
+
+/* =========================================================
+   GOOGLE FONT
+   ========================================================= */
+
+@import url(
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap'
+);
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+:root {
+
+    /* -----------------------------------------------------
+       MAIN MINT COLORS
+    ----------------------------------------------------- */
+
+    --mint:
+        #BDF4D3;
+
+    --mint-light:
+        #DFFFF0;
+
+    --mint-soft:
+        #ECFFF5;
+
+    --mint-dark:
+        #57B87D;
+
+    --mint-deep:
+        #278A56;
+
+
+    /* -----------------------------------------------------
+       BACKGROUNDS
+    ----------------------------------------------------- */
+
+    --admin-bg:
+        #F4FBF7;
+
+    --admin-bg-2:
+        #EEF9F3;
+
+    --admin-white:
+        #FFFFFF;
+
+    --admin-soft:
+        #F9FDFC;
+
+
+    /* -----------------------------------------------------
+       DARK
+    ----------------------------------------------------- */
+
+    --admin-dark:
+        #10251A;
+
+    --admin-dark-2:
+        #183628;
+
+    --admin-dark-3:
+        #234A35;
+
+
+    /* -----------------------------------------------------
+       TEXT
+    ----------------------------------------------------- */
+
+    --admin-text:
+        #173026;
+
+    --admin-text-soft:
+        #62766B;
+
+    --admin-muted:
+        #92A29A;
+
+
+    /* -----------------------------------------------------
+       BORDER
+    ----------------------------------------------------- */
+
+    --admin-border:
+        #DCECE3;
+
+    --admin-border-soft:
+        #EAF3EE;
+
+
+    /* -----------------------------------------------------
+       SUCCESS
+    ----------------------------------------------------- */
+
+    --admin-success:
+        #15945B;
+
+    --admin-success-bg:
+        #EAF9F1;
+
+
+    /* -----------------------------------------------------
+       WARNING
+    ----------------------------------------------------- */
+
+    --admin-warning:
+        #D69208;
+
+    --admin-warning-bg:
+        #FFF7E7;
+
+
+    /* -----------------------------------------------------
+       DANGER
+    ----------------------------------------------------- */
+
+    --admin-danger:
+        #DD5049;
+
+    --admin-danger-dark:
+        #B93630;
+
+    --admin-danger-bg:
+        #FFF0EF;
+
+
+    /* -----------------------------------------------------
+       SHADOWS
+    ----------------------------------------------------- */
+
+    --shadow-sm:
+        0 8px 25px rgba(28, 93, 57, .055);
+
+    --shadow:
+        0 20px 55px rgba(28, 93, 57, .085);
+
+    --shadow-lg:
+        0 35px 100px rgba(28, 93, 57, .12);
+
+
+    /* -----------------------------------------------------
+       RADIUS
+    ----------------------------------------------------- */
+
+    --radius-sm:
+        13px;
+
+    --radius:
+        20px;
+
+    --radius-lg:
+        28px;
+
+
+    /* -----------------------------------------------------
+       TRANSITION
+    ----------------------------------------------------- */
+
+    --transition:
+        all .38s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   PAGE FOUNDATION
+   ========================================================= */
+
+.admin-contact-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(189,244,211,.32),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(87,184,125,.08),
+            transparent 30%
+        ),
+
+        var(--admin-bg);
+
+    font-family:
+        "Inter",
+        sans-serif;
+}
+
+
+/* =========================================================
+   COMMON
+   ========================================================= */
+
+.admin-contact-header,
+.admin-contact-content {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.admin-contact-header {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        clamp(75px, 8vw, 125px)
+        0
+        clamp(95px, 9vw, 125px);
+
+    color:
+        var(--admin-dark);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #BDF4D3 0%,
+            #C8F6DA 24%,
+            #D7F9E5 52%,
+            #B8F0CE 78%,
+            #AEECC7 100%
+        );
+
+    isolation: isolate;
+
+    border-bottom:
+        1px solid
+        rgba(39,138,86,.12);
+
+    box-shadow:
+        0 20px 70px
+        rgba(67,157,101,.08);
+}
+
+
+/* =========================================================
+   HERO GRID
+   ========================================================= */
+
+.admin-contact-header::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .45;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.28) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.28) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 95%
+        );
+
+    pointer-events:
+        none;
+
+    animation:
+        heroGridMove 20s linear infinite;
+}
+
+
+@keyframes heroGridMove {
+
+    0% {
+        background-position:
+            0 0,
+            0 0;
+    }
+
+    100% {
+        background-position:
+            55px 55px,
+            55px 55px;
+    }
+}
+
+
+/* =========================================================
+   LARGE HERO ORB
+   ========================================================= */
+
+.admin-contact-header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width:
+        760px;
+
+    height:
+        760px;
+
+    top:
+        -520px;
+
+    right:
+        -260px;
+
+    border-radius:
+        50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.65),
+            rgba(255,255,255,.22) 36%,
+            rgba(87,184,125,.10) 52%,
+            transparent 72%
+        );
+
+    filter:
+        blur(8px);
+
+    pointer-events:
+        none;
+
+    animation:
+        heroOrb 12s ease-in-out infinite alternate;
+}
+
+
+@keyframes heroOrb {
+
+    0% {
+
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+
+    }
+
+    100% {
+
+        transform:
+            translate3d(-130px,120px,0)
+            scale(1.2);
+
+    }
+}
+
+
+/* =========================================================
+   HERO GLOW
+   ========================================================= */
+
+.admin-header-glow {
+
+    position: absolute;
+
+    width:
+        520px;
+
+    height:
+        520px;
+
+    left:
+        -220px;
+
+    bottom:
+        -350px;
+
+    border-radius:
+        50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.62),
+            rgba(255,255,255,.16) 42%,
+            transparent 72%
+        );
+
+    filter:
+        blur(35px);
+
+    pointer-events:
+        none;
+
+    animation:
+        secondGlow 10s ease-in-out infinite alternate;
+}
+
+
+@keyframes secondGlow {
+
+    0% {
+
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+
+    }
+
+    100% {
+
+        transform:
+            translate3d(150px,-100px,0)
+            scale(1.15);
+
+    }
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.admin-header-content {
+
+    position:
+        relative;
+
+    z-index:
+        10;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        70px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.admin-eyebrow {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        23px;
+
+    color:
+        var(--mint-deep);
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        3px;
+
+    text-transform:
+        uppercase;
+
+    animation:
+        fadeUp .8s ease both;
+}
+
+
+.admin-eyebrow span {
+
+    position:
+        relative;
+
+    width:
+        42px;
+
+    height:
+        3px;
+
+    border-radius:
+        50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--mint-deep),
+            rgba(39,138,86,.15)
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(39,138,86,.20);
+}
+
+
+/* =========================================================
+   EYEBROW DOT
+   ========================================================= */
+
+.admin-eyebrow span::after {
+
+    content: "";
+
+    position:
+        absolute;
+
+    right:
+        -2px;
+
+    top:
+        50%;
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    border-radius:
+        50%;
+
+    background:
+        #FFFFFF;
+
+    transform:
+        translateY(-50%);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(255,255,255,.25);
+
+    animation:
+        eyebrowPulse 2s infinite;
+}
+
+
+@keyframes eyebrowPulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 0 3px
+            rgba(255,255,255,.20);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 0 8px
+            rgba(255,255,255,0);
+
+    }
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.admin-header-content h1 {
+
+    position:
+        relative;
+
+    margin:
+        0;
+
+    max-width:
+        900px;
+
+    color:
+        #173026;
+
+    font-size:
+        clamp(46px, 6vw, 82px);
+
+    line-height:
+        .95;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -4.5px;
+
+    text-wrap:
+        balance;
+
+    animation:
+        fadeUp .85s .08s ease both;
+}
+
+
+/* =========================================================
+   TITLE STRONG
+   ========================================================= */
+
+.admin-header-content h1 strong {
+
+    display:
+        block;
+
+    margin-top:
+        10px;
+
+    color:
+        transparent;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #278A56,
+            #4CAE72,
+            #173026,
+            #278A56
+        );
+
+    background-size:
+        300% auto;
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+
+    animation:
+        titleGradient 6s linear infinite;
+}
+
+
+@keyframes titleGradient {
+
+    to {
+
+        background-position:
+            300% center;
+
+    }
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.admin-header-content p {
+
+    max-width:
+        680px;
+
+    margin:
+        28px 0 0;
+
+    color:
+        rgba(23,48,38,.68);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.9;
+
+    font-weight:
+        500;
+
+    text-wrap:
+        balance;
+
+    animation:
+        fadeUp .85s .17s ease both;
+}
+
+
+/* =========================================================
+   HERO ICON
+   ========================================================= */
+
+.admin-header-icon {
+
+    position:
+        relative;
+
+    flex:
+        0 0 auto;
+
+    width:
+        140px;
+
+    height:
+        140px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.65);
+
+    border-radius:
+        40px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.72),
+            rgba(255,255,255,.30)
+        );
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+
+        0 30px 70px
+        rgba(39,138,86,.16),
+
+        inset 0 1px 0
+        rgba(255,255,255,.90);
+
+    animation:
+        floatIcon 4.5s ease-in-out infinite,
+        fadeScale .9s .18s ease both;
+}
+
+
+/* =========================================================
+   ICON OUTER RING
+   ========================================================= */
+
+.admin-header-icon::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        -12px;
+
+    border:
+        1px solid
+        rgba(39,138,86,.16);
+
+    border-radius:
+        48px;
+
+    animation:
+        iconRing 3.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ICON INNER RING
+   ========================================================= */
+
+.admin-header-icon::after {
+
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        12px;
+
+    border:
+        1px solid
+        rgba(39,138,86,.10);
+
+    border-radius:
+        29px;
+
+    pointer-events:
+        none;
+}
+
+
+@keyframes iconRing {
+
+    0%,
+    100% {
+
+        transform:
+            scale(.97);
+
+        opacity:
+            .35;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.05);
+
+        opacity:
+            1;
+
+    }
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.admin-header-icon i {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    color:
+        var(--mint-deep);
+
+    font-size:
+        50px;
+
+    filter:
+        drop-shadow(
+            0 10px 18px
+            rgba(39,138,86,.18)
+        );
+
+    animation:
+        iconHeartbeat 3s ease-in-out infinite;
+}
+
+
+@keyframes iconHeartbeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+    }
+}
+
+
+@keyframes floatIcon {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-13px);
+
+    }
+}
+
+
+/* =========================================================
+   STATS SECTION
+   ========================================================= */
+
+.admin-contact-stats {
+
+    position:
+        relative;
+
+    z-index:
+        20;
+
+    margin-top:
+        -48px;
+}
+
+
+/* =========================================================
+   STATS GRID
+   ========================================================= */
+
+.admin-stats-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+    gap:
+        20px;
+}
+
+
+/* =========================================================
+   STAT CARD
+   ========================================================= */
+
+.admin-stat-card {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    min-height:
+        112px;
+
+    gap:
+        19px;
+
+    padding:
+        24px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(220,236,227,.9);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        rgba(255,255,255,.88);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        var(--shadow);
+
+    isolation:
+        isolate;
+
+    transition:
+        transform .45s cubic-bezier(.22,1,.36,1),
+        box-shadow .45s ease,
+        border-color .35s ease;
+
+    animation:
+        fadeUp .8s .2s ease both;
+}
+
+
+.admin-stat-card:nth-child(2) {
+    animation-delay: .27s;
+}
+
+.admin-stat-card:nth-child(3) {
+    animation-delay: .34s;
+}
+
+.admin-stat-card:nth-child(4) {
+    animation-delay: .41s;
+}
+
+
+/* =========================================================
+   CARD SHINE
+   ========================================================= */
+
+.admin-stat-card::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        220px;
+
+    height:
+        220px;
+
+    right:
+        -120px;
+
+    top:
+        -120px;
+
+    border-radius:
+        50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(189,244,211,.65),
+            transparent 68%
+        );
+
+    transition:
+        transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* =========================================================
+   CARD SIDE LINE
+   ========================================================= */
+
+.admin-stat-card::after {
+
+    content: "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        50%;
+
+    width:
+        4px;
+
+    height:
+        0;
+
+    border-radius:
+        0 10px 10px 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--mint-dark),
+            var(--mint-deep)
+        );
+
+    transform:
+        translateY(-50%);
+
+    transition:
+        height .45s cubic-bezier(.22,1,.36,1);
+}
+
+
+.admin-stat-card:hover {
+
+    transform:
+        translateY(-9px);
+
+    border-color:
+        rgba(87,184,125,.30);
+
+    box-shadow:
+        0 30px 75px
+        rgba(39,138,86,.14);
+}
+
+
+.admin-stat-card:hover::before {
+
+    transform:
+        scale(1.7);
+}
+
+
+.admin-stat-card:hover::after {
+
+    height:
+        58%;
+}
+
+
+/* =========================================================
+   STAT ICON
+   ========================================================= */
+
+.admin-stat-icon {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    width:
+        60px;
+
+    height:
+        60px;
+
+    flex:
+        0 0 60px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        rgba(87,184,125,.10);
+
+    border-radius:
+        18px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #EFFFF5,
+            #DDF8E9
+        );
+
+    color:
+        var(--mint-deep);
+
+    font-size:
+        21px;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.95),
+
+        0 10px 25px
+        rgba(39,138,86,.07);
+
+    transition:
+        var(--transition);
+}
+
+
+.admin-stat-card:hover .admin-stat-icon {
+
+    transform:
+        rotate(-7deg)
+        scale(1.1);
+
+    box-shadow:
+        0 15px 30px
+        rgba(39,138,86,.13);
+}
+
+
+/* =========================================================
+   WARNING ICON
+   ========================================================= */
+
+.admin-stat-icon.unread {
+
+    color:
+        var(--admin-warning);
+
+    background:
+        linear-gradient(
+            145deg,
+            #FFF9EC,
+            #FFF0D2
+        );
+}
+
+
+/* =========================================================
+   SUCCESS ICON
+   ========================================================= */
+
+.admin-stat-icon.success {
+
+    color:
+        var(--admin-success);
+
+    background:
+        linear-gradient(
+            145deg,
+            #EBFAF1,
+            #DDF4E7
+        );
+}
+
+
+/* =========================================================
+   STAT TEXT
+   ========================================================= */
+
+.admin-stat-card span {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    display:
+        block;
+
+    margin-bottom:
+        5px;
+
+    color:
+        var(--admin-muted);
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1.6px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.admin-stat-card strong {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    display:
+        block;
+
+    color:
+        var(--admin-text);
+
+    font-size:
+        27px;
+
+    line-height:
+        1.05;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -.5px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.admin-contact-content {
+
+    position:
+        relative;
+
+    padding:
+        clamp(60px,7vw,90px)
+        0
+        120px;
+
+    background:
+
+        radial-gradient(
+            circle at 5% 10%,
+            rgba(189,244,211,.22),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 95% 80%,
+            rgba(87,184,125,.06),
+            transparent 30%
+        );
+}
+
+
+/* =========================================================
+   PANEL
+   ========================================================= */
+
+.admin-contact-panel {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        var(--admin-border);
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        rgba(255,255,255,.96);
+
+    box-shadow:
+        var(--shadow-lg);
+
+    animation:
+        fadeUp .9s .2s ease both;
+}
+
+
+/* =========================================================
+   PANEL TOP LINE
+   ========================================================= */
+
+.admin-contact-panel::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    width:
+        100%;
+
+    height:
+        3px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--mint-dark),
+            #BDF4D3,
+            var(--mint-deep),
+            transparent
+        );
+
+    background-size:
+        250% auto;
+
+    animation:
+        panelLine 5s linear infinite;
+}
+
+
+@keyframes panelLine {
+
+    to {
+
+        background-position:
+            250% center;
+
+    }
+}
+
+
+/* =========================================================
+   PANEL HEADER
+   ========================================================= */
+
+.admin-panel-header {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        25px;
+
+    padding:
+        33px 35px;
+
+    border-bottom:
+        1px solid
+        var(--admin-border-soft);
+
+    background:
+        linear-gradient(
+            180deg,
+            #FFFFFF,
+            #FBFEFC
+        );
+}
+
+
+/* =========================================================
+   PANEL LABEL
+   ========================================================= */
+
+.admin-panel-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        7px;
+
+    color:
+        var(--mint-deep);
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2.2px;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   PANEL TITLE
+   ========================================================= */
+
+.admin-panel-header h2 {
+
+    margin:
+        0;
+
+    color:
+        var(--admin-text);
+
+    font-size:
+        29px;
+
+    line-height:
+        1.15;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -.8px;
+}
+
+
+/* =========================================================
+   MESSAGE COUNT
+   ========================================================= */
+
+.admin-message-count {
+
+    position:
+        relative;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    padding:
+        10px 16px;
+
+    border:
+        1px solid
+        #D7ECDD;
+
+    border-radius:
+        100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #F1FCF5,
+            #E7F8ED
+        );
+
+    color:
+        var(--mint-deep);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    box-shadow:
+        inset 0 1px 0 #FFFFFF,
+        0 7px 18px
+        rgba(39,138,86,.06);
+
+    transition:
+        var(--transition);
+}
+
+
+.admin-message-count:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(39,138,86,.11);
+}
+
+
+/* =========================================================
+   MESSAGE COUNT DOT
+   ========================================================= */
+
+.admin-message-count::before {
+
+    content: "";
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    flex:
+        0 0 7px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--mint-dark);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(87,184,125,.12);
+
+    animation:
+        statusPulse 2s infinite;
+}
+
+
+@keyframes statusPulse {
+
+    0% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(87,184,125,.30);
+
+    }
+
+    70% {
+
+        box-shadow:
+            0 0 0 8px
+            rgba(87,184,125,0);
+
+    }
+
+    100% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(87,184,125,0);
+
+    }
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.admin-table-wrapper {
+
+    width:
+        100%;
+
+    overflow-x:
+        auto;
+
+    scrollbar-width:
+        thin;
+
+    scrollbar-color:
+        #B8D5C3
+        transparent;
+}
+
+
+.admin-table-wrapper::-webkit-scrollbar {
+
+    height:
+        7px;
+}
+
+
+.admin-table-wrapper::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+}
+
+
+.admin-table-wrapper::-webkit-scrollbar-thumb {
+
+    border-radius:
+        20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #B8D5C3,
+            #8EB8A0
+        );
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.admin-contact-table {
+
+    width:
+        100%;
+
+    min-width:
+        1120px;
+
+    border-collapse:
+        separate;
+
+    border-spacing:
+        0;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.admin-contact-table thead {
+
+    background:
+        linear-gradient(
+            180deg,
+            #FAFCFB,
+            #F4F8F6
+        );
+}
+
+
+.admin-contact-table th {
+
+    padding:
+        17px 20px;
+
+    border-bottom:
+        1px solid
+        #E3ECE7;
+
+    color:
+        #7B8982;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    text-align:
+        left;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        1.6px;
+
+    white-space:
+        nowrap;
+}
+
+
+.admin-contact-table th:first-child {
+
+    padding-left:
+        24px;
+}
+
+
+.admin-contact-table th:last-child {
+
+    padding-right:
+        24px;
+}
+
+
+/* =========================================================
+   TABLE CELLS
+   ========================================================= */
+
+.admin-contact-table td {
+
+    padding:
+        19px 20px;
+
+    border-bottom:
+        1px solid
+        #EDF3EF;
+
+    vertical-align:
+        middle;
+
+    color:
+        #394A42;
+
+    font-size:
+        12px;
+
+    transition:
+        background .25s ease;
+}
+
+
+.admin-contact-table td:first-child {
+
+    padding-left:
+        24px;
+}
+
+
+.admin-contact-table td:last-child {
+
+    padding-right:
+        24px;
+}
+
+
+/* =========================================================
+   ROW
+   ========================================================= */
+
+.admin-contact-table tbody tr {
+
+    position:
+        relative;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
+}
+
+
+.admin-contact-table tbody tr:hover {
+
+    background:
+        linear-gradient(
+            90deg,
+            #F9FEFB,
+            #FFFFFF
+        );
+}
+
+
+.admin-contact-table tbody tr:last-child td {
+
+    border-bottom:
+        0;
+}
+
+
+/* =========================================================
+   UNREAD
+   ========================================================= */
+
+.admin-contact-table tbody tr.message-unread {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(189,244,211,.20),
+            rgba(189,244,211,.035)
+        );
+}
+
+
+.admin-contact-table tbody tr.message-unread:hover {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(189,244,211,.30),
+            rgba(189,244,211,.06)
+        );
+}
+
+
+.admin-contact-table tbody tr.message-unread td:first-child {
+
+    position:
+        relative;
+}
+
+
+.admin-contact-table tbody tr.message-unread td:first-child::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    left:
+        7px;
+
+    top:
+        50%;
+
+    width:
+        4px;
+
+    height:
+        35px;
+
+    border-radius:
+        50px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--mint-dark),
+            var(--mint-deep)
+        );
+
+    transform:
+        translateY(-50%);
+
+    box-shadow:
+        0 0 13px
+        rgba(87,184,125,.28);
+}
+
+
+/* =========================================================
+   CUSTOMER
+   ========================================================= */
+
+.customer-cell {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        13px;
+
+    min-width:
+        230px;
+}
+
+
+.customer-avatar {
+
+    position:
+        relative;
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    flex:
+        0 0 45px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(87,184,125,.18);
+
+    border-radius:
+        14px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #DFFFF0,
+            #BDF4D3
+        );
+
+    color:
+        #247447;
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255,255,255,.85),
+
+        0 9px 20px
+        rgba(39,138,86,.10);
+
+    transition:
+        var(--transition);
+}
+
+
+.customer-avatar::after {
+
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        60px;
+
+    height:
+        60px;
+
+    right:
+        -30px;
+
+    top:
+        -30px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,.35);
+
+    transition:
+        transform .5s ease;
+}
+
+
+.customer-cell:hover .customer-avatar {
+
+    transform:
+        rotate(-6deg)
+        scale(1.08);
+
+    box-shadow:
+        0 14px 28px
+        rgba(39,138,86,.17);
+}
+
+
+.customer-cell:hover .customer-avatar::after {
+
+    transform:
+        scale(1.8);
+}
+
+
+.customer-cell strong {
+
+    display:
+        block;
+
+    max-width:
+        190px;
+
+    margin-bottom:
+        4px;
+
+    overflow:
+        hidden;
+
+    color:
+        var(--admin-text);
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+.customer-cell span {
+
+    display:
+        block;
+
+    max-width:
+        190px;
+
+    overflow:
+        hidden;
+
+    color:
+        #9AA69F;
+
+    font-size:
+        10px;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+.contact-phone {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    color:
+        #30443A;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    text-decoration:
+        none;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
+}
+
+
+.contact-phone i {
+
+    color:
+        var(--mint-deep);
+
+    transition:
+        transform .25s ease;
+}
+
+
+.contact-phone:hover {
+
+    color:
+        var(--mint-deep);
+
+    transform:
+        translateX(3px);
+}
+
+
+.contact-phone:hover i {
+
+    transform:
+        rotate(-8deg)
+        scale(1.1);
+}
+
+
+/* =========================================================
+   SERVICE
+   ========================================================= */
+
+.service-badge {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    max-width:
+        175px;
+
+    padding:
+        7px 11px;
+
+    border:
+        1px solid
+        #DCECDC;
+
+    border-radius:
+        10px;
+
+    overflow:
+        hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #F2FCF6,
+            #E5F7EC
+        );
+
+    color:
+        #4D7E60;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    line-height:
+        1.2;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+
+    transition:
+        var(--transition);
+}
+
+
+.service-badge:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #B9DEC6;
+
+    box-shadow:
+        0 8px 18px
+        rgba(39,138,86,.08);
+}
+
+
+.service-empty {
+
+    color:
+        #A4ADA8;
+
+    font-size:
+        10px;
+}
+
+
+/* =========================================================
+   SUBJECT
+   ========================================================= */
+
+.subject-cell {
+
+    max-width:
+        190px;
+
+    overflow:
+        hidden;
+
+    color:
+        #405048;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.45;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+.subject-cell span {
+
+    color:
+        #A2AAA6;
+
+    font-weight:
+        500;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-badge {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        7px 11px;
+
+    border-radius:
+        100px;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .6px;
+
+    white-space:
+        nowrap;
+
+    transition:
+        var(--transition);
+}
+
+
+.status-badge::before {
+
+    content: "";
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+}
+
+
+.status-badge.read {
+
+    border:
+        1px solid
+        #D8EEE1;
+
+    background:
+        var(--admin-success-bg);
+
+    color:
+        var(--admin-success);
+}
+
+
+.status-badge.read::before {
+
+    background:
+        var(--admin-success);
+}
+
+
+.status-badge.read:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(21,148,91,.10);
+}
+
+
+.status-badge.unread {
+
+    border:
+        1px solid
+        #F0DDB4;
+
+    background:
+        var(--admin-warning-bg);
+
+    color:
+        var(--admin-warning);
+}
+
+
+.status-badge.unread::before {
+
+    background:
+        var(--admin-warning);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(217,149,8,.08);
+
+    animation:
+        unreadPulse 1.8s infinite;
+}
+
+
+.status-badge i {
+
+    display:
+        none;
+}
+
+
+@keyframes unreadPulse {
+
+    0% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(217,149,8,.25);
+
+    }
+
+    70% {
+
+        box-shadow:
+            0 0 0 7px
+            rgba(217,149,8,0);
+
+    }
+
+    100% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(217,149,8,0);
+
+    }
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.date-cell strong {
+
+    display:
+        block;
+
+    margin-bottom:
+        4px;
+
+    color:
+        #3D4B44;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    white-space:
+        nowrap;
+}
+
+
+.date-cell span {
+
+    display:
+        block;
+
+    color:
+        #A0AAA5;
+
+    font-size:
+        9px;
+
+    font-weight:
+        600;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.admin-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+}
+
+
+.admin-actions form {
+
+    margin:
+        0;
+}
+
+
+.admin-action {
+
+    position:
+        relative;
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        0;
+
+    border-radius:
+        12px;
+
+    cursor:
+        pointer;
+
+    text-decoration:
+        none;
+
+    overflow:
+        hidden;
+
+    transition:
+        transform .32s cubic-bezier(.22,1,.36,1),
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* =========================================================
+   BUTTON SHINE
+   ========================================================= */
+
+.admin-action::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    border-radius:
+        inherit;
+
+    background:
+        rgba(255,255,255,.45);
+
+    opacity:
+        0;
+
+    transform:
+        scale(.4);
+
+    transition:
+        var(--transition);
+
+    pointer-events:
+        none;
+}
+
+
+.admin-action i {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    transition:
+        transform .25s ease;
+}
+
+
+.admin-action:hover {
+
+    transform:
+        translateY(-4px);
+}
+
+
+.admin-action:hover::before {
+
+    opacity:
+        1;
+
+    transform:
+        scale(1.25);
+}
+
+
+.admin-action:hover i {
+
+    transform:
+        scale(1.12);
+}
+
+
+.admin-action:active {
+
+    transform:
+        translateY(-1px)
+        scale(.96);
+}
+
+
+/* =========================================================
+   VIEW
+   ========================================================= */
+
+.admin-action.view {
+
+    background:
+        #EAF8EF;
+
+    color:
+        #4E8A62;
+
+    box-shadow:
+        0 7px 16px
+        rgba(39,138,86,.08);
+}
+
+
+.admin-action.view:hover {
+
+    background:
+        #D9F2E3;
+
+    color:
+        #277346;
+
+    box-shadow:
+        0 14px 28px
+        rgba(39,138,86,.17);
+}
+
+
+/* =========================================================
+   DELETE
+   ========================================================= */
+
+.admin-action.delete {
+
+    background:
+        var(--admin-danger-bg);
+
+    color:
+        var(--admin-danger);
+
+    box-shadow:
+        0 7px 16px
+        rgba(223,81,73,.07);
+}
+
+
+.admin-action.delete:hover {
+
+    background:
+        #FFE0DE;
+
+    color:
+        var(--admin-danger-dark);
+
+    box-shadow:
+        0 14px 28px
+        rgba(223,81,73,.16);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.admin-empty-state {
+
+    padding:
+        100px 30px;
+
+    text-align:
+        center;
+}
+
+
+.empty-icon {
+
+    position:
+        relative;
+
+    width:
+        92px;
+
+    height:
+        92px;
+
+    margin:
+        0 auto 27px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        #D4EBDD;
+
+    border-radius:
+        28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #F3FCF6,
+            #E2F5E9
+        );
+
+    color:
+        var(--mint-deep);
+
+    font-size:
+        34px;
+
+    box-shadow:
+        0 22px 48px
+        rgba(39,138,86,.09);
+
+    animation:
+        emptyFloat 4s ease-in-out infinite;
+}
+
+
+.empty-icon::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        -9px;
+
+    border:
+        1px dashed
+        rgba(39,138,86,.18);
+
+    border-radius:
+        35px;
+
+    animation:
+        emptyRotate 14s linear infinite;
+}
+
+
+@keyframes emptyFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-9px);
+
+    }
+}
+
+
+@keyframes emptyRotate {
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+}
+
+
+.admin-empty-state h3 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        var(--admin-text);
+
+    font-size:
+        25px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -.6px;
+}
+
+
+.admin-empty-state p {
+
+    max-width:
+        500px;
+
+    margin:
+        0 auto;
+
+    color:
+        #89948E;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+.admin-contact-page a:focus-visible,
+.admin-contact-page button:focus-visible {
+
+    outline:
+        3px solid
+        rgba(87,184,125,.35);
+
+    outline-offset:
+        4px;
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+.admin-contact-page ::selection {
+
+    color:
+        #143122;
+
+    background:
+        var(--mint);
+}
+
+
+/* =========================================================
+   PAGE LOAD ANIMATION
+   ========================================================= */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(28px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+}
+
+
+@keyframes fadeScale {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            scale(.86);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+
+    }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+    .admin-contact-header {
+
+        padding-top:
+            130px;
+
+        padding-bottom:
+            120px;
+    }
+
+
+    .admin-header-content h1 {
+
+        font-size:
+            86px;
+    }
+
+
+    .admin-header-icon {
+
+        width:
+            150px;
+
+        height:
+            150px;
+
+        border-radius:
+            42px;
+    }
+
+
+    .admin-header-icon i {
+
+        font-size:
+            52px;
+    }
+}
+
+
+/* =========================================================
+   1200px
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .admin-header-content {
+
+        gap:
+            45px;
+    }
+
+
+    .admin-header-content h1 {
+
+        font-size:
+            clamp(
+                45px,
+                6vw,
+                70px
+            );
+    }
+
+
+    .admin-header-icon {
+
+        width:
+            115px;
+
+        height:
+            115px;
+
+        flex-basis:
+            115px;
+
+        border-radius:
+            32px;
+    }
+
+
+    .admin-header-icon i {
+
+        font-size:
+            40px;
+    }
+
+
+    .admin-stats-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .admin-header-content {
+
+        align-items:
+            flex-start;
+    }
+
+
+    .admin-header-icon {
+
+        width:
+            100px;
+
+        height:
+            100px;
+
+        flex-basis:
+            100px;
+
+        border-radius:
+            28px;
+    }
+
+
+    .admin-header-icon i {
+
+        font-size:
+            35px;
+    }
+
+
+    .admin-panel-header {
+
+        padding:
+            28px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .admin-contact-header {
+
+        padding:
+            65px
+            0
+            78px;
+    }
+
+
+    .admin-header-content {
+
+        display:
+            block;
+    }
+
+
+    .admin-header-content h1 {
+
+        font-size:
+            48px;
+
+        letter-spacing:
+            -2.7px;
+    }
+
+
+    .admin-header-content p {
+
+        margin-top:
+            21px;
+
+        font-size:
+            13px;
+    }
+
+
+    .admin-header-icon {
+
+        display:
+            none;
+    }
+
+
+    .admin-contact-stats {
+
+        margin-top:
+            -35px;
+    }
+
+
+    .admin-stats-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            13px;
+    }
+
+
+    .admin-stat-card {
+
+        min-height:
+            94px;
+
+        padding:
+            19px;
+    }
+
+
+    .admin-contact-content {
+
+        padding:
+            50px 0 80px;
+    }
+
+
+    .admin-contact-panel {
+
+        border-radius:
+            22px;
+    }
+
+
+    .admin-panel-header {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        padding:
+            25px;
+    }
+
+
+    .admin-panel-header h2 {
+
+        font-size:
+            23px;
+    }
+
+
+    .admin-message-count {
+
+        align-self:
+            flex-start;
+    }
+
+
+    .admin-empty-state {
+
+        padding:
+            75px 20px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 575px) {
+
+    .admin-contact-header {
+
+        padding:
+            58px
+            0
+            68px;
+    }
+
+
+    .admin-header-content h1 {
+
+        font-size:
+            42px;
+
+        letter-spacing:
+            -2.2px;
+    }
+
+
+    .admin-eyebrow {
+
+        font-size:
+            8.5px;
+
+        letter-spacing:
+            1.8px;
+    }
+
+
+    .admin-eyebrow span {
+
+        width:
+            28px;
+    }
+
+
+    .admin-stat-card {
+
+        border-radius:
+            17px;
+    }
+
+
+    .admin-stat-icon {
+
+        width:
+            51px;
+
+        height:
+            51px;
+
+        flex-basis:
+            51px;
+
+        border-radius:
+            14px;
+    }
+
+
+    .admin-stat-card strong {
+
+        font-size:
+            22px;
+    }
+
+
+    .admin-contact-panel {
+
+        border-radius:
+            20px;
+    }
+
+
+    .admin-panel-header {
+
+        padding:
+            21px;
+    }
+
+
+    .admin-message-count {
+
+        font-size:
+            10px;
+
+        padding:
+            9px 13px;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .admin-header-content h1 {
+
+        font-size:
+            37px;
+
+        letter-spacing:
+            -1.8px;
+    }
+
+
+    .admin-header-content p {
+
+        font-size:
+            12px;
+    }
+
+
+    .admin-stat-card {
+
+        padding:
+            16px;
+    }
+
+
+    .admin-stat-card strong {
+
+        font-size:
+            20px;
+    }
+
+
+    .admin-contact-content {
+
+        padding-top:
+            40px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+}

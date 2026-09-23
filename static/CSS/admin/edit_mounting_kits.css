@@ -1,0 +1,3265 @@
+/* =========================================================
+   SUNGREEN SOLAR ADMIN
+   EDIT MOUNTING KITS PAGE
+========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+========================================================= */
+
+:root {
+
+    --mount-primary: #0f766e;
+    --mount-primary-dark: #115e59;
+    --mount-primary-light: #ccfbf1;
+
+    --mount-secondary: #0891b2;
+    --mount-secondary-light: #cffafe;
+
+    --mount-success: #16a34a;
+    --mount-success-light: #dcfce7;
+
+    --mount-danger: #dc2626;
+    --mount-danger-dark: #b91c1c;
+    --mount-danger-light: #fee2e2;
+
+    --mount-warning: #d97706;
+    --mount-warning-light: #fef3c7;
+
+    --mount-purple: #7c3aed;
+    --mount-purple-light: #ede9fe;
+
+    --mount-bg: #f0fdfa;
+    --mount-card: #ffffff;
+    --mount-soft: #f8fafc;
+
+    --mount-border: #dbe7e5;
+    --mount-border-light: #e5eeee;
+
+    --mount-text: #172b2a;
+    --mount-text-dark: #0f2523;
+    --mount-text-muted: #64748b;
+    --mount-text-light: #94a3b8;
+
+    --mount-shadow:
+        0 10px 30px rgba(15, 118, 110, 0.08);
+
+    --mount-shadow-hover:
+        0 18px 45px rgba(15, 118, 110, 0.14);
+
+    --mount-radius: 18px;
+    --mount-radius-small: 11px;
+
+    --mount-transition:
+        all 0.25s ease;
+
+}
+
+
+/* =========================================================
+   2. PAGE MAIN
+========================================================= */
+
+.battery-admin-page {
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0fdfa 0%,
+            #f8fffe 45%,
+            #ecfeff 100%
+        );
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   3. PAGE HEADER
+========================================================= */
+
+.admin-page-header {
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+
+    padding: 25px 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f0fdfa
+        );
+
+    border: 1px solid var(--mount-border);
+
+    border-radius: var(--mount-radius);
+
+    box-shadow: var(--mount-shadow);
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   HEADER CONTENT
+========================================================= */
+
+.header-content {
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    min-width: 0;
+
+}
+
+
+/* =========================================================
+   HEADER ICON
+========================================================= */
+
+.header-icon {
+
+    width: 64px;
+    height: 64px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    font-size: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ccfbf1,
+            #cffafe
+        );
+
+    border: 1px solid #99f6e4;
+
+    box-shadow:
+        0 8px 20px rgba(8, 145, 178, 0.10);
+
+}
+
+
+/* =========================================================
+   HEADER TEXT
+========================================================= */
+
+.header-text {
+
+    min-width: 0;
+
+}
+
+
+.header-label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--mount-primary);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+
+}
+
+
+.header-text h1 {
+
+    margin: 0;
+
+    color: var(--mount-text-dark);
+
+    font-size: 30px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+}
+
+
+.header-text p {
+
+    margin: 7px 0 0;
+
+    color: var(--mount-text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 44px;
+
+    padding: 0 17px;
+
+    color: var(--mount-primary-dark);
+
+    background: #ffffff;
+
+    border: 1px solid #99f6e4;
+
+    border-radius: 11px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.back-btn:hover {
+
+    color: #ffffff;
+
+    background: var(--mount-primary);
+
+    border-color: var(--mount-primary);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(15, 118, 110, 0.18);
+
+}
+
+
+.back-icon {
+
+    font-size: 19px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   4. FORM SECTION
+========================================================= */
+
+.battery-form-section {
+
+    width: 100%;
+
+}
+
+
+.battery-form {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   5. FORM CARD
+========================================================= */
+
+.form-card {
+
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 25px;
+
+    padding: 27px;
+
+    background: var(--mount-card);
+
+    border: 1px solid var(--mount-border);
+
+    border-radius: var(--mount-radius);
+
+    box-shadow: var(--mount-shadow);
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.form-card:hover {
+
+    box-shadow: var(--mount-shadow-hover);
+
+}
+
+
+/* =========================================================
+   CARD TOP ACCENT
+========================================================= */
+
+.form-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--mount-primary),
+            var(--mount-secondary)
+        );
+
+}
+
+
+/* =========================================================
+   6. FORM CARD HEADER
+========================================================= */
+
+.form-card-header {
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding-bottom: 22px;
+
+    margin-bottom: 23px;
+
+    border-bottom: 1px solid var(--mount-border-light);
+
+}
+
+
+.card-header-icon {
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: var(--mount-primary-light);
+
+    border: 1px solid #99f6e4;
+
+    font-size: 22px;
+
+}
+
+
+.card-header-text {
+
+    min-width: 0;
+
+}
+
+
+.card-header-text h2 {
+
+    margin: 0;
+
+    color: var(--mount-text-dark);
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+
+}
+
+
+.card-header-text p {
+
+    margin: 5px 0 0;
+
+    color: var(--mount-text-muted);
+
+    font-size: 13px;
+
+    line-height: 1.55;
+
+}
+
+
+/* =========================================================
+   7. FORM GRID
+========================================================= */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+}
+
+
+.form-group {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.form-group.full-width {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/* =========================================================
+   8. LABEL
+========================================================= */
+
+.form-group label,
+.dynamic-file-input label,
+.dynamic-title-input label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--mount-text-dark);
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    line-height: 1.4;
+
+}
+
+
+.form-group label span {
+
+    color: var(--mount-danger);
+
+    margin-left: 3px;
+
+}
+
+
+/* =========================================================
+   9. INPUTS
+========================================================= */
+
+.form-group input[type="text"],
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    color: var(--mount-text-dark);
+
+    background: #ffffff;
+
+    border: 1px solid #cbdedb;
+
+    border-radius: var(--mount-radius-small);
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    box-sizing: border-box;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.form-group input[type="text"] {
+
+    min-height: 48px;
+
+}
+
+
+.form-group textarea {
+
+    min-height: 150px;
+
+    resize: vertical;
+
+}
+
+
+/* =========================================================
+   INPUT PLACEHOLDER
+========================================================= */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.dynamic-title-input input::placeholder {
+
+    color: #a3b4b2;
+
+    opacity: 1;
+
+}
+
+
+/* =========================================================
+   INPUT HOVER
+========================================================= */
+
+.form-group input[type="text"]:hover,
+.form-group textarea:hover {
+
+    border-color: #7dd3c7;
+
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.dynamic-title-input input:focus {
+
+    border-color: var(--mount-primary);
+
+    box-shadow:
+        0 0 0 4px rgba(15, 118, 110, 0.10);
+
+}
+
+
+/* =========================================================
+   FIELD FOCUSED
+========================================================= */
+
+.field-focused label {
+
+    color: var(--mount-primary);
+
+}
+
+
+/* =========================================================
+   FIELD HINT
+========================================================= */
+
+.field-hint {
+
+    margin-top: 7px;
+
+    color: var(--mount-text-light);
+
+    font-size: 11.5px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   10. EXISTING IMAGE GRID
+========================================================= */
+
+.existing-items-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 27px;
+
+}
+
+
+/* =========================================================
+   EXISTING IMAGE CARD
+========================================================= */
+
+.existing-image-card {
+
+    min-width: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fffe
+        );
+
+    border: 1px solid var(--mount-border);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.existing-image-card:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #8bded4;
+
+    box-shadow:
+        0 12px 28px rgba(15, 118, 110, 0.10);
+
+}
+
+
+/* =========================================================
+   EXISTING IMAGE WRAPPER
+========================================================= */
+
+.existing-image-wrapper {
+
+    width: 100%;
+
+    height: 210px;
+
+    padding: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0fdfa,
+            #ecfeff
+        );
+
+    box-sizing: border-box;
+
+}
+
+
+.existing-image-wrapper img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+}
+
+
+/* =========================================================
+   EXISTING IMAGE INFO
+========================================================= */
+
+.existing-image-info {
+
+    min-height: 67px;
+
+    padding: 12px 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    box-sizing: border-box;
+
+}
+
+
+.existing-image-info > div {
+
+    min-width: 0;
+
+}
+
+
+.existing-image-info strong {
+
+    display: block;
+
+    color: var(--mount-text-dark);
+
+    font-size: 12.5px;
+
+    font-weight: 750;
+
+}
+
+
+.existing-image-info small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--mount-text-light);
+
+    font-size: 10.5px;
+
+}
+
+
+/* =========================================================
+   11. DELETE CHECK
+========================================================= */
+
+.delete-check,
+.delete-pdf-check {
+
+    flex-shrink: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+    color: var(--mount-danger);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+.delete-check input,
+.delete-pdf-check input {
+
+    width: 15px;
+    height: 15px;
+
+    margin: 0;
+
+    accent-color: var(--mount-danger);
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   MARKED FOR DELETE
+========================================================= */
+
+.existing-image-card.marked-for-delete,
+.existing-pdf-card.marked-for-delete {
+
+    border-color: #fca5a5;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff5f5,
+            #ffffff
+        );
+
+    box-shadow:
+        0 0 0 3px rgba(220, 38, 38, 0.08);
+
+}
+
+
+.existing-image-card.marked-for-delete
+.existing-image-wrapper img {
+
+    opacity: 0.55;
+
+    filter: grayscale(0.5);
+
+}
+
+
+/* =========================================================
+   12. EMPTY STATE
+========================================================= */
+
+.existing-empty-state {
+
+    min-height: 170px;
+
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fffe,
+            #f0fdfa
+        );
+
+    border: 1px dashed #9bd9d2;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+}
+
+
+.existing-empty-state > span {
+
+    font-size: 32px;
+
+    opacity: 0.8;
+
+}
+
+
+.existing-empty-state strong {
+
+    color: var(--mount-text-dark);
+
+    font-size: 14px;
+
+}
+
+
+.existing-empty-state small {
+
+    color: var(--mount-text-muted);
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   13. DYNAMIC SECTION HEADER
+========================================================= */
+
+.dynamic-section-header {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 25px;
+
+    margin-bottom: 15px;
+
+    padding: 15px 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0fdfa,
+            #ecfeff
+        );
+
+    border: 1px solid #c7e9e5;
+
+    border-radius: 13px;
+
+}
+
+
+.dynamic-section-header > div {
+
+    min-width: 0;
+
+}
+
+
+.dynamic-section-header strong {
+
+    display: block;
+
+    color: var(--mount-text-dark);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+
+.dynamic-section-header small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--mount-text-muted);
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   14. ADD ITEM BUTTON
+========================================================= */
+
+.add-item-btn {
+
+    flex-shrink: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 40px;
+
+    padding: 0 14px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mount-primary),
+            #0d9488
+        );
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 15px rgba(15, 118, 110, 0.16);
+
+    transition: var(--mount-transition);
+
+}
+
+
+.add-item-btn span {
+
+    font-size: 18px;
+
+    line-height: 1;
+
+}
+
+
+.add-item-btn:hover {
+
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mount-primary-dark),
+            var(--mount-primary)
+        );
+
+    box-shadow:
+        0 10px 22px rgba(15, 118, 110, 0.22);
+
+}
+
+
+.add-item-btn:active {
+
+    transform: translateY(0) scale(0.98);
+
+}
+
+
+/* =========================================================
+   BROCHURE ADD BUTTON
+========================================================= */
+
+.brochure-add-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0891b2,
+            #0284c7
+        );
+
+    box-shadow:
+        0 7px 15px rgba(8, 145, 178, 0.15);
+
+}
+
+
+.brochure-add-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0e7490,
+            #0369a1
+        );
+
+}
+
+
+/* =========================================================
+   15. DYNAMIC ITEMS
+========================================================= */
+
+.dynamic-items {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+.dynamic-item {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 14px;
+
+    padding: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fbffff
+        );
+
+    border: 1px solid var(--mount-border);
+
+    border-radius: 14px;
+
+    box-sizing: border-box;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.dynamic-item:hover {
+
+    border-color: #9bd9d2;
+
+    box-shadow:
+        0 9px 24px rgba(15, 118, 110, 0.08);
+
+}
+
+
+/* =========================================================
+   NEW ITEM ANIMATION
+========================================================= */
+
+.dynamic-item.new-item {
+
+    animation:
+        dynamicItemIn 0.35s ease both;
+
+}
+
+
+@keyframes dynamicItemIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(12px)
+            scale(0.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   REMOVE ANIMATION
+========================================================= */
+
+.dynamic-item.remove-item {
+
+    opacity: 0;
+
+    transform:
+        translateX(20px)
+        scale(0.97);
+
+}
+
+
+/* =========================================================
+   16. DYNAMIC ITEM NUMBER
+========================================================= */
+
+.dynamic-item-number {
+
+    width: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    padding-top: 3px;
+
+}
+
+
+.dynamic-item-number span {
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--mount-primary-dark);
+
+    background: var(--mount-primary-light);
+
+    border: 1px solid #99f6e4;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   17. DYNAMIC FILE CONTENT
+========================================================= */
+
+.dynamic-file-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 0.75fr)
+        minmax(180px, 1fr);
+
+    gap: 15px;
+
+    align-items: start;
+
+}
+
+
+/* =========================================================
+   IMAGE ITEM LAYOUT
+========================================================= */
+
+.image-item .dynamic-file-content {
+
+    grid-template-columns:
+        minmax(200px, 0.75fr)
+        minmax(280px, 1.25fr);
+
+}
+
+
+/* =========================================================
+   BROCHURE ITEM LAYOUT
+========================================================= */
+
+.brochure-item .dynamic-file-content {
+
+    grid-template-columns:
+        minmax(200px, 0.8fr)
+        minmax(220px, 1fr)
+        minmax(250px, 1.2fr);
+
+}
+
+
+/* =========================================================
+   18. FILE INPUT
+========================================================= */
+
+.dynamic-file-input,
+.dynamic-title-input {
+
+    min-width: 0;
+
+}
+
+
+.dynamic-file-input small,
+.dynamic-title-input small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--mount-text-light);
+
+    font-size: 10.5px;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================================
+   FILE INPUT STYLE
+========================================================= */
+
+.dynamic-file-input input[type="file"] {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 8px;
+
+    color: var(--mount-text-muted);
+
+    background: #f8fffe;
+
+    border: 1px dashed #9bcfca;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 11.5px;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.dynamic-file-input input[type="file"]:hover {
+
+    border-color: var(--mount-primary);
+
+    background: #f0fdfa;
+
+}
+
+
+.dynamic-file-input input[type="file"]:focus {
+
+    outline: none;
+
+    border-color: var(--mount-primary);
+
+    box-shadow:
+        0 0 0 3px rgba(15, 118, 110, 0.08);
+
+}
+
+
+/* =========================================================
+   FILE BUTTON
+========================================================= */
+
+.dynamic-file-input input[type="file"]::file-selector-button {
+
+    margin-right: 9px;
+
+    padding: 8px 11px;
+
+    color: #ffffff;
+
+    background: var(--mount-primary);
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   19. TITLE INPUT
+========================================================= */
+
+.dynamic-title-input input {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    padding: 11px 13px;
+
+    color: var(--mount-text-dark);
+
+    background: #ffffff;
+
+    border: 1px solid #cbdedb;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    box-sizing: border-box;
+
+    transition: var(--mount-transition);
+
+}
+
+
+/* =========================================================
+   20. DYNAMIC PREVIEW
+========================================================= */
+
+.dynamic-preview {
+
+    min-width: 0;
+
+    min-height: 145px;
+
+    border: 1px dashed #9bd9d2;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fffe,
+            #f0fdfa
+        );
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   PREVIEW PLACEHOLDER
+========================================================= */
+
+.preview-placeholder {
+
+    min-height: 145px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    text-align: center;
+
+}
+
+
+.preview-placeholder span {
+
+    font-size: 28px;
+
+    opacity: 0.7;
+
+}
+
+
+.preview-placeholder small {
+
+    color: var(--mount-text-light);
+
+    font-size: 10.5px;
+
+}
+
+
+.preview-placeholder.error {
+
+    color: var(--mount-danger);
+
+    background: #fff7f7;
+
+}
+
+
+.preview-placeholder.error small {
+
+    color: var(--mount-danger);
+
+}
+
+
+/* =========================================================
+   21. IMAGE PREVIEW RESULT
+========================================================= */
+
+.image-preview-result {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 145px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 8px;
+
+    box-sizing: border-box;
+
+}
+
+
+.image-preview-result img {
+
+    width: 100%;
+
+    height: 115px;
+
+    display: block;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+}
+
+
+.image-preview-name {
+
+    width: 100%;
+
+    margin-top: 6px;
+
+    padding: 0 5px;
+
+    color: var(--mount-text-muted);
+
+    font-size: 9.5px;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   22. PDF PREVIEW
+========================================================= */
+
+.pdf-file-preview {
+
+    min-width: 0;
+
+    min-height: 105px;
+
+    border: 1px dashed #a5d9e2;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fdff,
+            #ecfeff
+        );
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   PDF PLACEHOLDER
+========================================================= */
+
+.pdf-placeholder {
+
+    min-height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+
+}
+
+
+.pdf-placeholder > span {
+
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--mount-secondary-light);
+
+    border: 1px solid #a5f3fc;
+
+    border-radius: 10px;
+
+    font-size: 21px;
+
+}
+
+
+.pdf-placeholder strong {
+
+    display: block;
+
+    color: var(--mount-text-dark);
+
+    font-size: 12px;
+
+}
+
+
+.pdf-placeholder small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--mount-text-muted);
+
+    font-size: 10px;
+
+}
+
+
+.pdf-placeholder.error {
+
+    background: var(--mount-danger-light);
+
+}
+
+
+.pdf-placeholder.error > span {
+
+    background: #ffffff;
+
+    border-color: #fecaca;
+
+}
+
+
+/* =========================================================
+   23. PDF SELECTED
+========================================================= */
+
+.pdf-selected {
+
+    min-height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    box-sizing: border-box;
+
+}
+
+
+.pdf-selected-icon {
+
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--mount-danger-light);
+
+    border: 1px solid #fecaca;
+
+    border-radius: 10px;
+
+    font-size: 22px;
+
+}
+
+
+.pdf-selected-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+
+.pdf-selected-info strong {
+
+    display: block;
+
+    color: var(--mount-text-dark);
+
+    font-size: 12px;
+
+    font-weight: 750;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+.pdf-selected-info small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--mount-text-muted);
+
+    font-size: 10px;
+
+}
+
+
+.pdf-check {
+
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background: var(--mount-success);
+
+    border-radius: 50%;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   24. REMOVE BUTTON
+========================================================= */
+
+.remove-item-btn {
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    align-self: center;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--mount-danger);
+
+    background: var(--mount-danger-light);
+
+    border: 1px solid #fecaca;
+
+    border-radius: 9px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.remove-item-btn:hover:not(:disabled) {
+
+    color: #ffffff;
+
+    background: var(--mount-danger);
+
+    border-color: var(--mount-danger);
+
+    transform: rotate(4deg) scale(1.05);
+
+}
+
+
+.remove-item-btn:active:not(:disabled) {
+
+    transform: scale(0.95);
+
+}
+
+
+.remove-item-btn:disabled {
+
+    color: #b9c5c4;
+
+    background: #f1f5f5;
+
+    border-color: #e1e8e7;
+
+    cursor: not-allowed;
+
+    opacity: 0.75;
+
+}
+
+
+/* =========================================================
+   25. DYNAMIC INFO
+========================================================= */
+
+.dynamic-info {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-top: 17px;
+
+    padding: 13px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0fdfa,
+            #ecfeff
+        );
+
+    border: 1px solid #c7e9e5;
+
+    border-radius: 11px;
+
+}
+
+
+.dynamic-info > span {
+
+    width: 22px;
+    height: 22px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--mount-primary);
+
+    background: #ffffff;
+
+    border: 1px solid #a7e6df;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+.dynamic-info p {
+
+    margin: 0;
+
+    color: var(--mount-text-muted);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+.dynamic-info strong {
+
+    color: var(--mount-primary-dark);
+
+}
+
+
+/* =========================================================
+   26. EXISTING PDF LIST
+========================================================= */
+
+.existing-pdf-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+
+    margin-bottom: 24px;
+
+}
+
+
+/* =========================================================
+   EXISTING PDF CARD
+========================================================= */
+
+.existing-pdf-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 72px;
+
+    padding: 12px 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f9feff
+        );
+
+    border: 1px solid var(--mount-border);
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.existing-pdf-card:hover {
+
+    border-color: #9edbe5;
+
+    box-shadow:
+        0 7px 18px rgba(8, 145, 178, 0.08);
+
+}
+
+
+/* =========================================================
+   PDF ICON
+========================================================= */
+
+.existing-pdf-icon {
+
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--mount-danger-light);
+
+    border: 1px solid #fecaca;
+
+    border-radius: 10px;
+
+    font-size: 21px;
+
+}
+
+
+/* =========================================================
+   PDF INFO
+========================================================= */
+
+.existing-pdf-info {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+.existing-pdf-info strong {
+
+    display: block;
+
+    color: var(--mount-text-dark);
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+.existing-pdf-info small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--mount-text-light);
+
+    font-size: 10.5px;
+
+}
+
+
+/* =========================================================
+   VIEW EXISTING PDF
+========================================================= */
+
+.view-existing-pdf {
+
+    flex-shrink: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 35px;
+
+    padding: 0 11px;
+
+    color: var(--mount-secondary);
+
+    background: var(--mount-secondary-light);
+
+    border: 1px solid #a5f3fc;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 750;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.view-existing-pdf:hover {
+
+    color: #ffffff;
+
+    background: var(--mount-secondary);
+
+    border-color: var(--mount-secondary);
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   PDF EMPTY STATE
+========================================================= */
+
+.pdf-empty {
+
+    min-height: 130px;
+
+}
+
+
+/* =========================================================
+   27. UPDATE SUMMARY
+========================================================= */
+
+.edit-summary-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f7fffd
+        );
+
+}
+
+
+.edit-summary-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 15px;
+
+}
+
+
+/* =========================================================
+   SUMMARY ITEM
+========================================================= */
+
+.summary-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+
+    padding: 14px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--mount-border);
+
+    border-radius: 12px;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.summary-item:hover {
+
+    border-color: #9bd9d2;
+
+    transform: translateY(-2px);
+
+}
+
+
+.summary-icon {
+
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--mount-primary-light);
+
+    border: 1px solid #99f6e4;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+
+}
+
+
+.summary-item strong {
+
+    display: block;
+
+    color: var(--mount-text-dark);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+.summary-item small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--mount-text-muted);
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+/* =========================================================
+   28. FORM ACTIONS
+========================================================= */
+
+.form-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 20px 22px;
+
+    margin-bottom: 30px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--mount-border);
+
+    border-radius: 15px;
+
+    box-shadow: var(--mount-shadow);
+
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+========================================================= */
+
+.cancel-btn {
+
+    min-height: 47px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 21px;
+
+    color: var(--mount-text-muted);
+
+    background: #ffffff;
+
+    border: 1px solid #cbd5d3;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    transition: var(--mount-transition);
+
+}
+
+
+.cancel-btn:hover {
+
+    color: var(--mount-text-dark);
+
+    background: #f8fafc;
+
+    border-color: #94a3a1;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================================
+   29. SUBMIT BUTTON
+========================================================= */
+
+.submit-btn {
+
+    min-height: 49px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 0 21px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mount-success),
+            #15803d
+        );
+
+    border: none;
+
+    border-radius: 11px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 20px rgba(22, 163, 74, 0.17);
+
+    transition: var(--mount-transition);
+
+}
+
+
+.submit-icon {
+
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.16);
+
+    border-radius: 50%;
+
+    font-size: 13px;
+
+}
+
+
+.submit-arrow {
+
+    font-size: 17px;
+
+    transition: transform 0.2s ease;
+
+}
+
+
+.submit-btn:hover {
+
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #15803d,
+            #166534
+        );
+
+    box-shadow:
+        0 12px 25px rgba(22, 163, 74, 0.24);
+
+}
+
+
+.submit-btn:hover .submit-arrow {
+
+    transform: translateX(3px);
+
+}
+
+
+.submit-btn:active {
+
+    transform: translateY(0) scale(0.98);
+
+}
+
+
+/* =========================================================
+   30. SUBMIT LOADING
+========================================================= */
+
+.submit-btn.loading {
+
+    cursor: wait;
+
+    opacity: 0.9;
+
+}
+
+
+.submit-spinner {
+
+    display: inline-block;
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    animation:
+        submitSpin 0.8s linear infinite;
+
+}
+
+
+@keyframes submitSpin {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   31. BUTTON CLICK EFFECT
+========================================================= */
+
+.button-clicked {
+
+    animation:
+        buttonClick 0.4s ease;
+
+}
+
+
+@keyframes buttonClick {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    45% {
+
+        transform: scale(0.96);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   32. DISABLED SUBMIT
+========================================================= */
+
+.submit-btn:disabled {
+
+    cursor: wait;
+
+}
+
+
+/* =========================================================
+   33. SELECTION
+========================================================= */
+
+.battery-admin-page ::selection {
+
+    color: #ffffff;
+
+    background: var(--mount-primary);
+
+}
+
+
+/* =========================================================
+   34. SCROLLBAR
+========================================================= */
+
+.battery-admin-page ::-webkit-scrollbar {
+
+    width: 8px;
+    height: 8px;
+
+}
+
+
+.battery-admin-page ::-webkit-scrollbar-track {
+
+    background: #edf7f6;
+
+    border-radius: 20px;
+
+}
+
+
+.battery-admin-page ::-webkit-scrollbar-thumb {
+
+    background: #9bcfc9;
+
+    border-radius: 20px;
+
+}
+
+
+.battery-admin-page ::-webkit-scrollbar-thumb:hover {
+
+    background: var(--mount-primary);
+
+}
+
+
+/* =========================================================
+   35. TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .battery-admin-page {
+
+        padding: 24px;
+
+    }
+
+
+    .existing-items-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .brochure-item .dynamic-file-content {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .brochure-item
+    .pdf-file-preview {
+
+        grid-column: 1 / -1;
+
+    }
+
+}
+
+
+/* =========================================================
+   36. MEDIUM TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .battery-admin-page {
+
+        padding: 20px;
+
+    }
+
+
+    .admin-page-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 22px;
+
+    }
+
+
+    .back-btn {
+
+        width: 100%;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .form-group.full-width {
+
+        grid-column: auto;
+
+    }
+
+
+    .edit-summary-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .dynamic-item {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .dynamic-file-content {
+
+        width: calc(100% - 50px);
+
+        flex: none;
+
+    }
+
+
+    .remove-item-btn {
+
+        position: absolute;
+
+        top: 14px;
+
+        right: 14px;
+
+    }
+
+
+    .dynamic-item-number {
+
+        width: 35px;
+
+    }
+
+
+    .dynamic-file-content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .image-item .dynamic-file-content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .brochure-item .dynamic-file-content {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        padding-right: 42px;
+
+    }
+
+
+    .brochure-item
+    .pdf-file-preview {
+
+        grid-column: 1 / -1;
+
+    }
+
+}
+
+
+/* =========================================================
+   37. MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .battery-admin-page {
+
+        padding: 14px;
+
+    }
+
+
+    .admin-page-header {
+
+        margin-bottom: 18px;
+
+        padding: 18px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .header-content {
+
+        align-items: flex-start;
+
+    }
+
+
+    .header-icon {
+
+        width: 50px;
+        height: 50px;
+
+        border-radius: 12px;
+
+        font-size: 23px;
+
+    }
+
+
+    .header-label {
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+
+    }
+
+
+    .header-text h1 {
+
+        font-size: 22px;
+
+    }
+
+
+    .header-text p {
+
+        font-size: 12px;
+
+    }
+
+
+    .form-card {
+
+        padding: 18px;
+
+        margin-bottom: 17px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .form-card-header {
+
+        align-items: flex-start;
+
+        gap: 11px;
+
+        padding-bottom: 17px;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .card-header-icon {
+
+        width: 40px;
+        height: 40px;
+
+        border-radius: 10px;
+
+        font-size: 18px;
+
+    }
+
+
+    .card-header-text h2 {
+
+        font-size: 16px;
+
+    }
+
+
+    .card-header-text p {
+
+        font-size: 11px;
+
+    }
+
+
+    .form-grid {
+
+        gap: 17px;
+
+    }
+
+
+    .existing-items-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+
+    }
+
+
+    .existing-image-wrapper {
+
+        height: 230px;
+
+    }
+
+
+    .dynamic-section-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+
+    .add-item-btn {
+
+        width: 100%;
+
+    }
+
+
+    .dynamic-item {
+
+        gap: 9px;
+
+        padding: 13px;
+
+    }
+
+
+    .dynamic-item-number {
+
+        width: 30px;
+
+    }
+
+
+    .dynamic-item-number span {
+
+        width: 29px;
+        height: 29px;
+
+        font-size: 11px;
+
+    }
+
+
+    .dynamic-file-content {
+
+        width: calc(100% - 40px);
+
+    }
+
+
+    .brochure-item .dynamic-file-content {
+
+        grid-template-columns: 1fr;
+
+        padding-right: 0;
+
+    }
+
+
+    .brochure-item
+    .pdf-file-preview {
+
+        grid-column: auto;
+
+    }
+
+
+    .remove-item-btn {
+
+        top: 10px;
+
+        right: 10px;
+
+        width: 30px;
+        height: 30px;
+
+        font-size: 19px;
+
+    }
+
+
+    .dynamic-preview {
+
+        min-height: 155px;
+
+    }
+
+
+    .preview-placeholder {
+
+        min-height: 155px;
+
+    }
+
+
+    .existing-pdf-card {
+
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .existing-pdf-info {
+
+        width: calc(100% - 60px);
+
+    }
+
+
+    .view-existing-pdf {
+
+        margin-left: 56px;
+
+    }
+
+
+    .delete-pdf-check {
+
+        margin-left: auto;
+
+    }
+
+
+    .edit-summary-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .form-actions {
+
+        align-items: stretch;
+
+        flex-direction: column-reverse;
+
+        padding: 15px;
+
+    }
+
+
+    .cancel-btn,
+    .submit-btn {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   38. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .battery-admin-page {
+
+        padding: 10px;
+
+    }
+
+
+    .admin-page-header {
+
+        padding: 15px;
+
+    }
+
+
+    .header-content {
+
+        gap: 10px;
+
+    }
+
+
+    .header-icon {
+
+        width: 43px;
+        height: 43px;
+
+        font-size: 20px;
+
+    }
+
+
+    .header-text h1 {
+
+        font-size: 19px;
+
+    }
+
+
+    .header-text p {
+
+        font-size: 11px;
+
+    }
+
+
+    .form-card {
+
+        padding: 14px;
+
+    }
+
+
+    .form-group input[type="text"],
+    .form-group textarea {
+
+        font-size: 13px;
+
+    }
+
+
+    .existing-image-wrapper {
+
+        height: 200px;
+
+    }
+
+
+    .dynamic-info {
+
+        padding: 11px;
+
+    }
+
+
+    .dynamic-info p {
+
+        font-size: 10px;
+
+    }
+
+
+    .pdf-selected,
+    .pdf-placeholder {
+
+        padding: 11px;
+
+    }
+
+
+    .pdf-selected-icon,
+    .pdf-placeholder > span {
+
+        width: 38px;
+        height: 38px;
+
+    }
+
+
+    .summary-item {
+
+        padding: 11px;
+
+    }
+
+
+    .summary-icon {
+
+        width: 35px;
+        height: 35px;
+
+        font-size: 16px;
+
+    }
+
+}
+
+
+/* =========================================================
+   39. VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 350px) {
+
+    .header-content {
+
+        flex-direction: column;
+
+    }
+
+
+    .header-icon {
+
+        width: 42px;
+        height: 42px;
+
+    }
+
+
+    .existing-pdf-card {
+
+        gap: 9px;
+
+    }
+
+
+    .existing-pdf-info {
+
+        width: calc(100% - 52px);
+
+    }
+
+
+    .view-existing-pdf {
+
+        width: 100%;
+
+        margin-left: 0;
+
+    }
+
+
+    .delete-pdf-check {
+
+        margin-left: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   40. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .battery-admin-page *,
+    .battery-admin-page *::before,
+    .battery-admin-page *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}

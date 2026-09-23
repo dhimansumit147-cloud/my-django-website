@@ -1,0 +1,2182 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Edit Mounting Kits | SunGreen Solar Admin
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/admin/edit_mounting_kits.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="battery-admin-page edit-battery-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <section class="admin-page-header">
+
+        <div class="header-content">
+
+            <div class="header-icon">
+                🔩
+            </div>
+
+            <div class="header-text">
+
+                <span class="header-label">
+                    SUNGREEN SOLAR ADMIN
+                </span>
+
+                <h1>
+                    Edit Mounting Kits
+                </h1>
+
+                <p>
+                    Update your mounting kit product information,
+                    images and brochures.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BACK TO MANAGE -->
+
+        <a
+            href="{% url 'mounting_kits' %}"
+            class="back-btn"
+        >
+
+            <span class="back-icon">
+                ←
+            </span>
+
+            <span>
+                Back to Manage
+            </span>
+
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FORM SECTION
+    ====================================================== -->
+
+    <section class="battery-form-section">
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+            class="battery-form edit-battery-form"
+        >
+
+            {% csrf_token %}
+
+
+
+            <!-- =================================================
+                 PRODUCT INFORMATION
+            ================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        🔩
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Product Information
+                        </h2>
+
+                        <p>
+                            Update the basic details of your mounting
+                            kit product.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FORM GRID -->
+
+                <div class="form-grid">
+
+
+                    <!-- =================================================
+                         CATEGORY
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <label for="category">
+
+                            Category
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="category"
+                            id="category"
+                            value="{{ product.category }}"
+                            placeholder="e.g. Roof Mounting, Ground Mounting, Solar Mounting"
+                            autocomplete="off"
+                            required
+                        >
+
+                        <div class="field-hint">
+
+                            Update the mounting kit product category.
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         PRODUCT HEADING
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <label for="name1">
+
+                            Name 1 / Main Heading
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name1"
+                            id="name1"
+                            value="{{ product.name1 }}"
+                            placeholder="e.g. Solar Roof Mounting Kit"
+                            autocomplete="off"
+                            required
+                        >
+
+                        <div class="field-hint">
+
+                            Update the main name or heading of the
+                            mounting kit product.
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         PRODUCT SUBHEADING
+                    ================================================== -->
+
+                    <div class="form-group full-width">
+
+                        <label for="name2">
+
+                            Name 2 / Subheading
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name2"
+                            id="name2"
+                            value="{{ product.name2 }}"
+                            placeholder="e.g. Strong & Durable Solar Panel Mounting System"
+                            autocomplete="off"
+                        >
+
+                        <div class="field-hint">
+
+                            Update the product tagline or subheading.
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         DESCRIPTION
+                    ================================================== -->
+
+                    <div class="form-group full-width">
+
+                        <label for="description">
+
+                            Product Description
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+                        <textarea
+                            name="description"
+                            id="description"
+                            rows="7"
+                            placeholder="Enter detailed information about this mounting kit..."
+                            required
+                        >{{ product.description }}</textarea>
+
+                        <div class="field-hint">
+
+                            Update material, strength, compatibility,
+                            installation, durability and applications.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EXISTING PRODUCT IMAGES
+            ================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        🖼️
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Existing Product Images
+                        </h2>
+
+                        <p>
+                            View your current mounting kit images.
+                            Add new images below if required.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EXISTING IMAGE GRID -->
+
+                <div class="existing-items-grid">
+
+                    {% if product.images.all %}
+
+                        {% for image in product.images.all %}
+
+                            <div class="existing-image-card">
+
+                                <div class="existing-image-wrapper">
+
+                                    <img
+                                        src="{{ image.image.url }}"
+                                        alt="{{ product.name1 }}"
+                                    >
+
+                                </div>
+
+
+                                <div class="existing-image-info">
+
+                                    <div>
+
+                                        <strong>
+                                            Image {{ forloop.counter }}
+                                        </strong>
+
+                                        <small>
+                                            Current product image
+                                        </small>
+
+                                    </div>
+
+                                    {% if image.id %}
+
+                                        <label class="delete-check">
+
+                                            <input
+                                                type="checkbox"
+                                                name="delete_images"
+                                                value="{{ image.id }}"
+                                            >
+
+                                            <span>
+                                                Remove
+                                            </span>
+
+                                        </label>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% elif product.image %}
+
+                        <!-- FALLBACK FOR SINGLE IMAGE MODEL -->
+
+                        <div class="existing-image-card">
+
+                            <div class="existing-image-wrapper">
+
+                                <img
+                                    src="{{ product.image.url }}"
+                                    alt="{{ product.name1 }}"
+                                >
+
+                            </div>
+
+                            <div class="existing-image-info">
+
+                                <div>
+
+                                    <strong>
+                                        Main Product Image
+                                    </strong>
+
+                                    <small>
+                                        Current product image
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="existing-empty-state">
+
+                            <span>
+                                🖼️
+                            </span>
+
+                            <strong>
+                                No Existing Images
+                            </strong>
+
+                            <small>
+                                Add a new product image below.
+                            </small>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ADD NEW IMAGES
+                ================================================== -->
+
+                <div class="dynamic-section-header">
+
+                    <div>
+
+                        <strong>
+                            Add New Mounting Kit Images
+                        </strong>
+
+                        <small>
+                            Add as many new product images as required.
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-item-btn"
+                        id="addImageBtn"
+                    >
+
+                        <span>
+                            +
+                        </span>
+
+                        Add Image
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- IMAGE CONTAINER -->
+
+                <div
+                    id="imageFields"
+                    class="dynamic-items"
+                >
+
+                    <!-- FIRST NEW IMAGE -->
+
+                    <div class="dynamic-item image-item">
+
+                        <div class="dynamic-item-number">
+
+                            <span>
+                                1
+                            </span>
+
+                        </div>
+
+
+                        <div class="dynamic-file-content">
+
+                            <!-- IMAGE FILE -->
+
+                            <div class="dynamic-file-input">
+
+                                <label>
+                                    New Product Image
+                                </label>
+
+                                <input
+                                    type="file"
+                                    name="images"
+                                    class="image-input"
+                                    accept=".jpg,.jpeg,.png,.webp"
+                                >
+
+                                <small>
+                                    JPG, JPEG, PNG or WEBP
+                                </small>
+
+                            </div>
+
+
+                            <!-- IMAGE PREVIEW -->
+
+                            <div class="dynamic-preview image-preview-single">
+
+                                <div class="preview-placeholder">
+
+                                    <span>
+                                        🖼️
+                                    </span>
+
+                                    <small>
+                                        New image preview
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- REMOVE -->
+
+                        <button
+                            type="button"
+                            class="remove-item-btn"
+                            disabled
+                            title="First image cannot be removed"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- IMAGE INFORMATION -->
+
+                <div class="dynamic-info">
+
+                    <span>
+                        ℹ
+                    </span>
+
+                    <p>
+
+                        Existing images are shown above.
+
+                        <strong>
+                            Select images to add new product photos.
+                        </strong>
+
+                        Your existing images will remain unless removed
+                        by your backend logic.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EXISTING PDF DOCUMENTS
+            ================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        📄
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Existing Brochures / PDFs
+                        </h2>
+
+                        <p>
+                            View your current mounting kit brochures,
+                            datasheets and technical documents.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EXISTING PDF LIST -->
+
+                <div class="existing-pdf-list">
+
+                    {% if product.pdfs.all %}
+
+                        {% for pdf in product.pdfs.all %}
+
+                            <div class="existing-pdf-card">
+
+                                <div class="existing-pdf-icon">
+                                    📄
+                                </div>
+
+
+                                <div class="existing-pdf-info">
+
+                                    <strong>
+
+                                        {% if pdf.title %}
+
+                                            {{ pdf.title }}
+
+                                        {% else %}
+
+                                            Mounting Kit Document {{ forloop.counter }}
+
+                                        {% endif %}
+
+                                    </strong>
+
+                                    <small>
+                                        Current PDF document
+                                    </small>
+
+                                </div>
+
+
+                                {% if pdf.pdf %}
+
+                                    <a
+                                        href="{{ pdf.pdf.url }}"
+                                        target="_blank"
+                                        class="view-existing-pdf"
+                                    >
+
+                                        View PDF
+                                        →
+
+                                    </a>
+
+                                {% endif %}
+
+
+                                {% if pdf.id %}
+
+                                    <label class="delete-pdf-check">
+
+                                        <input
+                                            type="checkbox"
+                                            name="delete_pdfs"
+                                            value="{{ pdf.id }}"
+                                        >
+
+                                        <span>
+                                            Remove
+                                        </span>
+
+                                    </label>
+
+                                {% endif %}
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% elif product.pdf %}
+
+                        <!-- FALLBACK FOR SINGLE PDF MODEL -->
+
+                        <div class="existing-pdf-card">
+
+                            <div class="existing-pdf-icon">
+                                📄
+                            </div>
+
+
+                            <div class="existing-pdf-info">
+
+                                <strong>
+                                    Current Product Brochure
+                                </strong>
+
+                                <small>
+                                    Existing PDF document
+                                </small>
+
+                            </div>
+
+
+                            <a
+                                href="{{ product.pdf.url }}"
+                                target="_blank"
+                                class="view-existing-pdf"
+                            >
+
+                                View PDF
+                                →
+
+                            </a>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="existing-empty-state pdf-empty">
+
+                            <span>
+                                📄
+                            </span>
+
+                            <strong>
+                                No Existing Brochures
+                            </strong>
+
+                            <small>
+                                Add a new PDF document below.
+                            </small>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ADD NEW BROCHURES
+                ================================================== -->
+
+                <div class="dynamic-section-header">
+
+                    <div>
+
+                        <strong>
+                            Add New Mounting Kit Documents
+                        </strong>
+
+                        <small>
+                            Add multiple brochures and datasheets.
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-item-btn brochure-add-btn"
+                        id="addBrochureBtn"
+                    >
+
+                        <span>
+                            +
+                        </span>
+
+                        Add Brochure
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- BROCHURE CONTAINER -->
+
+                <div
+                    id="brochureFields"
+                    class="dynamic-items"
+                >
+
+                    <!-- FIRST NEW BROCHURE -->
+
+                    <div class="dynamic-item brochure-item">
+
+                        <div class="dynamic-item-number">
+
+                            <span>
+                                1
+                            </span>
+
+                        </div>
+
+
+                        <div class="dynamic-file-content">
+
+
+                            <!-- PDF FILE -->
+
+                            <div class="dynamic-file-input">
+
+                                <label>
+                                    New Brochure / PDF
+                                </label>
+
+                                <input
+                                    type="file"
+                                    name="pdfs"
+                                    class="pdf-input"
+                                    accept=".pdf,application/pdf"
+                                >
+
+                                <small>
+                                    PDF files only
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- PDF TITLE -->
+
+                            <div class="dynamic-title-input">
+
+                                <label>
+                                    PDF Title
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="pdf_titles"
+                                    class="pdf-title-input"
+                                    placeholder="e.g. Solar Mounting Kit Datasheet"
+                                    autocomplete="off"
+                                >
+
+                                <small>
+                                    Enter a title for this document.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- PDF PREVIEW -->
+
+                            <div class="pdf-file-preview">
+
+                                <div class="pdf-placeholder">
+
+                                    <span>
+                                        📄
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            No PDF selected
+                                        </strong>
+
+                                        <small>
+                                            Select a brochure or datasheet
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- REMOVE -->
+
+                        <button
+                            type="button"
+                            class="remove-item-btn"
+                            disabled
+                            title="First brochure cannot be removed"
+                        >
+
+                            ×
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PDF INFORMATION -->
+
+                <div class="dynamic-info">
+
+                    <span>
+                        ℹ
+                    </span>
+
+                    <p>
+
+                        Existing PDFs are shown above.
+
+                        <strong>
+                            Add new PDF documents
+                        </strong>
+
+                        using the button above. Each document can have
+                        its own title.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 UPDATE SUMMARY
+            ================================================== -->
+
+            <div class="form-card edit-summary-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        ✨
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Update Summary
+                        </h2>
+
+                        <p>
+                            Review your changes before updating the product.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="edit-summary-grid">
+
+                    <div class="summary-item">
+
+                        <span class="summary-icon">
+                            🔩
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Product
+                            </strong>
+
+                            <small>
+                                {{ product.name1 }}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span class="summary-icon">
+                            🖼️
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Images
+                            </strong>
+
+                            <small>
+                                Existing + new images
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span class="summary-icon">
+                            📄
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Documents
+                            </strong>
+
+                            <small>
+                                Existing + new PDFs
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORM ACTIONS
+            ================================================== -->
+
+            <div class="form-actions">
+
+
+                <!-- CANCEL -->
+
+                <a
+                    href="{% url 'mounting_kits' %}"
+                    class="cancel-btn"
+                >
+
+                    <span>
+                        Cancel
+                    </span>
+
+                </a>
+
+
+
+                <!-- UPDATE -->
+
+                <button
+                    type="submit"
+                    class="submit-btn update-submit-btn"
+                >
+
+                    <span class="submit-icon">
+                        ✓
+                    </span>
+
+                    <span class="submit-text">
+                        Update Mounting Kits
+                    </span>
+
+                    <span class="submit-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
+    const imageFields =
+        document.getElementById("imageFields");
+
+    const addImageBtn =
+        document.getElementById("addImageBtn");
+
+    const brochureFields =
+        document.getElementById("brochureFields");
+
+    const addBrochureBtn =
+        document.getElementById("addBrochureBtn");
+
+    let imageCount = 1;
+
+    let brochureCount = 1;
+
+
+
+    /* =====================================================
+       UPDATE IMAGE NUMBERS
+    ===================================================== */
+
+    function updateImageNumbers() {
+
+        const items =
+            imageFields.querySelectorAll(
+                ".image-item"
+            );
+
+        items.forEach(function (item, index) {
+
+            const number =
+                item.querySelector(
+                    ".dynamic-item-number span"
+                );
+
+            if (number) {
+
+                number.textContent =
+                    index + 1;
+
+            }
+
+        });
+
+        imageCount = items.length;
+
+    }
+
+
+
+    /* =====================================================
+       UPDATE BROCHURE NUMBERS
+    ===================================================== */
+
+    function updateBrochureNumbers() {
+
+        const items =
+            brochureFields.querySelectorAll(
+                ".brochure-item"
+            );
+
+        items.forEach(function (item, index) {
+
+            const number =
+                item.querySelector(
+                    ".dynamic-item-number span"
+                );
+
+            if (number) {
+
+                number.textContent =
+                    index + 1;
+
+            }
+
+        });
+
+        brochureCount = items.length;
+
+    }
+
+
+
+    /* =====================================================
+       IMAGE PREVIEW
+    ===================================================== */
+
+    function setupImagePreview(input) {
+
+        input.addEventListener(
+            "change",
+            function () {
+
+                const item =
+                    this.closest(".image-item");
+
+                const preview =
+                    item.querySelector(
+                        ".image-preview-single"
+                    );
+
+
+                preview.innerHTML = "";
+
+
+                if (
+                    !this.files ||
+                    !this.files[0]
+                ) {
+
+                    preview.innerHTML = `
+
+                        <div class="preview-placeholder">
+
+                            <span>
+                                🖼️
+                            </span>
+
+                            <small>
+                                New image preview
+                            </small>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                const file =
+                    this.files[0];
+
+
+                if (
+                    !file.type.startsWith("image/")
+                ) {
+
+                    preview.innerHTML = `
+
+                        <div class="preview-placeholder error">
+
+                            <span>
+                                ⚠️
+                            </span>
+
+                            <small>
+                                Invalid image file
+                            </small>
+
+                        </div>
+
+                    `;
+
+                    this.value = "";
+
+                    return;
+
+                }
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function (event) {
+
+                        preview.innerHTML = `
+
+                            <div class="image-preview-result">
+
+                                <img
+                                    src="${event.target.result}"
+                                    alt="${file.name}"
+                                >
+
+                                <div class="image-preview-name">
+
+                                    ${file.name}
+
+                                </div>
+
+                            </div>
+
+                        `;
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       PDF PREVIEW
+    ===================================================== */
+
+    function setupPdfPreview(input) {
+
+        input.addEventListener(
+            "change",
+            function () {
+
+                const item =
+                    this.closest(".brochure-item");
+
+                const preview =
+                    item.querySelector(
+                        ".pdf-file-preview"
+                    );
+
+
+                if (
+                    !this.files ||
+                    !this.files[0]
+                ) {
+
+                    preview.innerHTML = `
+
+                        <div class="pdf-placeholder">
+
+                            <span>
+                                📄
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    No PDF selected
+                                </strong>
+
+                                <small>
+                                    Select a brochure or datasheet
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                const file =
+                    this.files[0];
+
+
+                const isPDF =
+                    file.type === "application/pdf"
+                    ||
+                    file.name
+                        .toLowerCase()
+                        .endsWith(".pdf");
+
+
+                if (!isPDF) {
+
+                    preview.innerHTML = `
+
+                        <div class="pdf-placeholder error">
+
+                            <span>
+                                ⚠️
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Invalid PDF
+                                </strong>
+
+                                <small>
+                                    Please select a PDF file
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                    this.value = "";
+
+                    return;
+
+                }
+
+
+                const fileSize =
+                    (
+                        file.size /
+                        1024 /
+                        1024
+                    ).toFixed(2);
+
+
+                preview.innerHTML = `
+
+                    <div class="pdf-selected">
+
+                        <div class="pdf-selected-icon">
+                            📄
+                        </div>
+
+                        <div class="pdf-selected-info">
+
+                            <strong>
+                                ${file.name}
+                            </strong>
+
+                            <small>
+                                PDF • ${fileSize} MB
+                            </small>
+
+                        </div>
+
+                        <span class="pdf-check">
+                            ✓
+                        </span>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       ADD IMAGE
+    ===================================================== */
+
+    if (addImageBtn) {
+
+        addImageBtn.addEventListener(
+            "click",
+            function () {
+
+                imageCount++;
+
+
+                const item =
+                    document.createElement("div");
+
+
+                item.className =
+                    "dynamic-item image-item new-item";
+
+
+                item.innerHTML = `
+
+                    <div class="dynamic-item-number">
+
+                        <span>
+                            ${imageCount}
+                        </span>
+
+                    </div>
+
+
+                    <div class="dynamic-file-content">
+
+
+                        <div class="dynamic-file-input">
+
+                            <label>
+                                New Product Image
+                            </label>
+
+                            <input
+                                type="file"
+                                name="images"
+                                class="image-input"
+                                accept=".jpg,.jpeg,.png,.webp"
+                            >
+
+                            <small>
+                                JPG, JPEG, PNG or WEBP
+                            </small>
+
+                        </div>
+
+
+                        <div class="dynamic-preview image-preview-single">
+
+                            <div class="preview-placeholder">
+
+                                <span>
+                                    🖼️
+                                </span>
+
+                                <small>
+                                    New image preview
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="remove-item-btn"
+                        title="Remove image"
+                    >
+
+                        ×
+
+                    </button>
+
+                `;
+
+
+                imageFields.appendChild(item);
+
+
+                setupImagePreview(
+                    item.querySelector(
+                        ".image-input"
+                    )
+                );
+
+
+                updateImageNumbers();
+
+
+                setTimeout(
+                    function () {
+
+                        item.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+
+                    },
+                    100
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       REMOVE IMAGE
+    ===================================================== */
+
+    if (imageFields) {
+
+        imageFields.addEventListener(
+            "click",
+            function (event) {
+
+                const removeBtn =
+                    event.target.closest(
+                        ".remove-item-btn"
+                    );
+
+
+                if (!removeBtn) {
+                    return;
+                }
+
+
+                if (removeBtn.disabled) {
+                    return;
+                }
+
+
+                const item =
+                    removeBtn.closest(
+                        ".image-item"
+                    );
+
+
+                if (!item) {
+                    return;
+                }
+
+
+                item.classList.add(
+                    "remove-item"
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        item.remove();
+
+                        updateImageNumbers();
+
+                    },
+                    250
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       ADD BROCHURE
+    ===================================================== */
+
+    if (addBrochureBtn) {
+
+        addBrochureBtn.addEventListener(
+            "click",
+            function () {
+
+                brochureCount++;
+
+
+                const item =
+                    document.createElement("div");
+
+
+                item.className =
+                    "dynamic-item brochure-item new-item";
+
+
+                item.innerHTML = `
+
+                    <div class="dynamic-item-number">
+
+                        <span>
+                            ${brochureCount}
+                        </span>
+
+                    </div>
+
+
+                    <div class="dynamic-file-content">
+
+
+                        <div class="dynamic-file-input">
+
+                            <label>
+                                New Brochure / PDF
+                            </label>
+
+                            <input
+                                type="file"
+                                name="pdfs"
+                                class="pdf-input"
+                                accept=".pdf,application/pdf"
+                            >
+
+                            <small>
+                                PDF files only
+                            </small>
+
+                        </div>
+
+
+                        <div class="dynamic-title-input">
+
+                            <label>
+                                PDF Title
+                            </label>
+
+                            <input
+                                type="text"
+                                name="pdf_titles"
+                                class="pdf-title-input"
+                                placeholder="e.g. Mounting Kit Datasheet"
+                                autocomplete="off"
+                            >
+
+                            <small>
+                                Enter a title for this document.
+                            </small>
+
+                        </div>
+
+
+                        <div class="pdf-file-preview">
+
+                            <div class="pdf-placeholder">
+
+                                <span>
+                                    📄
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        No PDF selected
+                                    </strong>
+
+                                    <small>
+                                        Select a brochure or datasheet
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="remove-item-btn"
+                        title="Remove brochure"
+                    >
+
+                        ×
+
+                    </button>
+
+                `;
+
+
+                brochureFields.appendChild(item);
+
+
+                setupPdfPreview(
+                    item.querySelector(
+                        ".pdf-input"
+                    )
+                );
+
+
+                updateBrochureNumbers();
+
+
+                const titleInput =
+                    item.querySelector(
+                        ".pdf-title-input"
+                    );
+
+
+                if (titleInput) {
+
+                    setTimeout(
+                        function () {
+
+                            titleInput.focus();
+
+                        },
+                        250
+                    );
+
+                }
+
+
+                setTimeout(
+                    function () {
+
+                        item.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+
+                    },
+                    100
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       REMOVE BROCHURE
+    ===================================================== */
+
+    if (brochureFields) {
+
+        brochureFields.addEventListener(
+            "click",
+            function (event) {
+
+                const removeBtn =
+                    event.target.closest(
+                        ".remove-item-btn"
+                    );
+
+
+                if (!removeBtn) {
+                    return;
+                }
+
+
+                if (removeBtn.disabled) {
+                    return;
+                }
+
+
+                const item =
+                    removeBtn.closest(
+                        ".brochure-item"
+                    );
+
+
+                if (!item) {
+                    return;
+                }
+
+
+                item.classList.add(
+                    "remove-item"
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        item.remove();
+
+                        updateBrochureNumbers();
+
+                    },
+                    250
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       INITIAL IMAGE PREVIEW
+    ===================================================== */
+
+    document
+        .querySelectorAll(".image-input")
+        .forEach(
+            function (input) {
+
+                setupImagePreview(input);
+
+            }
+        );
+
+
+
+    /* =====================================================
+       INITIAL PDF PREVIEW
+    ===================================================== */
+
+    document
+        .querySelectorAll(".pdf-input")
+        .forEach(
+            function (input) {
+
+                setupPdfPreview(input);
+
+            }
+        );
+
+
+
+    /* =====================================================
+       TEXTAREA AUTO HEIGHT
+    ===================================================== */
+
+    const description =
+        document.getElementById(
+            "description"
+        );
+
+
+    if (description) {
+
+        description.addEventListener(
+            "input",
+            function () {
+
+                this.style.height =
+                    "auto";
+
+                this.style.height =
+                    this.scrollHeight +
+                    "px";
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       CATEGORY CLEANING
+    ===================================================== */
+
+    const category =
+        document.getElementById(
+            "category"
+        );
+
+
+    if (category) {
+
+        category.addEventListener(
+            "input",
+            function () {
+
+                this.value =
+                    this.value.replace(
+                        /^\s+/,
+                        ""
+                    );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       NAME 1 CLEANING
+    ===================================================== */
+
+    const name1 =
+        document.getElementById(
+            "name1"
+        );
+
+
+    if (name1) {
+
+        name1.addEventListener(
+            "input",
+            function () {
+
+                this.value =
+                    this.value.replace(
+                        /^\s+/,
+                        ""
+                    );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       NAME 2 CLEANING
+    ===================================================== */
+
+    const name2 =
+        document.getElementById(
+            "name2"
+        );
+
+
+    if (name2) {
+
+        name2.addEventListener(
+            "input",
+            function () {
+
+                this.value =
+                    this.value.replace(
+                        /^\s+/,
+                        ""
+                    );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       INPUT FOCUS EFFECT
+    ===================================================== */
+
+    const inputs =
+        document.querySelectorAll(
+            ".form-group input[type='text'], " +
+            ".form-group textarea, " +
+            ".dynamic-title-input input"
+        );
+
+
+    inputs.forEach(
+        function (input) {
+
+            input.addEventListener(
+                "focus",
+                function () {
+
+                    const parent =
+                        this.closest(
+                            ".form-group, " +
+                            ".dynamic-title-input"
+                        );
+
+
+                    if (parent) {
+
+                        parent.classList.add(
+                            "field-focused"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            input.addEventListener(
+                "blur",
+                function () {
+
+                    const parent =
+                        this.closest(
+                            ".form-group, " +
+                            ".dynamic-title-input"
+                        );
+
+
+                    if (parent) {
+
+                        parent.classList.remove(
+                            "field-focused"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       FORM SUBMIT
+    ===================================================== */
+
+    const form =
+        document.querySelector(
+            ".edit-battery-form"
+        );
+
+
+    const submitButton =
+        document.querySelector(
+            ".update-submit-btn"
+        );
+
+
+    if (
+        form &&
+        submitButton
+    ) {
+
+        form.addEventListener(
+            "submit",
+            function () {
+
+                submitButton.disabled =
+                    true;
+
+
+                submitButton.classList.add(
+                    "loading"
+                );
+
+
+                submitButton.innerHTML = `
+
+                    <span class="submit-spinner">
+                        ⟳
+                    </span>
+
+                    <span>
+                        Updating Mounting Kits...
+                    </span>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       BUTTON CLICK EFFECT
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            ".add-item-btn, " +
+            ".submit-btn, " +
+            ".cancel-btn, " +
+            ".back-btn"
+        )
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        this.classList.add(
+                            "button-clicked"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                button.classList.remove(
+                                    "button-clicked"
+                                );
+
+                            },
+                            400
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =====================================================
+       DELETE CHECK CONFIRMATION
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            ".delete-check input, " +
+            ".delete-pdf-check input"
+        )
+        .forEach(
+            function (checkbox) {
+
+                checkbox.addEventListener(
+                    "change",
+                    function () {
+
+                        const parent =
+                            this.closest(
+                                ".existing-image-card, " +
+                                ".existing-pdf-card"
+                            );
+
+
+                        if (parent) {
+
+                            if (this.checked) {
+
+                                parent.classList.add(
+                                    "marked-for-delete"
+                                );
+
+                            } else {
+
+                                parent.classList.remove(
+                                    "marked-for-delete"
+                                );
+
+                            }
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+});
+
+</script>
+
+
+{% endblock %}

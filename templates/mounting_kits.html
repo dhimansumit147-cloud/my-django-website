@@ -1,0 +1,2797 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Mounting Kits | Sungreen Solar
+{% endblock %}
+
+
+{% block css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/mounting_kits.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<main class="battery-page mounting-kits-page">
+
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <section
+        class="battery-hero"
+        aria-labelledby="mountingHeroTitle"
+    >
+
+        <div class="battery-hero-grid"></div>
+
+        <div class="battery-hero-orb battery-orb-one"></div>
+
+        <div class="battery-hero-orb battery-orb-two"></div>
+
+
+        <div class="battery-module-container">
+
+            <div class="battery-hero-content">
+
+
+                <div class="battery-eyebrow">
+
+                    <span
+                        class="eyebrow-icon"
+                        aria-hidden="true"
+                    >
+                        🔧
+                    </span>
+
+                    <span>
+                        Sungreen SOLAR
+                    </span>
+
+                </div>
+
+
+                <h1 id="mountingHeroTitle">
+
+                    Professional
+
+                    <span>
+                        Mounting Kits
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Discover reliable solar mounting kits
+                    designed for secure installation,
+                    excellent durability and long-term
+                    performance across modern solar systems.
+
+                </p>
+
+
+                <div class="hero-line"></div>
+
+
+                <div class="hero-stats">
+
+
+                    <!-- STAT 1 -->
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            {{ mounting_kits|length }}
+                        </strong>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="hero-stat-divider"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <!-- STAT 2 -->
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            Strong
+                        </strong>
+
+                        <span>
+                            Solar Installation
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="hero-stat-divider"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <!-- STAT 3 -->
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            Reliable
+                        </strong>
+
+                        <span>
+                            Mounting Technology
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCROLL -->
+
+        <button
+            type="button"
+            class="battery-scroll-indicator"
+            id="mountingScrollIndicator"
+            aria-label="Explore mounting kits"
+        >
+
+            <span>
+                Explore Mounting Kits
+            </span>
+
+            <span
+                class="scroll-arrow"
+                aria-hidden="true"
+            >
+                ↓
+            </span>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTS SECTION
+    ====================================================== -->
+
+    <section
+        class="battery-products-section"
+        id="mounting-products"
+        aria-labelledby="mountingProductsTitle"
+    >
+
+        <div class="battery-module-container">
+
+
+            <!-- =================================================
+                 SECTION HEADING
+            ================================================== -->
+
+            <div class="battery-section-heading">
+
+
+                <div class="battery-section-heading-left">
+
+                    <span class="section-label">
+                        OUR MOUNTING RANGE
+                    </span>
+
+
+                    <h2 id="mountingProductsTitle">
+
+                        Mounting Kits
+
+                        <span>
+                            Built To Last.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="section-heading-right">
+
+                    <p>
+
+                        Explore our range of solar mounting
+                        kits, selected for strength, reliability,
+                        secure installation and long-term
+                        performance.
+
+                    </p>
+
+
+                    <div class="section-line"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTER BAR
+            ================================================== -->
+
+            <div class="battery-filter-bar">
+
+
+                <div class="battery-filter-info">
+
+                    <span
+                        class="filter-icon"
+                        aria-hidden="true"
+                    >
+                        🔧
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Filter Mounting Kits
+                        </strong>
+
+
+                        <small>
+                            Select a category to explore products
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="battery-filter-select-wrap">
+
+                    <label for="mountingCategoryFilter">
+                        Category
+                    </label>
+
+
+                    <div class="battery-select-container">
+
+                        <select
+                            id="mountingCategoryFilter"
+                            class="battery-filter-select"
+                        >
+
+                            <option value="all">
+                                All Mounting Kits
+                            </option>
+
+
+                            {% for category in categories %}
+
+                                {% if category %}
+
+                                    <option
+                                        value="{{ category|slugify }}"
+                                    >
+                                        {{ category|title }}
+                                    </option>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </select>
+
+
+                        <span
+                            class="filter-select-arrow"
+                            aria-hidden="true"
+                        >
+                            ↓
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RESULT BAR
+            ================================================== -->
+
+            <div
+                class="battery-filter-result"
+                aria-live="polite"
+            >
+
+                <div class="filter-result-left">
+
+                    <span aria-hidden="true">
+                        🔧
+                    </span>
+
+
+                    <p id="mountingFilterResultText">
+
+                        Showing all mounting kit products
+
+                    </p>
+
+                </div>
+
+
+                <strong id="mountingFilterProductCount">
+
+                    {{ mounting_kits|length }}
+
+                </strong>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT GRID
+            ================================================== -->
+
+            <div
+                class="battery-products-grid"
+                id="mountingProductsGrid"
+            >
+
+
+                {% for kit in mounting_kits %}
+
+
+                    <!-- =================================================
+                         PRODUCT CARD
+                    ================================================= -->
+
+                    <article
+                        class="battery-product-card"
+                        tabindex="0"
+                        role="button"
+                        aria-label="View {{ kit.name1|default:'Mounting Kit' }}"
+                        data-product-id="{{ kit.id }}"
+                        data-category="{{ kit.category|default:'Mounting Kit'|slugify }}"
+                    >
+
+
+                        <!-- =================================================
+                             PRODUCT IMAGE
+                        ================================================= -->
+
+                        <div class="battery-product-image">
+
+
+                            {% with first_image=kit.images.all|first %}
+
+
+                                {% if first_image and first_image.image %}
+
+                                    <img
+                                        src="{{ first_image.image.url }}"
+                                        alt="{{ kit.name1|default:'Mounting Kit' }}"
+                                        loading="lazy"
+                                    >
+
+                                {% elif kit.image %}
+
+                                    <img
+                                        src="{{ kit.image.url }}"
+                                        alt="{{ kit.name1|default:'Mounting Kit' }}"
+                                        loading="lazy"
+                                    >
+
+                                {% else %}
+
+                                    <div class="no-product-image">
+
+                                        <span
+                                            class="no-image-icon"
+                                            aria-hidden="true"
+                                        >
+                                            🔧
+                                        </span>
+
+
+                                        <span class="no-image-text">
+                                            Mounting Kit
+                                        </span>
+
+                                    </div>
+
+                                {% endif %}
+
+                            {% endwith %}
+
+
+                            <div
+                                class="image-overlay"
+                                aria-hidden="true"
+                            ></div>
+
+
+                            <!-- PRODUCT NUMBER -->
+
+                            <div
+                                class="product-number"
+                                aria-hidden="true"
+                            >
+
+                                {% if forloop.counter < 10 %}
+
+                                    0{{ forloop.counter }}
+
+                                {% else %}
+
+                                    {{ forloop.counter }}
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- NEW -->
+
+                            {% if kit.created_at %}
+
+                                <div
+                                    class="new-badge"
+                                    data-created="{{ kit.created_at|date:'c' }}"
+                                >
+
+                                    <span
+                                        class="new-dot"
+                                        aria-hidden="true"
+                                    ></span>
+
+
+                                    <span>
+                                        NEW
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
+                            <!-- ACTION -->
+
+                            <div
+                                class="product-image-action"
+                                aria-hidden="true"
+                            >
+
+                                <span>
+                                    View More Details
+                                </span>
+
+
+                                <span class="view-arrow">
+                                    ↗
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             PRODUCT CONTENT
+                        ================================================== -->
+
+                        <div class="battery-product-content">
+
+
+                            <div
+                                class="product-category"
+                                style="font-size: 16px;"
+                            >
+
+                                {{ kit.category|default:"MOUNTING KIT"|title }}
+
+                            </div>
+
+
+                            <h3 class="product-title">
+
+                                {{ kit.name1|default:"Mounting Kit" }}
+
+                            </h3>
+
+
+                            {% if kit.name2 %}
+
+                
+
+                            {% endif %}
+
+
+                            {% if kit.description %}
+
+                                <p class="product-description">
+
+                                    {{ kit.description }}
+
+                                </p>
+
+                            {% else %}
+
+                                <p class="product-description">
+
+                                    Reliable solar mounting solution
+                                    designed for secure installation
+                                    and long-term performance.
+
+                                </p>
+
+                            {% endif %}
+
+
+                            <div class="product-content-divider"></div>
+
+
+                            <div class="battery-product-footer">
+
+                                <span style="font-size: 14px;">
+                                    View More Details
+                                </span>
+
+
+                                <span
+                                    class="product-arrow"
+                                    aria-hidden="true"
+                                >
+                                    ↗
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="card-shine"
+                            aria-hidden="true"
+                        ></div>
+
+
+
+                        <!-- =================================================
+                             ALL IMAGES
+                        ================================================== -->
+
+                        <div
+                            class="battery-product-images-data"
+                            hidden
+                        >
+
+
+                            {% for product_image in kit.images.all %}
+
+                                {% if product_image.image %}
+
+                                    <a
+                                        href="{{ product_image.image.url }}"
+                                        data-image-title="{{ kit.name1|default:'Mounting Kit' }}"
+                                    >
+
+                                        {{ kit.name1|default:"Mounting Kit" }}
+
+                                    </a>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+
+                            {% if kit.image %}
+
+                                <a
+                                    href="{{ kit.image.url }}"
+                                    data-image-title="{{ kit.name1|default:'Mounting Kit' }}"
+                                >
+
+                                    {{ kit.name1|default:"Mounting Kit" }}
+
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             PDF DATA
+                        ================================================== -->
+
+                        <div
+                            class="battery-product-pdfs"
+                            hidden
+                        >
+
+
+                            {% if kit.pdf %}
+
+                                <a
+                                    href="{{ kit.pdf.url }}"
+                                    data-pdf-title="Main Product PDF"
+                                >
+
+                                    Main Product PDF
+
+                                </a>
+
+                            {% endif %}
+
+
+                            {% for pdf_file in kit.pdfs.all %}
+
+                                {% if pdf_file.pdf %}
+
+                                    <a
+                                        href="{{ pdf_file.pdf.url }}"
+                                        data-pdf-title="{{ pdf_file.title|default:'Mounting Kit Brochure' }}"
+                                    >
+
+                                        {{ pdf_file.title|default:"Mounting Kit Brochure" }}
+
+                                    </a>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                    </article>
+
+
+                {% empty %}
+
+
+                    <!-- =================================================
+                         EMPTY
+                    ================================================== -->
+
+                    <div class="battery-empty-state">
+
+                        <div
+                            class="empty-battery-icon"
+                            aria-hidden="true"
+                        >
+                            🔧
+                        </div>
+
+
+                        <h3>
+                            Mounting Kits Coming Soon
+                        </h3>
+
+
+                        <p>
+
+                            Our latest solar mounting
+                            solutions will be available
+                            here soon.
+
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+
+
+                <!-- =================================================
+                     FILTER EMPTY
+                ================================================== -->
+
+                <div
+                    id="mountingFilterEmpty"
+                    class="battery-filter-empty"
+                    style="display: none;"
+                >
+
+                    <div
+                        class="battery-filter-empty-icon"
+                        aria-hidden="true"
+                    >
+                        🔧
+                    </div>
+
+
+                    <h3>
+                        No Mounting Kits Found
+                    </h3>
+
+
+                    <p>
+
+                        There are no mounting kits
+                        available in this category.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FEATURES SECTION
+    ====================================================== -->
+
+    <section
+        class="battery-features-section"
+        aria-labelledby="mountingFeaturesTitle"
+    >
+
+        <div class="battery-module-container">
+
+
+            <div class="battery-features-heading">
+
+                <span class="section-label">
+                    WHY OUR MOUNTING KITS
+                </span>
+
+
+                <h2 id="mountingFeaturesTitle">
+
+                    Stronger.
+
+                    <span>
+                        Smarter Installation.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+
+            <div class="battery-features-grid">
+
+
+                <!-- FEATURE 1 -->
+
+                <div class="battery-feature-card">
+
+                    <span
+                        class="feature-number"
+                        style="font-size: 18px;"
+                    >
+                        01
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        🔩
+                    </div>
+
+
+                    <h3>
+                        Secure Installation
+                    </h3>
+
+
+                    <p>
+
+                        Designed to provide stable and
+                        secure support for solar panels.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- FEATURE 2 -->
+
+                <div class="battery-feature-card">
+
+                    <span
+                        class="feature-number"
+                        style="font-size: 18px;"
+                    >
+                        02
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        🛡️
+                    </div>
+
+
+                    <h3>
+                        Durable Construction
+                    </h3>
+
+
+                    <p>
+
+                        Strong mounting components designed
+                        for long-term outdoor performance.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- FEATURE 3 -->
+
+                <div class="battery-feature-card">
+
+                    <span
+                        class="feature-number"
+                        style="font-size: 18px;"
+                    >
+                        03
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        ☀
+                    </div>
+
+
+                    <h3>
+                        Solar Compatible
+                    </h3>
+
+
+                    <p>
+
+                        Suitable mounting solutions for
+                        modern solar panel installations.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- FEATURE 4 -->
+
+                <div class="battery-feature-card">
+
+                    <span
+                        class="feature-number"
+                        style="font-size: 18px;"
+                    >
+                        04
+                    </span>
+
+
+                    <div
+                        class="feature-icon"
+                        aria-hidden="true"
+                    >
+                        ⚙️
+                    </div>
+
+
+                    <h3>
+                        Easy Installation
+                    </h3>
+
+
+                    <p>
+
+                        Practical mounting solutions designed
+                        to simplify solar installation.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="battery-module-cta">
+
+
+        <div
+            class="cta-glow"
+            aria-hidden="true"
+        ></div>
+
+
+        <div
+            class="cta-glow cta-glow-two"
+            aria-hidden="true"
+        ></div>
+
+
+        <div class="battery-module-container">
+
+
+            <div class="cta-content">
+
+                <span class="section-label">
+                    BUILD YOUR SOLAR SYSTEM
+                </span>
+
+
+                <h2>
+
+                    Strong installation.
+
+                    <span>
+                        Better performance.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Looking for the right mounting kit
+                    for your solar system? Our team can
+                    help you choose a suitable solution
+                    based on your installation requirements.
+
+                </p>
+
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="battery-cta-button"
+                >
+
+                    <span>
+                        Talk To Our Team
+                    </span>
+
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     PRODUCT MODAL
+========================================================== -->
+
+<div
+    class="battery-product-modal"
+    id="mountingProductModal"
+    aria-hidden="true"
+>
+
+
+    <!-- BACKDROP -->
+
+    <div
+        class="battery-modal-backdrop"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- DIALOG -->
+
+    <div
+        class="battery-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mountingModalProductTitle"
+    >
+
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            class="battery-modal-close"
+            id="mountingModalClose"
+            aria-label="Close product details"
+        >
+            ×
+        </button>
+
+
+        <div class="battery-modal-grid">
+
+
+            <!-- =================================================
+                 IMAGE GALLERY
+            ================================================== -->
+
+            <div class="battery-modal-gallery">
+
+
+                <div class="battery-modal-image-wrap">
+
+
+                    <button
+                        type="button"
+                        class="battery-modal-image-prev"
+                        id="mountingModalImagePrev"
+                        aria-label="Previous product image"
+                    >
+                        ←
+                    </button>
+
+
+                    <img
+                        id="mountingModalProductImage"
+                        src=""
+                        alt=""
+                        class="battery-modal-image"
+                    >
+
+
+                    <div
+                        id="mountingModalImagePlaceholder"
+                        class="battery-modal-placeholder"
+                    >
+
+                        <span aria-hidden="true">
+                            🔧
+                        </span>
+
+
+                        <small>
+                            Mounting Kit
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="battery-modal-image-next"
+                        id="mountingModalImageNext"
+                        aria-label="Next product image"
+                    >
+                        →
+                    </button>
+
+
+                    <div
+                        id="mountingModalImageCounter"
+                        class="battery-modal-image-counter"
+                    >
+                        1 / 1
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="mountingModalImageThumbs"
+                    class="battery-modal-image-thumbs"
+                ></div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MODAL CONTENT
+            ================================================== -->
+
+            <div class="battery-modal-content">
+
+
+                <div class="modal-top-row">
+
+
+                    <span
+                        id="mountingModalProductCategory"
+                        class="modal-category"
+                        style="font-size: 16px;"
+                    >
+                        MOUNTING KIT
+                    </span>
+
+
+                    <span
+                        id="mountingModalNewBadge"
+                        class="modal-new-badge"
+                        style="font-size: 18px;"
+                    >
+                        NEW
+                    </span>
+
+                </div>
+
+
+                <h2 id="mountingModalProductTitle">
+                    Mounting Kit
+                </h2>
+
+
+                <h3 id="mountingModalProductSubtitle"></h3>
+
+
+                <div class="modal-divider"></div>
+
+
+                <p id="mountingModalProductDescription">
+                    Reliable solar mounting solution.
+                </p>
+
+
+
+                <!-- META -->
+
+                <div class="modal-meta">
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </span>
+
+
+                        <div>
+
+                            <strong>
+                                Reliable Quality
+                            </strong>
+
+
+                            <small>
+                                Designed for dependable installation
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            🔩
+                        </span>
+
+
+                        <div>
+
+                            <strong>
+                                Secure Mounting
+                            </strong>
+
+
+                            <small>
+                                Strong support for solar panels
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            🛡️
+                        </span>
+
+
+                        <div>
+
+                            <strong>
+                                Durable
+                            </strong>
+
+
+                            <small>
+                                Built for long-term performance
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-meta-item">
+
+                        <span
+                            class="meta-icon"
+                            aria-hidden="true"
+                        >
+                            ☀
+                        </span>
+
+
+                        <div>
+
+                            <strong>
+                                Solar Compatible
+                            </strong>
+
+
+                            <small>
+                                Designed for solar installations
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PDF
+                ================================================== -->
+
+                <div class="modal-brochures-wrapper">
+
+
+                    <div class="modal-brochures-heading">
+
+                        <span aria-hidden="true">
+                            📄
+                        </span>
+
+
+                        <strong>
+                            Brochures & Documents
+                        </strong>
+
+                    </div>
+
+
+                    <div
+                        id="mountingModalPdfList"
+                        class="modal-pdf-list"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- ACTIONS -->
+
+                <div class="modal-actions">
+
+
+                    <a
+                        id="mountingModalPdfButton"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="modal-pdf-button"
+                    >
+
+                        <span aria-hidden="true">
+                            📄
+                        </span>
+
+
+                        <span>
+                            Open Selected PDF
+                        </span>
+
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="modal-close-secondary"
+                        id="mountingModalSecondaryClose"
+                    >
+                        Close
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const modal =
+            document.getElementById(
+                "mountingProductModal"
+            );
+
+
+        const modalClose =
+            document.getElementById(
+                "mountingModalClose"
+            );
+
+
+        const modalSecondaryClose =
+            document.getElementById(
+                "mountingModalSecondaryClose"
+            );
+
+
+        const modalBackdrop =
+            document.querySelector(
+                "#mountingProductModal .battery-modal-backdrop"
+            );
+
+
+        const productCards =
+            document.querySelectorAll(
+                ".mounting-kits-page .battery-product-card"
+            );
+
+
+        const modalTitle =
+            document.getElementById(
+                "mountingModalProductTitle"
+            );
+
+
+        const modalSubtitle =
+            document.getElementById(
+                "mountingModalProductSubtitle"
+            );
+
+
+        const modalCategory =
+            document.getElementById(
+                "mountingModalProductCategory"
+            );
+
+
+        const modalDescription =
+            document.getElementById(
+                "mountingModalProductDescription"
+            );
+
+
+        const modalImage =
+            document.getElementById(
+                "mountingModalProductImage"
+            );
+
+
+        const modalPlaceholder =
+            document.getElementById(
+                "mountingModalImagePlaceholder"
+            );
+
+
+        const modalNewBadge =
+            document.getElementById(
+                "mountingModalNewBadge"
+            );
+
+
+        const modalPdfList =
+            document.getElementById(
+                "mountingModalPdfList"
+            );
+
+
+        const modalPdfButton =
+            document.getElementById(
+                "mountingModalPdfButton"
+            );
+
+
+        const modalImagePrev =
+            document.getElementById(
+                "mountingModalImagePrev"
+            );
+
+
+        const modalImageNext =
+            document.getElementById(
+                "mountingModalImageNext"
+            );
+
+
+        const modalImageThumbs =
+            document.getElementById(
+                "mountingModalImageThumbs"
+            );
+
+
+        const modalImageCounter =
+            document.getElementById(
+                "mountingModalImageCounter"
+            );
+
+
+        const categoryFilter =
+            document.getElementById(
+                "mountingCategoryFilter"
+            );
+
+
+        const filterCount =
+            document.getElementById(
+                "mountingFilterProductCount"
+            );
+
+
+        const filterText =
+            document.getElementById(
+                "mountingFilterResultText"
+            );
+
+
+        const filterEmpty =
+            document.getElementById(
+                "mountingFilterEmpty"
+            );
+
+
+        const scrollIndicator =
+            document.getElementById(
+                "mountingScrollIndicator"
+            );
+
+
+        const productsSection =
+            document.getElementById(
+                "mounting-products"
+            );
+
+
+
+        /* =====================================================
+           IMAGE STATE
+        ===================================================== */
+
+        let currentImages = [];
+
+        let currentImageIndex = 0;
+
+
+
+        /* =====================================================
+           SCROLL
+        ===================================================== */
+
+        if (
+            scrollIndicator &&
+            productsSection
+        ) {
+
+            scrollIndicator.addEventListener(
+                "click",
+                function () {
+
+                    const top =
+                        productsSection
+                            .getBoundingClientRect()
+                            .top
+                        +
+                        window.pageYOffset;
+
+                    window.scrollTo({
+
+                        top:
+                            Math.max(
+                                0,
+                                top - 90
+                            ),
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           UPDATE IMAGE
+        ===================================================== */
+
+        function updateImage() {
+
+
+            if (
+                !currentImages.length
+            ) {
+
+                modalImage.style.display =
+                    "none";
+
+                modalPlaceholder.style.display =
+                    "flex";
+
+                modalImagePrev.style.display =
+                    "none";
+
+                modalImageNext.style.display =
+                    "none";
+
+                modalImageCounter.style.display =
+                    "none";
+
+                modalImageThumbs.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            const image =
+                currentImages[
+                    currentImageIndex
+                ];
+
+
+            if (!image) {
+                return;
+            }
+
+
+            modalImage.src =
+                image.url;
+
+
+            modalImage.alt =
+                image.alt;
+
+
+            modalImage.style.display =
+                "block";
+
+
+            modalPlaceholder.style.display =
+                "none";
+
+
+            if (
+                currentImages.length > 1
+            ) {
+
+                modalImagePrev.style.display =
+                    "flex";
+
+                modalImageNext.style.display =
+                    "flex";
+
+                modalImageCounter.style.display =
+                    "flex";
+
+                modalImageThumbs.style.display =
+                    "flex";
+
+
+                modalImageCounter.textContent =
+                    `${currentImageIndex + 1} / ${currentImages.length}`;
+
+            } else {
+
+                modalImagePrev.style.display =
+                    "none";
+
+                modalImageNext.style.display =
+                    "none";
+
+                modalImageCounter.style.display =
+                    "none";
+
+                modalImageThumbs.style.display =
+                    "none";
+
+            }
+
+
+            modalImageThumbs
+                .querySelectorAll(
+                    ".battery-modal-thumb"
+                )
+                .forEach(
+                    function (
+                        thumb,
+                        index
+                    ) {
+
+                        thumb.classList.toggle(
+                            "active",
+                            index ===
+                            currentImageIndex
+                        );
+
+                    }
+                );
+
+        }
+
+
+
+        /* =====================================================
+           LOAD IMAGES
+        ===================================================== */
+
+        function loadImages(card) {
+
+
+            currentImages = [];
+
+            currentImageIndex = 0;
+
+            modalImageThumbs.innerHTML =
+                "";
+
+
+            const imageLinks =
+                card.querySelectorAll(
+                    ".battery-product-images-data a"
+                );
+
+
+            imageLinks.forEach(
+                function (link) {
+
+                    const url =
+                        link.href;
+
+
+                    if (!url) {
+                        return;
+                    }
+
+
+                    const exists =
+                        currentImages.some(
+                            function (item) {
+
+                                return (
+                                    item.url ===
+                                    url
+                                );
+
+                            }
+                        );
+
+
+                    if (exists) {
+                        return;
+                    }
+
+
+                    currentImages.push({
+
+                        url:
+                            url,
+
+                        alt:
+                            link.dataset.imageTitle
+                            ||
+                            "Mounting Kit"
+
+                    });
+
+                }
+            );
+
+
+            currentImages.forEach(
+                function (
+                    image,
+                    index
+                ) {
+
+
+                    const thumb =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    thumb.type =
+                        "button";
+
+
+                    thumb.className =
+                        "battery-modal-thumb";
+
+
+                    thumb.setAttribute(
+                        "aria-label",
+                        `View product image ${index + 1}`
+                    );
+
+
+                    const img =
+                        document.createElement(
+                            "img"
+                        );
+
+
+                    img.src =
+                        image.url;
+
+
+                    img.alt =
+                        "";
+
+
+                    img.loading =
+                        "lazy";
+
+
+                    thumb.appendChild(
+                        img
+                    );
+
+
+                    thumb.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.stopPropagation();
+
+
+                            currentImageIndex =
+                                index;
+
+
+                            updateImage();
+
+                        }
+                    );
+
+
+                    modalImageThumbs.appendChild(
+                        thumb
+                    );
+
+                }
+            );
+
+
+            updateImage();
+
+        }
+
+
+
+        /* =====================================================
+           OPEN MODAL
+        ===================================================== */
+
+        function openModal(card) {
+
+
+            if (!card) {
+                return;
+            }
+
+
+            const title =
+                card.querySelector(
+                    ".product-title"
+                )?.textContent.trim()
+                ||
+                "Mounting Kit";
+
+
+            const subtitle =
+                card.querySelector(
+                    ".product-subtitle"
+                )?.textContent.trim()
+                ||
+                "";
+
+
+            const category =
+                card.querySelector(
+                    ".product-category"
+                )?.textContent.trim()
+                ||
+                "MOUNTING KIT";
+
+
+            const description =
+                card.querySelector(
+                    ".product-description"
+                )?.textContent.trim()
+                ||
+                "Reliable solar mounting solution designed for secure installation and long-term performance.";
+
+
+            modalTitle.textContent =
+                title;
+
+
+            modalSubtitle.textContent =
+                subtitle;
+
+
+            modalCategory.textContent =
+                category;
+
+
+            modalDescription.textContent =
+                description;
+
+
+            loadImages(
+                card
+            );
+
+
+
+            /* =================================================
+               NEW BADGE
+            ================================================== */
+
+            const newBadge =
+                card.querySelector(
+                    ".new-badge"
+                );
+
+
+            if (newBadge) {
+
+                modalNewBadge.style.display =
+                    "inline-flex";
+
+            } else {
+
+                modalNewBadge.style.display =
+                    "none";
+
+            }
+
+
+
+            /* =================================================
+               PDF
+            ================================================= */
+
+            modalPdfList.innerHTML =
+                "";
+
+
+            const pdfLinks =
+                card.querySelectorAll(
+                    ".battery-product-pdfs a"
+                );
+
+
+            if (
+                pdfLinks.length
+            ) {
+
+
+                pdfLinks.forEach(
+                    function (
+                        pdfLink,
+                        index
+                    ) {
+
+
+                        const item =
+                            document.createElement(
+                                "a"
+                            );
+
+
+                        item.href =
+                            pdfLink.href;
+
+
+                        item.target =
+                            "_blank";
+
+
+                        item.rel =
+                            "noopener noreferrer";
+
+
+                        item.className =
+                            "modal-pdf-item";
+
+
+                        const info =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        info.className =
+                            "modal-pdf-item-info";
+
+
+                        const icon =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        icon.className =
+                            "modal-pdf-item-icon";
+
+
+                        icon.textContent =
+                            "📄";
+
+
+                        const name =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        name.className =
+                            "modal-pdf-item-name";
+
+
+                        name.textContent =
+                            pdfLink.dataset.pdfTitle
+                            ||
+                            `Mounting Kit Document ${index + 1}`;
+
+
+                        info.appendChild(
+                            icon
+                        );
+
+
+                        info.appendChild(
+                            name
+                        );
+
+
+                        const arrow =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        arrow.className =
+                            "modal-pdf-item-arrow";
+
+
+                        arrow.textContent =
+                            "↗";
+
+
+                        item.appendChild(
+                            info
+                        );
+
+
+                        item.appendChild(
+                            arrow
+                        );
+
+
+                        modalPdfList.appendChild(
+                            item
+                        );
+
+                    }
+                );
+
+
+                modalPdfButton.href =
+                    pdfLinks[0].href;
+
+
+                modalPdfButton.style.display =
+                    "flex";
+
+            }
+            else {
+
+
+                modalPdfList.innerHTML = `
+
+                    <div class="modal-no-pdf">
+
+                        <span>
+                            📄
+                        </span>
+
+                        <p>
+                            No brochures or documents
+                            available for this product.
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                modalPdfButton.href =
+                    "#";
+
+
+                modalPdfButton.style.display =
+                    "none";
+
+            }
+
+
+
+            /* =================================================
+               SHOW MODAL
+            ================================================== */
+
+            modal.classList.add(
+                "active"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "battery-modal-open"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            setTimeout(
+                function () {
+
+                    modalClose.focus();
+
+                },
+                100
+            );
+
+        }
+
+
+
+        /* =====================================================
+           CLOSE MODAL
+        ===================================================== */
+
+        function closeModal() {
+
+
+            modal.classList.remove(
+                "active"
+            );
+
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "battery-modal-open"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+
+            modalPdfButton.href =
+                "#";
+
+
+            currentImages = [];
+
+            currentImageIndex = 0;
+
+            modalImageThumbs.innerHTML =
+                "";
+
+        }
+
+
+
+        /* =====================================================
+           CARD CLICK
+        ===================================================== */
+
+        productCards.forEach(
+            function (card) {
+
+
+                card.addEventListener(
+                    "click",
+                    function (event) {
+
+                        if (
+                            event.target.closest(
+                                ".battery-product-pdfs a"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        openModal(
+                            card
+                        );
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "keydown",
+                    function (event) {
+
+
+                        if (
+                            event.key === "Enter"
+                            ||
+                            event.key === " "
+                        ) {
+
+                            event.preventDefault();
+
+
+                            openModal(
+                                card
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CLOSE
+        ===================================================== */
+
+        if (modalClose) {
+
+            modalClose.addEventListener(
+                "click",
+                closeModal
+            );
+
+        }
+
+
+        if (modalSecondaryClose) {
+
+            modalSecondaryClose.addEventListener(
+                "click",
+                closeModal
+            );
+
+        }
+
+
+        if (modalBackdrop) {
+
+            modalBackdrop.addEventListener(
+                "click",
+                closeModal
+            );
+
+        }
+
+
+
+        /* =====================================================
+           IMAGE PREVIOUS
+        ===================================================== */
+
+        if (modalImagePrev) {
+
+            modalImagePrev.addEventListener(
+                "click",
+                function (event) {
+
+                    event.stopPropagation();
+
+
+                    if (
+                        currentImages.length <= 1
+                    ) {
+                        return;
+                    }
+
+
+                    currentImageIndex--;
+
+
+                    if (
+                        currentImageIndex < 0
+                    ) {
+
+                        currentImageIndex =
+                            currentImages.length - 1;
+
+                    }
+
+
+                    updateImage();
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           IMAGE NEXT
+        ===================================================== */
+
+        if (modalImageNext) {
+
+            modalImageNext.addEventListener(
+                "click",
+                function (event) {
+
+                    event.stopPropagation();
+
+
+                    if (
+                        currentImages.length <= 1
+                    ) {
+                        return;
+                    }
+
+
+                    currentImageIndex++;
+
+
+                    if (
+                        currentImageIndex >=
+                        currentImages.length
+                    ) {
+
+                        currentImageIndex =
+                            0;
+
+                    }
+
+
+                    updateImage();
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           KEYBOARD
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+
+                if (
+                    event.key === "Escape"
+                    &&
+                    modal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeModal();
+
+                    return;
+
+                }
+
+
+                if (
+                    modal.classList.contains(
+                        "active"
+                    )
+                    &&
+                    currentImages.length > 1
+                ) {
+
+
+                    if (
+                        event.key === "ArrowLeft"
+                    ) {
+
+                        currentImageIndex--;
+
+
+                        if (
+                            currentImageIndex < 0
+                        ) {
+
+                            currentImageIndex =
+                                currentImages.length - 1;
+
+                        }
+
+
+                        updateImage();
+
+                    }
+
+
+                    if (
+                        event.key === "ArrowRight"
+                    ) {
+
+                        currentImageIndex++;
+
+
+                        if (
+                            currentImageIndex >=
+                            currentImages.length
+                        ) {
+
+                            currentImageIndex =
+                                0;
+
+                        }
+
+
+                        updateImage();
+
+                    }
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CATEGORY FILTER
+        ===================================================== */
+
+        if (categoryFilter) {
+
+
+            categoryFilter.addEventListener(
+                "change",
+                function () {
+
+
+                    const selected =
+                        this.value
+                            .trim()
+                            .toLowerCase();
+
+
+                    let count =
+                        0;
+
+
+                    productCards.forEach(
+                        function (card) {
+
+
+                            const category =
+                                (
+                                    card.dataset.category
+                                    ||
+                                    ""
+                                )
+                                .trim()
+                                .toLowerCase();
+
+
+                            if (
+                                selected ===
+                                "all"
+                                ||
+                                category ===
+                                selected
+                            ) {
+
+                                card.style.display =
+                                    "";
+
+                                count++;
+
+                            }
+                            else {
+
+                                card.style.display =
+                                    "none";
+
+                            }
+
+                        }
+                    );
+
+
+                    if (filterCount) {
+
+                        filterCount.textContent =
+                            count;
+
+                    }
+
+
+                    if (filterText) {
+
+
+                        if (
+                            selected ===
+                            "all"
+                        ) {
+
+                            filterText.textContent =
+                                "Showing all mounting kit products";
+
+                        }
+                        else {
+
+
+                            const option =
+                                categoryFilter
+                                    .options[
+                                        categoryFilter
+                                            .selectedIndex
+                                    ];
+
+
+                            const name =
+                                option
+                                    ? option.textContent.trim()
+                                    : "selected";
+
+
+                            filterText.textContent =
+                                `Showing ${name} mounting kit products`;
+
+                        }
+
+                    }
+
+
+                    if (filterEmpty) {
+
+                        filterEmpty.style.display =
+                            count === 0
+                                ? "flex"
+                                : "none";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           NEW BADGE - 15 DAYS
+        ===================================================== */
+
+        const FIFTEEN_DAYS =
+            15 *
+            24 *
+            60 *
+            60 *
+            1000;
+
+
+        document
+            .querySelectorAll(
+                ".mounting-kits-page .new-badge"
+            )
+            .forEach(
+                function (badge) {
+
+
+                    const created =
+                        badge.dataset.created;
+
+
+                    if (!created) {
+
+                        badge.remove();
+
+                        return;
+
+                    }
+
+
+                    const createdTime =
+                        new Date(
+                            created
+                        ).getTime();
+
+
+                    const difference =
+                        Date.now() -
+                        createdTime;
+
+
+                    if (
+                        isNaN(createdTime)
+                        ||
+                        difference < 0
+                        ||
+                        difference > FIFTEEN_DAYS
+                    ) {
+
+                        badge.remove();
+
+                    }
+
+                }
+            );
+
+
+
+        /* =====================================================
+           SCROLL HIDE
+        ===================================================== */
+
+        if (scrollIndicator) {
+
+
+            window.addEventListener(
+                "scroll",
+                function () {
+
+
+                    if (
+                        window.scrollY >
+                        200
+                    ) {
+
+                        scrollIndicator.classList.add(
+                            "scroll-indicator-hidden"
+                        );
+
+                    }
+                    else {
+
+                        scrollIndicator.classList.remove(
+                            "scroll-indicator-hidden"
+                        );
+
+                    }
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           IMAGE ERROR
+        ===================================================== */
+
+        document
+            .querySelectorAll(
+                ".mounting-kits-page .battery-product-image img"
+            )
+            .forEach(
+                function (image) {
+
+
+                    image.addEventListener(
+                        "error",
+                        function () {
+
+                            image.style.display =
+                                "none";
+
+
+                            const parent =
+                                image.parentElement;
+
+
+                            if (
+                                parent
+                                &&
+                                !parent.querySelector(
+                                    ".image-error-placeholder"
+                                )
+                            ) {
+
+
+                                const fallback =
+                                    document.createElement(
+                                        "div"
+                                    );
+
+
+                                fallback.className =
+                                    "image-error-placeholder";
+
+
+                                fallback.innerHTML = `
+
+                                    <span>
+                                        🔧
+                                    </span>
+
+                                    <small>
+                                        Mounting Kit
+                                    </small>
+
+                                `;
+
+
+                                parent.appendChild(
+                                    fallback
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /* =====================================================
+           MODAL IMAGE ERROR
+        ===================================================== */
+
+        if (modalImage) {
+
+
+            modalImage.addEventListener(
+                "error",
+                function () {
+
+                    modalImage.style.display =
+                        "none";
+
+
+                    modalPlaceholder.style.display =
+                        "flex";
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        const reducedMotion =
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            );
+
+
+        if (
+            reducedMotion.matches
+        ) {
+
+            document.documentElement.style.scrollBehavior =
+                "auto";
+
+        }
+
+    }
+);
+
+</script>
+
+
+{% endblock %}

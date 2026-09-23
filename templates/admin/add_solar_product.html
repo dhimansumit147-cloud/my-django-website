@@ -1,0 +1,1332 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Add Solar Module | SunGreen Solar Admin
+{% endblock %}
+
+{% block css %}
+<link
+    rel="stylesheet"
+    href="{% static 'CSS/admin/add_solar_module.css' %}"
+>
+{% endblock %}
+
+{% block content %}
+
+<main class="solar-admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <section class="admin-page-header">
+
+        <div class="header-content">
+
+            <div class="header-icon">
+                ☀️
+            </div>
+
+            <div class="header-text">
+
+                <span class="header-label">
+                    SUNGREEN SOLAR ADMIN
+                </span>
+
+                <h1>
+                    Add Solar Module
+                </h1>
+
+                <p>
+                    Create a new solar module product
+                </p>
+
+            </div>
+
+        </div>
+
+        <a
+            href="{% url 'solar_panels' %}"
+            class="back-btn"
+        >
+            <span class="back-icon">←</span>
+
+            <span>
+                Back to Manage
+            </span>
+        </a>
+
+    </section>
+
+
+    <!-- =====================================================
+         FORM SECTION
+    ====================================================== -->
+
+    <section class="module-form-section">
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+            class="module-form"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- =================================================
+                 PRODUCT INFORMATION
+            ================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        ☀️
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Product Information
+                        </h2>
+
+                        <p>
+                            Enter the basic details of your solar module.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <!-- CATEGORY -->
+
+                    <div class="form-group">
+
+                        <label for="category">
+
+                            Category
+
+                            <span>*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="category"
+                            id="category"
+                            placeholder="e.g. Solar Panels"
+                            required
+                        >
+
+                        <div class="field-hint">
+                            Enter the product category manually.
+                            Example: Solar Panels, Solar Inverter,
+                            Battery Storage, Solar Accessories.
+                        </div>
+
+                    </div>
+
+
+                    <!-- NAME 1 -->
+
+                    <div class="form-group">
+
+                        <label for="name1">
+
+                            Name 1 / Main Heading
+
+                            <span>*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name1"
+                            id="name1"
+                            placeholder="e.g. SunGreen 550W Solar Module"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- NAME 2 -->
+
+                    <div class="form-group">
+
+                        <label for="name2">
+                            Name 2 / Subheading
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name2"
+                            id="name2"
+                            placeholder="e.g. High Efficiency Monocrystalline Solar Module"
+                        >
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group full-width">
+
+                        <label for="description">
+
+                            Product Description
+
+                            <span>*</span>
+
+                        </label>
+
+                        <textarea
+                            name="description"
+                            id="description"
+                            rows="7"
+                            placeholder="Enter detailed information about this solar module..."
+                            required
+                        ></textarea>
+
+                        <div class="field-hint">
+
+                            Provide clear information about module efficiency,
+                            power output, technology, durability and applications.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT IMAGES
+            ================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        🖼️
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Product Images
+                        </h2>
+
+                        <p>
+                            Add one or multiple images of the solar module.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dynamic-section-header">
+
+                    <div>
+
+                        <strong>
+                            Solar Module Images
+                        </strong>
+
+                        <small>
+                            Add as many product images as required.
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-item-btn"
+                        id="addImageBtn"
+                    >
+
+                        <span>+</span>
+
+                        Add Image
+
+                    </button>
+
+                </div>
+
+
+                <!-- IMAGE CONTAINER -->
+
+                <div
+                    id="imageFields"
+                    class="dynamic-items"
+                >
+
+                    <!-- FIRST IMAGE -->
+
+                    <div class="dynamic-item image-item">
+
+                        <div class="dynamic-item-number">
+
+                            <span>
+                                1
+                            </span>
+
+                        </div>
+
+
+                        <div class="dynamic-file-content">
+
+                            <div class="dynamic-file-input">
+
+                                <label>
+
+                                    Product Image
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="file"
+                                    name="images"
+                                    class="image-input"
+                                    accept=".jpg,.jpeg,.png,.webp"
+                                    required
+                                >
+
+                                <small>
+                                    JPG, JPEG, PNG or WEBP
+                                </small>
+
+                            </div>
+
+
+                            <div class="dynamic-preview image-preview-single">
+
+                                <div class="preview-placeholder">
+
+                                    <span>
+                                        🖼️
+                                    </span>
+
+                                    <small>
+                                        Image preview
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="remove-item-btn"
+                            disabled
+                            title="First image cannot be removed"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dynamic-info">
+
+                    <span>ℹ</span>
+
+                    <p>
+
+                        The <strong>first uploaded image</strong> will be used
+                        as the main product image on the Manage Products page.
+                        You can add multiple images if required.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT BROCHURES
+            ================================================== -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-header-icon">
+                        📄
+                    </div>
+
+                    <div class="card-header-text">
+
+                        <h2>
+                            Product Brochures / PDFs
+                        </h2>
+
+                        <p>
+                            Add brochures, datasheets or technical documents.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dynamic-section-header">
+
+                    <div>
+
+                        <strong>
+                            Product Documents
+                        </strong>
+
+                        <small>
+                            Add multiple brochures and datasheets.
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-item-btn brochure-add-btn"
+                        id="addBrochureBtn"
+                    >
+
+                        <span>+</span>
+
+                        Add Brochure
+
+                    </button>
+
+                </div>
+
+
+                <!-- BROCHURE CONTAINER -->
+
+                <div
+                    id="brochureFields"
+                    class="dynamic-items"
+                >
+
+                    <!-- FIRST BROCHURE -->
+
+                    <div class="dynamic-item brochure-item">
+
+                        <div class="dynamic-item-number">
+
+                            <span>
+                                1
+                            </span>
+
+                        </div>
+
+
+                        <div class="dynamic-file-content">
+
+                            <!-- PDF FILE -->
+
+                            <div class="dynamic-file-input">
+
+                                <label>
+                                    Brochure / PDF
+                                </label>
+
+                                <input
+                                    type="file"
+                                    name="pdfs"
+                                    class="pdf-input"
+                                    accept=".pdf,application/pdf"
+                                >
+
+                                <small>
+                                    PDF files only
+                                </small>
+
+                            </div>
+
+
+                            <!-- PDF TITLE -->
+
+                            <div class="dynamic-title-input">
+
+                                <label>
+                                    PDF Title
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="pdf_titles"
+                                    class="pdf-title-input"
+                                    placeholder="e.g. 550W Solar Module Datasheet"
+                                >
+
+                            </div>
+
+
+                            <!-- PDF PREVIEW -->
+
+                            <div class="pdf-file-preview">
+
+                                <div class="pdf-placeholder">
+
+                                    <span>
+                                        📄
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            No PDF selected
+                                        </strong>
+
+                                        <small>
+                                            Select a brochure or datasheet
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="remove-item-btn"
+                            disabled
+                            title="First brochure cannot be removed"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dynamic-info">
+
+                    <span>ℹ</span>
+
+                    <p>
+
+                        You can add multiple PDFs. Each PDF can have
+                        its own title.
+
+                        <strong>
+                            All uploaded PDFs
+                        </strong>
+
+                        will be shown on the Manage Products page.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORM ACTIONS
+            ================================================== -->
+
+            <div class="form-actions">
+
+                <a
+                    href="{% url 'solar_panels' %}"
+                    class="cancel-btn"
+                >
+                    Cancel
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+
+                    <span class="submit-icon">
+                        +
+                    </span>
+
+                    <span>
+                        Add Solar Module
+                    </span>
+
+                    <span class="submit-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const imageFields =
+        document.getElementById("imageFields");
+
+    const addImageBtn =
+        document.getElementById("addImageBtn");
+
+    const brochureFields =
+        document.getElementById("brochureFields");
+
+    const addBrochureBtn =
+        document.getElementById("addBrochureBtn");
+
+    let imageCount = 1;
+
+    let brochureCount = 1;
+
+
+
+    /* =====================================================
+       UPDATE IMAGE NUMBERS
+    ===================================================== */
+
+    function updateImageNumbers() {
+
+        const items =
+            imageFields.querySelectorAll(".image-item");
+
+        items.forEach(function (item, index) {
+
+            const number =
+                item.querySelector(
+                    ".dynamic-item-number span"
+                );
+
+            if (number) {
+
+                number.textContent =
+                    index + 1;
+
+            }
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       UPDATE BROCHURE NUMBERS
+    ===================================================== */
+
+    function updateBrochureNumbers() {
+
+        const items =
+            brochureFields.querySelectorAll(".brochure-item");
+
+        items.forEach(function (item, index) {
+
+            const number =
+                item.querySelector(
+                    ".dynamic-item-number span"
+                );
+
+            if (number) {
+
+                number.textContent =
+                    index + 1;
+
+            }
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       IMAGE PREVIEW
+    ===================================================== */
+
+    function setupImagePreview(input) {
+
+        input.addEventListener("change", function () {
+
+            const item =
+                this.closest(".image-item");
+
+            const preview =
+                item.querySelector(".image-preview-single");
+
+            preview.innerHTML = "";
+
+
+            if (!this.files || !this.files[0]) {
+
+                preview.innerHTML = `
+
+                    <div class="preview-placeholder">
+
+                        <span>
+                            🖼️
+                        </span>
+
+                        <small>
+                            Image preview
+                        </small>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            const file =
+                this.files[0];
+
+
+            if (!file.type.startsWith("image/")) {
+
+                preview.innerHTML = `
+
+                    <div class="preview-placeholder error">
+
+                        <span>
+                            ⚠️
+                        </span>
+
+                        <small>
+                            Invalid image file
+                        </small>
+
+                    </div>
+
+                `;
+
+                this.value = "";
+
+                return;
+
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload = function (event) {
+
+                preview.innerHTML = `
+
+                    <div class="image-preview-result">
+
+                        <img
+                            src="${event.target.result}"
+                            alt="Product Image"
+                        >
+
+                        <div class="image-preview-name">
+                            ${file.name}
+                        </div>
+
+                    </div>
+
+                `;
+
+            };
+
+
+            reader.readAsDataURL(file);
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       PDF PREVIEW
+    ===================================================== */
+
+    function setupPdfPreview(input) {
+
+        input.addEventListener("change", function () {
+
+            const item =
+                this.closest(".brochure-item");
+
+            const preview =
+                item.querySelector(".pdf-file-preview");
+
+
+            if (!this.files || !this.files[0]) {
+
+                preview.innerHTML = `
+
+                    <div class="pdf-placeholder">
+
+                        <span>
+                            📄
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                No PDF selected
+                            </strong>
+
+                            <small>
+                                Select a brochure or datasheet
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            const file =
+                this.files[0];
+
+
+            if (
+                file.type !== "application/pdf" &&
+                !file.name.toLowerCase().endsWith(".pdf")
+            ) {
+
+                preview.innerHTML = `
+
+                    <div class="pdf-placeholder error">
+
+                        <span>
+                            ⚠️
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Invalid PDF
+                            </strong>
+
+                            <small>
+                                Please select a PDF file
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                this.value = "";
+
+                return;
+
+            }
+
+
+            const fileSize =
+                (
+                    file.size /
+                    1024 /
+                    1024
+                ).toFixed(2);
+
+
+            preview.innerHTML = `
+
+                <div class="pdf-selected">
+
+                    <div class="pdf-selected-icon">
+                        📄
+                    </div>
+
+                    <div class="pdf-selected-info">
+
+                        <strong>
+                            ${file.name}
+                        </strong>
+
+                        <small>
+                            ${fileSize} MB
+                        </small>
+
+                    </div>
+
+                    <span class="pdf-check">
+                        ✓
+                    </span>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       ADD IMAGE
+    ===================================================== */
+
+    addImageBtn.addEventListener("click", function () {
+
+        imageCount++;
+
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "dynamic-item image-item new-item";
+
+
+        item.innerHTML = `
+
+            <div class="dynamic-item-number">
+
+                <span>
+                    ${imageCount}
+                </span>
+
+            </div>
+
+
+            <div class="dynamic-file-content">
+
+                <div class="dynamic-file-input">
+
+                    <label>
+                        Product Image
+                    </label>
+
+                    <input
+                        type="file"
+                        name="images"
+                        class="image-input"
+                        accept=".jpg,.jpeg,.png,.webp"
+                    >
+
+                    <small>
+                        JPG, JPEG, PNG or WEBP
+                    </small>
+
+                </div>
+
+
+                <div class="dynamic-preview image-preview-single">
+
+                    <div class="preview-placeholder">
+
+                        <span>
+                            🖼️
+                        </span>
+
+                        <small>
+                            Image preview
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="remove-item-btn"
+                title="Remove image"
+            >
+                ×
+            </button>
+
+        `;
+
+
+        imageFields.appendChild(item);
+
+
+        setupImagePreview(
+            item.querySelector(".image-input")
+        );
+
+
+        updateImageNumbers();
+
+
+        setTimeout(function () {
+
+            item.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }, 100);
+
+    });
+
+
+
+    /* =====================================================
+       REMOVE IMAGE
+    ===================================================== */
+
+    imageFields.addEventListener("click", function (event) {
+
+        const removeBtn =
+            event.target.closest(".remove-item-btn");
+
+
+        if (!removeBtn) {
+            return;
+        }
+
+
+        if (removeBtn.disabled) {
+            return;
+        }
+
+
+        const item =
+            removeBtn.closest(".image-item");
+
+
+        if (!item) {
+            return;
+        }
+
+
+        item.classList.add("remove-item");
+
+
+        setTimeout(function () {
+
+            item.remove();
+
+            updateImageNumbers();
+
+        }, 250);
+
+    });
+
+
+
+    /* =====================================================
+       ADD BROCHURE
+    ===================================================== */
+
+    addBrochureBtn.addEventListener("click", function () {
+
+        brochureCount++;
+
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "dynamic-item brochure-item new-item";
+
+
+        item.innerHTML = `
+
+            <div class="dynamic-item-number">
+
+                <span>
+                    ${brochureCount}
+                </span>
+
+            </div>
+
+
+            <div class="dynamic-file-content">
+
+
+                <div class="dynamic-file-input">
+
+                    <label>
+                        Brochure / PDF
+                    </label>
+
+                    <input
+                        type="file"
+                        name="pdfs"
+                        class="pdf-input"
+                        accept=".pdf,application/pdf"
+                    >
+
+                    <small>
+                        PDF files only
+                    </small>
+
+                </div>
+
+
+                <div class="dynamic-title-input">
+
+                    <label>
+                        PDF Title
+                    </label>
+
+                    <input
+                        type="text"
+                        name="pdf_titles"
+                        class="pdf-title-input"
+                        placeholder="e.g. Solar Module Datasheet"
+                    >
+
+                </div>
+
+
+                <div class="pdf-file-preview">
+
+                    <div class="pdf-placeholder">
+
+                        <span>
+                            📄
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                No PDF selected
+                            </strong>
+
+                            <small>
+                                Select a brochure or datasheet
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="remove-item-btn"
+                title="Remove brochure"
+            >
+                ×
+            </button>
+
+        `;
+
+
+        brochureFields.appendChild(item);
+
+
+        setupPdfPreview(
+            item.querySelector(".pdf-input")
+        );
+
+
+        updateBrochureNumbers();
+
+
+        setTimeout(function () {
+
+            item.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }, 100);
+
+    });
+
+
+
+    /* =====================================================
+       REMOVE BROCHURE
+    ===================================================== */
+
+    brochureFields.addEventListener("click", function (event) {
+
+        const removeBtn =
+            event.target.closest(".remove-item-btn");
+
+
+        if (!removeBtn) {
+            return;
+        }
+
+
+        if (removeBtn.disabled) {
+            return;
+        }
+
+
+        const item =
+            removeBtn.closest(".brochure-item");
+
+
+        if (!item) {
+            return;
+        }
+
+
+        item.classList.add("remove-item");
+
+
+        setTimeout(function () {
+
+            item.remove();
+
+            updateBrochureNumbers();
+
+        }, 250);
+
+    });
+
+
+
+    /* =====================================================
+       INITIAL IMAGE PREVIEW
+    ===================================================== */
+
+    document
+        .querySelectorAll(".image-input")
+        .forEach(function (input) {
+
+            setupImagePreview(input);
+
+        });
+
+
+
+    /* =====================================================
+       INITIAL PDF PREVIEW
+    ===================================================== */
+
+    document
+        .querySelectorAll(".pdf-input")
+        .forEach(function (input) {
+
+            setupPdfPreview(input);
+
+        });
+
+
+
+    /* =====================================================
+       TEXTAREA AUTO HEIGHT
+    ===================================================== */
+
+    const description =
+        document.getElementById("description");
+
+
+    if (description) {
+
+        description.addEventListener(
+            "input",
+            function () {
+
+                this.style.height =
+                    "auto";
+
+                this.style.height =
+                    this.scrollHeight + "px";
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       FORM SUBMIT
+    ===================================================== */
+
+    const form =
+        document.querySelector(".module-form");
+
+    const submitButton =
+        document.querySelector(".submit-btn");
+
+
+    if (form && submitButton) {
+
+        form.addEventListener(
+            "submit",
+            function () {
+
+                submitButton.disabled =
+                    true;
+
+                submitButton.innerHTML = `
+
+                    <span class="submit-spinner">
+                        ⟳
+                    </span>
+
+                    <span>
+                        Saving Product...
+                    </span>
+
+                `;
+
+            }
+        );
+
+    }
+
+});
+
+</script>
+
+{% endblock %}
